@@ -110,7 +110,7 @@ public class CrudEstadio extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        panel.setBackground(new java.awt.Color(248, 180, 113));
+        panel.setBackground(new java.awt.Color(101, 161, 101));
         panel.setBorder(new javax.swing.border.MatteBorder(null));
         panel.setForeground(new java.awt.Color(0, 0, 0));
 

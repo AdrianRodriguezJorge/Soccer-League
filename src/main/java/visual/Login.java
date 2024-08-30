@@ -71,8 +71,4 @@ public class Login extends JFrame {
         // Implementación de validación de usuario (por ejemplo, comparar con una base de datos)
         return username.equals("admin") && password.equals("admin"); // Ejemplo simple
     }
-
-    public static void main(String[] args) {
-        
-    }
 }
