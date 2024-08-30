@@ -24,7 +24,7 @@ public class EstadioServices {
      * @param estadio El equipo a crear.
      * @return Verdadero si el equipo se creó correctamente.
      */
-     public static boolean createEstadio (String nombre, int capacidad) {
+     public static boolean agregarEstadio (String nombre, int capacidad) {
 
           String sql = "INSERT INTO estadio (nomestadio, capacidad) VALUES (?,?)";
           try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -63,7 +63,7 @@ public class EstadioServices {
           return list;
      }
 
-     public static void updateEstadio (int objetive, String nom, int cap) {
+     public static void actualizarEstadio (int objetive, String nom, int cap) {
           try {
                String sql = "UPDATE estadio SET nomestadio = ?, capacidad = ? WHERE idestadio = ?";
                PreparedStatement stmn = connection.prepareStatement(sql);
@@ -83,7 +83,7 @@ public class EstadioServices {
                System.out.println(e.getMessage());
           }
      }
-     public static void deleteEstadio (int objetive) {
+     public static void eliminarEstadio (int objetive) {
           try {
                String sql = "DELETE FROM estadio WHERE idestadio = ?";
                PreparedStatement stmn = connection.prepareStatement(sql);

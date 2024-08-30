@@ -319,7 +319,7 @@ public class CrudEstadio extends javax.swing.JDialog {
         boolean proceder = true; // validarDatos(id, nombre, capacidad);
 
         if (proceder) {
-            EstadioServices.createEstadio(nombre, capacidad); // guardar en la BD
+            EstadioServices.agregarEstadio(nombre, capacidad); // guardar en la BD
 
             Estadio x = new Estadio(EstadioServices.readEstadios().getLast().getIdEstadio(), nombre, capacidad);
             modelo.addEstadio(x);
@@ -364,9 +364,9 @@ public class CrudEstadio extends javax.swing.JDialog {
         if (proceder) {
             x = new Estadio (id, nombre, capacidad);
 
-            EstadioServices.updateEstadio(Integer.parseInt(textFieldID.getText()), textFieldNombre.getText(), Integer.parseInt(textFieldCapacidad.getText())); // nuevo
+            EstadioServices.actualizarEstadio(Integer.parseInt(textFieldID.getText()), textFieldNombre.getText(), Integer.parseInt(textFieldCapacidad.getText())); // nuevo
 
-            modelo.updateEstadio(indice, x);
+            modelo.actualizarEstadio(indice, x);
             desactivar_habilitar(false);
             list.setEnabled(true);
             btnEliminar.setEnabled(true);
@@ -385,7 +385,7 @@ public class CrudEstadio extends javax.swing.JDialog {
                                 "Confirmar", 0) == 0) {
                         modelo.removeEstadio(list.getSelectedIndex());
                         
-                        EstadioServices.deleteEstadio(Integer.parseInt(textFieldID.getText()));
+                        EstadioServices.eliminarEstadio(Integer.parseInt(textFieldID.getText()));
                         
                         limpiar();
                         desactivar_habilitar(false);

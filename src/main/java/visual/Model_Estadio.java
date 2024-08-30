@@ -55,7 +55,7 @@ public class Model_Estadio extends AbstractListModel
 		}
 	}
 	// modifica en el modelo los valores del estadio en la posici�n indice
-	public void updateEstadio (int indice, Estadio c) {
+	public void actualizarEstadio (int indice, Estadio c) {
 		if (indice > -1 && indice < this.getSize()) {
 			lstEstadios.set(indice, c);
 			this.fireContentsChanged(this, indice, indice);

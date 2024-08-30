@@ -15,6 +15,10 @@ public class Estadio {
           this.capacidad = capacidad;
      }
 
+     public Estadio() {
+          //TODO Auto-generated constructor stub
+     }
+
      // Métodos getter y setter
      public int getIdEstadio() {
           return idEstadio;
