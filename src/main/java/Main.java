@@ -1,5 +1,5 @@
 
-import utils.DBManager;
+import utils.ConnectionManager;
 import visual.CrudEstadio;
 
 public class Main {

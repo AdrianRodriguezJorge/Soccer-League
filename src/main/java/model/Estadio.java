@@ -1,23 +1,47 @@
 package model;
 
+/**
+ * Clase que representa un Estadio donde se juega un partido.
+ */
 public class Estadio {
-     public int id;
-     public String nombre;
-     public int capacidad;
+     private int idEstadio;
+     private String nombreEstadio;
+     private int capacidad;
 
-     public Estadio(int id, String nombre, int capacidad) {
-          this.id = id;
-          this.nombre = nombre;
+     // Constructor
+     public Estadio(int idEstadio, String nombreEstadio, int capacidad) {
+          this.idEstadio = idEstadio;
+          this.nombreEstadio = nombreEstadio;
           this.capacidad = capacidad;
      }
-     
-     public Estadio(String nombre, int capacidad) {
-          this.nombre = nombre;
+
+     // Métodos getter y setter
+     public int getIdEstadio() {
+          return idEstadio;
+     }
+
+     public void setIdEstadio(int idEstadio) {
+          this.idEstadio = idEstadio;
+     }
+
+     public String getNombreEstadio() {
+          return nombreEstadio;
+     }
+
+     public void setNombreEstadio(String nombreEstadio) {
+          this.nombreEstadio = nombreEstadio;
+     }
+
+     public int getCapacidad() {
+          return capacidad;
+     }
+
+     public void setCapacidad(int capacidad) {
           this.capacidad = capacidad;
      }
 
      @Override
      public String toString() {
-          return  nombre;
+          return  nombreEstadio;
      }
 }

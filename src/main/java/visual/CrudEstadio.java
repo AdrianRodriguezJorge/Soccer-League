@@ -6,7 +6,8 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import model.Estadio;
-import utils.DBManager;
+import services.EstadioServices;
+import utils.ConnectionManager;
 
 public class CrudEstadio extends javax.swing.JDialog {
 
@@ -16,7 +17,8 @@ public class CrudEstadio extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        DBManager.initConnection();
+        ConnectionManager.initConnectionManager();
+        EstadioServices es = new EstadioServices();
 
         list = new JList<Estadio>();
 
@@ -34,9 +36,9 @@ public class CrudEstadio extends javax.swing.JDialog {
                         if (indice > -1) {
                                 Estadio c = modelo.getEstadioAt(indice);
 
-                                textFieldID.setText(c.id+"");
-                                textFieldNombre.setText(c.nombre);
-                                textFieldCapacidad.setText(c.capacidad+"");
+                                textFieldID.setText(c.getIdEstadio()+"");
+                                textFieldNombre.setText(c.getNombreEstadio());
+                                textFieldCapacidad.setText(c.getCapacidad()+"");
 
                                 btnNuevo.setEnabled(true);
                                 btnEditar.setEnabled(true);
@@ -46,7 +48,7 @@ public class CrudEstadio extends javax.swing.JDialog {
                         }
                 }
         });
-        modelo.setlstEstadios(DBManager.read());
+        modelo.setlstEstadios(EstadioServices.readEstadios());
 
         btnNuevo.setFont(new Font("SansSerif", Font.PLAIN, 18));
         btnEditar.setFont(new Font("SansSerif", Font.PLAIN, 18));
@@ -317,9 +319,9 @@ public class CrudEstadio extends javax.swing.JDialog {
         boolean proceder = true; // validarDatos(id, nombre, capacidad);
 
         if (proceder) {
-            DBManager.create(nombre, capacidad); // guardar en la BD
+            EstadioServices.createEstadio(nombre, capacidad); // guardar en la BD
 
-            Estadio x = new Estadio(DBManager.read().getLast().id, nombre, capacidad);
+            Estadio x = new Estadio(EstadioServices.readEstadios().getLast().getIdEstadio(), nombre, capacidad);
             modelo.addEstadio(x);
 
             int lastIndex = list.getModel().getSize() - 1;
@@ -362,7 +364,7 @@ public class CrudEstadio extends javax.swing.JDialog {
         if (proceder) {
             x = new Estadio (id, nombre, capacidad);
 
-            DBManager.update(Integer.parseInt(textFieldID.getText()), textFieldNombre.getText(), Integer.parseInt(textFieldCapacidad.getText())); // nuevo
+            EstadioServices.updateEstadio(Integer.parseInt(textFieldID.getText()), textFieldNombre.getText(), Integer.parseInt(textFieldCapacidad.getText())); // nuevo
 
             modelo.updateEstadio(indice, x);
             desactivar_habilitar(false);
@@ -383,7 +385,7 @@ public class CrudEstadio extends javax.swing.JDialog {
                                 "Confirmar", 0) == 0) {
                         modelo.removeEstadio(list.getSelectedIndex());
                         
-                        DBManager.delete(Integer.parseInt(textFieldID.getText()));
+                        EstadioServices.deleteEstadio(Integer.parseInt(textFieldID.getText()));
                         
                         limpiar();
                         desactivar_habilitar(false);
@@ -407,7 +409,7 @@ public class CrudEstadio extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        DBManager.closeConnection();
+        ConnectionManager.closeConnection();
         dispose();
         System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
