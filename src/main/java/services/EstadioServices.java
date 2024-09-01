@@ -8,6 +8,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.view.JasperViewer;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Servicio para manejar las operaciones CRUD relacionadas con los estadios.
  */
@@ -102,4 +108,28 @@ public class EstadioServices {
                System.out.println(e.getMessage());
           }
      }
+     
+     public static void generarReporteEstadio() {
+        try {
+            // Ruta del archivo .jasper
+            String reportPath = "src/main/java/reports/EstadioR.jasper";
+
+            // Parámetros para pasar al reporte (si se necesitan)
+            Map<String, Object> parametros = new HashMap<>();
+
+            // Obtener la conexión a la base de datos
+            Connection conn = ConnectionManager.getConnection();
+
+            // Cargar el reporte
+            JasperPrint jasperPrint = JasperFillManager.fillReport(reportPath, parametros, conn);
+
+            // Mostrar el reporte
+            JasperViewer viewer = new JasperViewer(jasperPrint, false);
+            viewer.setTitle("Reporte de Estadios");
+            viewer.setVisible(true);
+
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+    }
 }

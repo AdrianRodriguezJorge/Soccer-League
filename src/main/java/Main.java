@@ -3,6 +3,7 @@ import java.awt.EventQueue;
 import utils.ConnectionManager;
 import visual.CrudEstadio;
 import visual.Login;
+import visual.Principal;
 
 public class Main {
 
@@ -21,8 +22,10 @@ public class Main {
     EventQueue.invokeLater(new Runnable() {
         public void run() {
             try {
-                Login frame = new Login();
-                frame.setVisible(true);
+                new Principal().setVisible(true);
+                
+//                Login frame = new Login();
+//                frame.setVisible(true);
             } catch (Exception e) {
                 e.printStackTrace();
             }
