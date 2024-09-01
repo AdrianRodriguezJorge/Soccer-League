@@ -13,6 +13,7 @@ import net.sf.jasperreports.view.JasperViewer;
 
 import java.util.HashMap;
 import java.util.Map;
+import utils.Report;
 
 /**
  * Servicio para manejar las operaciones CRUD relacionadas con los estadios.
@@ -123,10 +124,8 @@ public class EstadioServices {
             // Cargar el reporte
             JasperPrint jasperPrint = JasperFillManager.fillReport(reportPath, parametros, conn);
 
-            // Mostrar el reporte
-            JasperViewer viewer = new JasperViewer(jasperPrint, false);
-            viewer.setTitle("Reporte de Estadios");
-            viewer.setVisible(true);
+            // Generar y mostrar el reporte usando la clase de utilidades Reports
+            Report.generateAndShowReport(reportPath, parametros, conn);
 
         } catch (JRException e) {
             e.printStackTrace();
