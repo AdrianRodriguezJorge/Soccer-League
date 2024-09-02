@@ -1,11 +1,19 @@
 package services;
 
 import model.Equipo;
+import model.Estadio;
 import utils.ConnectionManager;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import utils.Report;
 
 /**
  * Clase de servicios para gestionar las operaciones CRUD de los equipos.
@@ -39,8 +47,8 @@ public class EquipoServices {
      * Método para obtener todos los equipos de la base de datos.
      * @return Lista de equipos.
      */
-    public List<Equipo> obtenerEquipos() {
-        List<Equipo> equipos = new ArrayList<>();
+    public ArrayList<Equipo> obtenerEquipos() {
+        ArrayList<Equipo> equipos = new ArrayList<>();
         String sql = "SELECT * FROM equipo";
         try (Connection conn = ConnectionManager.getConnection();
              Statement stmt = conn.createStatement();
@@ -48,11 +56,11 @@ public class EquipoServices {
              
             while (rs.next()) {
                 Equipo equipo = new Equipo();
-                equipo.setIdEquipo(rs.getInt("id_equipo"));
-                equipo.setNombreEquipo(rs.getString("nombre_equipo"));
+                equipo.setIdEquipo(rs.getInt("idequipo"));
+                equipo.setNombreEquipo(rs.getString("nomequipo"));
                 equipo.setProvincia(rs.getString("provincia"));
-                equipo.setCampeonatosParticipados(rs.getInt("campeonatos_participados"));
-                equipo.setCampeonatosGanados(rs.getInt("campeonatos_ganados"));
+                equipo.setCampeonatosParticipados(rs.getInt("camparticip"));
+                equipo.setCampeonatosGanados(rs.getInt("campganados"));
                 equipo.setMascota(rs.getString("mascota"));
                 equipo.setColor(rs.getString("color"));
                 equipo.setPuntos(rs.getInt("puntos"));
@@ -104,5 +112,61 @@ public class EquipoServices {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    
+    public void reporteTablaPosiciones () {
+        try {
+            // Ruta del archivo .jasper
+            String reportPath = "src/main/java/reports/Tabla_de_posiciones.jasper";
+
+            // Parámetros para pasar al reporte (si se necesitan)
+            Map<String, Object> parametros = new HashMap<>();
+
+            // Obtener la conexión a la base de datos
+            Connection conn = ConnectionManager.getConnection();
+
+            // Cargar el reporte
+            JasperPrint jasperPrint = JasperFillManager.fillReport(reportPath, parametros, conn);
+
+            // Generar y mostrar el reporte usando la clase de utilidades Reports
+            Report.mostrarReporte(reportPath, parametros, conn);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    // public static int getIdEquipoDadoNombre (String nom)  {
+		// String function = "{?= call getIdEquipoDadoNombre('?')}";
+		// java.sql.Connection connection = ServicesLocator.getConnection();
+		// connection.setAutoCommit(false);
+		// CallableStatement preparedFunction = connection.prepareCall(function);
+		// preparedFunction.registerOutParameter(1, java.sql.Types.INTEGER); 
+		// preparedFunction.setString(2, nom);
+		// preparedFunction.execute();
+		// ResultSet resultSet = (ResultSet) preparedFunction.getObject(1);
+		// int id = resultSet.getInt(1);
+		// resultSet.close();
+		// preparedFunction.close();
+		// connection.close();
+		
+        // String sql = "SELECT getIdEquipoDadoNombre('?')";
+        // Connection connection = ConnectionManager.getConnection();
+        // PreparedStatement stmn = connection.prepareStatement(sql);
+        // stmn.setString(1, nom);
+        // ResultSet rs = stmn.executeQuery();
+        // int id = rs.getInt("idequipo");
+
+		    // return id;
+	// }
+    
+    public ArrayList <String> obtenerNombresEquipos () {
+        ArrayList <String> list = new ArrayList<>();
+
+        for (Equipo e : obtenerEquipos()) {
+            list.add(e.getNombreEquipo());
+        }
+
+        return list;
     }
 }

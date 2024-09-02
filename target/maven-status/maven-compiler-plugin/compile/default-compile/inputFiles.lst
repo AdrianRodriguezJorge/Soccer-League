@@ -1,3 +1,4 @@
+C:\Users\HP 11na\Desktop\Liga\src\main\java\visual\RPartidosEquipos.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\model\Partido.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\model\Defensa.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\visual\Model_Estadio.java
@@ -19,7 +20,9 @@ C:\Users\HP 11na\Desktop\Liga\src\main\java\model\Delantero.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\services\MediocampistaServices.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\services\PartidoServices.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\model\Model_contenido.java
+C:\Users\HP 11na\Desktop\Liga\src\main\java\visual\Model_Equipo.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\utils\Report.java
+C:\Users\HP 11na\Desktop\Liga\src\main\java\visual\RPartidosPorFecha.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\utils\Utils_contenido.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\Main.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\model\Portero.java
@@ -30,3 +33,5 @@ C:\Users\HP 11na\Desktop\Liga\src\main\java\services\Services_contenido.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\services\DefensaServices.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\services\EstadioServices.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\visual\Login.java
+C:\Users\HP 11na\Desktop\Liga\src\main\java\visual\CrudEquipo.java
+C:\Users\HP 11na\Desktop\Liga\src\main\java\services\ServicesLocator.java

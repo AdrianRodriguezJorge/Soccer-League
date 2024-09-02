@@ -5,7 +5,13 @@ import utils.ConnectionManager;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import utils.Report;
 
 /**
  * Clase de servicios para gestionar las operaciones CRUD de los partidos.
@@ -99,6 +105,31 @@ public class PartidoServices {
             pstmt.executeUpdate();
             
         } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static void reportePartidosPorEquipos (int equipo1, int equipo2) {
+        try {
+            // Ruta del archivo .jasper
+            String reportPath = "src/main/java/reports/Partidos_por_equipos.jasper";
+
+            // Parámetros para pasar al reporte (si se necesitan)
+            Map<String, Object> parametros = new HashMap<>();
+            
+            parametros.put("equipo1", equipo1);
+            parametros.put("equipo2", equipo2);
+
+            // Obtener la conexión a la base de datos
+            Connection conn = ConnectionManager.getConnection();
+
+            // Cargar el reporte
+            JasperPrint jasperPrint = JasperFillManager.fillReport(reportPath, parametros, conn);
+
+            // Generar y mostrar el reporte usando la clase de utilidades Reports
+            Report.mostrarReporte(reportPath, parametros, conn);
+
+        } catch (JRException | SQLException e) {
             e.printStackTrace();
         }
     }

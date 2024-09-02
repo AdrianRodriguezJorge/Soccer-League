@@ -2,11 +2,14 @@ package visual;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.SQLException;
+
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import model.Estadio;
 import services.EstadioServices;
+import services.ServicesLocator;
 import utils.ConnectionManager;
 
 public class CrudEstadio extends javax.swing.JDialog {
@@ -17,7 +20,12 @@ public class CrudEstadio extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        ConnectionManager.initConnectionManager();
+        try {
+            ConnectionManager.getConnection();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         EstadioServices es = new EstadioServices();
 
         list = new JList<Estadio>();
@@ -48,7 +56,7 @@ public class CrudEstadio extends javax.swing.JDialog {
                         }
                 }
         });
-        modelo.setlstEstadios(EstadioServices.readEstadios());
+        modelo.setlstEstadios(ServicesLocator.getEstadioServices().readEstadios());
 
         btnNuevo.setFont(new Font("SansSerif", Font.PLAIN, 18));
         btnEditar.setFont(new Font("SansSerif", Font.PLAIN, 18));
@@ -107,7 +115,6 @@ public class CrudEstadio extends javax.swing.JDialog {
         btnEditar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        btnReporte = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -139,6 +146,8 @@ public class CrudEstadio extends javax.swing.JDialog {
             }
         });
 
+        btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,6 +155,8 @@ public class CrudEstadio extends javax.swing.JDialog {
             }
         });
 
+        btnGuardar.setBackground(new java.awt.Color(255, 255, 255));
+        btnGuardar.setForeground(new java.awt.Color(0, 0, 0));
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,6 +164,8 @@ public class CrudEstadio extends javax.swing.JDialog {
             }
         });
 
+        btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setForeground(new java.awt.Color(0, 0, 0));
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,6 +227,8 @@ public class CrudEstadio extends javax.swing.JDialog {
         list.setForeground(new java.awt.Color(0, 153, 153));
         scrollPane.setViewportView(list);
 
+        btnNuevo.setBackground(new java.awt.Color(255, 255, 255));
+        btnNuevo.setForeground(new java.awt.Color(0, 0, 0));
         btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,6 +236,8 @@ public class CrudEstadio extends javax.swing.JDialog {
             }
         });
 
+        btnEditar.setBackground(new java.awt.Color(255, 255, 255));
+        btnEditar.setForeground(new java.awt.Color(0, 0, 0));
         btnEditar.setText("Editar");
         btnEditar.setEnabled(false);
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -229,6 +246,8 @@ public class CrudEstadio extends javax.swing.JDialog {
             }
         });
 
+        btnEliminar.setBackground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setForeground(new java.awt.Color(0, 0, 0));
         btnEliminar.setText("Eliminar");
         btnEliminar.setEnabled(false);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -237,17 +256,12 @@ public class CrudEstadio extends javax.swing.JDialog {
             }
         });
 
+        btnSalir.setBackground(new java.awt.Color(255, 255, 255));
+        btnSalir.setForeground(new java.awt.Color(0, 0, 0));
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
-            }
-        });
-
-        btnReporte.setText("Reporte");
-        btnReporte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReporteActionPerformed(evt);
             }
         });
 
@@ -268,8 +282,7 @@ public class CrudEstadio extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(contentPanelLayout.createSequentialGroup()
-                        .addComponent(btnReporte)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnSalir))
                     .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -286,8 +299,7 @@ public class CrudEstadio extends javax.swing.JDialog {
                     .addComponent(btnSalir)
                     .addComponent(btnEditar)
                     .addComponent(btnEliminar)
-                    .addComponent(btnNuevo)
-                    .addComponent(btnReporte))
+                    .addComponent(btnNuevo))
                 .addContainerGap())
         );
 
@@ -330,9 +342,9 @@ public class CrudEstadio extends javax.swing.JDialog {
         boolean proceder = true; // validarDatos(id, nombre, capacidad);
 
         if (proceder) {
-            EstadioServices.agregarEstadio(nombre, capacidad); // guardar en la BD
+            ServicesLocator.getEstadioServices().agregarEstadio(nombre, capacidad); // guardar en la BD
 
-            Estadio x = new Estadio(EstadioServices.readEstadios().getLast().getIdEstadio(), nombre, capacidad);
+            Estadio x = new Estadio(ServicesLocator.getEstadioServices().readEstadios().getLast().getIdEstadio(), nombre, capacidad);
             modelo.addEstadio(x);
 
             int lastIndex = list.getModel().getSize() - 1;
@@ -375,7 +387,7 @@ public class CrudEstadio extends javax.swing.JDialog {
         if (proceder) {
             x = new Estadio (id, nombre, capacidad);
 
-            EstadioServices.actualizarEstadio(Integer.parseInt(textFieldID.getText()), textFieldNombre.getText(), Integer.parseInt(textFieldCapacidad.getText())); // nuevo
+            ServicesLocator.getEstadioServices().actualizarEstadio(Integer.parseInt(textFieldID.getText()), textFieldNombre.getText(), Integer.parseInt(textFieldCapacidad.getText())); // nuevo
 
             modelo.actualizarEstadio(indice, x);
             desactivar_habilitar(false);
@@ -396,7 +408,7 @@ public class CrudEstadio extends javax.swing.JDialog {
                                 "Confirmar", 0) == 0) {
                         modelo.removeEstadio(list.getSelectedIndex());
                         
-                        EstadioServices.eliminarEstadio(Integer.parseInt(textFieldID.getText()));
+                        ServicesLocator.getEstadioServices().eliminarEstadio(Integer.parseInt(textFieldID.getText()));
                         
                         limpiar();
                         desactivar_habilitar(false);
@@ -429,10 +441,6 @@ public class CrudEstadio extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldCapacidadActionPerformed
 
-    private void btnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteActionPerformed
-        EstadioServices.generarReporteEstadio();
-    }//GEN-LAST:event_btnReporteActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnCancelar;
@@ -440,7 +448,6 @@ public class CrudEstadio extends javax.swing.JDialog {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnNuevo;
-    private javax.swing.JButton btnReporte;
     private javax.swing.JButton btnSalir;
     private javax.swing.JPanel contentPanel;
     private javax.swing.JLabel lblCapacidad;

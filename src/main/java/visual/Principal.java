@@ -5,6 +5,9 @@
 package visual;
 
 import javax.swing.JFrame;
+import services.EquipoServices;
+import services.PartidoServices;
+import services.ServicesLocator;
 
 /**
  *
@@ -39,7 +42,13 @@ public class Principal extends javax.swing.JFrame {
         menuItemFutbolistas = new javax.swing.JMenuItem();
         menuItemPosJug = new javax.swing.JMenuItem();
         menuReportes = new javax.swing.JMenu();
-        menuItemReportes = new javax.swing.JMenuItem();
+        menuItemRTablaPosiciones = new javax.swing.JMenuItem();
+        menuItemRPartidosEquipos = new javax.swing.JMenuItem();
+        menuItemRPartidosPorFecha = new javax.swing.JMenuItem();
+        menuItemREntrenadoresExperiencia = new javax.swing.JMenuItem();
+        menuItemREstadiosMayorAudiencia = new javax.swing.JMenuItem();
+        menuItemREstadoEquipo = new javax.swing.JMenuItem();
+        menuItemREquipoEstrella = new javax.swing.JMenuItem();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -90,14 +99,68 @@ public class Principal extends javax.swing.JFrame {
 
         menuReportes.setLabel("Reportes");
 
-        menuItemReportes.setActionCommand("Reportes");
-        menuItemReportes.setLabel("Generar Reportes");
-        menuItemReportes.addActionListener(new java.awt.event.ActionListener() {
+        menuItemRTablaPosiciones.setText("Tabla de posiciones de la liga");
+        menuItemRTablaPosiciones.setActionCommand("Reportes");
+        menuItemRTablaPosiciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemReportesActionPerformed(evt);
+                menuItemRTablaPosicionesActionPerformed(evt);
             }
         });
-        menuReportes.add(menuItemReportes);
+        menuReportes.add(menuItemRTablaPosiciones);
+
+        menuItemRPartidosEquipos.setText("Partidos por equipos");
+        menuItemRPartidosEquipos.setActionCommand("Reportes");
+        menuItemRPartidosEquipos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemRPartidosEquiposActionPerformed(evt);
+            }
+        });
+        menuReportes.add(menuItemRPartidosEquipos);
+
+        menuItemRPartidosPorFecha.setText("Partidos jugados por fecha");
+        menuItemRPartidosPorFecha.setActionCommand("Reportes");
+        menuItemRPartidosPorFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemRPartidosPorFechaActionPerformed(evt);
+            }
+        });
+        menuReportes.add(menuItemRPartidosPorFecha);
+
+        menuItemREntrenadoresExperiencia.setText("Entrenadores con más experiencia");
+        menuItemREntrenadoresExperiencia.setActionCommand("Reportes");
+        menuItemREntrenadoresExperiencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemREntrenadoresExperienciaActionPerformed(evt);
+            }
+        });
+        menuReportes.add(menuItemREntrenadoresExperiencia);
+
+        menuItemREstadiosMayorAudiencia.setText("Estadios con mayor audiencia");
+        menuItemREstadiosMayorAudiencia.setActionCommand("Reportes");
+        menuItemREstadiosMayorAudiencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemREstadiosMayorAudienciaActionPerformed(evt);
+            }
+        });
+        menuReportes.add(menuItemREstadiosMayorAudiencia);
+
+        menuItemREstadoEquipo.setText("Estado de un equipo");
+        menuItemREstadoEquipo.setActionCommand("Reportes");
+        menuItemREstadoEquipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemREstadoEquipoActionPerformed(evt);
+            }
+        });
+        menuReportes.add(menuItemREstadoEquipo);
+
+        menuItemREquipoEstrella.setText("Equipo todas estrellas");
+        menuItemREquipoEstrella.setActionCommand("Reportes");
+        menuItemREquipoEstrella.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemREquipoEstrellaActionPerformed(evt);
+            }
+        });
+        menuReportes.add(menuItemREquipoEstrella);
 
         menuBar.add(menuReportes);
 
@@ -112,9 +175,9 @@ public class Principal extends javax.swing.JFrame {
         dialog.setVisible(true);
     }//GEN-LAST:event_menuItemEstadiosActionPerformed
 
-    private void menuItemReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemReportesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menuItemReportesActionPerformed
+    private void menuItemRTablaPosicionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRTablaPosicionesActionPerformed
+        ServicesLocator.getEquipoServices().reporteTablaPosiciones();
+    }//GEN-LAST:event_menuItemRTablaPosicionesActionPerformed
 
     private void menuItemEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemEquiposActionPerformed
         // TODO add your handling code here:
@@ -128,6 +191,38 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_menuItemFutbolistasActionPerformed
 
+    private void menuItemRPartidosEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRPartidosEquiposActionPerformed
+        RPartidosEquipos dialog = new RPartidosEquipos(new javax.swing.JFrame(), true);
+        dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                System.exit(0);
+            }
+        });
+        dialog.setVisible(true);
+    }//GEN-LAST:event_menuItemRPartidosEquiposActionPerformed
+
+    private void menuItemRPartidosPorFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRPartidosPorFechaActionPerformed
+        RPartidosPorFecha dialog = new RPartidosPorFecha(new javax.swing.JFrame(), true);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_menuItemRPartidosPorFechaActionPerformed
+
+    private void menuItemREntrenadoresExperienciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemREntrenadoresExperienciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItemREntrenadoresExperienciaActionPerformed
+
+    private void menuItemREstadiosMayorAudienciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemREstadiosMayorAudienciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItemREstadiosMayorAudienciaActionPerformed
+
+    private void menuItemREstadoEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemREstadoEquipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItemREstadoEquipoActionPerformed
+
+    private void menuItemREquipoEstrellaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemREquipoEstrellaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItemREquipoEstrellaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JMenuBar menuBar;
@@ -137,7 +232,13 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemFutbolistas;
     private javax.swing.JMenuItem menuItemPartidos;
     private javax.swing.JMenuItem menuItemPosJug;
-    private javax.swing.JMenuItem menuItemReportes;
+    private javax.swing.JMenuItem menuItemREntrenadoresExperiencia;
+    private javax.swing.JMenuItem menuItemREquipoEstrella;
+    private javax.swing.JMenuItem menuItemREstadiosMayorAudiencia;
+    private javax.swing.JMenuItem menuItemREstadoEquipo;
+    private javax.swing.JMenuItem menuItemRPartidosEquipos;
+    private javax.swing.JMenuItem menuItemRPartidosPorFecha;
+    private javax.swing.JMenuItem menuItemRTablaPosiciones;
     private javax.swing.JMenu menuReportes;
     // End of variables declaration//GEN-END:variables
 }

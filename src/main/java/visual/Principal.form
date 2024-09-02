@@ -59,13 +59,67 @@
             <Property name="label" type="java.lang.String" value="Reportes"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="menuItemReportes">
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemRTablaPosiciones">
               <Properties>
+                <Property name="text" type="java.lang.String" value="Tabla de posiciones de la liga"/>
                 <Property name="actionCommand" type="java.lang.String" value="Reportes"/>
-                <Property name="label" type="java.lang.String" value="Generar Reportes"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemReportesActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemRTablaPosicionesActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemRPartidosEquipos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Partidos por equipos"/>
+                <Property name="actionCommand" type="java.lang.String" value="Reportes"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemRPartidosEquiposActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemRPartidosPorFecha">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Partidos jugados por fecha"/>
+                <Property name="actionCommand" type="java.lang.String" value="Reportes"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemRPartidosPorFechaActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemREntrenadoresExperiencia">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Entrenadores con m&#xe1;s experiencia"/>
+                <Property name="actionCommand" type="java.lang.String" value="Reportes"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemREntrenadoresExperienciaActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemREstadiosMayorAudiencia">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Estadios con mayor audiencia"/>
+                <Property name="actionCommand" type="java.lang.String" value="Reportes"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemREstadiosMayorAudienciaActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemREstadoEquipo">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Estado de un equipo"/>
+                <Property name="actionCommand" type="java.lang.String" value="Reportes"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemREstadoEquipoActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemREquipoEstrella">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Equipo todas estrellas"/>
+                <Property name="actionCommand" type="java.lang.String" value="Reportes"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemREquipoEstrellaActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

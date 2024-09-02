@@ -16,7 +16,7 @@ public class Report {
      * @param conn Conexión a la base de datos.
      * @throws JRException Si ocurre un error durante la generación del reporte.
      */
-    public static void generateAndShowReport(String reportPath, Map<String, Object> parametros, Connection conn) throws JRException {
+    public static void mostrarReporte(String reportPath, Map<String, Object> parametros, Connection conn) throws JRException {
         // Cargar y llenar el reporte
         JasperPrint jasperPrint = JasperFillManager.fillReport(reportPath, parametros, conn);
 
