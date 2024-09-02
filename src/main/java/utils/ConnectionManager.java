@@ -3,7 +3,6 @@ package utils;
 import model.Estadio;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 public class ConnectionManager {
 

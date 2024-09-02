@@ -193,18 +193,14 @@ public class Principal extends javax.swing.JFrame {
 
     private void menuItemRPartidosEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRPartidosEquiposActionPerformed
         RPartidosEquipos dialog = new RPartidosEquipos(new javax.swing.JFrame(), true);
-        dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
-            public void windowClosing(java.awt.event.WindowEvent e) {
-                System.exit(0);
-            }
-        });
+        dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
     }//GEN-LAST:event_menuItemRPartidosEquiposActionPerformed
 
     private void menuItemRPartidosPorFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRPartidosPorFechaActionPerformed
         RPartidosPorFecha dialog = new RPartidosPorFecha(new javax.swing.JFrame(), true);
         dialog.setVisible(true);
+        dialog.setLocationRelativeTo(null);
     }//GEN-LAST:event_menuItemRPartidosPorFechaActionPerformed
 
     private void menuItemREntrenadoresExperienciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemREntrenadoresExperienciaActionPerformed

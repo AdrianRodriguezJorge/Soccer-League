@@ -128,7 +128,7 @@ public class RPartidosEquipos extends javax.swing.JDialog {
         
         int idEquipo1 = ServicesLocator.getEquipoServices().obtenerEquipos().get(ComboBoxEquipo1.getSelectedIndex()).getIdEquipo(); //EquipoServices.getIdEquipoDadoNombre(contenidoComboBox1);
         int idEquipo2 = ServicesLocator.getEquipoServices().obtenerEquipos().get(ComboBoxEquipo2.getSelectedIndex()).getIdEquipo();
-        PartidoServices.reportePartidosPorEquipos(idEquipo1, idEquipo2);
+        ServicesLocator.getPartidoServices().reportePartidosPorEquipos(idEquipo1, idEquipo2);
 
         dispose();
     }//GEN-LAST:event_jButtonGeneraRActionPerformed

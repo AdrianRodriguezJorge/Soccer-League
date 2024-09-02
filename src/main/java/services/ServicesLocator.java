@@ -9,6 +9,7 @@ public class ServicesLocator {
 
     private static EstadioServices estadioServices = null;
     private static EquipoServices equipoServices = null;
+    private static PartidoServices partidoServices = null;
 
     public static Connection getConnection() throws SQLException {
         return ConnectionManager.getConnection();
@@ -28,4 +29,10 @@ public class ServicesLocator {
         return equipoServices;
     }
 
+    public static PartidoServices getPartidoServices() {
+        if (partidoServices == null) {
+            partidoServices = new PartidoServices();
+        }
+        return partidoServices;
+    }
 }

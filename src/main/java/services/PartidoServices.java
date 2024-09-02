@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Date;
+import model.Estadio;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -27,9 +29,7 @@ public class PartidoServices {
         try (Connection conn = ConnectionManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
              
-            pstmt.setDate(1, partido.getFecha());
             pstmt.setInt(2, partido.getIdEstadio());
-            pstmt.setString(3, partido.getResultado());
             pstmt.setInt(4, partido.getIdEquipoLocal());
             pstmt.setInt(5, partido.getIdEquipoVisitante());
             pstmt.setInt(6, partido.getAudiencia());
@@ -56,7 +56,6 @@ public class PartidoServices {
                 partido.setIdPartido(rs.getInt("idpartido"));
                 partido.setFecha(rs.getDate("fecha"));
                 partido.setIdEstadio(rs.getInt("fk_estadio"));
-                partido.setResultado(rs.getString("resultado"));
                 partido.setIdEquipoLocal(rs.getInt("equipo_local"));
                 partido.setIdEquipoVisitante(rs.getInt("equipo_visitante"));
                 partido.setAudiencia(rs.getInt("audiencia"));
@@ -74,17 +73,18 @@ public class PartidoServices {
      * @param partido El objeto Partido a actualizar.
      */
     public void actualizarPartido(Partido partido) {
-        String sql = "UPDATE partido SET fecha = ?, estadio = ?, resultado = ?, equipo_local = ?, equipo_visitante = ?, audiencia = ? WHERE idpartido = ?";
+        String sql = "UPDATE partido SET audiencia = ?, fecha = ?, fkestadio = ?, local = ?, visitante = ?, goles_local = ?, goles_visitante = ?  WHERE idpartido = ?";
         try (Connection conn = ConnectionManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
              
-            pstmt.setDate(1, partido.getFecha());
-            pstmt.setInt(2, partido.getIdEstadio());
-            pstmt.setString(3, partido.getResultado());
+            pstmt.setInt(1, partido.getAudiencia());
+            pstmt.setTimestamp(2, new Timestamp(partido.getFecha().getTime()));
+            pstmt.setInt(3, partido.getIdEstadio());
             pstmt.setInt(4, partido.getIdEquipoLocal());
             pstmt.setInt(5, partido.getIdEquipoVisitante());
-            pstmt.setInt(6, partido.getAudiencia());
-            pstmt.setInt(7, partido.getIdPartido());
+            pstmt.setInt(6, partido.getIdEquipoLocal());
+            pstmt.setInt(7, partido.getIdEquipoVisitante());
+            pstmt.setInt(8, partido.getIdPartido());
             pstmt.executeUpdate();
             
         } catch (SQLException e) {
@@ -109,7 +109,7 @@ public class PartidoServices {
         }
     }
     
-    public static void reportePartidosPorEquipos (int equipo1, int equipo2) {
+    public void reportePartidosPorEquipos (int equipo1, int equipo2) {
         try {
             // Ruta del archivo .jasper
             String reportPath = "src/main/java/reports/Partidos_por_equipos.jasper";
@@ -120,6 +120,39 @@ public class PartidoServices {
             parametros.put("equipo1", equipo1);
             parametros.put("equipo2", equipo2);
 
+            // Obtener la conexión a la base de datos
+            Connection conn = ConnectionManager.getConnection();
+
+            // Cargar el reporte
+            JasperPrint jasperPrint = JasperFillManager.fillReport(reportPath, parametros, conn);
+
+            // Generar y mostrar el reporte usando la clase de utilidades Reports
+            Report.mostrarReporte(reportPath, parametros, conn);
+
+        } catch (JRException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void reportePartidosPorFecha (Date fecha, int index) {
+        try {
+            // Ruta del archivo .jasper
+            String reportPath = "src/main/java/reports/Partidos_por_fecha.jasper";
+            
+            // Parámetros para pasar al reporte
+            Map<String, Object> parametros = new HashMap<>();
+            
+            parametros.put("fecha", new Timestamp(fecha.getTime()));
+            
+            
+            if (index == 0) {
+                reportPath = "src/main/java/reports/Partidos_por_fecha_all.jasper";
+            } 
+            else {
+                Estadio estadio = ServicesLocator.getEstadioServices().readEstadios().get(index - 1);
+                parametros.put("estadio", estadio.getIdEstadio());
+            }
+            
             // Obtener la conexión a la base de datos
             Connection conn = ConnectionManager.getConnection();
 

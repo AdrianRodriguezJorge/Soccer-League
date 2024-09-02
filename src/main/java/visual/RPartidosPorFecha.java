@@ -4,8 +4,15 @@
  */
 package visual;
 
+import com.toedter.calendar.JDateChooser;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import model.Estadio;
+import model.Partido;
 
 import services.EquipoServices;
 import services.EstadioServices;
@@ -18,9 +25,6 @@ import services.ServicesLocator;
  */
 public class RPartidosPorFecha extends javax.swing.JDialog {
 
-    /**
-     * Creates new form RPartidosEquipos
-     */
     public RPartidosPorFecha(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -48,6 +52,7 @@ public class RPartidosPorFecha extends javax.swing.JDialog {
         jLabelEstadio = new javax.swing.JLabel();
         jButtonGeneraR = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        DateChooserFecha = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -61,7 +66,6 @@ public class RPartidosPorFecha extends javax.swing.JDialog {
 
         jLabelEstadio.setText("Estadio");
 
-        jButtonGeneraR.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonGeneraR.setText("Generar Reporte");
         jButtonGeneraR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,54 +75,68 @@ public class RPartidosPorFecha extends javax.swing.JDialog {
 
         jLabel1.setText("Seleccione una fecha y estadio y se mostraran los partidos correspondientes");
 
+        DateChooserFecha.setDateFormatString("yyyy-MM-dd HH:mm");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelEstadio)
-                        .addGap(18, 18, 18)
-                        .addComponent(ComboBoxEstadio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelFecha)
-                        .addGap(90, 90, 90)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
-                .addComponent(jButtonGeneraR, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabelEstadio)
+                        .addGap(490, 490, 490))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelFecha)
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(DateChooserFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(314, 314, 314))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(ComboBoxEstadio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(47, 47, 47))))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonGeneraR, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(65, 65, 65)
-                .addComponent(jLabelFecha)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ComboBoxEstadio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelEstadio))
-                    .addComponent(jButtonGeneraR, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelFecha)
+                    .addComponent(DateChooserFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ComboBoxEstadio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelEstadio))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonGeneraR, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonGeneraRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGeneraRActionPerformed
-        String contenidoComboBox1 = ComboBoxEstadio.getSelectedItem().toString();
         
-//        int idEquipo1 = EquipoServices.obtenerEquipos().get(ComboBoxEquipo1.getSelectedIndex()).getIdEquipo(); //EquipoServices.getIdEquipoDadoNombre(contenidoComboBox1);
-//        int idEquipo2 = EquipoServices.obtenerEquipos().get(ComboBoxEstadio.getSelectedIndex()).getIdEquipo();
-//        PartidoServices.reportePartidosPorEquipos(idEquipo1, idEquipo2);
+        
+        Date fecha = DateChooserFecha.getDate();
 
+        int index = ComboBoxEstadio.getSelectedIndex();
+        
+        ServicesLocator.getPartidoServices().reportePartidosPorFecha(fecha, index);
+        
         dispose();
     }//GEN-LAST:event_jButtonGeneraRActionPerformed
 
@@ -165,6 +183,7 @@ public class RPartidosPorFecha extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBoxEstadio;
+    private com.toedter.calendar.JDateChooser DateChooserFecha;
     private javax.swing.JButton jButtonGeneraR;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelEstadio;
