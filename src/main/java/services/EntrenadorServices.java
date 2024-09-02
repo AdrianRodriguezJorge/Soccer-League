@@ -1,9 +1,14 @@
 package services;
 
 import model.Entrenador;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
 import utils.ConnectionManager;
+import utils.Report;
 
 import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Clase de servicios para gestionar las operaciones CRUD de los entrenadores.
@@ -89,6 +94,28 @@ public class EntrenadorServices {
             pstmt.executeUpdate();
             
         } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void reporteEntrenadoresExp () {
+        try {
+            // Ruta del archivo .jasper
+            String reportPath = "src/main/java/reports/Entrenadores_exp.jasper";
+
+            // Parámetros para pasar al reporte (si se necesitan)
+            Map<String, Object> parametros = new HashMap<>();
+
+            // Obtener la conexión a la base de datos
+            Connection conn = ConnectionManager.getConnection();
+
+            // Cargar el reporte
+            JasperPrint jasperPrint = JasperFillManager.fillReport(reportPath, parametros, conn);
+
+            // Generar y mostrar el reporte usando la clase de utilidades Reports
+            Report.mostrarReporte(reportPath, parametros, conn);
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

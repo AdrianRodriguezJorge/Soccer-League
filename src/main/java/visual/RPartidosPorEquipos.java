@@ -15,12 +15,12 @@ import services.ServicesLocator;
  *
  * @author HP 11na
  */
-public class RPartidosEquipos extends javax.swing.JDialog {
+public class RPartidosPorEquipos extends javax.swing.JDialog {
 
     /**
      * Creates new form RPartidosEquipos
      */
-    public RPartidosEquipos(java.awt.Frame parent, boolean modal) {
+    public RPartidosPorEquipos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
@@ -52,7 +52,6 @@ public class RPartidosEquipos extends javax.swing.JDialog {
 
         jLabelTit.setText("Seleccione los equipos de los que desea ver los partidos jugados entre ellos:");
 
-        ComboBoxEquipo1.setModel(new javax.swing.DefaultComboBoxModel<>());
         ComboBoxEquipo1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxEquipo1ActionPerformed(evt);
@@ -60,8 +59,6 @@ public class RPartidosEquipos extends javax.swing.JDialog {
         });
 
         jLabelEquipo1.setText("Equipo # 1");
-
-        ComboBoxEquipo2.setModel(new javax.swing.DefaultComboBoxModel<>());
 
         jLabelEquipo2.setText("Equipo # 2");
 
@@ -123,12 +120,10 @@ public class RPartidosEquipos extends javax.swing.JDialog {
     }//GEN-LAST:event_ComboBoxEquipo1ActionPerformed
 
     private void jButtonGeneraRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGeneraRActionPerformed
-        String contenidoComboBox1 = ComboBoxEquipo1.getSelectedItem().toString();
-        String contenidoComboBox2 = ComboBoxEquipo1.getSelectedItem().toString();
+        int contenidoComboBox1 = ComboBoxEquipo1.getSelectedIndex();
+        int contenidoComboBox2 = ComboBoxEquipo2.getSelectedIndex();
         
-        int idEquipo1 = ServicesLocator.getEquipoServices().obtenerEquipos().get(ComboBoxEquipo1.getSelectedIndex()).getIdEquipo(); //EquipoServices.getIdEquipoDadoNombre(contenidoComboBox1);
-        int idEquipo2 = ServicesLocator.getEquipoServices().obtenerEquipos().get(ComboBoxEquipo2.getSelectedIndex()).getIdEquipo();
-        ServicesLocator.getPartidoServices().reportePartidosPorEquipos(idEquipo1, idEquipo2);
+        ServicesLocator.getPartidoServices().reportePartidosPorEquipos(contenidoComboBox1, contenidoComboBox2);
 
         dispose();
     }//GEN-LAST:event_jButtonGeneraRActionPerformed
@@ -145,20 +140,20 @@ public class RPartidosEquipos extends javax.swing.JDialog {
     //             }
     //         }
     //     } catch (ClassNotFoundException ex) {
-    //         java.util.logging.Logger.getLogger(RPartidosEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    //         java.util.logging.Logger.getLogger(RPartidosPorEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     //     } catch (InstantiationException ex) {
-    //         java.util.logging.Logger.getLogger(RPartidosEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    //         java.util.logging.Logger.getLogger(RPartidosPorEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     //     } catch (IllegalAccessException ex) {
-    //         java.util.logging.Logger.getLogger(RPartidosEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    //         java.util.logging.Logger.getLogger(RPartidosPorEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     //     } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-    //         java.util.logging.Logger.getLogger(RPartidosEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    //         java.util.logging.Logger.getLogger(RPartidosPorEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     //     }
     //     //</editor-fold>
 
     //     /* Create and display the dialog */
     //     java.awt.EventQueue.invokeLater(new Runnable() {
     //         public void run() {
-    //             RPartidosEquipos dialog = new RPartidosEquipos(new javax.swing.JFrame(), true);
+    //             RPartidosPorEquipos dialog = new RPartidosPorEquipos(new javax.swing.JFrame(), true);
     //             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
     //                 @Override
     //                 public void windowClosing(java.awt.event.WindowEvent e) {

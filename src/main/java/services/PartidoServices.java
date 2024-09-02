@@ -111,14 +111,18 @@ public class PartidoServices {
     
     public void reportePartidosPorEquipos (int equipo1, int equipo2) {
         try {
+            
+            int idEquipo1 = ServicesLocator.getEquipoServices().obtenerEquipos().get(equipo1).getIdEquipo();
+            int idEquipo2 = ServicesLocator.getEquipoServices().obtenerEquipos().get(equipo2).getIdEquipo();
+            
             // Ruta del archivo .jasper
             String reportPath = "src/main/java/reports/Partidos_por_equipos.jasper";
 
             // Parámetros para pasar al reporte (si se necesitan)
             Map<String, Object> parametros = new HashMap<>();
             
-            parametros.put("equipo1", equipo1);
-            parametros.put("equipo2", equipo2);
+            parametros.put("equipo1", idEquipo1);
+            parametros.put("equipo2", idEquipo2);
 
             // Obtener la conexión a la base de datos
             Connection conn = ConnectionManager.getConnection();
@@ -142,7 +146,7 @@ public class PartidoServices {
             // Parámetros para pasar al reporte
             Map<String, Object> parametros = new HashMap<>();
             
-            parametros.put("fecha", new Timestamp(fecha.getTime()));
+            parametros.put("fecha", new java.sql.Date(fecha.getTime()));
             
             
             if (index == 0) {

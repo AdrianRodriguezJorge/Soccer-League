@@ -147,4 +147,26 @@ public class EstadioServices {
 
         return list;
     }
+
+    public void reportePorcentajeAudiencia () {
+        try {
+            // Ruta del archivo .jasper
+            String reportPath = "src/main/java/reports/Estadios_porcentaje_audiencia.jasper";
+
+            // Parámetros para pasar al reporte (si se necesitan)
+            Map<String, Object> parametros = new HashMap<>();
+
+            // Obtener la conexión a la base de datos
+            Connection conn = ConnectionManager.getConnection();
+
+            // Cargar el reporte
+            JasperPrint jasperPrint = JasperFillManager.fillReport(reportPath, parametros, conn);
+
+            // Generar y mostrar el reporte usando la clase de utilidades Reports
+            Report.mostrarReporte(reportPath, parametros, conn);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

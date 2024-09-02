@@ -1,1 +1,1 @@
-SELECT * FROM equipo
+SELECT * FROM estadio

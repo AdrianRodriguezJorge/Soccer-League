@@ -15,20 +15,19 @@ import services.ServicesLocator;
  *
  * @author HP 11na
  */
-public class RPartidosEquipos extends javax.swing.JDialog {
+public class REstadoEquipo extends javax.swing.JDialog {
 
     /**
      * Creates new form RPartidosEquipos
      */
-    public RPartidosEquipos(java.awt.Frame parent, boolean modal) {
+    public REstadoEquipo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
         ArrayList<String> list = ServicesLocator.getEquipoServices().obtenerNombresEquipos();
 
         for (String s : list) {
-            ComboBoxEquipo1.addItem(s);
-            ComboBoxEquipo2.addItem(s);
+            ComboBoxEquipo.addItem(s);
         }
     }
 
@@ -42,28 +41,21 @@ public class RPartidosEquipos extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabelTit = new javax.swing.JLabel();
-        ComboBoxEquipo1 = new javax.swing.JComboBox<>();
-        jLabelEquipo1 = new javax.swing.JLabel();
-        ComboBoxEquipo2 = new javax.swing.JComboBox<>();
-        jLabelEquipo2 = new javax.swing.JLabel();
+        ComboBoxEquipo = new javax.swing.JComboBox<>();
+        jLabelEquipo = new javax.swing.JLabel();
         jButtonGeneraR = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabelTit.setText("Seleccione los equipos de los que desea ver los partidos jugados entre ellos:");
+        jLabelTit.setText("Seleccione el equipo del que desea ver su estado:");
 
-        ComboBoxEquipo1.setModel(new javax.swing.DefaultComboBoxModel<>());
-        ComboBoxEquipo1.addActionListener(new java.awt.event.ActionListener() {
+        ComboBoxEquipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBoxEquipo1ActionPerformed(evt);
+                ComboBoxEquipoActionPerformed(evt);
             }
         });
 
-        jLabelEquipo1.setText("Equipo # 1");
-
-        ComboBoxEquipo2.setModel(new javax.swing.DefaultComboBoxModel<>());
-
-        jLabelEquipo2.setText("Equipo # 2");
+        jLabelEquipo.setText("Equipo");
 
         jButtonGeneraR.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonGeneraR.setText("Generar Reporte");
@@ -78,25 +70,19 @@ public class RPartidosEquipos extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelTit, javax.swing.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelEquipo2)
-                        .addGap(18, 18, 18)
-                        .addComponent(ComboBoxEquipo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelEquipo1)
-                        .addGap(18, 18, 18)
-                        .addComponent(ComboBoxEquipo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(54, 54, 54)
+                .addComponent(jLabelEquipo)
+                .addGap(18, 18, 18)
+                .addComponent(ComboBoxEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonGeneraR, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelTit, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonGeneraR, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,30 +91,23 @@ public class RPartidosEquipos extends javax.swing.JDialog {
                 .addComponent(jLabelTit, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelEquipo1)
-                    .addComponent(ComboBoxEquipo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ComboBoxEquipo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelEquipo2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                    .addComponent(jLabelEquipo)
+                    .addComponent(ComboBoxEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                 .addComponent(jButtonGeneraR, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ComboBoxEquipo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxEquipo1ActionPerformed
-    }//GEN-LAST:event_ComboBoxEquipo1ActionPerformed
+    private void ComboBoxEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxEquipoActionPerformed
+    }//GEN-LAST:event_ComboBoxEquipoActionPerformed
 
     private void jButtonGeneraRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGeneraRActionPerformed
-        String contenidoComboBox1 = ComboBoxEquipo1.getSelectedItem().toString();
-        String contenidoComboBox2 = ComboBoxEquipo1.getSelectedItem().toString();
+        int contenidoComboBox = ComboBoxEquipo.getSelectedIndex();
         
-        int idEquipo1 = ServicesLocator.getEquipoServices().obtenerEquipos().get(ComboBoxEquipo1.getSelectedIndex()).getIdEquipo(); //EquipoServices.getIdEquipoDadoNombre(contenidoComboBox1);
-        int idEquipo2 = ServicesLocator.getEquipoServices().obtenerEquipos().get(ComboBoxEquipo2.getSelectedIndex()).getIdEquipo();
-        ServicesLocator.getPartidoServices().reportePartidosPorEquipos(idEquipo1, idEquipo2);
+        ServicesLocator.getEquipoServices().reporteEstadoEquipo(contenidoComboBox);
 
         dispose();
     }//GEN-LAST:event_jButtonGeneraRActionPerformed
@@ -145,20 +124,20 @@ public class RPartidosEquipos extends javax.swing.JDialog {
     //             }
     //         }
     //     } catch (ClassNotFoundException ex) {
-    //         java.util.logging.Logger.getLogger(RPartidosEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    //         java.util.logging.Logger.getLogger(RPartidosPorEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     //     } catch (InstantiationException ex) {
-    //         java.util.logging.Logger.getLogger(RPartidosEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    //         java.util.logging.Logger.getLogger(RPartidosPorEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     //     } catch (IllegalAccessException ex) {
-    //         java.util.logging.Logger.getLogger(RPartidosEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    //         java.util.logging.Logger.getLogger(RPartidosPorEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     //     } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-    //         java.util.logging.Logger.getLogger(RPartidosEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    //         java.util.logging.Logger.getLogger(RPartidosPorEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     //     }
     //     //</editor-fold>
 
     //     /* Create and display the dialog */
     //     java.awt.EventQueue.invokeLater(new Runnable() {
     //         public void run() {
-    //             RPartidosEquipos dialog = new RPartidosEquipos(new javax.swing.JFrame(), true);
+    //             RPartidosPorEquipos dialog = new RPartidosPorEquipos(new javax.swing.JFrame(), true);
     //             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
     //                 @Override
     //                 public void windowClosing(java.awt.event.WindowEvent e) {
@@ -171,11 +150,9 @@ public class RPartidosEquipos extends javax.swing.JDialog {
     // }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> ComboBoxEquipo1;
-    private javax.swing.JComboBox<String> ComboBoxEquipo2;
+    private javax.swing.JComboBox<String> ComboBoxEquipo;
     private javax.swing.JButton jButtonGeneraR;
-    private javax.swing.JLabel jLabelEquipo1;
-    private javax.swing.JLabel jLabelEquipo2;
+    private javax.swing.JLabel jLabelEquipo;
     private javax.swing.JLabel jLabelTit;
     // End of variables declaration//GEN-END:variables
 }

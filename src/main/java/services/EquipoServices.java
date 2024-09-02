@@ -169,4 +169,31 @@ public class EquipoServices {
 
         return list;
     }
+
+    public void reporteEstadoEquipo(int index) {
+        try {
+            
+            int idEquipo1 = ServicesLocator.getEquipoServices().obtenerEquipos().get(index).getIdEquipo();
+            
+            // Ruta del archivo .jasper
+            String reportPath = "src/main/java/reports/Estado_equipo.jasper";
+
+            // Parámetros para pasar al reporte (si se necesitan)
+            Map<String, Object> parametros = new HashMap<>();
+            
+            parametros.put("equipo", idEquipo1);
+
+            // Obtener la conexión a la base de datos
+            Connection conn = ConnectionManager.getConnection();
+
+            // Cargar el reporte
+            JasperPrint jasperPrint = JasperFillManager.fillReport(reportPath, parametros, conn);
+
+            // Generar y mostrar el reporte usando la clase de utilidades Reports
+            Report.mostrarReporte(reportPath, parametros, conn);
+
+        } catch (JRException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

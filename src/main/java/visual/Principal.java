@@ -192,27 +192,29 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemFutbolistasActionPerformed
 
     private void menuItemRPartidosEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRPartidosEquiposActionPerformed
-        RPartidosEquipos dialog = new RPartidosEquipos(new javax.swing.JFrame(), true);
+        RPartidosPorEquipos dialog = new RPartidosPorEquipos(new javax.swing.JFrame(), true);
         dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
     }//GEN-LAST:event_menuItemRPartidosEquiposActionPerformed
 
     private void menuItemRPartidosPorFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRPartidosPorFechaActionPerformed
         RPartidosPorFecha dialog = new RPartidosPorFecha(new javax.swing.JFrame(), true);
-        dialog.setVisible(true);
         dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
     }//GEN-LAST:event_menuItemRPartidosPorFechaActionPerformed
 
     private void menuItemREntrenadoresExperienciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemREntrenadoresExperienciaActionPerformed
-        // TODO add your handling code here:
+        ServicesLocator.getEntrenadorServices().reporteEntrenadoresExp ();
     }//GEN-LAST:event_menuItemREntrenadoresExperienciaActionPerformed
 
     private void menuItemREstadiosMayorAudienciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemREstadiosMayorAudienciaActionPerformed
-        // TODO add your handling code here:
+        ServicesLocator.getEstadioServices().reportePorcentajeAudiencia();
     }//GEN-LAST:event_menuItemREstadiosMayorAudienciaActionPerformed
 
     private void menuItemREstadoEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemREstadoEquipoActionPerformed
-        // TODO add your handling code here:
+        REstadoEquipo dialog = new REstadoEquipo(new javax.swing.JFrame(), true);
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
     }//GEN-LAST:event_menuItemREstadoEquipoActionPerformed
 
     private void menuItemREquipoEstrellaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemREquipoEstrellaActionPerformed
