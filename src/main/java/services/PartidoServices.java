@@ -153,7 +153,7 @@ public class PartidoServices {
                 reportPath = "src/main/java/reports/Partidos_por_fecha_all.jasper";
             } 
             else {
-                Estadio estadio = ServicesLocator.getEstadioServices().readEstadios().get(index - 1);
+                Estadio estadio = ServicesLocator.getEstadioServices().obtenerEstadios().get(index - 1);
                 parametros.put("estadio", estadio.getIdEstadio());
             }
             

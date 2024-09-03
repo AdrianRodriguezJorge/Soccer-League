@@ -55,7 +55,7 @@ public class EstadioServices {
      *
      * @return Una lista de equipos.
      */
-    public ArrayList<Estadio> readEstadios() {
+    public ArrayList<Estadio> obtenerEstadios() {
         ArrayList<Estadio> list = new ArrayList<>();
         String sql = "SELECT * FROM estadio";
         try {
@@ -141,7 +141,7 @@ public class EstadioServices {
     public ArrayList<String> obtenerNombresEstadios() {
         ArrayList <String> list = new ArrayList<>();
 
-        for (Estadio e : readEstadios()) {
+        for (Estadio e : obtenerEstadios()) {
             list.add(e.getNombreEstadio());
         }
 

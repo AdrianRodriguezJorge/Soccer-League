@@ -11,10 +11,11 @@ import model.Estadio;
 import services.EstadioServices;
 import services.ServicesLocator;
 import utils.ConnectionManager;
+import utils.Generic_Model;
 
 public class CrudEstadio extends javax.swing.JDialog {
 
-    private Model_Estadio modelo = new Model_Estadio();
+    private Generic_Model <Estadio> modelo = new Generic_Model<Estadio>();
 
     public CrudEstadio(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -42,7 +43,7 @@ public class CrudEstadio extends javax.swing.JDialog {
                         btnEliminar.setEnabled(indice > -1);
 				        desactivar_habilitar(indice <= -1);
                         if (indice > -1) {
-                                Estadio c = modelo.getEstadioAt(indice);
+                                Estadio c = modelo.getElementAt(indice);
 
                                 textFieldID.setText(c.getIdEstadio()+"");
                                 textFieldNombre.setText(c.getNombreEstadio());
@@ -56,7 +57,7 @@ public class CrudEstadio extends javax.swing.JDialog {
                         }
                 }
         });
-        modelo.setlstEstadios(ServicesLocator.getEstadioServices().readEstadios());
+        modelo.setList(ServicesLocator.getEstadioServices().obtenerEstadios());
 
         btnNuevo.setFont(new Font("SansSerif", Font.PLAIN, 18));
         btnEditar.setFont(new Font("SansSerif", Font.PLAIN, 18));
@@ -344,8 +345,8 @@ public class CrudEstadio extends javax.swing.JDialog {
         if (proceder) {
             ServicesLocator.getEstadioServices().agregarEstadio(nombre, capacidad); // guardar en la BD
 
-            Estadio x = new Estadio(ServicesLocator.getEstadioServices().readEstadios().getLast().getIdEstadio(), nombre, capacidad);
-            modelo.addEstadio(x);
+            Estadio x = new Estadio(ServicesLocator.getEstadioServices().obtenerEstadios().getLast().getIdEstadio(), nombre, capacidad);
+            modelo.addElement(x);
 
             int lastIndex = list.getModel().getSize() - 1;
             list.setSelectedIndex(lastIndex);
@@ -389,7 +390,7 @@ public class CrudEstadio extends javax.swing.JDialog {
 
             ServicesLocator.getEstadioServices().actualizarEstadio(Integer.parseInt(textFieldID.getText()), textFieldNombre.getText(), Integer.parseInt(textFieldCapacidad.getText())); // nuevo
 
-            modelo.actualizarEstadio(indice, x);
+            modelo.updateElement(indice, x);
             desactivar_habilitar(false);
             list.setEnabled(true);
             btnEliminar.setEnabled(true);
@@ -406,7 +407,7 @@ public class CrudEstadio extends javax.swing.JDialog {
         if (indice != -1) {
                 if (JOptionPane.showConfirmDialog(null, "Está seguro que desea eliminar este estadio?",
                                 "Confirmar", 0) == 0) {
-                        modelo.removeEstadio(list.getSelectedIndex());
+                        modelo.removeElement(list.getSelectedIndex());
                         
                         ServicesLocator.getEstadioServices().eliminarEstadio(Integer.parseInt(textFieldID.getText()));
                         
