@@ -136,30 +136,6 @@ public class EquipoServices {
         }
     }
     
-    // public static int getIdEquipoDadoNombre (String nom)  {
-		// String function = "{?= call getIdEquipoDadoNombre('?')}";
-		// java.sql.Connection connection = ServicesLocator.getConnection();
-		// connection.setAutoCommit(false);
-		// CallableStatement preparedFunction = connection.prepareCall(function);
-		// preparedFunction.registerOutParameter(1, java.sql.Types.INTEGER); 
-		// preparedFunction.setString(2, nom);
-		// preparedFunction.execute();
-		// ResultSet resultSet = (ResultSet) preparedFunction.getObject(1);
-		// int id = resultSet.getInt(1);
-		// resultSet.close();
-		// preparedFunction.close();
-		// connection.close();
-		
-        // String sql = "SELECT getIdEquipoDadoNombre('?')";
-        // Connection connection = ConnectionManager.getConnection();
-        // PreparedStatement stmn = connection.prepareStatement(sql);
-        // stmn.setString(1, nom);
-        // ResultSet rs = stmn.executeQuery();
-        // int id = rs.getInt("idequipo");
-
-		    // return id;
-	// }
-    
     public ArrayList <String> obtenerNombresEquipos () {
         ArrayList <String> list = new ArrayList<>();
 
@@ -193,6 +169,28 @@ public class EquipoServices {
             Report.mostrarReporte(reportPath, parametros, conn);
 
         } catch (JRException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void reporteEquipoEstrella () {
+        try {
+            // Ruta del archivo .jasper
+            String reportPath = "src/main/java/reports/Equipo_estrella.jasper";
+
+            // Parámetros para pasar al reporte (si se necesitan)
+            Map<String, Object> parametros = new HashMap<>();
+
+            // Obtener la conexión a la base de datos
+            Connection conn = ConnectionManager.getConnection();
+
+            // Cargar el reporte
+            JasperPrint jasperPrint = JasperFillManager.fillReport(reportPath, parametros, conn);
+
+            // Generar y mostrar el reporte usando la clase de utilidades Reports
+            Report.mostrarReporte(reportPath, parametros, conn);
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

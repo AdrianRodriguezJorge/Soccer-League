@@ -218,7 +218,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemREstadoEquipoActionPerformed
 
     private void menuItemREquipoEstrellaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemREquipoEstrellaActionPerformed
-        // TODO add your handling code here:
+        ServicesLocator.getEquipoServices().reporteEquipoEstrella();
     }//GEN-LAST:event_menuItemREquipoEstrellaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
