@@ -24,18 +24,18 @@ public class EquipoServices {
      * Método para crear un nuevo equipo en la base de datos.
      * @param equipo El objeto Equipo a crear.
      */
-    public void crearEquipo(Equipo equipo) {
+    public void crearEquipo(String nomequipo, String provincia, int camparticip, int campganados, String mascota, String color, int puntos) {
         String sql = "INSERT INTO equipo (nomequipo, provincia, camparticip, campganados, mascota, color, puntos) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = ConnectionManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
              
-            pstmt.setString(1, equipo.getNombreEquipo());
-            pstmt.setString(2, equipo.getProvincia());
-            pstmt.setInt(3, equipo.getCampeonatosParticipados());
-            pstmt.setInt(4, equipo.getCampeonatosGanados());
-            pstmt.setString(5, equipo.getMascota());
-            pstmt.setString(6, equipo.getColor());
-            pstmt.setInt(7, equipo.getPuntos());
+            pstmt.setString(1, nomequipo);
+            pstmt.setString(2, provincia);
+            pstmt.setInt(3, camparticip);
+            pstmt.setInt(4, campganados);
+            pstmt.setString(5, mascota);
+            pstmt.setString(6, color);
+            pstmt.setInt(7, puntos);
             pstmt.executeUpdate();
             
         } catch (SQLException e) {
@@ -57,10 +57,10 @@ public class EquipoServices {
             while (rs.next()) {
                 Equipo equipo = new Equipo();
                 equipo.setIdEquipo(rs.getInt("idequipo"));
-                equipo.setNombreEquipo(rs.getString("nomequipo"));
+                equipo.setNomEquipo(rs.getString("nomequipo"));
                 equipo.setProvincia(rs.getString("provincia"));
-                equipo.setCampeonatosParticipados(rs.getInt("camparticip"));
-                equipo.setCampeonatosGanados(rs.getInt("campganados"));
+                equipo.setCampParticipados(rs.getInt("camparticip"));
+                equipo.setCampGanados(rs.getInt("campganados"));
                 equipo.setMascota(rs.getString("mascota"));
                 equipo.setColor(rs.getString("color"));
                 equipo.setPuntos(rs.getInt("puntos"));
@@ -78,14 +78,14 @@ public class EquipoServices {
      * @param equipo El objeto Equipo a actualizar.
      */
     public void actualizarEquipo(Equipo equipo) {
-        String sql = "UPDATE equipo SET nombre_equipo = ?, provincia = ?, campeonatos_participados = ?, campeonatos_ganados = ?, mascota = ?, color = ?, puntos = ? WHERE id_equipo = ?";
+        String sql = "UPDATE equipo SET nomequipo = ?, provincia = ?, camparticip = ?, campganados = ?, mascota = ?, color = ?, puntos = ? WHERE id_equipo = ?";
         try (Connection conn = ConnectionManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
              
-            pstmt.setString(1, equipo.getNombreEquipo());
+            pstmt.setString(1, equipo.getNomEquipo());
             pstmt.setString(2, equipo.getProvincia());
-            pstmt.setInt(3, equipo.getCampeonatosParticipados());
-            pstmt.setInt(4, equipo.getCampeonatosGanados());
+            pstmt.setInt(3, equipo.getCampParticipados());
+            pstmt.setInt(4, equipo.getCampGanados());
             pstmt.setString(5, equipo.getMascota());
             pstmt.setString(6, equipo.getColor());
             pstmt.setInt(7, equipo.getPuntos());
@@ -102,7 +102,7 @@ public class EquipoServices {
      * @param idEquipo El ID del equipo a eliminar.
      */
     public void eliminarEquipo(int idEquipo) {
-        String sql = "DELETE FROM equipo WHERE id_equipo = ?";
+        String sql = "DELETE FROM equipo WHERE idequipo = ?";
         try (Connection conn = ConnectionManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
              
@@ -140,7 +140,7 @@ public class EquipoServices {
         ArrayList <String> list = new ArrayList<>();
 
         for (Equipo e : obtenerEquipos()) {
-            list.add(e.getNombreEquipo());
+            list.add(e.getNomEquipo());
         }
 
         return list;

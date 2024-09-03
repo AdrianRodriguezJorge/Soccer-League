@@ -35,17 +35,17 @@ public class EntrenadorServices {
 
     /**
      * Método para obtener un entrenador específico.
-     * @param nombreEquipo El nombre del equipo del entrenador.
+     * @param nomEquipo El nombre del equipo del entrenador.
      * @param numero El número del entrenador.
      * @return El objeto Entrenador.
      */
-    public Entrenador obtenerEntrenador(String nombreEquipo, int numero) {
+    public Entrenador obtenerEntrenador(String nomEquipo, int numero) {
         Entrenador entrenador = null;
         String sql = "SELECT * FROM entrenador WHERE nombre_equipo = ? AND numero = ?";
         try (Connection conn = ConnectionManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
              
-            pstmt.setString(1, nombreEquipo);
+            pstmt.setString(1, nomEquipo);
             pstmt.setInt(2, numero);
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
@@ -81,15 +81,15 @@ public class EntrenadorServices {
 
     /**
      * Método para eliminar un entrenador de la base de datos.
-     * @param nombreEquipo El nombre del equipo del entrenador.
+     * @param nomEquipo El nombre del equipo del entrenador.
      * @param numero El número del entrenador.
      */
-    public void eliminarEntrenador(String nombreEquipo, int numero) {
+    public void eliminarEntrenador(String nomEquipo, int numero) {
         String sql = "DELETE FROM entrenador WHERE nombre_equipo = ? AND numero = ?";
         try (Connection conn = ConnectionManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
              
-            pstmt.setString(1, nombreEquipo);
+            pstmt.setString(1, nomEquipo);
             pstmt.setInt(2, numero);
             pstmt.executeUpdate();
             

@@ -30,17 +30,17 @@ public class DelanteroServices {
 
     /**
      * Método para obtener un delantero específico.
-     * @param nombreEquipo El nombre del equipo del delantero.
+     * @param nomEquipo El nombre del equipo del delantero.
      * @param numero El número del delantero.
      * @return El objeto Delantero.
      */
-    public Delantero obtenerDelantero(String nombreEquipo, int numero) {
+    public Delantero obtenerDelantero(String nomEquipo, int numero) {
         Delantero delantero = null;
         String sql = "SELECT * FROM delantero WHERE nombre_equipo = ? AND numero = ?";
         try (Connection conn = ConnectionManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
              
-            pstmt.setString(1, nombreEquipo);
+            pstmt.setString(1, nomEquipo);
             pstmt.setInt(2, numero);
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
@@ -76,16 +76,16 @@ public class DelanteroServices {
 
     /**
      * Método para eliminar un delantero de la base de datos.
-     * @param nombreEquipo El nombre del equipo del delantero.
+     * @param nomEquipo El nombre del equipo del delantero.
      * @param numero El número del delantero.
      */
-    public void eliminarDelantero(String nombreEquipo, int numero) {
-        eliminarPosicionJugador(nombreEquipo, numero); // Elimina la posición del jugador.
+    public void eliminarDelantero(String nomEquipo, int numero) {
+        eliminarPosicionJugador(nomEquipo, numero); // Elimina la posición del jugador.
         String sql = "DELETE FROM delantero WHERE nombre_equipo = ? AND numero = ?";
         try (Connection conn = ConnectionManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
              
-            pstmt.setString(1, nombreEquipo);
+            pstmt.setString(1, nomEquipo);
             pstmt.setInt(2, numero);
             pstmt.executeUpdate();
             
@@ -95,8 +95,8 @@ public class DelanteroServices {
     }
     
     // Método para eliminar la posición del jugador
-    private void eliminarPosicionJugador(String nombreEquipo, int numero) {
+    private void eliminarPosicionJugador(String nomEquipo, int numero) {
         JugadorServices jugadorServices = new JugadorServices();
-        jugadorServices.eliminarPosicionJugador(nombreEquipo, numero);
+        jugadorServices.eliminarPosicionJugador(nomEquipo, numero);
     }
 }

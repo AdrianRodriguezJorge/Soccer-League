@@ -39,7 +39,7 @@
 //                     Equipo c = modelo.getEquipoAt(indice);
 
 //                     textFieldID.setText(c.getIdEquipo() + "");
-//                     textFieldNombre.setText(c.getNombreEquipo());
+//                     textFieldNombre.setText(c.getNomEquipo());
 //                     textFieldCiudad.setText(c.getCiudad());
 //                     textFieldAnioFundacion.setText(c.get() + "");
 

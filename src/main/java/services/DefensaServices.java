@@ -31,17 +31,17 @@ public class DefensaServices {
 
     /**
      * Método para obtener un defensa específico.
-     * @param nombreEquipo El nombre del equipo del defensa.
+     * @param nomEquipo El nombre del equipo del defensa.
      * @param numero El número del defensa.
      * @return El objeto Defensa.
      */
-    public Defensa obtenerDefensa(String nombreEquipo, int numero) {
+    public Defensa obtenerDefensa(String nomEquipo, int numero) {
         Defensa defensa = null;
         String sql = "SELECT * FROM defensa WHERE nombre_equipo = ? AND numero = ?";
         try (Connection conn = ConnectionManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
              
-            pstmt.setString(1, nombreEquipo);
+            pstmt.setString(1, nomEquipo);
             pstmt.setInt(2, numero);
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
@@ -81,16 +81,16 @@ public class DefensaServices {
 
     /**
      * Método para eliminar un defensa de la base de datos.
-     * @param nombreEquipo El nombre del equipo del defensa.
+     * @param nomEquipo El nombre del equipo del defensa.
      * @param numero El número del defensa.
      */
-    public void eliminarDefensa(String nombreEquipo, int numero) {
-        eliminarPosicionJugador(nombreEquipo, numero); // Elimina la posición del jugador.
+    public void eliminarDefensa(String nomEquipo, int numero) {
+        eliminarPosicionJugador(nomEquipo, numero); // Elimina la posición del jugador.
         String sql = "DELETE FROM defensa WHERE nombre_equipo = ? AND numero = ?";
         try (Connection conn = ConnectionManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
              
-            pstmt.setString(1, nombreEquipo);
+            pstmt.setString(1, nomEquipo);
             pstmt.setInt(2, numero);
             pstmt.executeUpdate();
             
@@ -100,8 +100,8 @@ public class DefensaServices {
     }
     
     // Método para eliminar la posición del jugador
-    private void eliminarPosicionJugador(String nombreEquipo, int numero) {
+    private void eliminarPosicionJugador(String nomEquipo, int numero) {
         JugadorServices jugadorServices = new JugadorServices();
-        jugadorServices.eliminarPosicionJugador(nombreEquipo, numero);
+        jugadorServices.eliminarPosicionJugador(nomEquipo, numero);
     }
 }

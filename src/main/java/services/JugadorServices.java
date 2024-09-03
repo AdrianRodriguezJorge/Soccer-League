@@ -68,17 +68,17 @@ public class JugadorServices {
 
     /**
      * Método para obtener un jugador específico por su número y equipo.
-     * @param nombreEquipo El nombre del equipo del jugador.
+     * @param nomEquipo El nombre del equipo del jugador.
      * @param numero El número del jugador.
      * @return El objeto Jugador.
      */
-    public Jugador obtenerJugador(String nombreEquipo, int numero) {
+    public Jugador obtenerJugador(String nomEquipo, int numero) {
         Jugador jugador = null;
         String sql = "SELECT * FROM jugador WHERE nombre_equipo = ? AND numero = ?";
         try (Connection conn = ConnectionManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
              
-            pstmt.setString(1, nombreEquipo);
+            pstmt.setString(1, nomEquipo);
             pstmt.setInt(2, numero);
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
@@ -126,15 +126,15 @@ public class JugadorServices {
 
     /**
      * Método para eliminar un jugador de la base de datos.
-     * @param nombreEquipo El nombre del equipo del jugador.
+     * @param nomEquipo El nombre del equipo del jugador.
      * @param numero El número del jugador.
      */
-    public void eliminarJugador(String nombreEquipo, int numero) {
+    public void eliminarJugador(String nomEquipo, int numero) {
         String sql = "DELETE FROM jugador WHERE nombre_equipo = ? AND numero = ?";
         try (Connection conn = ConnectionManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
              
-            pstmt.setString(1, nombreEquipo);
+            pstmt.setString(1, nomEquipo);
             pstmt.setInt(2, numero);
             pstmt.executeUpdate();
             
@@ -145,15 +145,15 @@ public class JugadorServices {
 
     /**
      * Método para eliminar la posición de un jugador en la base de datos.
-     * @param nombreEquipo El nombre del equipo del jugador.
+     * @param nomEquipo El nombre del equipo del jugador.
      * @param numero El número del jugador.
      */
-    public void eliminarPosicionJugador(String nombreEquipo, int numero) {
+    public void eliminarPosicionJugador(String nomEquipo, int numero) {
         String sql = "UPDATE jugador SET posicion = NULL WHERE nombre_equipo = ? AND numero = ?";
         try (Connection conn = ConnectionManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
              
-            pstmt.setString(1, nombreEquipo);
+            pstmt.setString(1, nomEquipo);
             pstmt.setInt(2, numero);
             pstmt.executeUpdate();
             

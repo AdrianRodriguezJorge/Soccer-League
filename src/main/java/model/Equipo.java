@@ -5,24 +5,24 @@ package model;
  */
 public class Equipo {
     private int idEquipo;
-    private String nombreEquipo;
+    private String nomEquipo;
     private String provincia;
-    private int campeonatosParticipados;
-    private int campeonatosGanados;
+    private int campParticipados;
+    private int campGanados;
     private String mascota;
     private String color;
     private int puntos;
 
     // Constructor
-    public Equipo(int idEquipo, String nombreEquipo, String provincia, int campeonatosParticipados, int campeonatosGanados, String mascota, String color, int puntos) {
-        this.idEquipo = idEquipo;
-        this.nombreEquipo = nombreEquipo;
-        this.provincia = provincia;
-        this.campeonatosParticipados = campeonatosParticipados;
-        this.campeonatosGanados = campeonatosGanados;
-        this.mascota = mascota;
-        this.color = color;
-        this.puntos = puntos;
+    public Equipo(int idEquipo, String nomEquipo, String provincia, int campParticipados, int campGanados, String mascota, String color, int puntos) {
+        setIdEquipo(idEquipo);
+        setNomEquipo(nomEquipo);
+        setProvincia(provincia);
+        setCampParticipados(campParticipados);
+        setCampGanados(campGanados);
+        setMascota(mascota);
+        setColor(color);
+        setPuntos(puntos);
     }
 
     public Equipo() {
@@ -38,12 +38,12 @@ public class Equipo {
         this.idEquipo = idEquipo;
     }
 
-    public String getNombreEquipo() {
-        return nombreEquipo;
+    public String getNomEquipo() {
+        return nomEquipo;
     }
 
-    public void setNombreEquipo(String nombreEquipo) {
-        this.nombreEquipo = nombreEquipo;
+    public void setNomEquipo(String nomEquipo) {
+        this.nomEquipo = nomEquipo;
     }
 
     public String getProvincia() {
@@ -54,20 +54,20 @@ public class Equipo {
         this.provincia = provincia;
     }
 
-    public int getCampeonatosParticipados() {
-        return campeonatosParticipados;
+    public int getCampParticipados() {
+        return campParticipados;
     }
 
-    public void setCampeonatosParticipados(int campeonatosParticipados) {
-        this.campeonatosParticipados = campeonatosParticipados;
+    public void setCampParticipados(int campParticipados) {
+        this.campParticipados = campParticipados;
     }
 
-    public int getCampeonatosGanados() {
-        return campeonatosGanados;
+    public int getCampGanados() {
+        return campGanados;
     }
 
-    public void setCampeonatosGanados(int campeonatosGanados) {
-        this.campeonatosGanados = campeonatosGanados;
+    public void setCampGanados(int campGanados) {
+        this.campGanados = campGanados;
     }
 
     public String getMascota() {
