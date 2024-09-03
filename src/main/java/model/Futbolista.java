@@ -4,23 +4,34 @@ package model;
  * Clase base que representa un Futbolista en la Liga Nacional de Fútbol.
  */
 public abstract class Futbolista {
+    protected int idFutbolista;
     protected int idEquipo;
-    protected int numero;
     protected String nombre;
+    protected int numero;
     protected int añosEnEquipo;
 
     // Constructor
-    public Futbolista(int idEquipo, int numero, String nombre, int añosEnEquipo) {
-        this.idEquipo = idEquipo;
-        this.numero = numero;
-        this.nombre = nombre;
-        this.añosEnEquipo = añosEnEquipo;
+    public Futbolista(int idFutbolista, int idEquipo, int numero, String nombre, int añosEnEquipo) {
+        setIdFutbolista(idFutbolista);
+        setIdEquipo(idEquipo);
+        setNombre(nombre);
+        setNumero(numero);
+        setAñosEnEquipo(añosEnEquipo);
     }
 
     public Futbolista () {
         
     }
+
     // Métodos getter y setter
+    public int getIdFutbolista() {
+        return idFutbolista;
+    }
+
+    public void setIdFutbolista(int idFutbolista) {
+        this.idFutbolista = idFutbolista;
+    }
+
     public int getIdEquipo() {
         return idEquipo;
     }

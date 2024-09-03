@@ -25,7 +25,7 @@ public class EquipoServices {
      * @param equipo El objeto Equipo a crear.
      */
     public void crearEquipo(Equipo equipo) {
-        String sql = "INSERT INTO equipo (nombre_equipo, provincia, campeonatos_participados, campeonatos_ganados, mascota, color, puntos) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO equipo (nomequipo, provincia, camparticip, campganados, mascota, color, puntos) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = ConnectionManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
              

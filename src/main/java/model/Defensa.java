@@ -8,8 +8,8 @@ public class Defensa extends Jugador {
     private int entradas;
 
      // Constructor
-     public Defensa(int idEquipo, int numero, String nombre, int añosEnEquipo, int partidosJugados, int golesMarcados, int asistencias, double promedioGoles, int entradas, int bloqueos) {
-          super(idEquipo, numero, nombre, añosEnEquipo, "Defensa", partidosJugados, golesMarcados, asistencias, promedioGoles);
+     public Defensa(int idFutbolista, int idEquipo, int numero, String nombre, int añosEnEquipo, int partidosJugados, int cantidadGoles, int asistencias, double promedioGoles, int entradas, int bloqueos) {
+          super(idFutbolista, idEquipo, numero, nombre, añosEnEquipo, partidosJugados, cantidadGoles, asistencias, promedioGoles);
           setEntradas(entradas);
           setBloqueos(bloqueos);
      }

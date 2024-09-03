@@ -48,16 +48,16 @@ public class JugadorServices {
              ResultSet rs = stmt.executeQuery(sql)) {
              
             while (rs.next()) {
-                Jugador jugador = new Jugador();
-                jugador.setIdEquipo(rs.getInt("nombre_equipo"));
-                jugador.setNumero(rs.getInt("numero"));
-                jugador.setNombre(rs.getString("nombre"));
-                jugador.setPosicion(rs.getString("posicion"));
-                jugador.setPartidosJugados(rs.getInt("partidos_jugados"));
-                jugador.setGolesMarcados(rs.getInt("goles"));
-                jugador.setAsistencias(rs.getInt("asistencias"));
-                jugador.setPromedioGoles(rs.getDouble("promedio_goles"));
-                jugadores.add(jugador);
+                // Jugador jugador = new Jugador();
+                // jugador.setIdEquipo(rs.getInt("nombre_equipo"));
+                // jugador.setNumero(rs.getInt("numero"));
+                // jugador.setNombre(rs.getString("nombre"));
+                // jugador.setPosicion(rs.getString("posicion"));
+                // jugador.setPartidosJugados(rs.getInt("partidos_jugados"));
+                // jugador.setCantidadGoles(rs.getInt("goles"));
+                // jugador.setAsistencias(rs.getInt("asistencias"));
+                // jugador.setPromedioGoles(rs.getDouble("promedio_goles"));
+                // jugadores.add(jugador);
             }
             
         } catch (SQLException e) {
@@ -82,15 +82,15 @@ public class JugadorServices {
             pstmt.setInt(2, numero);
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
-                    jugador = new Jugador();
-                    jugador.setIdEquipo(rs.getInt("idequipo"));
-                    jugador.setNumero(rs.getInt("numero"));
-                    jugador.setNombre(rs.getString("nombre"));
-                    jugador.setPosicion(rs.getString("posicion"));
-                    jugador.setPartidosJugados(rs.getInt("partidos_jugados"));
-                    jugador.setPromedioGoles(rs.getDouble("goles"));
-                    jugador.setAsistencias(rs.getInt("asistencias"));
-                    jugador.setPromedioGoles(rs.getDouble("promedio_goles"));
+                    // jugador = new Jugador();
+                    // jugador.setIdEquipo(rs.getInt("idequipo"));
+                    // jugador.setNumero(rs.getInt("numero"));
+                    // jugador.setNombre(rs.getString("nombre"));
+                    // jugador.setPosicion(rs.getString("posicion"));
+                    // jugador.setPartidosJugados(rs.getInt("partidos_jugados"));
+                    // jugador.setPromedioGoles(rs.getDouble("goles"));
+                    // jugador.setAsistencias(rs.getInt("asistencias"));
+                    // jugador.setPromedioGoles(rs.getDouble("promedio_goles"));
                 }
             }
             
@@ -112,7 +112,7 @@ public class JugadorServices {
             pstmt.setString(1, jugador.getNombre());
             pstmt.setString(2, jugador.getPosicion());
             pstmt.setInt(3, jugador.getPartidosJugados());
-            pstmt.setInt(4, jugador.getGolesMarcados());
+            pstmt.setInt(4, jugador.getCantidadGoles());
             pstmt.setInt(5, jugador.getAsistencias());
             pstmt.setDouble(6, jugador.getPromedioGoles());
             pstmt.setInt(7, jugador.getIdEquipo());

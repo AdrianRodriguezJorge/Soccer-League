@@ -7,9 +7,9 @@ public class Entrenador extends Futbolista {
     private int añosExperiencia;
 
     // Constructor
-    public Entrenador(int idEquipo, int numero, String nombre, int añosEnEquipo, int añosExperiencia) {
-        super(idEquipo, numero, nombre, añosEnEquipo);
-        this.añosExperiencia = añosExperiencia;
+    public Entrenador(int idFutbolista, int idEquipo, int numero, String nombre, int añosEnEquipo, int añosExperiencia) {
+        super(idFutbolista, idEquipo, numero, nombre, añosEnEquipo);
+        setAñosExperiencia(añosExperiencia);
     }
 
     public Entrenador() {

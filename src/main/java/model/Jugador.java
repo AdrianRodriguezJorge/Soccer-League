@@ -3,21 +3,20 @@ package model;
 /**
  * Clase que representa un Jugador, que es un tipo de Futbolista.
  */
-public class Jugador extends Futbolista {
+public abstract class Jugador extends Futbolista {
     private String posicion;
     private int partidosJugados;
-    private int golesMarcados;
+    private int cantidadGoles;
     private int asistencias;
     private double promedioGoles;
 
     // Constructor
-    public Jugador(int idEquipo, int numero, String nombre, int añosEnEquipo, String posicion, int partidosJugados, int golesMarcados, int asistencias, double promedioGoles) {
-        super(idEquipo, numero, nombre, añosEnEquipo);
-        this.posicion = posicion;
-        this.partidosJugados = partidosJugados;
-        this.golesMarcados = golesMarcados;
-        this.asistencias = asistencias;
-        this.promedioGoles = promedioGoles;
+    public Jugador(int idFutbolista, int idEquipo, int numero, String nombre, int añosEnEquipo, int partidosJugados, int cantidadGoles, int asistencias, double promedioGoles) {
+        super(idFutbolista, idEquipo, numero, nombre, añosEnEquipo);
+        setPartidosJugados(partidosJugados);
+        setCantidadGoles(cantidadGoles);
+        setAsistencias(asistencias);
+        setPromedioGoles(promedioGoles);
     }
 
     public Jugador() {
@@ -41,12 +40,12 @@ public class Jugador extends Futbolista {
         this.partidosJugados = partidosJugados;
     }
 
-    public int getGolesMarcados() {
-        return golesMarcados;
+    public int getCantidadGoles() {
+        return cantidadGoles;
     }
 
-    public void setGolesMarcados(int golesMarcados) {
-        this.golesMarcados = golesMarcados;
+    public void setCantidadGoles(int cantidadGoles) {
+        this.cantidadGoles = cantidadGoles;
     }
 
     public int getAsistencias() {

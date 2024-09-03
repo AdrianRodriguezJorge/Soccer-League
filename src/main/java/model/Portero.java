@@ -5,23 +5,35 @@ package model;
  */
 public class Portero extends Jugador {
     private int paradas;
+    private int golesEncajados;
 
     // Constructor
-    public Portero(int idEquipo, int numero, String nombre, int añosEnEquipo, int partidosJugados, int golesMarcados, int asistencias, double promedioGoles, int paradas) {
-        super(idEquipo, numero, nombre, añosEnEquipo, "Portero", partidosJugados, golesMarcados, asistencias, promedioGoles);
-        this.paradas = paradas;
+    public Portero(int idFutbolista, int idEquipo, int numero, String nombre, int añosEnEquipo, int partidosJugados,
+            int cantidadGoles, int asistencias, double promedioGoles, int paradas, int golesEncajados) {
+        super(idFutbolista, idEquipo, numero, nombre, añosEnEquipo, partidosJugados, cantidadGoles, asistencias,
+                promedioGoles);
+        setParadas(paradas);
+        setGolesEncajados(golesEncajados);
     }
 
     public Portero() {
-	//TODO Auto-generated constructor stub
-}
+        // TODO Auto-generated constructor stub
+    }
 
-// Métodos getter y setter
+    // Métodos getter y setter
     public int getParadas() {
         return paradas;
     }
 
     public void setParadas(int paradas) {
         this.paradas = paradas;
+    }
+
+    public int getGolesEncajados() {
+        return golesEncajados;
+    }
+
+    public void setGolesEncajados(int golesEncajados) {
+        this.golesEncajados = golesEncajados;
     }
 }
