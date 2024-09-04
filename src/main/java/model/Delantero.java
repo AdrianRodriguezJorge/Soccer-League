@@ -7,8 +7,8 @@ public class Delantero extends Jugador {
     private int tirosAPuerta;
 
     // Constructor
-    public Delantero(int idFutbolista, int idEquipo, int numero, String nombre, int añosEnEquipo, int partidosJugados, int cantidadGoles, int asistencias, double promedioGoles, int tirosAPuerta) {
-        super(idFutbolista, idEquipo, numero, nombre, añosEnEquipo, partidosJugados, cantidadGoles, asistencias, promedioGoles);
+    public Delantero (int idEquipo, int numero, String nombre, int añosEnEquipo, int partidosJugados, int cantidadGoles, int asistencias, double promedioGoles, int tirosAPuerta) {
+        super(idEquipo, numero, nombre, añosEnEquipo, partidosJugados, cantidadGoles, asistencias, promedioGoles);
         setTirosAPuerta(tirosAPuerta);
     }
 

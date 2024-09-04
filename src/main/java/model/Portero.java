@@ -8,9 +8,9 @@ public class Portero extends Jugador {
     private int golesEncajados;
 
     // Constructor
-    public Portero(int idFutbolista, int idEquipo, int numero, String nombre, int añosEnEquipo, int partidosJugados,
+    public Portero (int idEquipo, int numero, String nombre, int añosEnEquipo, int partidosJugados,
             int cantidadGoles, int asistencias, double promedioGoles, int paradas, int golesEncajados) {
-        super(idFutbolista, idEquipo, numero, nombre, añosEnEquipo, partidosJugados, cantidadGoles, asistencias,
+        super(idEquipo, numero, nombre, añosEnEquipo, partidosJugados, cantidadGoles, asistencias,
                 promedioGoles);
         setParadas(paradas);
         setGolesEncajados(golesEncajados);

@@ -8,9 +8,9 @@ public class Mediocampista extends Jugador {
     private int intercepciones;
 
     // Constructor
-    public Mediocampista(int idFutbolista, int idEquipo, int numero, String nombre, int añosEnEquipo,
+    public Mediocampista (int idEquipo, int numero, String nombre, int añosEnEquipo,
             int partidosJugados, int cantidadGoles, int asistencias, double promedioGoles, int pasesCompletados, int intercepciones) {
-        super(idFutbolista, idEquipo, numero, nombre, añosEnEquipo, partidosJugados, cantidadGoles, asistencias,
+        super(idEquipo, numero, nombre, añosEnEquipo, partidosJugados, cantidadGoles, asistencias,
                 promedioGoles);
         setPasesCompletados(pasesCompletados);
         setIntercepciones(intercepciones);

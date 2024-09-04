@@ -9,9 +9,10 @@ public abstract class Futbolista {
     protected String nombre;
     protected int numero;
     protected int añosEnEquipo;
+    protected String tipo;
 
     // Constructor
-    public Futbolista(int idFutbolista, int idEquipo, int numero, String nombre, int añosEnEquipo) {
+    public Futbolista (int idEquipo, int numero, String nombre, int añosEnEquipo) {
         setIdFutbolista(idFutbolista);
         setIdEquipo(idEquipo);
         setNombre(nombre);
@@ -19,8 +20,8 @@ public abstract class Futbolista {
         setAñosEnEquipo(añosEnEquipo);
     }
 
-    public Futbolista () {
-        
+    public Futbolista() {
+
     }
 
     // Métodos getter y setter
@@ -62,5 +63,13 @@ public abstract class Futbolista {
 
     public void setAñosEnEquipo(int añosEnEquipo) {
         this.añosEnEquipo = añosEnEquipo;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }

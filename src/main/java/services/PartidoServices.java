@@ -25,14 +25,17 @@ public class PartidoServices {
      * @param partido El objeto Partido a crear.
      */
     public void crearPartido(Partido partido) {
-        String sql = "INSERT INTO partido (fecha, estadio, resultado, equipo_local, equipo_visitante, audiencia) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO partido (audiencia, fecha, fkestadio, local, visitante, goles_local, goles_visitante) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = ConnectionManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-             
-            pstmt.setInt(2, partido.getIdEstadio());
+            
+            pstmt.setInt(1, partido.getAudiencia());
+            pstmt.setTimestamp(2, new Timestamp(partido.getFecha().getTime()));
+            pstmt.setInt(3, partido.getIdEstadio());
             pstmt.setInt(4, partido.getIdEquipoLocal());
             pstmt.setInt(5, partido.getIdEquipoVisitante());
-            pstmt.setInt(6, partido.getAudiencia());
+            pstmt.setInt(6, partido.getGoles_local());
+            pstmt.setInt(7, partido.getGoles_visitante());
             pstmt.executeUpdate();
             
         } catch (SQLException e) {
@@ -54,11 +57,14 @@ public class PartidoServices {
             while (rs.next()) {
                 Partido partido = new Partido();
                 partido.setIdPartido(rs.getInt("idpartido"));
-                partido.setFecha(rs.getDate("fecha"));
-                partido.setIdEstadio(rs.getInt("fk_estadio"));
-                partido.setIdEquipoLocal(rs.getInt("equipo_local"));
-                partido.setIdEquipoVisitante(rs.getInt("equipo_visitante"));
                 partido.setAudiencia(rs.getInt("audiencia"));
+                partido.setFecha(rs.getTimestamp("fecha"));
+                System.out.println(partido.getFecha());
+                partido.setIdEstadio(rs.getInt("fkestadio"));
+                partido.setIdEquipoLocal(rs.getInt("local"));
+                partido.setIdEquipoVisitante(rs.getInt("visitante"));
+                partido.setGoles_local(rs.getInt("goles_local"));
+                partido.setIdEquipoVisitante(rs.getInt("goles_visitante"));
                 partidos.add(partido);
             }
             
