@@ -1,5 +1,6 @@
 package model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -94,6 +95,12 @@ public class Partido {
 
     public void setAudiencia(int audiencia) {
         this.audiencia = audiencia;
+    }
+
+    @Override
+    public String toString() {
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        return formatoFecha.format(fecha);
     }
 
 }

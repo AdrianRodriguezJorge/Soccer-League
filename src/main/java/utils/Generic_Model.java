@@ -24,10 +24,10 @@ public class Generic_Model<E> extends AbstractListModel {
 	}
 
 	// devuelve el elemento de la posición index dentro del modelo
-	public E getElementAt(int indice) {
+	public E getElementAt(int index) {
 		E x = null;
-		if (indice > -1 && indice < this.getSize())
-			x = list.get(indice);
+		if (index > -1 && index < this.getSize())
+			x = list.get(index);
 		return x;
 	}
 
@@ -38,18 +38,18 @@ public class Generic_Model<E> extends AbstractListModel {
 	}
 
 	// elimina un elemento del modelo que ocupa la posición índice
-	public void removeElement (int indice) {
-		if (indice > -1 && indice < this.getSize()) {
-			list.remove(indice);
-			this.fireIntervalRemoved(this, indice, indice);
+	public void removeElement (int index) {
+		if (index > -1 && index < this.getSize()) {
+			list.remove(index);
+			this.fireIntervalRemoved(this, index, index);
 		}
 	}
 
-	// modifica en el modelo los valores del elemento en la posición indice
-	public void updateElement (int indice, E e) {
-		if (indice > -1 && indice < this.getSize()) {
-			list.set(indice, e);
-			this.fireContentsChanged(this, indice, indice);
+	// modifica en el modelo los valores del elemento en la posición index
+	public void updateElement (int index, E e) {
+		if (index > -1 && index < this.getSize()) {
+			list.set(index, e);
+			this.fireContentsChanged(this, index, index);
 		}
 	}
 }

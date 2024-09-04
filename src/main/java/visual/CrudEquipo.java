@@ -32,11 +32,11 @@
 
 //         list.addListSelectionListener(new ListSelectionListener() {
 //             public void valueChanged(ListSelectionEvent e) {
-//                 int indice = list.getSelectedIndex();
-//                 btnEliminar.setEnabled(indice > -1);
-//                 desactivar_habilitar(indice <= -1);
-//                 if (indice > -1) {
-//                     Equipo c = modelo.getEquipoAt(indice);
+//                 int index = list.getSelectedIndex();
+//                 btnEliminar.setEnabled(index > -1);
+//                 desactivar_habilitar(index <= -1);
+//                 if (index > -1) {
+//                     Equipo c = modelo.getEquipoAt(index);
 
 //                     textFieldID.setText(c.getIdEquipo() + "");
 //                     textFieldNombre.setText(c.getNomEquipo());
@@ -372,7 +372,7 @@
 //     }//GEN-LAST:event_btnEditarActionPerformed
 
 //     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-//         int indice = list.getSelectedIndex();
+//         int index = list.getSelectedIndex();
 //         Equipo x;
 
 //         int id = Integer.parseInt(textFieldID.getText());
@@ -386,7 +386,7 @@
 
 //             EquipoServices.actualizarEquipo(Integer.parseInt(textFieldID.getText()), textFieldNombre.getText(), Integer.parseInt(textFieldCapacidad.getText())); // nuevo
 
-//             modelo.actualizarEquipo(indice, x);
+//             modelo.actualizarEquipo(index, x);
 //             desactivar_habilitar(false);
 //             list.setEnabled(true);
 //             btnEliminar.setEnabled(true);
@@ -399,8 +399,8 @@
 //     }//GEN-LAST:event_btnGuardarActionPerformed
 
 //     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-//         int indice = list.getSelectedIndex();
-//         if (indice != -1) {
+//         int index = list.getSelectedIndex();
+//         if (index != -1) {
 //                 if (JOptionPane.showConfirmDialog(null, "Está seguro que desea eliminar este estadio?",
 //                                 "Confirmar", 0) == 0) {
 //                         modelo.removeEquipo(list.getSelectedIndex());

@@ -47,8 +47,8 @@ public class PartidoServices {
      * Método para obtener todos los partidos de la base de datos.
      * @return Lista de partidos.
      */
-    public List<Partido> obtenerPartidos() {
-        List<Partido> partidos = new ArrayList<>();
+    public ArrayList <Partido> obtenerPartidos() {
+        ArrayList<Partido> partidos = new ArrayList<>();
         String sql = "SELECT * FROM partido";
         try (Connection conn = ConnectionManager.getConnection();
              Statement stmt = conn.createStatement();
@@ -64,7 +64,7 @@ public class PartidoServices {
                 partido.setIdEquipoLocal(rs.getInt("local"));
                 partido.setIdEquipoVisitante(rs.getInt("visitante"));
                 partido.setGoles_local(rs.getInt("goles_local"));
-                partido.setIdEquipoVisitante(rs.getInt("goles_visitante"));
+                partido.setGoles_visitante(rs.getInt("goles_visitante"));
                 partidos.add(partido);
             }
             
@@ -88,8 +88,8 @@ public class PartidoServices {
             pstmt.setInt(3, partido.getIdEstadio());
             pstmt.setInt(4, partido.getIdEquipoLocal());
             pstmt.setInt(5, partido.getIdEquipoVisitante());
-            pstmt.setInt(6, partido.getIdEquipoLocal());
-            pstmt.setInt(7, partido.getIdEquipoVisitante());
+            pstmt.setInt(6, partido.getGoles_local());
+            pstmt.setInt(7, partido.getGoles_visitante());
             pstmt.setInt(8, partido.getIdPartido());
             pstmt.executeUpdate();
             
@@ -118,8 +118,8 @@ public class PartidoServices {
     public void reportePartidosPorEquipos (int equipo1, int equipo2) {
         try {
             
-            int idEquipo1 = ServicesLocator.getEquipoServices().obtenerEquipos().get(equipo1).getIdEquipo();
-            int idEquipo2 = ServicesLocator.getEquipoServices().obtenerEquipos().get(equipo2).getIdEquipo();
+            int idEquipo1 = ServicesLocator.getEquipoServices().getIdFromIndex(equipo1);
+            int idEquipo2 = ServicesLocator.getEquipoServices().getIdFromIndex(equipo2);
             
             // Ruta del archivo .jasper
             String reportPath = "src/main/java/reports/Partidos_por_equipos.jasper";
@@ -159,8 +159,8 @@ public class PartidoServices {
                 reportPath = "src/main/java/reports/Partidos_por_fecha_all.jasper";
             } 
             else {
-                Estadio estadio = ServicesLocator.getEstadioServices().obtenerEstadios().get(index - 1);
-                parametros.put("estadio", estadio.getIdEstadio());
+                int id = ServicesLocator.getEstadioServices().getIdFromIndex(index - 1);
+                parametros.put("estadio", id);
             }
             
             // Obtener la conexión a la base de datos
@@ -175,5 +175,13 @@ public class PartidoServices {
         } catch (JRException | SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public int getIdFromIndex (int index) {
+        for (Partido s : obtenerPartidos()) {
+            System.out.println(s.getFecha());
+        }
+
+        return obtenerPartidos().get(index).getIdPartido();
     }
 }

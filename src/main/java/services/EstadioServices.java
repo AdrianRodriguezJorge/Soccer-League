@@ -59,7 +59,8 @@ public class EstadioServices {
         ArrayList<Estadio> list = new ArrayList<>();
         String sql = "SELECT * FROM estadio";
         try {
-            PreparedStatement stmn = connection.prepareStatement("SELECT * FROM estadio");
+            connection = ConnectionManager.getConnection();
+            PreparedStatement stmn = connection.prepareStatement("SELECT * FROM estadio ORDER BY idestadio");
             ResultSet rs = stmn.executeQuery();
             while (rs.next()) {
                 Estadio estadio = new Estadio(
@@ -168,5 +169,21 @@ public class EstadioServices {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public String getNombreEstadio (int id) {
+        String nom = null;
+        ArrayList <Estadio> list = obtenerEstadios();
+        
+        for (int i = 0; i < list.size() && nom == null; i++) {
+            if (list.get(i).getIdEstadio() == id) {
+                nom = list.get(i).getNombreEstadio();
+            }
+        }
+        return nom;
+    }
+
+    public int getIdFromIndex (int index) {
+        return obtenerEstadios().get(index).getIdEstadio();
     }
 }

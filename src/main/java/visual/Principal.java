@@ -22,6 +22,11 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         setSize(800, 600);
         setLocationRelativeTo(null);
+
+        CrudPartido dialog = new CrudPartido(new javax.swing.JFrame(), true);
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
+        
     }
 
     /**
@@ -184,7 +189,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemEquiposActionPerformed
 
     private void menuItemPartidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemPartidosActionPerformed
-        // TODO add your handling code here:
+        CrudPartido dialog = new CrudPartido(new javax.swing.JFrame(), true);
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
     }//GEN-LAST:event_menuItemPartidosActionPerformed
 
     private void menuItemFutbolistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemFutbolistasActionPerformed

@@ -2,90 +2,48 @@ package visual;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.sql.SQLException;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import model.Estadio;
-import services.EstadioServices;
 import services.ServicesLocator;
 import utils.ConnectionManager;
 import utils.Generic_Model;
 
 public class CrudEstadio extends javax.swing.JDialog {
 
-    private Generic_Model <Estadio> modelo = new Generic_Model<Estadio>();
+    private Generic_Model<Estadio> modelo = new Generic_Model<>();
 
     public CrudEstadio(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
-        try {
-            ConnectionManager.getConnection();
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        EstadioServices es = new EstadioServices();
-
-        list = new JList<Estadio>();
-
         scrollPane.setViewportView(list);
-        list.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         list.setModel(modelo);
 
         list.addListSelectionListener(new ListSelectionListener() {
-                public void valueChanged(ListSelectionEvent e) {
-                        int indice = list.getSelectedIndex();
-                        btnEliminar.setEnabled(indice > -1);
-				        desactivar_habilitar(indice <= -1);
-                        if (indice > -1) {
-                                Estadio c = modelo.getElementAt(indice);
+            public void valueChanged(ListSelectionEvent e) {
+                int index = list.getSelectedIndex();
+                btnEliminar.setEnabled(index > -1);
+                desactivar_habilitar(index <= -1);
+                if (index > -1) {
+                    Estadio c = modelo.getElementAt(index);
 
-                                textFieldID.setText(c.getIdEstadio()+"");
-                                textFieldNombre.setText(c.getNombreEstadio());
-                                textFieldCapacidad.setText(c.getCapacidad()+"");
+                    textFieldID.setText(c.getIdEstadio() + "");
+                    textFieldNombre.setText(c.getNombreEstadio());
+                    textFieldCapacidad.setText(c.getCapacidad() + "");
 
-                                btnNuevo.setEnabled(true);
-                                btnEditar.setEnabled(true);
+                    btnNuevo.setEnabled(true);
+                    btnEditar.setEnabled(true);
 
-                        } else {
-                                btnEditar.setEnabled(false);
-                        }
+                } else {
+                    btnEditar.setEnabled(false);
                 }
+            }
         });
         modelo.setList(ServicesLocator.getEstadioServices().obtenerEstadios());
-
-        btnNuevo.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        btnEditar.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        btnEliminar.setFont(new Font("SansSerif", Font.PLAIN, 18));
-
-        lblD.setHorizontalAlignment(SwingConstants.RIGHT);
-        lblD.setFont(new Font("SansSerif", Font.PLAIN, 18));
-
-        lblNombre.setHorizontalAlignment(SwingConstants.RIGHT);
-        lblNombre.setFont(new Font("SansSerif", Font.PLAIN, 18));
-
-        lblCapacidad.setHorizontalAlignment(SwingConstants.RIGHT);
-        lblCapacidad.setFont(new Font("SansSerif", Font.PLAIN, 18));
-
-        textFieldID.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        textFieldNombre.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        textFieldCapacidad.setFont(new Font("SansSerif", Font.PLAIN, 18));
-
-        btnGuardar.setFont(new Font("SansSerif", Font.PLAIN, 17));
-        btnGuardar.setVisible(false);
-        
-        btnAgregar.setFont(new Font("SansSerif", Font.PLAIN, 17));
-        btnAgregar.setVisible(false);
-
-        btnCancelar.setVisible(false);
-        btnCancelar.setFont(new Font("SansSerif", Font.PLAIN, 17));
-
-        btnSalir.setFont(new Font("SansSerif", Font.PLAIN, 18));
 
 //		lblDatosErroneos = new JLabel("Datos erroneos");
 //		lblDatosErroneos.setForeground(new Color(0,0,139));
@@ -93,7 +51,6 @@ public class CrudEstadio extends javax.swing.JDialog {
 //		lblDatosErroneos.setBounds(330, 207, 200, 50);
 //		lblDatosErroneos.setVisible(false);
 //		contentPanel.add(lblDatosErroneos);
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -123,24 +80,30 @@ public class CrudEstadio extends javax.swing.JDialog {
         panel.setBorder(new javax.swing.border.MatteBorder(null));
         panel.setForeground(new java.awt.Color(0, 0, 0));
 
+        lblD.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         lblD.setForeground(new java.awt.Color(0, 0, 0));
         lblD.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblD.setText("ID");
 
+        lblNombre.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(0, 0, 0));
         lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNombre.setText("Nombre");
 
+        lblCapacidad.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         lblCapacidad.setForeground(new java.awt.Color(0, 0, 0));
         lblCapacidad.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblCapacidad.setText("Capacidad");
 
         textFieldID.setEditable(false);
+        textFieldID.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         textFieldID.setFocusable(false);
 
         textFieldNombre.setEditable(false);
+        textFieldNombre.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
 
         textFieldCapacidad.setEditable(false);
+        textFieldCapacidad.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         textFieldCapacidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldCapacidadActionPerformed(evt);
@@ -148,8 +111,11 @@ public class CrudEstadio extends javax.swing.JDialog {
         });
 
         btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelar.setText("Cancelar");
+        btnCancelar.setAlignmentY(1.0F);
+        btnCancelar.setMargin(new java.awt.Insets(2, 14, 4, 14));
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -157,8 +123,11 @@ public class CrudEstadio extends javax.swing.JDialog {
         });
 
         btnGuardar.setBackground(new java.awt.Color(255, 255, 255));
+        btnGuardar.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(0, 0, 0));
         btnGuardar.setText("Guardar");
+        btnGuardar.setAlignmentY(1.0F);
+        btnGuardar.setMargin(new java.awt.Insets(2, 14, 4, 14));
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
@@ -166,8 +135,11 @@ public class CrudEstadio extends javax.swing.JDialog {
         });
 
         btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         btnAgregar.setForeground(new java.awt.Color(0, 0, 0));
         btnAgregar.setText("Agregar");
+        btnAgregar.setAlignmentY(1.0F);
+        btnAgregar.setMargin(new java.awt.Insets(2, 14, 4, 14));
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
@@ -200,7 +172,7 @@ public class CrudEstadio extends javax.swing.JDialog {
                         .addComponent(btnAgregar)
                         .addGap(18, 18, 18)
                         .addComponent(btnCancelar)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,12 +197,18 @@ public class CrudEstadio extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        list.setForeground(new java.awt.Color(0, 153, 153));
+        list.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        list.setForeground(new java.awt.Color(18, 110, 0));
+        list.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scrollPane.setViewportView(list);
 
         btnNuevo.setBackground(new java.awt.Color(255, 255, 255));
+        btnNuevo.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         btnNuevo.setForeground(new java.awt.Color(0, 0, 0));
         btnNuevo.setText("Nuevo");
+        btnNuevo.setAlignmentY(1.0F);
+        btnNuevo.setDefaultCapable(false);
+        btnNuevo.setMargin(new java.awt.Insets(2, 14, 4, 14));
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoActionPerformed(evt);
@@ -238,9 +216,13 @@ public class CrudEstadio extends javax.swing.JDialog {
         });
 
         btnEditar.setBackground(new java.awt.Color(255, 255, 255));
+        btnEditar.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(0, 0, 0));
         btnEditar.setText("Editar");
+        btnEditar.setAlignmentY(1.0F);
+        btnEditar.setDefaultCapable(false);
         btnEditar.setEnabled(false);
+        btnEditar.setMargin(new java.awt.Insets(2, 14, 4, 14));
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
@@ -248,9 +230,13 @@ public class CrudEstadio extends javax.swing.JDialog {
         });
 
         btnEliminar.setBackground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(0, 0, 0));
         btnEliminar.setText("Eliminar");
+        btnEliminar.setAlignmentY(1.0F);
+        btnEliminar.setDefaultCapable(false);
         btnEliminar.setEnabled(false);
+        btnEliminar.setMargin(new java.awt.Insets(2, 14, 4, 14));
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -258,8 +244,12 @@ public class CrudEstadio extends javax.swing.JDialog {
         });
 
         btnSalir.setBackground(new java.awt.Color(255, 255, 255));
+        btnSalir.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(0, 0, 0));
         btnSalir.setText("Salir");
+        btnSalir.setAlignmentY(1.0F);
+        btnSalir.setDefaultCapable(false);
+        btnSalir.setMargin(new java.awt.Insets(2, 14, 4, 14));
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
@@ -295,7 +285,7 @@ public class CrudEstadio extends javax.swing.JDialog {
                 .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalir)
                     .addComponent(btnEditar)
@@ -376,7 +366,7 @@ public class CrudEstadio extends javax.swing.JDialog {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        int indice = list.getSelectedIndex();
+        int index = list.getSelectedIndex();
         Estadio x;
 
         int id = Integer.parseInt(textFieldID.getText());
@@ -386,11 +376,11 @@ public class CrudEstadio extends javax.swing.JDialog {
         boolean proceder = true; // validarDatos(id, nombre, capacidad);
 
         if (proceder) {
-            x = new Estadio (id, nombre, capacidad);
+            x = new Estadio(id, nombre, capacidad);
 
             ServicesLocator.getEstadioServices().actualizarEstadio(Integer.parseInt(textFieldID.getText()), textFieldNombre.getText(), Integer.parseInt(textFieldCapacidad.getText())); // nuevo
 
-            modelo.updateElement(indice, x);
+            modelo.updateElement(index, x);
             desactivar_habilitar(false);
             list.setEnabled(true);
             btnEliminar.setEnabled(true);
@@ -403,17 +393,17 @@ public class CrudEstadio extends javax.swing.JDialog {
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        int indice = list.getSelectedIndex();
-        if (indice != -1) {
-                if (JOptionPane.showConfirmDialog(null, "Está seguro que desea eliminar este estadio?",
-                                "Confirmar", 0) == 0) {
-                        modelo.removeElement(list.getSelectedIndex());
-                        
-                        ServicesLocator.getEstadioServices().eliminarEstadio(Integer.parseInt(textFieldID.getText()));
-                        
-                        limpiar();
-                        desactivar_habilitar(false);
-                }
+        int index = list.getSelectedIndex();
+        if (index != -1) {
+            if (JOptionPane.showConfirmDialog(null, "Está seguro que desea eliminar este estadio?",
+                    "Confirmar", 0) == 0) {
+                modelo.removeElement(index);
+
+                ServicesLocator.getEstadioServices().eliminarEstadio(Integer.parseInt(textFieldID.getText()));
+
+                limpiar();
+                desactivar_habilitar(false);
+            }
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
@@ -435,7 +425,6 @@ public class CrudEstadio extends javax.swing.JDialog {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         ConnectionManager.closeConnection();
         dispose();
-        System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void textFieldCapacidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCapacidadActionPerformed
@@ -461,54 +450,48 @@ public class CrudEstadio extends javax.swing.JDialog {
     private javax.swing.JTextField textFieldID;
     private javax.swing.JTextField textFieldNombre;
     // End of variables declaration//GEN-END:variables
-    
+
     private void limpiar() {
-		textFieldID.setText("");
-		textFieldNombre.setText("");
-		textFieldCapacidad.setText("");
-	}
+        textFieldID.setText("");
+        textFieldNombre.setText("");
+        textFieldCapacidad.setText("");
+    }
 
     private void desactivar_habilitar(boolean estado) {
-		textFieldNombre.setEditable(estado);
-		textFieldCapacidad.setEditable(estado);
-	}
+        textFieldNombre.setEditable(estado);
+        textFieldCapacidad.setEditable(estado);
+    }
 
-	// public boolean validarDatos(String n, String nombre, String capacidad) {
-	// 	boolean correcto = true;
-	// 	Votante temp = new Votante();
-
-	// 	try { // nombre
-	// 		lblD.setForeground(Color.BLACK);
-	// 		temp.setNombre(n);
-	// 	} catch (IllegalArgumentException e) {
-	// 		correcto = false;
-	// 		lblDatosErroneos.setVisible(true);
-	// 		lblD.setForeground(new Color(0,0,139));
-	// 	}
-
-	// 	try { // nombre
-	// 		lblNombre.setForeground(Color.BLACK);
-	// 		temp.setCorreo(nombre);
-	// 	} catch (IllegalArgumentException e) {
-	// 		correcto = false;
-	// 		lblDatosErroneos.setVisible(true);
-	// 		lblNombre.setForeground(new Color(0,0,139));
-	// 	}
-
-	// 	try { // contrase�a
-	// 		lblCapacidad.setForeground(Color.BLACK);
-	// 		temp.setContrasenna(capacidad);
-	// 	} catch (IllegalArgumentException e) {
-	// 		correcto = false;
-	// 		lblDatosErroneos.setVisible(true);
-	// 		lblCapacidad.setForeground(new Color(0,0,139));
-	// 	}
-
-	// 	if (correcto) {
-	// 		lblDatosErroneos.setVisible(false);
-	// 	}
-	// 	return correcto;
-	// }
-
-
+    // public boolean validarDatos(String n, String nombre, String capacidad) {
+    // 	boolean correcto = true;
+    // 	Votante temp = new Votante();
+    // 	try { // nombre
+    // 		lblD.setForeground(Color.BLACK);
+    // 		temp.setNombre(n);
+    // 	} catch (IllegalArgumentException e) {
+    // 		correcto = false;
+    // 		lblDatosErroneos.setVisible(true);
+    // 		lblD.setForeground(new Color(0,0,139));
+    // 	}
+    // 	try { // nombre
+    // 		lblNombre.setForeground(Color.BLACK);
+    // 		temp.setCorreo(nombre);
+    // 	} catch (IllegalArgumentException e) {
+    // 		correcto = false;
+    // 		lblDatosErroneos.setVisible(true);
+    // 		lblNombre.setForeground(new Color(0,0,139));
+    // 	}
+    // 	try { // contrase�a
+    // 		lblCapacidad.setForeground(Color.BLACK);
+    // 		temp.setContrasenna(capacidad);
+    // 	} catch (IllegalArgumentException e) {
+    // 		correcto = false;
+    // 		lblDatosErroneos.setVisible(true);
+    // 		lblCapacidad.setForeground(new Color(0,0,139));
+    // 	}
+    // 	if (correcto) {
+    // 		lblDatosErroneos.setVisible(false);
+    // 	}
+    // 	return correcto;
+    // }
 }

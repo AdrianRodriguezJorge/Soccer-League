@@ -22,13 +22,15 @@ public class EquipoServices {
 
     /**
      * Método para crear un nuevo equipo en la base de datos.
+     * 
      * @param equipo El objeto Equipo a crear.
      */
-    public void crearEquipo(String nomequipo, String provincia, int camparticip, int campganados, String mascota, String color, int puntos) {
+    public void crearEquipo(String nomequipo, String provincia, int camparticip, int campganados, String mascota,
+            String color, int puntos) {
         String sql = "INSERT INTO equipo (nomequipo, provincia, camparticip, campganados, mascota, color, puntos) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = ConnectionManager.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-             
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
             pstmt.setString(1, nomequipo);
             pstmt.setString(2, provincia);
             pstmt.setInt(3, camparticip);
@@ -37,7 +39,7 @@ public class EquipoServices {
             pstmt.setString(6, color);
             pstmt.setInt(7, puntos);
             pstmt.executeUpdate();
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -45,15 +47,16 @@ public class EquipoServices {
 
     /**
      * Método para obtener todos los equipos de la base de datos.
+     * 
      * @return Lista de equipos.
      */
     public ArrayList<Equipo> obtenerEquipos() {
         ArrayList<Equipo> equipos = new ArrayList<>();
-        String sql = "SELECT * FROM equipo";
+        String sql = "SELECT * FROM equipo ORDER BY idequipo";
         try (Connection conn = ConnectionManager.getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-             
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+
             while (rs.next()) {
                 Equipo equipo = new Equipo();
                 equipo.setIdEquipo(rs.getInt("idequipo"));
@@ -66,7 +69,7 @@ public class EquipoServices {
                 equipo.setPuntos(rs.getInt("puntos"));
                 equipos.add(equipo);
             }
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -75,13 +78,14 @@ public class EquipoServices {
 
     /**
      * Método para actualizar un equipo en la base de datos.
+     * 
      * @param equipo El objeto Equipo a actualizar.
      */
     public void actualizarEquipo(Equipo equipo) {
         String sql = "UPDATE equipo SET nomequipo = ?, provincia = ?, camparticip = ?, campganados = ?, mascota = ?, color = ?, puntos = ? WHERE id_equipo = ?";
         try (Connection conn = ConnectionManager.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-             
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
             pstmt.setString(1, equipo.getNomEquipo());
             pstmt.setString(2, equipo.getProvincia());
             pstmt.setInt(3, equipo.getCampParticipados());
@@ -91,7 +95,7 @@ public class EquipoServices {
             pstmt.setInt(7, equipo.getPuntos());
             pstmt.setInt(8, equipo.getIdEquipo());
             pstmt.executeUpdate();
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -99,22 +103,23 @@ public class EquipoServices {
 
     /**
      * Método para eliminar un equipo de la base de datos.
+     * 
      * @param idEquipo El ID del equipo a eliminar.
      */
     public void eliminarEquipo(int idEquipo) {
         String sql = "DELETE FROM equipo WHERE idequipo = ?";
         try (Connection conn = ConnectionManager.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-             
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
             pstmt.setInt(1, idEquipo);
             pstmt.executeUpdate();
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    
-    public void reporteTablaPosiciones () {
+
+    public void reporteTablaPosiciones() {
         try {
             // Ruta del archivo .jasper
             String reportPath = "src/main/java/reports/Tabla_de_posiciones.jasper";
@@ -135,9 +140,9 @@ public class EquipoServices {
             e.printStackTrace();
         }
     }
-    
-    public ArrayList <String> obtenerNombresEquipos () {
-        ArrayList <String> list = new ArrayList<>();
+
+    public ArrayList<String> obtenerNombresEquipos() {
+        ArrayList<String> list = new ArrayList<>();
 
         for (Equipo e : obtenerEquipos()) {
             list.add(e.getNomEquipo());
@@ -148,15 +153,15 @@ public class EquipoServices {
 
     public void reporteEstadoEquipo(int index) {
         try {
-            
-            int idEquipo1 = ServicesLocator.getEquipoServices().obtenerEquipos().get(index).getIdEquipo();
-            
+
+            int idEquipo1 = getIdFromIndex(index);
+
             // Ruta del archivo .jasper
             String reportPath = "src/main/java/reports/Estado_equipo.jasper";
 
             // Parámetros para pasar al reporte (si se necesitan)
             Map<String, Object> parametros = new HashMap<>();
-            
+
             parametros.put("equipo", idEquipo1);
 
             // Obtener la conexión a la base de datos
@@ -172,8 +177,8 @@ public class EquipoServices {
             e.printStackTrace();
         }
     }
-    
-    public void reporteEquipoEstrella () {
+
+    public void reporteEquipoEstrella() {
         try {
             // Ruta del archivo .jasper
             String reportPath = "src/main/java/reports/Equipo_estrella.jasper";
@@ -193,5 +198,21 @@ public class EquipoServices {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public String getNombreEquipo(int id) {
+        String nom = null;
+        ArrayList<Equipo> list = obtenerEquipos();
+
+        for (int i = 0; i < list.size() && nom == null; i++) {
+            if (list.get(i).getIdEquipo() == id) {
+                nom = list.get(i).getNomEquipo();
+            }
+        }
+        return nom;
+    }
+
+    public int getIdFromIndex (int index) {
+        return obtenerEquipos().get(index).getIdEquipo();
     }
 }
