@@ -1,16 +1,23 @@
 services\Services_contenido.class
 visual\CrudEquipo$4.class
 services\EquipoServices.class
+<<<<<<< HEAD
 visual\DialogDuracionLiga$2.class
 visual\CrudPartido$11.class
+=======
+>>>>>>> 65e720a (Crear CRUD Equipo)
 model\Futbolista.class
 visual\CrudPartido$14.class
 visual\CrudPartido$8.class
 visual\Login$1.class
+<<<<<<< HEAD
 visual\Principal$9.class
+=======
+>>>>>>> 65e720a (Crear CRUD Equipo)
 utils\ConnectionManager.class
 visual\CrudEquipo$1.class
 services\PorteroServices.class
+<<<<<<< HEAD
 visual\CrudEquipo$7.class
 visual\CrudPartido$5.class
 model\Equipo.class
@@ -19,9 +26,15 @@ visual\Principal$6.class
 visual\CrudFutbolista$8.class
 visual\CrudFutbolista$5.class
 visual\CrudFutbolista$10.class
+=======
+model\Equipo.class
+visual\REstadoEquipo$1.class
+visual\Principal$6.class
+>>>>>>> 65e720a (Crear CRUD Equipo)
 visual\CrudEstadio$7.class
 visual\CrudEquipo$12.class
 visual\Principal.class
+<<<<<<< HEAD
 visual\CrudFutbolista$2.class
 model\Delantero.class
 visual\Principal$3.class
@@ -39,6 +52,14 @@ visual\CrudEquipo$2.class
 model\Defensa.class
 visual\CrudFutbolista$1.class
 visual\DialogDuracionLiga$3.class
+=======
+model\Delantero.class
+visual\Principal$3.class
+services\PartidoServices.class
+Main.class
+model\Jugador.class
+model\Defensa.class
+>>>>>>> 65e720a (Crear CRUD Equipo)
 visual\RPartidosPorEquipos$1.class
 visual\CrudEstadio$1.class
 visual\CrudPartido$2.class
@@ -53,6 +74,7 @@ visual\CrudEstadio$2.class
 visual\CrudEstadio$8.class
 visual\CrudFutbolista$7.class
 services\DelanteroServices.class
+<<<<<<< HEAD
 visual\CrudPartido$9.class
 visual\CrudEquipo$8.class
 visual\CrudPartido$12.class
@@ -91,17 +113,40 @@ services\MediocampistaServices.class
 visual\CrudEstadio$4.class
 utils\Report.class
 visual\CrudEquipo$6.class
+=======
+visual\RPartidosPorEquipos$2.class
+services\EntrenadorServices.class
+visual\CrudEstadio$6.class
+visual\RPartidosPorFecha$1.class
+visual\Principal$5.class
+services\JugadorServices.class
+visual\RPartidosPorFecha.class
+visual\Principal$2.class
+visual\CrudEstadio$9.class
+services\EstadioServices.class
+visual\CrudEstadio$3.class
+model\Portero.class
+utils\Utils_contenido.class
+model\Partido.class
+services\MediocampistaServices.class
+visual\CrudEstadio$4.class
+utils\Report.class
+>>>>>>> 65e720a (Crear CRUD Equipo)
 Main$1.class
 visual\Principal$4.class
 model\Mediocampista.class
 services\FutbolistaServices.class
 services\DefensaServices.class
+<<<<<<< HEAD
 visual\Principal$10.class
 visual\CrudEquipo$13.class
+=======
+>>>>>>> 65e720a (Crear CRUD Equipo)
 model\Estadio.class
 visual\CrudEstadio.class
 visual\CrudEstadio$5.class
 model\Entrenador.class
+<<<<<<< HEAD
 visual\CrudFutbolista.class
 services\ServicesLocator.class
 visual\CrudFutbolista$3.class
@@ -109,8 +154,13 @@ visual\CrudEquipo$14.class
 visual\CrudEquipo$5.class
 visual\CrudPartido$15.class
 visual\Principal$11.class
+=======
+>>>>>>> 65e720a (Crear CRUD Equipo)
 reports\Reports_contenido.class
 visual\REstadoEquipo$2.class
 visual\Visual_contenido.class
 model\Model_contenido.class
+<<<<<<< HEAD
 visual\CrudPartido$6.class
+=======
+>>>>>>> 65e720a (Crear CRUD Equipo)
