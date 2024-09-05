@@ -180,7 +180,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemRTablaPosicionesActionPerformed
 
     private void menuItemEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemEquiposActionPerformed
-        // TODO add your handling code here:
+         CrudEquipos dialog = new CrudEquipos(new javax.swing.JFrame(), true);
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
     }//GEN-LAST:event_menuItemEquiposActionPerformed
 
     private void menuItemPartidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemPartidosActionPerformed
