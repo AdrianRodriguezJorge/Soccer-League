@@ -11,13 +11,23 @@ public abstract class Jugador extends Futbolista {
     private double promedioGoles;
     private String posicion;
 
-    // Constructor
-    public Jugador (int idEquipo, int numero, String nombre, int añosEnEquipo, int partidosJugados, int cantidadGoles, int asistencias, double promedioGoles) {
-        super(idEquipo, numero, nombre, añosEnEquipo);
+    // Constructores
+    public Jugador (int idFutbolista, int idEquipo, int numero, String nombre, int añosEnEquipo, String tipo, int partidosJugados, int cantidadGoles, int asistencias, double promedioGoles, String pos) {
+        super(idFutbolista, idEquipo, numero, nombre, añosEnEquipo, tipo);
         setPartidosJugados(partidosJugados);
         setCantidadGoles(cantidadGoles);
         setAsistencias(asistencias);
         setPromedioGoles(promedioGoles);
+        setPosicion(pos);
+    }
+
+    public Jugador (int idEquipo, int numero, String nombre, int añosEnEquipo, String tipo, int partidosJugados, int cantidadGoles, int asistencias, double promedioGoles, String pos) {
+        super(idEquipo, numero, nombre, añosEnEquipo, tipo);
+        setPartidosJugados(partidosJugados);
+        setCantidadGoles(cantidadGoles);
+        setAsistencias(asistencias);
+        setPromedioGoles(promedioGoles);
+        setPosicion(pos);
     }
 
     public Jugador() {

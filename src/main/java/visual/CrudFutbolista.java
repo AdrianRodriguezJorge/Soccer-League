@@ -25,23 +25,14 @@ public class CrudFutbolista extends javax.swing.JDialog {
 
         list.setModel(modelo);
 
-        for (String s : ServicesLocator.getEstadioServices().obtenerNombresEstadios()) {
-            jComboBoxEstadio.addItem(s);
-        }
-
         for (String s : ServicesLocator.getEquipoServices().obtenerNombresEquipos()) {
             ComboBoxEquipo.addItem(s);
-            jComboBoxVisitante.addItem(s);
         }
 
         btnAgregar.setVisible(false);
         btnGuardar.setVisible(false);
         btnCancelar.setVisible(false);
-        jComboBoxEstadio.setVisible(false);
         ComboBoxEquipo.setVisible(false);
-        jComboBoxVisitante.setVisible(false);
-        
-        jComboBoxEstadio.setLocation(textFieldEstadio.getLocation());
 
         list.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
@@ -49,21 +40,14 @@ public class CrudFutbolista extends javax.swing.JDialog {
                 btnEliminar.setEnabled(index > -1);
                 desactivar_habilitar(index <= -1);
                 if (index > -1) {
-                    Futbolista p = modelo.getElementAt(index);
+                    Futbolista f = modelo.getElementAt(index);
 
-                    String nomEquipoLocal = buscarNombrEquipo(p.getIdEquipoLocal());
-                    String nomEquipoVisit = buscarNombrEquipo(p.getIdEquipoVisitante());
+                    String nomEquipo = buscarNombrEquipo(f.getIdEquipo());
 
-                    System.out.println(nomEquipoLocal + " / " + nomEquipoVisit);
-
-                    DateChooserFecha.setDate(p.getFecha());
-                    textFieldEstadio.setText(ServicesLocator.getEstadioServices()
-                            .getNombreEstadio(p.getIdEstadio()));
-                    textFieldAudiencia.setText(p.getAudiencia() + "");
-                    textFieldLocal.setText(nomEquipoLocal);
-                    textFieldVisit.setText(nomEquipoVisit);
-                    textFieldGolesLocal.setText(p.getGoles_local() + "");
-                    textFieldGolesVisitante.setText(p.getGoles_visitante() + "");
+                    textFieldNombre.setText(f.getNombre());
+                    textFieldNum.setText(f.getNumero() + "");
+                    textFieldEquipo.setText(nomEquipo);
+                    textFieldAñosEnE.setText(f.getAñosEnEquipo() + "");
 
                     btnNuevo.setEnabled(true);
                     btnEditar.setEnabled(true);
@@ -75,7 +59,7 @@ public class CrudFutbolista extends javax.swing.JDialog {
 
         });
 
-        modelo.setList(ServicesLocator.getPartidoServices().obtenerPartidos());
+        modelo.setList(ServicesLocator.getFutbolistaServices().obtenerFutbolistas());
 
         // lblDatosErroneos = new JLabel("Datos erroneos");
         // lblDatosErroneos.setForeground(new Color(0,0,139));
@@ -94,30 +78,50 @@ public class CrudFutbolista extends javax.swing.JDialog {
     private void initComponents() {
 
         contentPanel = new javax.swing.JPanel();
-        panel = new javax.swing.JPanel();
-        lblFecha = new javax.swing.JLabel();
-        lblAudiencia = new javax.swing.JLabel();
-        textFieldAudiencia = new javax.swing.JTextField();
-        btnCancelar = new javax.swing.JButton();
-        btnGuardar = new javax.swing.JButton();
-        btnAgregar = new javax.swing.JButton();
-        lblEstadio = new javax.swing.JLabel();
-        lblEquipo = new javax.swing.JLabel();
-        lblVisitante = new javax.swing.JLabel();
-        lblGolesLocal = new javax.swing.JLabel();
-        lblGolesVisit = new javax.swing.JLabel();
-        textFieldGolesLocal = new javax.swing.JTextField();
-        textFieldGolesVisitante = new javax.swing.JTextField();
-        DateChooserFecha = new com.toedter.calendar.JDateChooser();
-        ComboBoxEquipo = new javax.swing.JComboBox<>();
-        textFieldEstadio = new javax.swing.JTextField();
-        textFieldVisit = new javax.swing.JTextField();
-        textFieldLocal = new javax.swing.JTextField();
         scrollPane = new javax.swing.JScrollPane();
         list = new javax.swing.JList<>();
         btnNuevo = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        jTabbedPane = new javax.swing.JTabbedPane();
+        panelFutbolista = new javax.swing.JPanel();
+        lblAudiencia = new javax.swing.JLabel();
+        textFieldNum = new javax.swing.JTextField();
+        btnCancelar = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
+        lblNombre = new javax.swing.JLabel();
+        lblEquipo = new javax.swing.JLabel();
+        lblGolesLocal = new javax.swing.JLabel();
+        textFieldAñosEnE = new javax.swing.JTextField();
+        ComboBoxEquipo = new javax.swing.JComboBox<>();
+        textFieldNombre = new javax.swing.JTextField();
+        textFieldEquipo = new javax.swing.JTextField();
+        panelFutbolista2 = new javax.swing.JPanel();
+        lblAudiencia2 = new javax.swing.JLabel();
+        textFieldNum2 = new javax.swing.JTextField();
+        btnCancelar2 = new javax.swing.JButton();
+        btnGuardar2 = new javax.swing.JButton();
+        btnAgregar2 = new javax.swing.JButton();
+        lblNombre2 = new javax.swing.JLabel();
+        lblEquipo2 = new javax.swing.JLabel();
+        lblGolesTipo = new javax.swing.JLabel();
+        textFieldAñosEnE2 = new javax.swing.JTextField();
+        ComboBoxTipo = new javax.swing.JComboBox<>();
+        textFieldNombre2 = new javax.swing.JTextField();
+        textFieldEquipo2 = new javax.swing.JTextField();
+        lblGolesLocal4 = new javax.swing.JLabel();
+        ComboBoxEquipo4 = new javax.swing.JComboBox<>();
+        panelFutbolista3 = new javax.swing.JPanel();
+        lblAudiencia3 = new javax.swing.JLabel();
+        textFieldNum3 = new javax.swing.JTextField();
+        lblNombre3 = new javax.swing.JLabel();
+        lblEquipo3 = new javax.swing.JLabel();
+        lblGolesLocal3 = new javax.swing.JLabel();
+        textFieldAñosEnE3 = new javax.swing.JTextField();
+        ComboBoxEquipo3 = new javax.swing.JComboBox<>();
+        textFieldNombre3 = new javax.swing.JTextField();
+        textFieldEquipo3 = new javax.swing.JTextField();
         btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -125,148 +129,6 @@ public class CrudFutbolista extends javax.swing.JDialog {
 
         contentPanel.setForeground(new java.awt.Color(143, 182, 155));
         contentPanel.setToolTipText("");
-
-        panel.setBackground(new java.awt.Color(143, 182, 155));
-        panel.setBorder(new javax.swing.border.MatteBorder(null));
-        panel.setForeground(new java.awt.Color(0, 0, 0));
-        panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblFecha.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        lblFecha.setForeground(new java.awt.Color(0, 0, 0));
-        lblFecha.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblFecha.setText("Fecha");
-        panel.add(lblFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 12, 165, -1));
-
-        lblAudiencia.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        lblAudiencia.setForeground(new java.awt.Color(0, 0, 0));
-        lblAudiencia.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblAudiencia.setText("Audiencia");
-        panel.add(lblAudiencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 165, -1));
-
-        textFieldAudiencia.setEditable(false);
-        textFieldAudiencia.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        textFieldAudiencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldAudienciaActionPerformed(evt);
-            }
-        });
-        panel.add(textFieldAudiencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 50, -1));
-
-        btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
-        btnCancelar.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
-        panel.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, -1, -1));
-
-        btnGuardar.setBackground(new java.awt.Color(255, 255, 255));
-        btnGuardar.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        btnGuardar.setForeground(new java.awt.Color(0, 0, 0));
-        btnGuardar.setText("Guardar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
-            }
-        });
-        panel.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, -1, -1));
-
-        btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
-        btnAgregar.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        btnAgregar.setForeground(new java.awt.Color(0, 0, 0));
-        btnAgregar.setText("Agregar");
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
-            }
-        });
-        panel.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, -1, -1));
-
-        lblEstadio.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        lblEstadio.setForeground(new java.awt.Color(0, 0, 0));
-        lblEstadio.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblEstadio.setText("Estadio");
-        panel.add(lblEstadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 165, -1));
-
-        lblEquipo.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        lblEquipo.setForeground(new java.awt.Color(0, 0, 0));
-        lblEquipo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblEquipo.setText("Equipo");
-        panel.add(lblEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 165, -1));
-
-        lblVisitante.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        lblVisitante.setForeground(new java.awt.Color(0, 0, 0));
-        lblVisitante.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblVisitante.setText("Equipo visitante");
-        panel.add(lblVisitante, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 165, -1));
-
-        lblGolesLocal.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        lblGolesLocal.setForeground(new java.awt.Color(0, 0, 0));
-        lblGolesLocal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblGolesLocal.setText("Goles del e. local");
-        panel.add(lblGolesLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 165, -1));
-
-        lblGolesVisit.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        lblGolesVisit.setForeground(new java.awt.Color(0, 0, 0));
-        lblGolesVisit.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblGolesVisit.setText("Goles del e. visitante");
-        panel.add(lblGolesVisit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 225, 165, -1));
-
-        textFieldGolesLocal.setEditable(false);
-        textFieldGolesLocal.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        textFieldGolesLocal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldGolesLocalActionPerformed(evt);
-            }
-        });
-        panel.add(textFieldGolesLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 50, -1));
-
-        textFieldGolesVisitante.setEditable(false);
-        textFieldGolesVisitante.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        textFieldGolesVisitante.setMinimumSize(new java.awt.Dimension(64, 24));
-        textFieldGolesVisitante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldGolesVisitanteActionPerformed(evt);
-            }
-        });
-        panel.add(textFieldGolesVisitante, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 225, 50, -1));
-
-        DateChooserFecha.setDateFormatString("yyyy-MM-dd HH:mm");
-        DateChooserFecha.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        panel.add(DateChooserFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 170, 25));
-
-        ComboBoxEquipo.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        panel.add(ComboBoxEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, -1, -1));
-
-        textFieldEstadio.setEditable(false);
-        textFieldEstadio.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        textFieldEstadio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldEstadioActionPerformed(evt);
-            }
-        });
-        panel.add(textFieldEstadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 176, -1));
-
-        textFieldVisit.setEditable(false);
-        textFieldVisit.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        textFieldVisit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldVisitActionPerformed(evt);
-            }
-        });
-        panel.add(textFieldVisit, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 176, -1));
-
-        textFieldLocal.setEditable(false);
-        textFieldLocal.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        textFieldLocal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldLocalActionPerformed(evt);
-            }
-        });
-        panel.add(textFieldLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 176, -1));
 
         list.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         list.setForeground(new java.awt.Color(0, 102, 51));
@@ -305,6 +167,293 @@ public class CrudFutbolista extends javax.swing.JDialog {
             }
         });
 
+        jTabbedPane.setName(""); // NOI18N
+
+        panelFutbolista.setBackground(new java.awt.Color(143, 182, 155));
+        panelFutbolista.setBorder(new javax.swing.border.MatteBorder(null));
+        panelFutbolista.setForeground(new java.awt.Color(0, 0, 0));
+        panelFutbolista.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblAudiencia.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        lblAudiencia.setForeground(new java.awt.Color(0, 0, 0));
+        lblAudiencia.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblAudiencia.setText("Número");
+        panelFutbolista.add(lblAudiencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 85, 165, -1));
+
+        textFieldNum.setEditable(false);
+        textFieldNum.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        textFieldNum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldNumActionPerformed(evt);
+            }
+        });
+        panelFutbolista.add(textFieldNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 85, 50, -1));
+
+        btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        panelFutbolista.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, -1, -1));
+
+        btnGuardar.setBackground(new java.awt.Color(255, 255, 255));
+        btnGuardar.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(0, 0, 0));
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+        panelFutbolista.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
+
+        btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        btnAgregar.setForeground(new java.awt.Color(0, 0, 0));
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+        panelFutbolista.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, -1, -1));
+
+        lblNombre.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        lblNombre.setForeground(new java.awt.Color(0, 0, 0));
+        lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblNombre.setText("Nombre");
+        panelFutbolista.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 51, 165, -1));
+
+        lblEquipo.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        lblEquipo.setForeground(new java.awt.Color(0, 0, 0));
+        lblEquipo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblEquipo.setText("Equipo");
+        panelFutbolista.add(lblEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 165, -1));
+
+        lblGolesLocal.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        lblGolesLocal.setForeground(new java.awt.Color(0, 0, 0));
+        lblGolesLocal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblGolesLocal.setText("Años en el equipo");
+        panelFutbolista.add(lblGolesLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 165, -1));
+
+        textFieldAñosEnE.setEditable(false);
+        textFieldAñosEnE.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        textFieldAñosEnE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldAñosEnEActionPerformed(evt);
+            }
+        });
+        panelFutbolista.add(textFieldAñosEnE, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 50, -1));
+
+        ComboBoxEquipo.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        panelFutbolista.add(ComboBoxEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 16, -1, -1));
+
+        textFieldNombre.setEditable(false);
+        textFieldNombre.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        textFieldNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldNombreActionPerformed(evt);
+            }
+        });
+        panelFutbolista.add(textFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 176, -1));
+
+        textFieldEquipo.setEditable(false);
+        textFieldEquipo.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        textFieldEquipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldEquipoActionPerformed(evt);
+            }
+        });
+        panelFutbolista.add(textFieldEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 16, 176, -1));
+
+        jTabbedPane.addTab("Futbolista", panelFutbolista);
+
+        panelFutbolista2.setBackground(new java.awt.Color(143, 182, 155));
+        panelFutbolista2.setBorder(new javax.swing.border.MatteBorder(null));
+        panelFutbolista2.setForeground(new java.awt.Color(0, 0, 0));
+        panelFutbolista2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblAudiencia2.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        lblAudiencia2.setForeground(new java.awt.Color(0, 0, 0));
+        lblAudiencia2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblAudiencia2.setText("Número");
+        panelFutbolista2.add(lblAudiencia2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 85, 165, -1));
+
+        textFieldNum2.setEditable(false);
+        textFieldNum2.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        textFieldNum2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldNum2ActionPerformed(evt);
+            }
+        });
+        panelFutbolista2.add(textFieldNum2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 85, 50, -1));
+
+        btnCancelar2.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelar2.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        btnCancelar2.setForeground(new java.awt.Color(0, 0, 0));
+        btnCancelar2.setText("Cancelar");
+        btnCancelar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelar2ActionPerformed(evt);
+            }
+        });
+        panelFutbolista2.add(btnCancelar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, -1, -1));
+
+        btnGuardar2.setBackground(new java.awt.Color(255, 255, 255));
+        btnGuardar2.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        btnGuardar2.setForeground(new java.awt.Color(0, 0, 0));
+        btnGuardar2.setText("Guardar");
+        btnGuardar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardar2ActionPerformed(evt);
+            }
+        });
+        panelFutbolista2.add(btnGuardar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
+
+        btnAgregar2.setBackground(new java.awt.Color(255, 255, 255));
+        btnAgregar2.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        btnAgregar2.setForeground(new java.awt.Color(0, 0, 0));
+        btnAgregar2.setText("Agregar");
+        btnAgregar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregar2ActionPerformed(evt);
+            }
+        });
+        panelFutbolista2.add(btnAgregar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, -1, -1));
+
+        lblNombre2.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        lblNombre2.setForeground(new java.awt.Color(0, 0, 0));
+        lblNombre2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblNombre2.setText("Nombre");
+        panelFutbolista2.add(lblNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 51, 165, -1));
+
+        lblEquipo2.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        lblEquipo2.setForeground(new java.awt.Color(0, 0, 0));
+        lblEquipo2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblEquipo2.setText("Equipo");
+        panelFutbolista2.add(lblEquipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 165, -1));
+
+        lblGolesTipo.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        lblGolesTipo.setForeground(new java.awt.Color(0, 0, 0));
+        lblGolesTipo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblGolesTipo.setText("Tipo");
+        panelFutbolista2.add(lblGolesTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 165, -1));
+
+        textFieldAñosEnE2.setEditable(false);
+        textFieldAñosEnE2.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        textFieldAñosEnE2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldAñosEnE2ActionPerformed(evt);
+            }
+        });
+        panelFutbolista2.add(textFieldAñosEnE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 50, -1));
+
+        ComboBoxTipo.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        panelFutbolista2.add(ComboBoxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, -1, -1));
+
+        textFieldNombre2.setEditable(false);
+        textFieldNombre2.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        textFieldNombre2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldNombre2ActionPerformed(evt);
+            }
+        });
+        panelFutbolista2.add(textFieldNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 176, -1));
+
+        textFieldEquipo2.setEditable(false);
+        textFieldEquipo2.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        textFieldEquipo2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldEquipo2ActionPerformed(evt);
+            }
+        });
+        panelFutbolista2.add(textFieldEquipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 16, 176, -1));
+
+        lblGolesLocal4.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        lblGolesLocal4.setForeground(new java.awt.Color(0, 0, 0));
+        lblGolesLocal4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblGolesLocal4.setText("Años en el equipo");
+        panelFutbolista2.add(lblGolesLocal4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 165, -1));
+
+        ComboBoxEquipo4.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        panelFutbolista2.add(ComboBoxEquipo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 16, -1, -1));
+
+        jTabbedPane.addTab("Entrenador", panelFutbolista2);
+
+        panelFutbolista3.setBackground(new java.awt.Color(143, 182, 155));
+        panelFutbolista3.setBorder(new javax.swing.border.MatteBorder(null));
+        panelFutbolista3.setForeground(new java.awt.Color(0, 0, 0));
+        panelFutbolista3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblAudiencia3.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        lblAudiencia3.setForeground(new java.awt.Color(0, 0, 0));
+        lblAudiencia3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblAudiencia3.setText("Número");
+        panelFutbolista3.add(lblAudiencia3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 85, 165, -1));
+
+        textFieldNum3.setEditable(false);
+        textFieldNum3.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        textFieldNum3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldNum3ActionPerformed(evt);
+            }
+        });
+        panelFutbolista3.add(textFieldNum3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 85, 50, -1));
+
+        lblNombre3.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        lblNombre3.setForeground(new java.awt.Color(0, 0, 0));
+        lblNombre3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblNombre3.setText("Nombre");
+        panelFutbolista3.add(lblNombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 51, 165, -1));
+
+        lblEquipo3.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        lblEquipo3.setForeground(new java.awt.Color(0, 0, 0));
+        lblEquipo3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblEquipo3.setText("Equipo");
+        panelFutbolista3.add(lblEquipo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 165, -1));
+
+        lblGolesLocal3.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        lblGolesLocal3.setForeground(new java.awt.Color(0, 0, 0));
+        lblGolesLocal3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblGolesLocal3.setText("Años en el equipo");
+        panelFutbolista3.add(lblGolesLocal3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 165, -1));
+
+        textFieldAñosEnE3.setEditable(false);
+        textFieldAñosEnE3.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        textFieldAñosEnE3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldAñosEnE3ActionPerformed(evt);
+            }
+        });
+        panelFutbolista3.add(textFieldAñosEnE3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 50, -1));
+
+        ComboBoxEquipo3.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        panelFutbolista3.add(ComboBoxEquipo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 16, -1, -1));
+
+        textFieldNombre3.setEditable(false);
+        textFieldNombre3.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        textFieldNombre3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldNombre3ActionPerformed(evt);
+            }
+        });
+        panelFutbolista3.add(textFieldNombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 176, -1));
+
+        textFieldEquipo3.setEditable(false);
+        textFieldEquipo3.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        textFieldEquipo3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldEquipo3ActionPerformed(evt);
+            }
+        });
+        panelFutbolista3.add(textFieldEquipo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 16, 176, -1));
+
+        jTabbedPane.addTab("Jugador", panelFutbolista3);
+
         btnSalir.setBackground(new java.awt.Color(255, 255, 255));
         btnSalir.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(0, 0, 0));
@@ -320,33 +469,29 @@ public class CrudFutbolista extends javax.swing.JDialog {
         contentPanelLayout.setHorizontalGroup(
             contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contentPanelLayout.createSequentialGroup()
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(contentPanelLayout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(btnNuevo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEditar)))
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contentPanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(12, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSalir)
-                        .addGap(21, 21, 21))))
+                .addGap(7, 7, 7)
+                .addComponent(btnNuevo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEliminar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEditar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSalir)
+                .addGap(21, 21, 21))
+            .addGroup(contentPanelLayout.createSequentialGroup()
+                .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 436, Short.MAX_VALUE))
         );
         contentPanelLayout.setVerticalGroup(
             contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contentPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                    .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEditar)
                     .addComponent(btnEliminar)
@@ -354,6 +499,8 @@ public class CrudFutbolista extends javax.swing.JDialog {
                     .addComponent(btnSalir))
                 .addContainerGap())
         );
+
+        jTabbedPane.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -375,6 +522,66 @@ public class CrudFutbolista extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void textFieldEquipo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldEquipo2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldEquipo2ActionPerformed
+
+    private void textFieldNombre2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNombre2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldNombre2ActionPerformed
+
+    private void textFieldAñosEnE2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAñosEnE2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldAñosEnE2ActionPerformed
+
+    private void btnAgregar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregar2ActionPerformed
+
+    private void btnGuardar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardar2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGuardar2ActionPerformed
+
+    private void btnCancelar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelar2ActionPerformed
+
+    private void textFieldNum2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNum2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldNum2ActionPerformed
+
+    private void textFieldEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldEquipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldEquipoActionPerformed
+
+    private void textFieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldNombreActionPerformed
+
+    private void textFieldAñosEnEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAñosEnEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldAñosEnEActionPerformed
+
+    private void textFieldNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldNumActionPerformed
+
+    private void textFieldNum3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNum3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldNum3ActionPerformed
+
+    private void textFieldAñosEnE3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAñosEnE3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldAñosEnE3ActionPerformed
+
+    private void textFieldNombre3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNombre3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldNombre3ActionPerformed
+
+    private void textFieldEquipo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldEquipo3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldEquipo3ActionPerformed
 
     private void jComboBoxEstadioActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jComboBoxEstadioActionPerformed
         // TODO add your handling code here:
@@ -409,25 +616,18 @@ public class CrudFutbolista extends javax.swing.JDialog {
         btnAgregar.setVisible(true);
         desactivar_habilitar(true);
         list.setEnabled(false);
-        DateChooserFecha.requestFocusInWindow();
         btnEliminar.setEnabled(false);
         btnNuevo.setEnabled(false);
         btnEditar.setEnabled(false);
         btnGuardar.setVisible(false);
         btnCancelar.setVisible(true);
 
-        textFieldEstadio.setVisible(false);
-        textFieldLocal.setVisible(false);
-        textFieldVisit.setVisible(false);
-        
-        jComboBoxEstadio.setVisible(true);
-        jComboBoxEstadio.setLocation(textFieldEstadio.getLocation());
+        textFieldNombre.setVisible(false);
+        textFieldEquipo.setVisible(false);
 
         ComboBoxEquipo.setVisible(true);
-        ComboBoxEquipo.setLocation(textFieldLocal.getLocation());
+        ComboBoxEquipo.setLocation(textFieldEquipo.getLocation());
 
-        jComboBoxVisitante.setVisible(true);
-        jComboBoxVisitante.setLocation(textFieldVisit.getLocation());
     }// GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAgregarActionPerformed
@@ -436,25 +636,12 @@ public class CrudFutbolista extends javax.swing.JDialog {
 
         if (proceder) {
             // guardar en la BD
-            Partido p = new Partido();
+            Futbolista f = new Futbolista();
 
-            p.setFecha(DateChooserFecha.getDate());
-            p.setIdEstadio(ServicesLocator.getEstadioServices().obtenerEstadios()
-                    .get(jComboBoxEstadio.getSelectedIndex()).getIdEstadio());
-            p.setAudiencia(Integer.parseInt(textFieldAudiencia.getText()));
-            p.setIdEquipoLocal((ServicesLocator.getEquipoServices().obtenerEquipos()
-                    .get(ComboBoxEquipo.getSelectedIndex()).getIdEquipo()));
-            p.setIdEquipoVisitante((ServicesLocator.getEquipoServices().obtenerEquipos()
-                    .get(jComboBoxVisitante.getSelectedIndex()).getIdEquipo()));
+            // codigo aqui
 
-            p.setGoles_local(Integer.parseInt(textFieldGolesLocal.getText()));
-            p.setGoles_visitante((Integer.parseInt(textFieldGolesVisitante.getText())));
-
-            System.out.println(ComboBoxEquipo.getSelectedIndex());
-            System.out.println(jComboBoxVisitante.getSelectedIndex());
-
-            ServicesLocator.getPartidoServices().crearPartido(p);
-            modelo.addElement(p);
+            ServicesLocator.getFutbolistaServices().crearFutbolista(f);
+            modelo.addElement(f);
 
             int lastIndex = list.getModel().getSize() - 1;
             list.setSelectedIndex(lastIndex);
@@ -469,16 +656,14 @@ public class CrudFutbolista extends javax.swing.JDialog {
             btnAgregar.setVisible(false);
             btnCancelar.setVisible(false);
 
-            jComboBoxEstadio.setVisible(false);
             ComboBoxEquipo.setVisible(false);
-            jComboBoxVisitante.setVisible(false);
         }
     }// GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnEditarActionPerformed
         desactivar_habilitar(list.getSelectedIndex() > -1);
         list.setEnabled(false);
-        DateChooserFecha.requestFocusInWindow();
+        textFieldNum.requestFocusInWindow();
         btnEliminar.setEnabled(false);
         btnNuevo.setEnabled(false);
         btnEditar.setEnabled(false);
@@ -486,18 +671,12 @@ public class CrudFutbolista extends javax.swing.JDialog {
         btnAgregar.setVisible(false);
         btnCancelar.setVisible(true);
 
-        textFieldEstadio.setVisible(false);
-        textFieldLocal.setVisible(false);
-        textFieldVisit.setVisible(false);
+        textFieldNombre.setVisible(false);
+        textFieldEquipo.setVisible(false);
         
-        jComboBoxEstadio.setVisible(true);
-        jComboBoxEstadio.setLocation(textFieldEstadio.getLocation());
-
         ComboBoxEquipo.setVisible(true);
-        ComboBoxEquipo.setLocation(textFieldLocal.getLocation());
+        ComboBoxEquipo.setLocation(textFieldEquipo.getLocation());
 
-        jComboBoxVisitante.setVisible(true);
-        jComboBoxVisitante.setLocation(textFieldVisit.getLocation());
     }// GEN-LAST:event_btnEditarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnGuardarActionPerformed
@@ -506,24 +685,14 @@ public class CrudFutbolista extends javax.swing.JDialog {
         boolean proceder = true; // validarDatos(id, nombre, capacidad);
 
         if (proceder) {
-            Partido p = new Partido();
+            Futbolista f = new Futbolista();
 
-            p.setFecha(DateChooserFecha.getDate());
-            p.setIdEstadio(ServicesLocator.getEstadioServices().getIdFromIndex(jComboBoxEstadio.getSelectedIndex()));
-            p.setAudiencia(Integer.parseInt(textFieldAudiencia.getText()));
-            p.setIdEquipoLocal((ServicesLocator.getEquipoServices().obtenerEquipos()
-                    .get(ComboBoxEquipo.getSelectedIndex()).getIdEquipo()));
-            p.setIdEquipoVisitante((ServicesLocator.getEquipoServices().obtenerEquipos()
-                    .get(jComboBoxVisitante.getSelectedIndex()).getIdEquipo()));
 
-            p.setGoles_local(Integer.parseInt(textFieldGolesLocal.getText()));
-            p.setGoles_visitante((Integer.parseInt(textFieldGolesVisitante.getText())));
+            // p.setIdPartido(modelo.getElementAt(index).getIdPartido());
 
-            p.setIdPartido(modelo.getElementAt(index).getIdPartido());
+            ServicesLocator.getFutbolistaServices().actualizarFutbolista(f);
 
-            ServicesLocator.getPartidoServices().actualizarPartido(p);
-
-            modelo.updateElement(index, p);
+            modelo.updateElement(index, f);
 
             desactivar_habilitar(false);
             list.setEnabled(true);
@@ -535,9 +704,7 @@ public class CrudFutbolista extends javax.swing.JDialog {
             btnCancelar.setVisible(false);
 
             
-            jComboBoxEstadio.setVisible(false);
             ComboBoxEquipo.setVisible(false);
-            jComboBoxVisitante.setVisible(false);
         }
     }// GEN-LAST:event_btnGuardarActionPerformed
 
@@ -568,20 +735,14 @@ public class CrudFutbolista extends javax.swing.JDialog {
         btnCancelar.setVisible(false);
 
         lblAudiencia.setForeground(Color.BLACK);
-        lblEstadio.setForeground(Color.BLACK);
-        lblFecha.setForeground(Color.BLACK);
+        lblNombre.setForeground(Color.BLACK);
         lblGolesLocal.setForeground(Color.BLACK);
-        lblGolesVisit.setForeground(Color.BLACK);
         lblEquipo.setForeground(Color.BLACK);
-        lblVisitante.setForeground(Color.BLACK);
 
-        jComboBoxEstadio.setVisible(false);
         ComboBoxEquipo.setVisible(false);
-        jComboBoxVisitante.setVisible(false);
 
-        textFieldEstadio.setVisible(true);
-        textFieldLocal.setVisible(true);
-        textFieldVisit.setVisible(true);
+        textFieldNombre.setVisible(true);
+        textFieldEquipo.setVisible(true);
 
         // lblDatosErroneos.setVisible(false);
     }// GEN-LAST:event_btnCancelarActionPerformed
@@ -593,51 +754,66 @@ public class CrudFutbolista extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBoxEquipo;
-    private com.toedter.calendar.JDateChooser DateChooserFecha;
+    private javax.swing.JComboBox<String> ComboBoxEquipo3;
+    private javax.swing.JComboBox<String> ComboBoxEquipo4;
+    private javax.swing.JComboBox<String> ComboBoxTipo;
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnAgregar2;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnCancelar2;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnGuardar2;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnSalir;
     private javax.swing.JPanel contentPanel;
+    private javax.swing.JTabbedPane jTabbedPane;
     private javax.swing.JLabel lblAudiencia;
+    private javax.swing.JLabel lblAudiencia2;
+    private javax.swing.JLabel lblAudiencia3;
     private javax.swing.JLabel lblEquipo;
-    private javax.swing.JLabel lblEstadio;
-    private javax.swing.JLabel lblFecha;
+    private javax.swing.JLabel lblEquipo2;
+    private javax.swing.JLabel lblEquipo3;
     private javax.swing.JLabel lblGolesLocal;
-    private javax.swing.JLabel lblGolesVisit;
-    private javax.swing.JLabel lblVisitante;
+    private javax.swing.JLabel lblGolesLocal3;
+    private javax.swing.JLabel lblGolesLocal4;
+    private javax.swing.JLabel lblGolesTipo;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblNombre2;
+    private javax.swing.JLabel lblNombre3;
     private javax.swing.JList<Partido> list;
-    private javax.swing.JPanel panel;
+    private javax.swing.JPanel panelFutbolista;
+    private javax.swing.JPanel panelFutbolista2;
+    private javax.swing.JPanel panelFutbolista3;
     private javax.swing.JScrollPane scrollPane;
-    private javax.swing.JTextField textFieldAudiencia;
-    private javax.swing.JTextField textFieldEstadio;
-    private javax.swing.JTextField textFieldGolesLocal;
-    private javax.swing.JTextField textFieldGolesVisitante;
-    private javax.swing.JTextField textFieldLocal;
-    private javax.swing.JTextField textFieldVisit;
+    private javax.swing.JTextField textFieldAñosEnE;
+    private javax.swing.JTextField textFieldAñosEnE2;
+    private javax.swing.JTextField textFieldAñosEnE3;
+    private javax.swing.JTextField textFieldEquipo;
+    private javax.swing.JTextField textFieldEquipo2;
+    private javax.swing.JTextField textFieldEquipo3;
+    private javax.swing.JTextField textFieldNombre;
+    private javax.swing.JTextField textFieldNombre2;
+    private javax.swing.JTextField textFieldNombre3;
+    private javax.swing.JTextField textFieldNum;
+    private javax.swing.JTextField textFieldNum2;
+    private javax.swing.JTextField textFieldNum3;
     // End of variables declaration//GEN-END:variables
 
     private void limpiar() {
-        DateChooserFecha.setDate(new Date());
-        textFieldEstadio.setText("");
-        textFieldAudiencia.setText("");
-        textFieldLocal.setText("");
-        textFieldVisit.setText("");
-        textFieldGolesLocal.setText("");
-        textFieldGolesVisitante.setText("");
+        textFieldNombre.setText("");
+        textFieldNum.setText("");
+        textFieldEquipo.setText("");
+        textFieldAñosEnE.setText("");
 
     }
 
     private void desactivar_habilitar(boolean estado) {
-        textFieldAudiencia.setEditable(estado);
-        textFieldEstadio.setEditable(estado);
-        textFieldGolesLocal.setEditable(estado);
-        textFieldGolesVisitante.setEditable(estado);
-        textFieldLocal.setEditable(estado);
-        textFieldVisit.setEditable(estado);
+        textFieldNum.setEditable(estado);
+        textFieldNombre.setEditable(estado);
+        textFieldAñosEnE.setEditable(estado);
+        textFieldEquipo.setEditable(estado);
     }
 
     private String buscarNombrEquipo(int id) {

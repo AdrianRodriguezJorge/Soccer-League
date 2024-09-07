@@ -62,8 +62,8 @@ public class EstadioServices {
         String sql = "SELECT * FROM estadio";
         try {
             connection = ConnectionManager.getConnection();
-            PreparedStatement stmn = connection.prepareStatement("SELECT * FROM estadio ORDER BY idestadio");
-            ResultSet rs = stmn.executeQuery();
+            PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM estadio ORDER BY idestadio");
+            ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 Estadio estadio = new Estadio(
                         rs.getString("nomestadio"),
@@ -81,12 +81,12 @@ public class EstadioServices {
     public void actualizarEstadio(Estadio estadio) {
         try {
             String sql = "UPDATE estadio SET nomestadio = ?, capacidad = ? WHERE idestadio = ?";
-            PreparedStatement stmn = connection.prepareStatement(sql);
-            stmn.setString(1, estadio.getNombreEstadio());
-            stmn.setInt(2, estadio.getCapacidad());
-            stmn.setInt(3, estadio.getIdEstadio());
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            pstmt.setString(1, estadio.getNombreEstadio());
+            pstmt.setInt(2, estadio.getCapacidad());
+            pstmt.setInt(3, estadio.getIdEstadio());
 
-            int afected = stmn.executeUpdate();
+            int afected = pstmt.executeUpdate();
 
             if (afected == 0) {
                 throw new SQLException();
@@ -102,10 +102,10 @@ public class EstadioServices {
     public void eliminarEstadio(int objetive) {
         try {
             String sql = "DELETE FROM estadio WHERE idestadio = ?";
-            PreparedStatement stmn = connection.prepareStatement(sql);
-            stmn.setInt(1, objetive);
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            pstmt.setInt(1, objetive);
 
-            int afected = stmn.executeUpdate();
+            int afected = pstmt.executeUpdate();
 
             if (afected == 0) {
                 System.out.println("Id no encontrado");

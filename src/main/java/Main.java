@@ -1,5 +1,12 @@
 
 import java.awt.EventQueue;
+
+import model.Defensa;
+import model.Delantero;
+import model.Entrenador;
+import model.Mediocampista;
+import model.Portero;
+import services.ServicesLocator;
 import utils.ConnectionManager;
 import visual.CrudEstadio;
 import visual.Login;
@@ -22,10 +29,10 @@ public class Main {
     EventQueue.invokeLater(new Runnable() {
         public void run() {
             try {
-                new Principal().setVisible(true);
+                new Principal().setVisible(true); // quitar esto
                 
-//                Login frame = new Login();
-//                frame.setVisible(true);
+            //    Login frame = new Login();
+            //    frame.setVisible(true);
             } catch (Exception e) {
                 e.printStackTrace();
             }

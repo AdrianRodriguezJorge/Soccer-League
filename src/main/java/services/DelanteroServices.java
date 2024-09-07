@@ -20,8 +20,8 @@ public class DelanteroServices {
         try (Connection conn = ConnectionManager.getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            pstmt.setInt(2, delantero.getNumero());
-            pstmt.setInt(3, delantero.getTirosAPuerta());
+            pstmt.setInt(1, delantero.getIdFutbolista());
+            pstmt.setInt(2, delantero.getTirosAPuerta());
             pstmt.executeUpdate();
 
         } catch (SQLException e) {

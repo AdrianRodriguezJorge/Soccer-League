@@ -6,9 +6,14 @@ package model;
 public class Entrenador extends Futbolista {
     private int añosExperiencia;
 
-    // Constructor
-    public Entrenador (int idEquipo, int numero, String nombre, int añosEnEquipo, int añosExperiencia) {
-        super(idEquipo, numero, nombre, añosEnEquipo);
+    // Constructores
+    public Entrenador (int idFutbolista, int idEquipo, int numero, String nombre, int añosEnEquipo, String tipo, int añosExperiencia) {
+        super(idFutbolista, idEquipo, numero, nombre, añosEnEquipo, tipo);
+        setAñosExperiencia(añosExperiencia);
+    }
+
+    public Entrenador (int idEquipo, int numero, String nombre, int añosEnEquipo, int añosExperiencia, String tipo) {
+        super(idEquipo, numero, nombre, añosEnEquipo, tipo);
         setAñosExperiencia(añosExperiencia);
     }
 

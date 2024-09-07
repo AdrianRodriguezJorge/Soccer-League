@@ -7,11 +7,19 @@ public class Mediocampista extends Jugador {
     private int pasesCompletados;
     private int intercepciones;
 
-    // Constructor
-    public Mediocampista (int idEquipo, int numero, String nombre, int añosEnEquipo,
-            int partidosJugados, int cantidadGoles, int asistencias, double promedioGoles, int pasesCompletados, int intercepciones) {
-        super(idEquipo, numero, nombre, añosEnEquipo, partidosJugados, cantidadGoles, asistencias,
-                promedioGoles);
+    // Constructores 
+    public Mediocampista (int idFutbolista, int idEquipo, int numero, String nombre, int añosEnEquipo, String tipo,
+            int partidosJugados, int cantidadGoles, int asistencias, double promedioGoles, String pos, int pasesCompletados, int intercepciones) {
+        super(idFutbolista, idEquipo, numero, nombre, añosEnEquipo, tipo, partidosJugados, cantidadGoles, asistencias,
+                promedioGoles, pos);
+        setPasesCompletados(pasesCompletados);
+        setIntercepciones(intercepciones);
+    }
+
+    public Mediocampista (int idEquipo, int numero, String nombre, int añosEnEquipo, String tipo,
+            int partidosJugados, int cantidadGoles, int asistencias, double promedioGoles, String pos, int pasesCompletados, int intercepciones) {
+        super(idEquipo, numero, nombre, añosEnEquipo, tipo, partidosJugados, cantidadGoles, asistencias,
+                promedioGoles, pos);
         setPasesCompletados(pasesCompletados);
         setIntercepciones(intercepciones);
     }

@@ -1,6 +1,12 @@
 package services;
 
+import model.Defensa;
+import model.Delantero;
+import model.Entrenador;
 import model.Futbolista;
+import model.Jugador;
+import model.Mediocampista;
+import model.Portero;
 import utils.ConnectionManager;
 
 import java.sql.*;
@@ -14,61 +20,172 @@ public class FutbolistaServices {
 
     /**
      * Método para crear un nuevo futbolista en la base de datos.
-     * 
+     *
      * @param futbolista El objeto Futbolista a crear.
      */
-    public void crearFutbolista(int idequipo, String nombre, int numero, int añosenequipo, String tipo) {
+    public void crearFutbolista(Futbolista futbolista) {
         String sql = "INSERT INTO futbolista (idequipo, nombre, numero, añosenequipo, tipo) VALUES (?, ?, ?, ?, ?)";
-        try (Connection conn = ConnectionManager.getConnection();
-                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (Connection conn = ConnectionManager.getConnection()) {
+            PreparedStatement pstmt = conn.prepareStatement(sql);
 
-            pstmt.setInt(1, idequipo);
-            pstmt.setString(2, nombre);
-            pstmt.setInt(3, numero);
-            pstmt.setInt(4, añosenequipo);
-            pstmt.setString(5, tipo);
+            // se inserta el futbolista
+            pstmt.setInt(1, futbolista.getIdEquipo());
+            pstmt.setString(2, futbolista.getNombre());
+            pstmt.setInt(3, futbolista.getNumero());
+            pstmt.setInt(4, futbolista.getAñosEnEquipo());
+            pstmt.setString(5, futbolista.getTipo());
             pstmt.executeUpdate();
+
+            // se obtiene el id recien ingresado para ser utilizado en las otras tablas
+            sql = "SELECT idfutbolista FROM futbolista WHERE idequipo = ? AND numero = ?";
+            pstmt = conn.prepareStatement(sql);
+
+            pstmt.setInt(1, futbolista.getIdEquipo());
+            pstmt.setInt(2, futbolista.getNumero());
+
+            ResultSet rs = pstmt.executeQuery();
+            rs.next();
+
+            int idFutb = rs.getInt("idfutbolista");
+            futbolista.setIdFutbolista(idFutb);
+
+            // se ingresan los datos según el tipo de futbolista y jugador
+            if (futbolista.getTipo().equals("Entrenador")) {
+                ServicesLocator.getEntrenadorServices().crearEntrenador((Entrenador) futbolista);
+            } else {
+                ServicesLocator.getJugadorServices().crearJugador((Jugador) futbolista);
+
+                String pos = ((Jugador) futbolista).getPosicion();
+                if (pos.equals("Defensa")) {
+                    ServicesLocator.getDefensaServices().crearDefensa((Defensa) futbolista);
+                } else if (pos.equals("Delantero")) {
+                    ServicesLocator.getDelanteroServices().crearDelantero((Delantero) futbolista);
+                } else if (pos.equals("Mediocampista")) {
+                    ServicesLocator.getMediocampistaServices().crearMediocampista((Mediocampista) futbolista);
+                } else if (pos.equals("Portero")) {
+                    ServicesLocator.getPorteroServices().crearPortero((Portero) futbolista);
+                }
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    // /**
-    // * Método para obtener todos los futbolistas de la base de datos.
-    // *
-    // * @return Lista de futbolistas.
-    // */
-    // public List<Futbolista> obtenerFutbolistas() {
-    // List<Futbolista> futbolistas = new ArrayList<>();
-    // String sql = "SELECT * FROM futbolista";
-    // try (Connection conn = ConnectionManager.getConnection();
-    // Statement stmt = conn.createStatement();
-    // ResultSet rs = stmt.executeQuery(sql)) {
+    /**
+     * Método para obtener todos los futbolistas de la base de datos.
+     *
+     * @return Lista de futbolistas.
+     */
+    public ArrayList<Futbolista> obtenerFutbolistas() {
+        ArrayList<Futbolista> futbolistas = new ArrayList<>();
+        Futbolista futbolista = null;
+        String sql = "SELECT * FROM futbolista";
+        try (Connection conn = ConnectionManager.getConnection();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
 
-    // while (rs.next()) {
-    // Futbolista futbolista = new Futbolista();
-    // futbolista.setIdFutbolista(rs.getInt("idfutbolista"));
-    // futbolista.setIdEquipo(rs.getInt("idequipo"));
-    // futbolista.setNombre(rs.getString("nombre"));
-    // futbolista.setNumero(rs.getInt("numero"));
-    // futbolista.setAñosEnEquipo(rs.getInt("añosenequipo"));
-    // futbolistas.add(futbolista);
-    // }
+            while (rs.next()) {
+                int idfutb = rs.getInt("idfutbolista");
+                int idEquipo = rs.getInt("idequipo");
+                String nombre = rs.getString("nombre");
+                int num = rs.getInt("numero");
+                int añosEnEquipo = rs.getInt("añosenequipo");
 
-    // } catch (SQLException e) {
-    // e.printStackTrace();
-    // }
-    // return futbolistas;
-    // }
+                String tipo = rs.getString("tipo");
+
+                if (tipo.equals("Entrenador")) {
+                    int añosExp = ServicesLocator.getEntrenadorServices().obtenerDatosEntrenador(idfutb);
+                    futbolista = new Entrenador(idfutb, idEquipo, num, nombre, añosEnEquipo, tipo, añosExp);
+
+                } else {
+                    Jugador jugador = ServicesLocator.getJugadorServices().obtenerJugador(idfutb);
+                    String pos = jugador.getPosicion();
+
+                    if (pos.equals("Defensa")) {
+                        Defensa e = ServicesLocator.getDefensaServices().obtenerDefensa(idfutb);
+
+                        e.setIdEquipo(idEquipo);
+                        e.setNombre(nombre);
+                        e.setNumero(num);
+                        e.setAñosEnEquipo(añosEnEquipo);
+
+                        e.setPosicion(jugador.getPosicion());
+                        e.setPartidosJugados(jugador.getPartidosJugados());
+                        e.setCantidadGoles(jugador.getCantidadGoles());
+                        e.setAsistencias(jugador.getAsistencias());
+                        e.setPromedioGoles(jugador.getPromedioGoles());
+                        e.setTipo(jugador.getTipo());
+
+                        futbolista = e;
+                    } else if (pos.equals("Delantero")) {
+                        Delantero e = ServicesLocator.getDelanteroServices().obtenerDelantero(idfutb);
+
+                        e.setIdEquipo(idEquipo);
+                        e.setNombre(nombre);
+                        e.setNumero(num);
+                        e.setAñosEnEquipo(añosEnEquipo);
+
+                        e.setPosicion(jugador.getPosicion());
+                        e.setPartidosJugados(jugador.getPartidosJugados());
+                        e.setCantidadGoles(jugador.getCantidadGoles());
+                        e.setAsistencias(jugador.getAsistencias());
+                        e.setPromedioGoles(jugador.getPromedioGoles());
+                        e.setTipo(jugador.getTipo());
+
+                        futbolista = e;
+                    } else if (pos.equals("Mediocampista")) {
+                        Mediocampista e = ServicesLocator.getMediocampistaServices().obtenerMediocampista(idfutb);
+
+                        e.setIdEquipo(idEquipo);
+                        e.setNombre(nombre);
+                        e.setNumero(num);
+                        e.setAñosEnEquipo(añosEnEquipo);
+
+                        e.setPosicion(jugador.getPosicion());
+                        e.setPartidosJugados(jugador.getPartidosJugados());
+                        e.setCantidadGoles(jugador.getCantidadGoles());
+                        e.setAsistencias(jugador.getAsistencias());
+                        e.setPromedioGoles(jugador.getPromedioGoles());
+                        e.setTipo(jugador.getTipo());
+
+                        futbolista = e;
+                    } else if (pos.equals("Portero")) {
+                        Portero e = ServicesLocator.getPorteroServices().obtenerPortero(idfutb);
+
+                        e.setIdEquipo(idEquipo);
+                        e.setNombre(nombre);
+                        e.setNumero(num);
+                        e.setAñosEnEquipo(añosEnEquipo);
+
+                        e.setPosicion(jugador.getPosicion());
+                        e.setPartidosJugados(jugador.getPartidosJugados());
+                        e.setCantidadGoles(jugador.getCantidadGoles());
+                        e.setAsistencias(jugador.getAsistencias());
+                        e.setPromedioGoles(jugador.getPromedioGoles());
+                        e.setTipo(jugador.getTipo());
+
+                        futbolista = e;
+                    } else
+                        throw new SQLException("Algo fue mal.");
+                }
+
+                futbolistas.add(futbolista);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return futbolistas;
+    }
 
     /**
      * Método para actualizar un futbolista en la base de datos.
-     * 
+     *
      * @param futbolista El objeto Futbolista a actualizar.
      */
     public void actualizarFutbolista(Futbolista futbolista) {
-        String sql = "UPDATE futbolista SET idequipo = ?, nombre = ?, numero = ?, añosenequipo = ?, tipo = ? WHERE id_futbolista = ?";
+        String sql = "UPDATE futbolista SET idequipo = ?, nombre = ?, numero = ?, añosenequipo = ?, tipo = ? WHERE idfutbolista = ?";
         try (Connection conn = ConnectionManager.getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
@@ -76,7 +193,25 @@ public class FutbolistaServices {
             pstmt.setString(2, futbolista.getNombre());
             pstmt.setInt(3, futbolista.getNumero());
             pstmt.setInt(4, futbolista.getAñosEnEquipo());
-            pstmt.setString(5, futbolista.getTipo());
+
+            String tipo = futbolista.getTipo();
+            pstmt.setString(5, tipo);
+            pstmt.setInt(6, futbolista.getIdFutbolista());
+
+            if (tipo.equals("Entrenador")) {
+                ServicesLocator.getEntrenadorServices().actualizarEntrenador((Entrenador) futbolista);
+            } else {
+                String pos = ((Jugador) futbolista).getPosicion();
+                if (pos.equals("Defensa")) {
+                    ServicesLocator.getDefensaServices().actualizarDefensa((Defensa) futbolista);
+                } else if (pos.equals("Delantero")) {
+                    ServicesLocator.getDelanteroServices().actualizarDelantero((Delantero) futbolista);
+                } else if (pos.equals("Mediocampista")) {
+                    ServicesLocator.getMediocampistaServices().actualizarMediocampista((Mediocampista) futbolista);
+                } else if (pos.equals("Portero")) {
+                    ServicesLocator.getPorteroServices().actualizarPortero((Portero) futbolista);
+                }
+            }
 
             pstmt.executeUpdate();
 
@@ -87,7 +222,7 @@ public class FutbolistaServices {
 
     /**
      * Método para eliminar un futbolista de la base de datos.
-     * 
+     *
      * @param idFutbolista El ID del futbolista a eliminar.
      */
     public void eliminarFutbolista(int idFutbolista) {
@@ -102,4 +237,5 @@ public class FutbolistaServices {
             e.printStackTrace();
         }
     }
+
 }

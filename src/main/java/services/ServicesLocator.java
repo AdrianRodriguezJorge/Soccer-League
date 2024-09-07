@@ -7,7 +7,7 @@ import utils.ConnectionManager;
 
 public class ServicesLocator {
     private static DefensaServices defensaServices = null;
-    private static DelanteroServices delanteroServices  = null;
+    private static DelanteroServices delanteroServices = null;
     private static EntrenadorServices entrenadorServices = null;
     private static EquipoServices equipoServices = null;
     private static EstadioServices estadioServices = null;
@@ -42,34 +42,52 @@ public class ServicesLocator {
         return partidoServices;
     }
 
-public static DefensaServices getDefensaServices() {
-    return defensaServices;
-}
-
-public static DelanteroServices getDelanteroServices() {
-    return delanteroServices;
-}
-
-public static EntrenadorServices getEntrenadorServices() {
-    if (entrenadorServices == null) {
-        entrenadorServices = new EntrenadorServices();
+    public static DefensaServices getDefensaServices() {
+        if (defensaServices == null) {
+            defensaServices = new DefensaServices();
+        }
+        return defensaServices;
     }
-    return entrenadorServices;
-}
 
-public static FutbolistaServices getFutbolistaServices() {
-    return futbolistaServices;
-}
+    public static DelanteroServices getDelanteroServices() {
+        if (delanteroServices == null) {
+            delanteroServices = new DelanteroServices();
+        }
+        return delanteroServices;
+    }
 
-public static JugadorServices getJugadorServices() {
-    return jugadorServices;
-}
+    public static EntrenadorServices getEntrenadorServices() {
+        if (entrenadorServices == null) {
+            entrenadorServices = new EntrenadorServices();
+        }
+        return entrenadorServices;
+    }
 
-public static MediocampistaServices getMediocampistaServices() {
-    return mediocampistaServices;
-}
+    public static FutbolistaServices getFutbolistaServices() {
+        if (futbolistaServices == null) {
+            futbolistaServices = new FutbolistaServices();
+        }
+        return futbolistaServices;
+    }
 
-public static PorteroServices getPorteroServices() {
-    return porteroServices;
-}
+    public static JugadorServices getJugadorServices() {
+        if (jugadorServices == null) {
+            jugadorServices = new JugadorServices();
+        }
+        return jugadorServices;
+    }
+
+    public static MediocampistaServices getMediocampistaServices() {
+        if (mediocampistaServices == null) {
+            mediocampistaServices = new MediocampistaServices();
+        }
+        return mediocampistaServices;
+    }
+
+    public static PorteroServices getPorteroServices() {
+        if (porteroServices == null) {
+            porteroServices = new PorteroServices();
+        }
+        return porteroServices;
+    }
 }

@@ -20,12 +20,12 @@ public class EntrenadorServices {
      * @param entrenador El objeto Entrenador a crear.
      */
     public void crearEntrenador(Entrenador entrenador) {
-        String sql = "INSERT INTO entrenador (nombre_equipo, numero, anos_experiencia) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO entrenador (idfutbolista, añosexperiencia) VALUES (?, ?)";
         try (Connection conn = ConnectionManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
              
-            pstmt.setInt(2, entrenador.getNumero());
-            pstmt.setInt(3, entrenador.getAñosExperiencia());
+            pstmt.setInt(1, entrenador.getIdFutbolista());
+            pstmt.setInt(2, entrenador.getAñosExperiencia());
             pstmt.executeUpdate();
             
         } catch (SQLException e) {
@@ -39,26 +39,24 @@ public class EntrenadorServices {
      * @param numero El número del entrenador.
      * @return El objeto Entrenador.
      */
-    public Entrenador obtenerEntrenador(String nomEquipo, int numero) {
-        Entrenador entrenador = null;
-        String sql = "SELECT * FROM entrenador WHERE nombre_equipo = ? AND numero = ?";
+    public int obtenerDatosEntrenador(int idFutb) {
+        int years = -1;
+        String sql = "SELECT * FROM entrenador WHERE idfutbolista = ?";
         try (Connection conn = ConnectionManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
              
-            pstmt.setString(1, nomEquipo);
-            pstmt.setInt(2, numero);
+            pstmt.setInt(1, idFutb);
+
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
-                    entrenador = new Entrenador();
-                    entrenador.setNumero(rs.getInt("numero"));
-                    entrenador.setAñosExperiencia(rs.getInt("anos_experiencia"));
+                    years = rs.getInt("añosexperiencia");
                 }
             }
             
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return entrenador;
+        return years;
     }
 
     /**
@@ -66,31 +64,12 @@ public class EntrenadorServices {
      * @param entrenador El objeto Entrenador a actualizar.
      */
     public void actualizarEntrenador(Entrenador entrenador) {
-        String sql = "UPDATE entrenador SET anos_experiencia = ? WHERE nombre_equipo = ? AND numero = ?";
+        String sql = "UPDATE entrenador SET añosexperiencia = ? WHERE idfutbolista = ?";
         try (Connection conn = ConnectionManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
              
             pstmt.setInt(1, entrenador.getAñosExperiencia());
-            pstmt.setInt(3, entrenador.getNumero());
-            pstmt.executeUpdate();
-            
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Método para eliminar un entrenador de la base de datos.
-     * @param nomEquipo El nombre del equipo del entrenador.
-     * @param numero El número del entrenador.
-     */
-    public void eliminarEntrenador(String nomEquipo, int numero) {
-        String sql = "DELETE FROM entrenador WHERE nombre_equipo = ? AND numero = ?";
-        try (Connection conn = ConnectionManager.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-             
-            pstmt.setString(1, nomEquipo);
-            pstmt.setInt(2, numero);
+            pstmt.setInt(2, entrenador.getIdFutbolista());
             pstmt.executeUpdate();
             
         } catch (SQLException e) {
