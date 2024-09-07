@@ -4,7 +4,16 @@
  */
 package visual;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.UIManager;
 import services.EquipoServices;
 import services.PartidoServices;
 import services.ServicesLocator;
@@ -23,10 +32,27 @@ public class Principal extends javax.swing.JFrame {
         setSize(800, 600);
         setLocationRelativeTo(null);
 
-        CrudPartido dialog = new CrudPartido(new javax.swing.JFrame(), true);
+        UIManager.put("OptionPane.messageFont", new Font("SansSerif", Font.PLAIN, 14));
+        UIManager.put("OptionPane.buttonFont", new Font("SansSerif", Font.PLAIN, 14));
+        UIManager.put("MenuItem.selectionBackground", new Color(217, 242, 220));
+        UIManager.put("Menu.selectionBackground", new Color(217, 242, 220));
+
+//        JOptionPane.showMessageDialog(null,"Votaciones cerradas.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+
+        CrudEquipo dialog = new CrudEquipo(new javax.swing.JFrame(), true);
         dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
         
+//        ImageIcon imagen = new ImageIcon("src/main/java/utils/image.jpg");
+//        JPanel panel = new JPanel() {
+//            @Override
+//            protected void paintComponent(Graphics g) {
+//                super.paintComponent(g);
+//                g.drawImage(imagen.getImage(), 0, 0, getWidth(),getHeight(), this);
+//            }
+//        };
+//        this.getContentPane().add(panel);
+//        this.setVisible(true);
     }
 
     /**
@@ -185,7 +211,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemRTablaPosicionesActionPerformed
 
     private void menuItemEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemEquiposActionPerformed
-        // TODO add your handling code here:
+        CrudEquipo dialog = new CrudEquipo(new javax.swing.JFrame(), true);
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
     }//GEN-LAST:event_menuItemEquiposActionPerformed
 
     private void menuItemPartidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemPartidosActionPerformed
@@ -211,7 +239,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemRPartidosPorFechaActionPerformed
 
     private void menuItemREntrenadoresExperienciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemREntrenadoresExperienciaActionPerformed
-        ServicesLocator.getEntrenadorServices().reporteEntrenadoresExp ();
+        ServicesLocator.getEntrenadorServices().reporteEntrenadoresExp();
     }//GEN-LAST:event_menuItemREntrenadoresExperienciaActionPerformed
 
     private void menuItemREstadiosMayorAudienciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemREstadiosMayorAudienciaActionPerformed

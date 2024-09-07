@@ -9,8 +9,7 @@ public class Estadio {
      private int capacidad;
 
      // Constructor
-     public Estadio(int idEstadio, String nombreEstadio, int capacidad) {
-          this.idEstadio = idEstadio;
+     public Estadio(String nombreEstadio, int capacidad) {
           this.nombreEstadio = nombreEstadio;
           this.capacidad = capacidad;
      }

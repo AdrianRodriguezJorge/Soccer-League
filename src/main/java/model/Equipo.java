@@ -13,7 +13,17 @@ public class Equipo {
     private String color;
     private int puntos;
 
-    // Constructor
+    // Constructores
+    public Equipo(String nomEquipo, String provincia, int campParticipados, int campGanados, String mascota, String color, int puntos) {
+        setNomEquipo(nomEquipo);
+        setProvincia(provincia);
+        setCampParticipados(campParticipados);
+        setCampGanados(campGanados);
+        setMascota(mascota);
+        setColor(color);
+        setPuntos(puntos);
+    }
+
     public Equipo(int idEquipo, String nomEquipo, String provincia, int campParticipados, int campGanados, String mascota, String color, int puntos) {
         setIdEquipo(idEquipo);
         setNomEquipo(nomEquipo);
@@ -24,7 +34,6 @@ public class Equipo {
         setColor(color);
         setPuntos(puntos);
     }
-
     public Equipo() {
     
     }
@@ -93,4 +102,11 @@ public class Equipo {
     public void setPuntos(int puntos) {
         this.puntos = puntos;
     }
+
+    @Override
+    public String toString() {
+        return nomEquipo;
+    }
+    
+    
 }

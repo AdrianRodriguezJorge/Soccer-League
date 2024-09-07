@@ -25,19 +25,18 @@ public class EquipoServices {
      * 
      * @param equipo El objeto Equipo a crear.
      */
-    public void crearEquipo(String nomequipo, String provincia, int camparticip, int campganados, String mascota,
-            String color, int puntos) {
+    public void crearEquipo(Equipo equipo) {
         String sql = "INSERT INTO equipo (nomequipo, provincia, camparticip, campganados, mascota, color, puntos) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = ConnectionManager.getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            pstmt.setString(1, nomequipo);
-            pstmt.setString(2, provincia);
-            pstmt.setInt(3, camparticip);
-            pstmt.setInt(4, campganados);
-            pstmt.setString(5, mascota);
-            pstmt.setString(6, color);
-            pstmt.setInt(7, puntos);
+            pstmt.setString(1, equipo.getNomEquipo());
+            pstmt.setString(2, equipo.getProvincia());
+            pstmt.setInt(3, equipo.getCampParticipados());
+            pstmt.setInt(4, equipo.getCampGanados());
+            pstmt.setString(5, equipo.getMascota());
+            pstmt.setString(6, equipo.getColor());
+            pstmt.setInt(7, equipo.getPuntos());
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -58,15 +57,15 @@ public class EquipoServices {
                 ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
-                Equipo equipo = new Equipo();
-                equipo.setIdEquipo(rs.getInt("idequipo"));
-                equipo.setNomEquipo(rs.getString("nomequipo"));
-                equipo.setProvincia(rs.getString("provincia"));
-                equipo.setCampParticipados(rs.getInt("camparticip"));
-                equipo.setCampGanados(rs.getInt("campganados"));
-                equipo.setMascota(rs.getString("mascota"));
-                equipo.setColor(rs.getString("color"));
-                equipo.setPuntos(rs.getInt("puntos"));
+                Equipo equipo = new Equipo(
+                    rs.getInt("idequipo"),
+                    rs.getString("nomequipo"), 
+                    rs.getString("provincia"),
+                    rs.getInt("camparticip"),
+                    rs.getInt("campganados"),
+                    rs.getString("mascota"),
+                    rs.getString("color"),
+                    rs.getInt("puntos"));
                 equipos.add(equipo);
             }
 
@@ -82,7 +81,7 @@ public class EquipoServices {
      * @param equipo El objeto Equipo a actualizar.
      */
     public void actualizarEquipo(Equipo equipo) {
-        String sql = "UPDATE equipo SET nomequipo = ?, provincia = ?, camparticip = ?, campganados = ?, mascota = ?, color = ?, puntos = ? WHERE id_equipo = ?";
+        String sql = "UPDATE equipo SET nomequipo = ?, provincia = ?, camparticip = ?, campganados = ?, mascota = ?, color = ?, puntos = ? WHERE idequipo = ?";
         try (Connection conn = ConnectionManager.getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
 

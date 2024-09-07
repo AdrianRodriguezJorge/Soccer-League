@@ -33,7 +33,8 @@ public class EstadioServices {
     /**
      * Crea un nuevo equipo en la base de datos.
      *
-     * @param estadio El equipo a crear.
+     * @param nombre del estadio a crear
+     * @param capacidad del estadio a crear
      * @return Verdadero si el equipo se creó correctamente.
      */
     public boolean agregarEstadio(String nombre, int capacidad) {
@@ -46,9 +47,10 @@ public class EstadioServices {
             return true;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            // de esta forma se tratarían las excepciones provenientes de la base de datos
             return false;
         }
-    }
+    } // de esta forma se tratarían las excepciones provenientes de la base de datos
 
     /**
      * Obtiene todos los equipos de la base de datos.
@@ -64,10 +66,10 @@ public class EstadioServices {
             ResultSet rs = stmn.executeQuery();
             while (rs.next()) {
                 Estadio estadio = new Estadio(
-                        rs.getInt("idestadio"),
                         rs.getString("nomestadio"),
-                        rs.getInt("capacidad")
+                        rs.getInt("idestadio")
                 );
+                estadio.setIdEstadio(rs.getInt("idestadio"));
                 list.add(estadio);
             }
         } catch (SQLException e) {
@@ -76,13 +78,13 @@ public class EstadioServices {
         return list;
     }
 
-    public void actualizarEstadio(int objetive, String nom, int cap) {
+    public void actualizarEstadio(Estadio estadio) {
         try {
             String sql = "UPDATE estadio SET nomestadio = ?, capacidad = ? WHERE idestadio = ?";
             PreparedStatement stmn = connection.prepareStatement(sql);
-            stmn.setString(1, nom);
-            stmn.setInt(2, cap);
-            stmn.setInt(3, objetive);
+            stmn.setString(1, estadio.getNombreEstadio());
+            stmn.setInt(2, estadio.getCapacidad());
+            stmn.setInt(3, estadio.getIdEstadio());
 
             int afected = stmn.executeUpdate();
 
@@ -140,7 +142,7 @@ public class EstadioServices {
     }
 
     public ArrayList<String> obtenerNombresEstadios() {
-        ArrayList <String> list = new ArrayList<>();
+        ArrayList<String> list = new ArrayList<>();
 
         for (Estadio e : obtenerEstadios()) {
             list.add(e.getNombreEstadio());
@@ -149,7 +151,7 @@ public class EstadioServices {
         return list;
     }
 
-    public void reportePorcentajeAudiencia () {
+    public void reportePorcentajeAudiencia() {
         try {
             // Ruta del archivo .jasper
             String reportPath = "src/main/java/reports/Estadios_porcentaje_audiencia.jasper";
@@ -171,10 +173,10 @@ public class EstadioServices {
         }
     }
 
-    public String getNombreEstadio (int id) {
+    public String getNombreEstadio(int id) {
         String nom = null;
-        ArrayList <Estadio> list = obtenerEstadios();
-        
+        ArrayList<Estadio> list = obtenerEstadios();
+
         for (int i = 0; i < list.size() && nom == null; i++) {
             if (list.get(i).getIdEstadio() == id) {
                 nom = list.get(i).getNombreEstadio();
@@ -183,7 +185,7 @@ public class EstadioServices {
         return nom;
     }
 
-    public int getIdFromIndex (int index) {
+    public int getIdFromIndex(int index) {
         return obtenerEstadios().get(index).getIdEstadio();
     }
 }

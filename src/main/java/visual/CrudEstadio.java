@@ -19,8 +19,10 @@ public class CrudEstadio extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        scrollPane.setViewportView(list);
-
+        btnAgregar.setVisible(false);
+        btnGuardar.setVisible(false);
+        btnCancelar.setVisible(false);
+        
         list.setModel(modelo);
 
         list.addListSelectionListener(new ListSelectionListener() {
@@ -31,7 +33,6 @@ public class CrudEstadio extends javax.swing.JDialog {
                 if (index > -1) {
                     Estadio c = modelo.getElementAt(index);
 
-                    textFieldID.setText(c.getIdEstadio() + "");
                     textFieldNombre.setText(c.getNombreEstadio());
                     textFieldCapacidad.setText(c.getCapacidad() + "");
 
@@ -58,10 +59,8 @@ public class CrudEstadio extends javax.swing.JDialog {
 
         contentPanel = new javax.swing.JPanel();
         panel = new javax.swing.JPanel();
-        lblD = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
         lblCapacidad = new javax.swing.JLabel();
-        textFieldID = new javax.swing.JTextField();
         textFieldNombre = new javax.swing.JTextField();
         textFieldCapacidad = new javax.swing.JTextField();
         btnCancelar = new javax.swing.JButton();
@@ -75,15 +74,11 @@ public class CrudEstadio extends javax.swing.JDialog {
         btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Gestión de estadios");
 
-        panel.setBackground(new java.awt.Color(101, 161, 101));
+        panel.setBackground(new java.awt.Color(143, 182, 155));
         panel.setBorder(new javax.swing.border.MatteBorder(null));
         panel.setForeground(new java.awt.Color(0, 0, 0));
-
-        lblD.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        lblD.setForeground(new java.awt.Color(0, 0, 0));
-        lblD.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblD.setText("ID");
 
         lblNombre.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(0, 0, 0));
@@ -94,10 +89,6 @@ public class CrudEstadio extends javax.swing.JDialog {
         lblCapacidad.setForeground(new java.awt.Color(0, 0, 0));
         lblCapacidad.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblCapacidad.setText("Capacidad");
-
-        textFieldID.setEditable(false);
-        textFieldID.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        textFieldID.setFocusable(false);
 
         textFieldNombre.setEditable(false);
         textFieldNombre.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
@@ -159,13 +150,9 @@ public class CrudEstadio extends javax.swing.JDialog {
                         .addComponent(textFieldCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelLayout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblD, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24)
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(textFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelLayout.createSequentialGroup()
                         .addComponent(btnGuardar)
                         .addGap(18, 18, 18)
@@ -177,11 +164,7 @@ public class CrudEstadio extends javax.swing.JDialog {
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblD)
-                    .addComponent(textFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(48, 48, 48)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombre)
                     .addComponent(textFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -335,7 +318,7 @@ public class CrudEstadio extends javax.swing.JDialog {
         if (proceder) {
             ServicesLocator.getEstadioServices().agregarEstadio(nombre, capacidad); // guardar en la BD
 
-            Estadio x = new Estadio(ServicesLocator.getEstadioServices().obtenerEstadios().getLast().getIdEstadio(), nombre, capacidad);
+            Estadio x = new Estadio(nombre, ServicesLocator.getEstadioServices().obtenerEstadios().getLast().getIdEstadio());
             modelo.addElement(x);
 
             int lastIndex = list.getModel().getSize() - 1;
@@ -367,20 +350,19 @@ public class CrudEstadio extends javax.swing.JDialog {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         int index = list.getSelectedIndex();
-        Estadio x;
 
-        int id = Integer.parseInt(textFieldID.getText());
         String nombre = textFieldNombre.getText();
         int capacidad = Integer.parseInt(textFieldCapacidad.getText());
 
         boolean proceder = true; // validarDatos(id, nombre, capacidad);
 
         if (proceder) {
-            x = new Estadio(id, nombre, capacidad);
+            Estadio e = new Estadio(nombre, capacidad);
+            e.setIdEstadio(modelo.getElementAt(index).getIdEstadio());
 
-            ServicesLocator.getEstadioServices().actualizarEstadio(Integer.parseInt(textFieldID.getText()), textFieldNombre.getText(), Integer.parseInt(textFieldCapacidad.getText())); // nuevo
+            ServicesLocator.getEstadioServices().actualizarEstadio(e);
 
-            modelo.updateElement(index, x);
+            modelo.updateElement(index, e);
             desactivar_habilitar(false);
             list.setEnabled(true);
             btnEliminar.setEnabled(true);
@@ -399,7 +381,7 @@ public class CrudEstadio extends javax.swing.JDialog {
                     "Confirmar", 0) == 0) {
                 modelo.removeElement(index);
 
-                ServicesLocator.getEstadioServices().eliminarEstadio(Integer.parseInt(textFieldID.getText()));
+                ServicesLocator.getEstadioServices().eliminarEstadio(modelo.getElementAt(index).getIdEstadio());
 
                 limpiar();
                 desactivar_habilitar(false);
@@ -416,7 +398,6 @@ public class CrudEstadio extends javax.swing.JDialog {
         btnAgregar.setVisible(false);
         btnGuardar.setVisible(false);
         btnCancelar.setVisible(false);
-        lblD.setForeground(Color.BLACK);
         lblNombre.setForeground(Color.BLACK);
         lblCapacidad.setForeground(Color.BLACK);
 //				lblDatosErroneos.setVisible(false);
@@ -441,18 +422,15 @@ public class CrudEstadio extends javax.swing.JDialog {
     private javax.swing.JButton btnSalir;
     private javax.swing.JPanel contentPanel;
     private javax.swing.JLabel lblCapacidad;
-    private javax.swing.JLabel lblD;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JList<Estadio> list;
     private javax.swing.JPanel panel;
     private javax.swing.JScrollPane scrollPane;
     private javax.swing.JTextField textFieldCapacidad;
-    private javax.swing.JTextField textFieldID;
     private javax.swing.JTextField textFieldNombre;
     // End of variables declaration//GEN-END:variables
 
     private void limpiar() {
-        textFieldID.setText("");
         textFieldNombre.setText("");
         textFieldCapacidad.setText("");
     }

@@ -1,8 +1,6 @@
 package visual;
 
 import java.awt.Color;
-import java.awt.Font;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -11,21 +9,19 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import model.Equipo;
-import model.Estadio;
+import model.Futbolista;
 import model.Partido;
 import services.ServicesLocator;
 import utils.ConnectionManager;
 import utils.Generic_Model;
 
-public class CrudPartido extends javax.swing.JDialog {
+public class CrudFutbolista extends javax.swing.JDialog {
 
-    private Generic_Model<Partido> modelo = new Generic_Model<>();
+    private Generic_Model<Futbolista> modelo = new Generic_Model<>();
 
-    public CrudPartido(java.awt.Frame parent, boolean modal) {
+    public CrudFutbolista(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
-        scrollPane.setViewportView(list);
 
         list.setModel(modelo);
 
@@ -34,7 +30,7 @@ public class CrudPartido extends javax.swing.JDialog {
         }
 
         for (String s : ServicesLocator.getEquipoServices().obtenerNombresEquipos()) {
-            jComboBoxLocal.addItem(s);
+            ComboBoxEquipo.addItem(s);
             jComboBoxVisitante.addItem(s);
         }
 
@@ -42,8 +38,10 @@ public class CrudPartido extends javax.swing.JDialog {
         btnGuardar.setVisible(false);
         btnCancelar.setVisible(false);
         jComboBoxEstadio.setVisible(false);
-        jComboBoxLocal.setVisible(false);
+        ComboBoxEquipo.setVisible(false);
         jComboBoxVisitante.setVisible(false);
+        
+        jComboBoxEstadio.setLocation(textFieldEstadio.getLocation());
 
         list.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
@@ -51,9 +49,7 @@ public class CrudPartido extends javax.swing.JDialog {
                 btnEliminar.setEnabled(index > -1);
                 desactivar_habilitar(index <= -1);
                 if (index > -1) {
-                    Partido p = modelo.getElementAt(index);
-
-                    System.out.println(p.getIdEquipoVisitante());
+                    Futbolista p = modelo.getElementAt(index);
 
                     String nomEquipoLocal = buscarNombrEquipo(p.getIdEquipoLocal());
                     String nomEquipoVisit = buscarNombrEquipo(p.getIdEquipoVisitante());
@@ -106,16 +102,14 @@ public class CrudPartido extends javax.swing.JDialog {
         btnGuardar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
         lblEstadio = new javax.swing.JLabel();
-        lblLocal = new javax.swing.JLabel();
+        lblEquipo = new javax.swing.JLabel();
         lblVisitante = new javax.swing.JLabel();
         lblGolesLocal = new javax.swing.JLabel();
         lblGolesVisit = new javax.swing.JLabel();
         textFieldGolesLocal = new javax.swing.JTextField();
         textFieldGolesVisitante = new javax.swing.JTextField();
         DateChooserFecha = new com.toedter.calendar.JDateChooser();
-        jComboBoxEstadio = new javax.swing.JComboBox<>();
-        jComboBoxLocal = new javax.swing.JComboBox<>();
-        jComboBoxVisitante = new javax.swing.JComboBox<>();
+        ComboBoxEquipo = new javax.swing.JComboBox<>();
         textFieldEstadio = new javax.swing.JTextField();
         textFieldVisit = new javax.swing.JTextField();
         textFieldLocal = new javax.swing.JTextField();
@@ -127,20 +121,27 @@ public class CrudPartido extends javax.swing.JDialog {
         btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Gestión de partidos");
 
-        panel.setBackground(new java.awt.Color(101, 161, 101));
+        contentPanel.setForeground(new java.awt.Color(143, 182, 155));
+        contentPanel.setToolTipText("");
+
+        panel.setBackground(new java.awt.Color(143, 182, 155));
         panel.setBorder(new javax.swing.border.MatteBorder(null));
         panel.setForeground(new java.awt.Color(0, 0, 0));
+        panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblFecha.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         lblFecha.setForeground(new java.awt.Color(0, 0, 0));
         lblFecha.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblFecha.setText("Fecha");
+        panel.add(lblFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 12, 165, -1));
 
         lblAudiencia.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         lblAudiencia.setForeground(new java.awt.Color(0, 0, 0));
         lblAudiencia.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblAudiencia.setText("Audiencia");
+        panel.add(lblAudiencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 165, -1));
 
         textFieldAudiencia.setEditable(false);
         textFieldAudiencia.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
@@ -149,6 +150,7 @@ public class CrudPartido extends javax.swing.JDialog {
                 textFieldAudienciaActionPerformed(evt);
             }
         });
+        panel.add(textFieldAudiencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 50, -1));
 
         btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
         btnCancelar.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
@@ -159,6 +161,7 @@ public class CrudPartido extends javax.swing.JDialog {
                 btnCancelarActionPerformed(evt);
             }
         });
+        panel.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, -1, -1));
 
         btnGuardar.setBackground(new java.awt.Color(255, 255, 255));
         btnGuardar.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
@@ -169,6 +172,7 @@ public class CrudPartido extends javax.swing.JDialog {
                 btnGuardarActionPerformed(evt);
             }
         });
+        panel.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, -1, -1));
 
         btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
         btnAgregar.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
@@ -179,31 +183,37 @@ public class CrudPartido extends javax.swing.JDialog {
                 btnAgregarActionPerformed(evt);
             }
         });
+        panel.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, -1, -1));
 
         lblEstadio.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         lblEstadio.setForeground(new java.awt.Color(0, 0, 0));
         lblEstadio.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblEstadio.setText("Estadio");
+        panel.add(lblEstadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 165, -1));
 
-        lblLocal.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        lblLocal.setForeground(new java.awt.Color(0, 0, 0));
-        lblLocal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblLocal.setText("Equipo local");
+        lblEquipo.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        lblEquipo.setForeground(new java.awt.Color(0, 0, 0));
+        lblEquipo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblEquipo.setText("Equipo");
+        panel.add(lblEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 165, -1));
 
-        lblVisitante.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        lblVisitante.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         lblVisitante.setForeground(new java.awt.Color(0, 0, 0));
         lblVisitante.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblVisitante.setText("Equipo visitante");
+        panel.add(lblVisitante, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 165, -1));
 
-        lblGolesLocal.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        lblGolesLocal.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         lblGolesLocal.setForeground(new java.awt.Color(0, 0, 0));
         lblGolesLocal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblGolesLocal.setText("Goles del e. local");
+        panel.add(lblGolesLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 165, -1));
 
-        lblGolesVisit.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        lblGolesVisit.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         lblGolesVisit.setForeground(new java.awt.Color(0, 0, 0));
         lblGolesVisit.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblGolesVisit.setText("Goles del e. visitante");
+        panel.add(lblGolesVisit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 225, 165, -1));
 
         textFieldGolesLocal.setEditable(false);
         textFieldGolesLocal.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
@@ -212,6 +222,7 @@ public class CrudPartido extends javax.swing.JDialog {
                 textFieldGolesLocalActionPerformed(evt);
             }
         });
+        panel.add(textFieldGolesLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 50, -1));
 
         textFieldGolesVisitante.setEditable(false);
         textFieldGolesVisitante.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
@@ -221,20 +232,14 @@ public class CrudPartido extends javax.swing.JDialog {
                 textFieldGolesVisitanteActionPerformed(evt);
             }
         });
+        panel.add(textFieldGolesVisitante, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 225, 50, -1));
 
         DateChooserFecha.setDateFormatString("yyyy-MM-dd HH:mm");
+        DateChooserFecha.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        panel.add(DateChooserFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 170, 25));
 
-        jComboBoxEstadio.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        jComboBoxEstadio.setFocusable(false);
-        jComboBoxEstadio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxEstadioActionPerformed(evt);
-            }
-        });
-
-        jComboBoxLocal.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-
-        jComboBoxVisitante.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        ComboBoxEquipo.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        panel.add(ComboBoxEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, -1, -1));
 
         textFieldEstadio.setEditable(false);
         textFieldEstadio.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
@@ -243,6 +248,7 @@ public class CrudPartido extends javax.swing.JDialog {
                 textFieldEstadioActionPerformed(evt);
             }
         });
+        panel.add(textFieldEstadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 176, -1));
 
         textFieldVisit.setEditable(false);
         textFieldVisit.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
@@ -251,6 +257,7 @@ public class CrudPartido extends javax.swing.JDialog {
                 textFieldVisitActionPerformed(evt);
             }
         });
+        panel.add(textFieldVisit, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 176, -1));
 
         textFieldLocal.setEditable(false);
         textFieldLocal.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
@@ -259,113 +266,9 @@ public class CrudPartido extends javax.swing.JDialog {
                 textFieldLocalActionPerformed(evt);
             }
         });
+        panel.add(textFieldLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 176, -1));
 
-        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
-        panel.setLayout(panelLayout);
-        panelLayout.setHorizontalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLayout.createSequentialGroup()
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblGolesLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblGolesVisit, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addComponent(textFieldGolesLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBoxEstadio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addComponent(textFieldGolesVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(textFieldLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(panelLayout.createSequentialGroup()
-                            .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(panelLayout.createSequentialGroup()
-                                    .addGap(22, 22, 22)
-                                    .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblEstadio)
-                                        .addComponent(lblAudiencia, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(lblVisitante, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(24, 24, 24)
-                            .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(textFieldAudiencia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(DateChooserFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(textFieldVisit, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                                .addComponent(textFieldEstadio)))))
-                .addGap(84, 84, 84))
-            .addGroup(panelLayout.createSequentialGroup()
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(jComboBoxLocal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(71, 71, 71)
-                        .addComponent(jComboBoxVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(btnGuardar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAgregar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCancelar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelLayout.setVerticalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLayout.createSequentialGroup()
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBoxVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxLocal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblFecha)
-                            .addComponent(DateChooserFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addComponent(jComboBoxEstadio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(104, 104, 104))
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblEstadio)
-                                    .addComponent(textFieldEstadio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblAudiencia)
-                                    .addComponent(textFieldAudiencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblLocal)
-                                    .addComponent(textFieldLocal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblVisitante)
-                                    .addComponent(textFieldVisit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblGolesLocal)
-                                    .addComponent(textFieldGolesLocal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblGolesVisit)
-                                    .addComponent(textFieldGolesVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(77, 77, 77)))))
-                .addGap(39, 39, 39)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnAgregar)
-                    .addComponent(btnGuardar))
-                .addContainerGap())
-        );
-
+        list.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         list.setForeground(new java.awt.Color(0, 102, 51));
         list.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scrollPane.setViewportView(list);
@@ -442,8 +345,8 @@ public class CrudPartido extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                    .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEditar)
                     .addComponent(btnEliminar)
@@ -520,8 +423,8 @@ public class CrudPartido extends javax.swing.JDialog {
         jComboBoxEstadio.setVisible(true);
         jComboBoxEstadio.setLocation(textFieldEstadio.getLocation());
 
-        jComboBoxLocal.setVisible(true);
-        jComboBoxLocal.setLocation(textFieldLocal.getLocation());
+        ComboBoxEquipo.setVisible(true);
+        ComboBoxEquipo.setLocation(textFieldLocal.getLocation());
 
         jComboBoxVisitante.setVisible(true);
         jComboBoxVisitante.setLocation(textFieldVisit.getLocation());
@@ -540,14 +443,14 @@ public class CrudPartido extends javax.swing.JDialog {
                     .get(jComboBoxEstadio.getSelectedIndex()).getIdEstadio());
             p.setAudiencia(Integer.parseInt(textFieldAudiencia.getText()));
             p.setIdEquipoLocal((ServicesLocator.getEquipoServices().obtenerEquipos()
-                    .get(jComboBoxLocal.getSelectedIndex()).getIdEquipo()));
+                    .get(ComboBoxEquipo.getSelectedIndex()).getIdEquipo()));
             p.setIdEquipoVisitante((ServicesLocator.getEquipoServices().obtenerEquipos()
                     .get(jComboBoxVisitante.getSelectedIndex()).getIdEquipo()));
 
             p.setGoles_local(Integer.parseInt(textFieldGolesLocal.getText()));
             p.setGoles_visitante((Integer.parseInt(textFieldGolesVisitante.getText())));
 
-            System.out.println(jComboBoxLocal.getSelectedIndex());
+            System.out.println(ComboBoxEquipo.getSelectedIndex());
             System.out.println(jComboBoxVisitante.getSelectedIndex());
 
             ServicesLocator.getPartidoServices().crearPartido(p);
@@ -567,7 +470,7 @@ public class CrudPartido extends javax.swing.JDialog {
             btnCancelar.setVisible(false);
 
             jComboBoxEstadio.setVisible(false);
-            jComboBoxLocal.setVisible(false);
+            ComboBoxEquipo.setVisible(false);
             jComboBoxVisitante.setVisible(false);
         }
     }// GEN-LAST:event_btnAgregarActionPerformed
@@ -590,8 +493,8 @@ public class CrudPartido extends javax.swing.JDialog {
         jComboBoxEstadio.setVisible(true);
         jComboBoxEstadio.setLocation(textFieldEstadio.getLocation());
 
-        jComboBoxLocal.setVisible(true);
-        jComboBoxLocal.setLocation(textFieldLocal.getLocation());
+        ComboBoxEquipo.setVisible(true);
+        ComboBoxEquipo.setLocation(textFieldLocal.getLocation());
 
         jComboBoxVisitante.setVisible(true);
         jComboBoxVisitante.setLocation(textFieldVisit.getLocation());
@@ -609,7 +512,7 @@ public class CrudPartido extends javax.swing.JDialog {
             p.setIdEstadio(ServicesLocator.getEstadioServices().getIdFromIndex(jComboBoxEstadio.getSelectedIndex()));
             p.setAudiencia(Integer.parseInt(textFieldAudiencia.getText()));
             p.setIdEquipoLocal((ServicesLocator.getEquipoServices().obtenerEquipos()
-                    .get(jComboBoxLocal.getSelectedIndex()).getIdEquipo()));
+                    .get(ComboBoxEquipo.getSelectedIndex()).getIdEquipo()));
             p.setIdEquipoVisitante((ServicesLocator.getEquipoServices().obtenerEquipos()
                     .get(jComboBoxVisitante.getSelectedIndex()).getIdEquipo()));
 
@@ -633,7 +536,7 @@ public class CrudPartido extends javax.swing.JDialog {
 
             
             jComboBoxEstadio.setVisible(false);
-            jComboBoxLocal.setVisible(false);
+            ComboBoxEquipo.setVisible(false);
             jComboBoxVisitante.setVisible(false);
         }
     }// GEN-LAST:event_btnGuardarActionPerformed
@@ -669,11 +572,11 @@ public class CrudPartido extends javax.swing.JDialog {
         lblFecha.setForeground(Color.BLACK);
         lblGolesLocal.setForeground(Color.BLACK);
         lblGolesVisit.setForeground(Color.BLACK);
-        lblLocal.setForeground(Color.BLACK);
+        lblEquipo.setForeground(Color.BLACK);
         lblVisitante.setForeground(Color.BLACK);
 
         jComboBoxEstadio.setVisible(false);
-        jComboBoxLocal.setVisible(false);
+        ComboBoxEquipo.setVisible(false);
         jComboBoxVisitante.setVisible(false);
 
         textFieldEstadio.setVisible(true);
@@ -686,10 +589,10 @@ public class CrudPartido extends javax.swing.JDialog {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnSalirActionPerformed
         ConnectionManager.closeConnection();
         dispose();
-        System.exit(0);
     }// GEN-LAST:event_btnSalirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ComboBoxEquipo;
     private com.toedter.calendar.JDateChooser DateChooserFecha;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnCancelar;
@@ -699,17 +602,14 @@ public class CrudPartido extends javax.swing.JDialog {
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnSalir;
     private javax.swing.JPanel contentPanel;
-    private javax.swing.JComboBox<String> jComboBoxEstadio;
-    private javax.swing.JComboBox<String> jComboBoxLocal;
-    private javax.swing.JComboBox<String> jComboBoxVisitante;
     private javax.swing.JLabel lblAudiencia;
+    private javax.swing.JLabel lblEquipo;
     private javax.swing.JLabel lblEstadio;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblGolesLocal;
     private javax.swing.JLabel lblGolesVisit;
-    private javax.swing.JLabel lblLocal;
     private javax.swing.JLabel lblVisitante;
-    private javax.swing.JList<Estadio> list;
+    private javax.swing.JList<Partido> list;
     private javax.swing.JPanel panel;
     private javax.swing.JScrollPane scrollPane;
     private javax.swing.JTextField textFieldAudiencia;
