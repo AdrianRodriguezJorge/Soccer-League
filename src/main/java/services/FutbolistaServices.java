@@ -44,10 +44,11 @@ public class FutbolistaServices {
             pstmt.setInt(2, futbolista.getNumero());
 
             ResultSet rs = pstmt.executeQuery();
-            rs.next();
-
-            int idFutb = rs.getInt("idfutbolista");
-            futbolista.setIdFutbolista(idFutb);
+            
+            if(rs.next()) {
+                int idFutb = rs.getInt("idfutbolista");
+                futbolista.setIdFutbolista(idFutb);
+            } else throw new SQLException("Algo salió mal al crear al futbolista.");
 
             // se ingresan los datos según el tipo de futbolista y jugador
             if (futbolista.getTipo().equals("Entrenador")) {
@@ -100,6 +101,7 @@ public class FutbolistaServices {
 
                 } else {
                     Jugador jugador = ServicesLocator.getJugadorServices().obtenerJugador(idfutb);
+                    jugador.setTipo("Jugador");
                     String pos = jugador.getPosicion();
 
                     if (pos.equals("Defensa")) {
@@ -197,6 +199,7 @@ public class FutbolistaServices {
             String tipo = futbolista.getTipo();
             pstmt.setString(5, tipo);
             pstmt.setInt(6, futbolista.getIdFutbolista());
+            pstmt.executeUpdate();
 
             if (tipo.equals("Entrenador")) {
                 ServicesLocator.getEntrenadorServices().actualizarEntrenador((Entrenador) futbolista);
@@ -212,8 +215,6 @@ public class FutbolistaServices {
                     ServicesLocator.getPorteroServices().actualizarPortero((Portero) futbolista);
                 }
             }
-
-            pstmt.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();

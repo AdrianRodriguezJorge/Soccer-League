@@ -28,17 +28,17 @@ public class CrudEquipo extends javax.swing.JDialog {
             public void valueChanged(ListSelectionEvent e) {
                 int indice = list.getSelectedIndex();
                 btnEliminar.setEnabled(indice > -1);
-                desactivar_habilitar(indice <= -1);
+                editabled(indice <= -1);
                 if (indice > -1) {
                     Equipo c = modelo.getElementAt(indice);
 
-                    textFieldNombre.setText(c.getNomEquipo());
-                    textFieldProvincia.setText(c.getProvincia());
-                    textFieldCampParticip.setText(String.valueOf(c.getCampParticipados()));
-                    textFieldCampGanados.setText(String.valueOf(c.getCampGanados()));
-                    textFieldMascota.setText(c.getMascota());
-                    textFieldColor.setText(c.getColor());
-                    textFieldPuntos.setText(c.getPuntos() + "");
+                    tfNombre.setText(c.getNomEquipo());
+                    tfProvincia.setText(c.getProvincia());
+                    tfCampParticip.setText(String.valueOf(c.getCampParticipados()));
+                    tfCampGanados.setText(String.valueOf(c.getCampGanados()));
+                    tfMascota.setText(c.getMascota());
+                    tfColor.setText(c.getColor());
+                    tfPuntos.setText(c.getPuntos() + "");
 
                     btnNuevo.setEnabled(true);
                     btnEditar.setEnabled(true);
@@ -64,8 +64,8 @@ public class CrudEquipo extends javax.swing.JDialog {
         contentPanel = new javax.swing.JPanel();
         panel = new javax.swing.JPanel();
         lblNombre = new javax.swing.JLabel();
-        textFieldNombre = new javax.swing.JTextField();
-        textFieldProvincia = new javax.swing.JTextField();
+        tfNombre = new javax.swing.JTextField();
+        tfProvincia = new javax.swing.JTextField();
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
@@ -75,11 +75,11 @@ public class CrudEquipo extends javax.swing.JDialog {
         lblProvincia = new javax.swing.JLabel();
         lblPuntos = new javax.swing.JLabel();
         lblColor = new javax.swing.JLabel();
-        textFieldCampGanados = new javax.swing.JTextField();
-        textFieldCampParticip = new javax.swing.JTextField();
-        textFieldColor = new javax.swing.JTextField();
-        textFieldMascota = new javax.swing.JTextField();
-        textFieldPuntos = new javax.swing.JTextField();
+        tfCampGanados = new javax.swing.JTextField();
+        tfCampParticip = new javax.swing.JTextField();
+        tfColor = new javax.swing.JTextField();
+        tfMascota = new javax.swing.JTextField();
+        tfPuntos = new javax.swing.JTextField();
         scrollPane = new javax.swing.JScrollPane();
         list = new javax.swing.JList<>();
         btnNuevo = new javax.swing.JButton();
@@ -98,14 +98,14 @@ public class CrudEquipo extends javax.swing.JDialog {
         lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNombre.setText("Nombre");
 
-        textFieldNombre.setEditable(false);
-        textFieldNombre.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        tfNombre.setEditable(false);
+        tfNombre.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
-        textFieldProvincia.setEditable(false);
-        textFieldProvincia.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        textFieldProvincia.addActionListener(new java.awt.event.ActionListener() {
+        tfProvincia.setEditable(false);
+        tfProvincia.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        tfProvincia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldProvinciaActionPerformed(evt);
+                tfProvinciaActionPerformed(evt);
             }
         });
 
@@ -169,43 +169,43 @@ public class CrudEquipo extends javax.swing.JDialog {
         lblColor.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblColor.setText("Color");
 
-        textFieldCampGanados.setEditable(false);
-        textFieldCampGanados.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        textFieldCampGanados.addActionListener(new java.awt.event.ActionListener() {
+        tfCampGanados.setEditable(false);
+        tfCampGanados.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        tfCampGanados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldCampGanadosActionPerformed(evt);
+                tfCampGanadosActionPerformed(evt);
             }
         });
 
-        textFieldCampParticip.setEditable(false);
-        textFieldCampParticip.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        textFieldCampParticip.addActionListener(new java.awt.event.ActionListener() {
+        tfCampParticip.setEditable(false);
+        tfCampParticip.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        tfCampParticip.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldCampParticipActionPerformed(evt);
+                tfCampParticipActionPerformed(evt);
             }
         });
 
-        textFieldColor.setEditable(false);
-        textFieldColor.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        textFieldColor.addActionListener(new java.awt.event.ActionListener() {
+        tfColor.setEditable(false);
+        tfColor.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        tfColor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldColorActionPerformed(evt);
+                tfColorActionPerformed(evt);
             }
         });
 
-        textFieldMascota.setEditable(false);
-        textFieldMascota.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        textFieldMascota.addActionListener(new java.awt.event.ActionListener() {
+        tfMascota.setEditable(false);
+        tfMascota.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        tfMascota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldMascotaActionPerformed(evt);
+                tfMascotaActionPerformed(evt);
             }
         });
 
-        textFieldPuntos.setEditable(false);
-        textFieldPuntos.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        textFieldPuntos.addActionListener(new java.awt.event.ActionListener() {
+        tfPuntos.setEditable(false);
+        tfPuntos.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        tfPuntos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldPuntosActionPerformed(evt);
+                tfPuntosActionPerformed(evt);
             }
         });
 
@@ -229,14 +229,14 @@ public class CrudEquipo extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(textFieldNombre)
-                                .addComponent(textFieldProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(tfNombre)
+                                .addComponent(tfProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(textFieldCampGanados, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                                .addComponent(textFieldCampParticip, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(textFieldMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textFieldPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textFieldColor, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(tfCampGanados, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                .addComponent(tfCampParticip, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tfMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfColor, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelLayout.createSequentialGroup()
                         .addComponent(btnGuardar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -251,31 +251,31 @@ public class CrudEquipo extends javax.swing.JDialog {
                 .addGap(16, 16, 16)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombre)
-                    .addComponent(textFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblProvincia)
-                    .addComponent(textFieldProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCampParticip)
-                    .addComponent(textFieldCampParticip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfCampParticip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCampGanados)
-                    .addComponent(textFieldCampGanados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfCampGanados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMascota)
-                    .addComponent(textFieldMascota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfMascota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblColor)
-                    .addComponent(textFieldColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPuntos)
-                    .addComponent(textFieldPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
@@ -390,9 +390,9 @@ public class CrudEquipo extends javax.swing.JDialog {
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         limpiar();
         btnAgregar.setVisible(true);
-        desactivar_habilitar(true);
+        editabled(true);
         list.setEnabled(false);
-        textFieldNombre.requestFocusInWindow();
+        tfNombre.requestFocusInWindow();
         btnEliminar.setEnabled(false);
         btnNuevo.setEnabled(false);
         btnEditar.setEnabled(false);
@@ -401,13 +401,13 @@ public class CrudEquipo extends javax.swing.JDialog {
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        String nombre = textFieldNombre.getText();
-        String provincia = textFieldProvincia.getText();
-        int campParticip = Integer.parseInt(textFieldCampParticip.getText());
-        int campGanados = Integer.parseInt(textFieldCampGanados.getText());
-        String mascota = textFieldMascota.getText();
-        String color = textFieldColor.getText();
-        int puntos = Integer.parseInt(textFieldPuntos.getText());
+        String nombre = tfNombre.getText();
+        String provincia = tfProvincia.getText();
+        int campParticip = Integer.parseInt(tfCampParticip.getText());
+        int campGanados = Integer.parseInt(tfCampGanados.getText());
+        String mascota = tfMascota.getText();
+        String color = tfColor.getText();
+        int puntos = Integer.parseInt(tfPuntos.getText());
 
         boolean proceder = true;
 
@@ -421,7 +421,7 @@ public class CrudEquipo extends javax.swing.JDialog {
             list.setSelectedIndex(lastIndex);
             list.ensureIndexIsVisible(lastIndex);
 
-            desactivar_habilitar(false);
+            editabled(false);
             list.setEnabled(true);
             btnEliminar.setEnabled(true);
             btnEditar.setEnabled(true);
@@ -433,9 +433,9 @@ public class CrudEquipo extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        desactivar_habilitar(list.getSelectedIndex() > -1);
+        editabled(list.getSelectedIndex() > -1);
         list.setEnabled(false);
-        textFieldNombre.requestFocusInWindow();
+        tfNombre.requestFocusInWindow();
         btnEliminar.setEnabled(false);
         btnNuevo.setEnabled(false);
         btnEditar.setEnabled(false);
@@ -447,13 +447,13 @@ public class CrudEquipo extends javax.swing.JDialog {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         int indice = list.getSelectedIndex();
 
-        String nombre = textFieldNombre.getText();
-        String provincia = textFieldProvincia.getText();
-        int campParticip = Integer.parseInt(textFieldCampParticip.getText());
-        int campGanados = Integer.parseInt(textFieldCampGanados.getText());
-        String mascota = textFieldMascota.getText();
-        String color = textFieldColor.getText();
-        int puntos = Integer.parseInt(textFieldPuntos.getText());
+        String nombre = tfNombre.getText();
+        String provincia = tfProvincia.getText();
+        int campParticip = Integer.parseInt(tfCampParticip.getText());
+        int campGanados = Integer.parseInt(tfCampGanados.getText());
+        String mascota = tfMascota.getText();
+        String color = tfColor.getText();
+        int puntos = Integer.parseInt(tfPuntos.getText());
 
         boolean proceder = true; // validarDatos(id, nombre, capacidad);
 
@@ -463,7 +463,7 @@ public class CrudEquipo extends javax.swing.JDialog {
             ServicesLocator.getEquipoServices().actualizarEquipo(x);
 
             modelo.updateElement(indice, x);
-            desactivar_habilitar(false);
+            editabled(false);
             list.setEnabled(true);
             btnEliminar.setEnabled(true);
             btnEditar.setEnabled(true);
@@ -485,13 +485,13 @@ public class CrudEquipo extends javax.swing.JDialog {
                 modelo.removeElement(list.getSelectedIndex());
 
                 limpiar();
-                desactivar_habilitar(false);
+                editabled(false);
             }
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        desactivar_habilitar(false);
+        editabled(false);
         list.setEnabled(true);
         btnEliminar.setEnabled(true);
         btnEditar.setEnabled(true);
@@ -514,29 +514,29 @@ public class CrudEquipo extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void textFieldProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldProvinciaActionPerformed
+    private void tfProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfProvinciaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldProvinciaActionPerformed
+    }//GEN-LAST:event_tfProvinciaActionPerformed
 
-    private void textFieldCampGanadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCampGanadosActionPerformed
+    private void tfCampGanadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCampGanadosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldCampGanadosActionPerformed
+    }//GEN-LAST:event_tfCampGanadosActionPerformed
 
-    private void textFieldCampParticipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCampParticipActionPerformed
+    private void tfCampParticipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCampParticipActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldCampParticipActionPerformed
+    }//GEN-LAST:event_tfCampParticipActionPerformed
 
-    private void textFieldColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldColorActionPerformed
+    private void tfColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfColorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldColorActionPerformed
+    }//GEN-LAST:event_tfColorActionPerformed
 
-    private void textFieldMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldMascotaActionPerformed
+    private void tfMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfMascotaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldMascotaActionPerformed
+    }//GEN-LAST:event_tfMascotaActionPerformed
 
-    private void textFieldPuntosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPuntosActionPerformed
+    private void tfPuntosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPuntosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldPuntosActionPerformed
+    }//GEN-LAST:event_tfPuntosActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
@@ -557,33 +557,33 @@ public class CrudEquipo extends javax.swing.JDialog {
     private javax.swing.JList<Equipo> list;
     private javax.swing.JPanel panel;
     private javax.swing.JScrollPane scrollPane;
-    private javax.swing.JTextField textFieldCampGanados;
-    private javax.swing.JTextField textFieldCampParticip;
-    private javax.swing.JTextField textFieldColor;
-    private javax.swing.JTextField textFieldMascota;
-    private javax.swing.JTextField textFieldNombre;
-    private javax.swing.JTextField textFieldProvincia;
-    private javax.swing.JTextField textFieldPuntos;
+    private javax.swing.JTextField tfCampGanados;
+    private javax.swing.JTextField tfCampParticip;
+    private javax.swing.JTextField tfColor;
+    private javax.swing.JTextField tfMascota;
+    private javax.swing.JTextField tfNombre;
+    private javax.swing.JTextField tfProvincia;
+    private javax.swing.JTextField tfPuntos;
     // End of variables declaration//GEN-END:variables
 
     private void limpiar() {
-        textFieldNombre.setText("");
-        textFieldProvincia.setText("");
-        textFieldCampParticip.setText("");
-        textFieldCampGanados.setText("");
-        textFieldMascota.setText("");
-        textFieldColor.setText("");
-        textFieldPuntos.setText("");
+        tfNombre.setText("");
+        tfProvincia.setText("");
+        tfCampParticip.setText("");
+        tfCampGanados.setText("");
+        tfMascota.setText("");
+        tfColor.setText("");
+        tfPuntos.setText("");
     }
 
-    private void desactivar_habilitar(boolean estado) {
-        textFieldNombre.setEditable(estado);
-        textFieldProvincia.setEditable(estado);
-        textFieldCampParticip.setEditable(estado);
-        textFieldCampGanados.setEditable(estado);
-        textFieldMascota.setEditable(estado);
-        textFieldColor.setEditable(estado);
-        textFieldPuntos.setEditable(estado);
+    private void editabled(boolean status) {
+        tfNombre.setEditable(status);
+        tfProvincia.setEditable(status);
+        tfCampParticip.setEditable(status);
+        tfCampGanados.setEditable(status);
+        tfMascota.setEditable(status);
+        tfColor.setEditable(status);
+        tfPuntos.setEditable(status);
     }
 
     // public boolean validarDatos(String n, String nombre, String capacidad) {

@@ -29,12 +29,12 @@ public class CrudEstadio extends javax.swing.JDialog {
             public void valueChanged(ListSelectionEvent e) {
                 int index = list.getSelectedIndex();
                 btnEliminar.setEnabled(index > -1);
-                desactivar_habilitar(index <= -1);
+                editabled(index <= -1);
                 if (index > -1) {
                     Estadio c = modelo.getElementAt(index);
 
-                    textFieldNombre.setText(c.getNombreEstadio());
-                    textFieldCapacidad.setText(c.getCapacidad() + "");
+                    tfNombre.setText(c.getNombreEstadio());
+                    tfCapacidad.setText(c.getCapacidad() + "");
 
                     btnNuevo.setEnabled(true);
                     btnEditar.setEnabled(true);
@@ -61,8 +61,8 @@ public class CrudEstadio extends javax.swing.JDialog {
         panel = new javax.swing.JPanel();
         lblNombre = new javax.swing.JLabel();
         lblCapacidad = new javax.swing.JLabel();
-        textFieldNombre = new javax.swing.JTextField();
-        textFieldCapacidad = new javax.swing.JTextField();
+        tfNombre = new javax.swing.JTextField();
+        tfCapacidad = new javax.swing.JTextField();
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
@@ -90,14 +90,14 @@ public class CrudEstadio extends javax.swing.JDialog {
         lblCapacidad.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblCapacidad.setText("Capacidad");
 
-        textFieldNombre.setEditable(false);
-        textFieldNombre.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        tfNombre.setEditable(false);
+        tfNombre.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
 
-        textFieldCapacidad.setEditable(false);
-        textFieldCapacidad.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        textFieldCapacidad.addActionListener(new java.awt.event.ActionListener() {
+        tfCapacidad.setEditable(false);
+        tfCapacidad.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        tfCapacidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldCapacidadActionPerformed(evt);
+                tfCapacidadActionPerformed(evt);
             }
         });
 
@@ -147,12 +147,12 @@ public class CrudEstadio extends javax.swing.JDialog {
                     .addGroup(panelLayout.createSequentialGroup()
                         .addComponent(lblCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24)
-                        .addComponent(textFieldCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(tfCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelLayout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24)
-                        .addComponent(textFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelLayout.createSequentialGroup()
                         .addComponent(btnGuardar)
                         .addGap(18, 18, 18)
@@ -167,11 +167,11 @@ public class CrudEstadio extends javax.swing.JDialog {
                 .addGap(48, 48, 48)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombre)
-                    .addComponent(textFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCapacidad)
-                    .addComponent(textFieldCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
@@ -299,9 +299,9 @@ public class CrudEstadio extends javax.swing.JDialog {
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         limpiar();
         btnAgregar.setVisible(true);
-        desactivar_habilitar(true);
+        editabled(true);
         list.setEnabled(false);
-        textFieldNombre.requestFocusInWindow();
+        tfNombre.requestFocusInWindow();
         btnEliminar.setEnabled(false);
         btnNuevo.setEnabled(false);
         btnEditar.setEnabled(false);
@@ -310,8 +310,8 @@ public class CrudEstadio extends javax.swing.JDialog {
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        String nombre = textFieldNombre.getText();
-        int capacidad = Integer.parseInt(textFieldCapacidad.getText());
+        String nombre = tfNombre.getText();
+        int capacidad = Integer.parseInt(tfCapacidad.getText());
 
         boolean proceder = true; // validarDatos(id, nombre, capacidad);
 
@@ -325,7 +325,7 @@ public class CrudEstadio extends javax.swing.JDialog {
             list.setSelectedIndex(lastIndex);
             list.ensureIndexIsVisible(lastIndex);
 
-            desactivar_habilitar(false);
+            editabled(false);
             list.setEnabled(true);
             btnEliminar.setEnabled(true);
             btnEditar.setEnabled(true);
@@ -337,9 +337,9 @@ public class CrudEstadio extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        desactivar_habilitar(list.getSelectedIndex() > -1);
+        editabled(list.getSelectedIndex() > -1);
         list.setEnabled(false);
-        textFieldNombre.requestFocusInWindow();
+        tfNombre.requestFocusInWindow();
         btnEliminar.setEnabled(false);
         btnNuevo.setEnabled(false);
         btnEditar.setEnabled(false);
@@ -351,8 +351,8 @@ public class CrudEstadio extends javax.swing.JDialog {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         int index = list.getSelectedIndex();
 
-        String nombre = textFieldNombre.getText();
-        int capacidad = Integer.parseInt(textFieldCapacidad.getText());
+        String nombre = tfNombre.getText();
+        int capacidad = Integer.parseInt(tfCapacidad.getText());
 
         boolean proceder = true; // validarDatos(id, nombre, capacidad);
 
@@ -363,7 +363,7 @@ public class CrudEstadio extends javax.swing.JDialog {
             ServicesLocator.getEstadioServices().actualizarEstadio(e);
 
             modelo.updateElement(index, e);
-            desactivar_habilitar(false);
+            editabled(false);
             list.setEnabled(true);
             btnEliminar.setEnabled(true);
             btnEditar.setEnabled(true);
@@ -384,13 +384,13 @@ public class CrudEstadio extends javax.swing.JDialog {
                 ServicesLocator.getEstadioServices().eliminarEstadio(modelo.getElementAt(index).getIdEstadio());
 
                 limpiar();
-                desactivar_habilitar(false);
+                editabled(false);
             }
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        desactivar_habilitar(false);
+        editabled(false);
         list.setEnabled(true);
         btnEliminar.setEnabled(true);
         btnEditar.setEnabled(true);
@@ -408,9 +408,9 @@ public class CrudEstadio extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void textFieldCapacidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCapacidadActionPerformed
+    private void tfCapacidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCapacidadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldCapacidadActionPerformed
+    }//GEN-LAST:event_tfCapacidadActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
@@ -426,18 +426,18 @@ public class CrudEstadio extends javax.swing.JDialog {
     private javax.swing.JList<Estadio> list;
     private javax.swing.JPanel panel;
     private javax.swing.JScrollPane scrollPane;
-    private javax.swing.JTextField textFieldCapacidad;
-    private javax.swing.JTextField textFieldNombre;
+    private javax.swing.JTextField tfCapacidad;
+    private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
 
     private void limpiar() {
-        textFieldNombre.setText("");
-        textFieldCapacidad.setText("");
+        tfNombre.setText("");
+        tfCapacidad.setText("");
     }
 
-    private void desactivar_habilitar(boolean estado) {
-        textFieldNombre.setEditable(estado);
-        textFieldCapacidad.setEditable(estado);
+    private void editabled(boolean status) {
+        tfNombre.setEditable(status);
+        tfCapacidad.setEditable(status);
     }
 
     // public boolean validarDatos(String n, String nombre, String capacidad) {

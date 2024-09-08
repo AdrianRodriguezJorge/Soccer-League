@@ -38,11 +38,10 @@ public class Principal extends javax.swing.JFrame {
         UIManager.put("Menu.selectionBackground", new Color(217, 242, 220));
 
 //        JOptionPane.showMessageDialog(null,"Votaciones cerradas.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-
-        CrudEquipo dialog = new CrudEquipo(new javax.swing.JFrame(), true);
+        CrudFutbolista dialog = new CrudFutbolista(new javax.swing.JFrame(), true);
         dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
-        
+
 //        ImageIcon imagen = new ImageIcon("src/main/java/utils/image.jpg");
 //        JPanel panel = new JPanel() {
 //            @Override
@@ -223,7 +222,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemPartidosActionPerformed
 
     private void menuItemFutbolistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemFutbolistasActionPerformed
-        // TODO add your handling code here:
+        CrudFutbolista dialog = new CrudFutbolista(new javax.swing.JFrame(), true);
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
     }//GEN-LAST:event_menuItemFutbolistasActionPerformed
 
     private void menuItemRPartidosEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRPartidosEquiposActionPerformed

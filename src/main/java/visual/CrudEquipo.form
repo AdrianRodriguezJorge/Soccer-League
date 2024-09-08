@@ -125,16 +125,16 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="textFieldNombre" max="32767" attributes="0"/>
-                                      <Component id="textFieldProvincia" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
+                                      <Component id="tfNombre" max="32767" attributes="0"/>
+                                      <Component id="tfProvincia" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="textFieldCampGanados" alignment="0" pref="0" max="32767" attributes="0"/>
-                                      <Component id="textFieldCampParticip" min="-2" pref="45" max="-2" attributes="0"/>
+                                      <Component id="tfCampGanados" alignment="0" pref="0" max="32767" attributes="0"/>
+                                      <Component id="tfCampParticip" min="-2" pref="45" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="textFieldMascota" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
-                                  <Component id="textFieldPuntos" min="-2" pref="32" max="-2" attributes="0"/>
-                                  <Component id="textFieldColor" min="-2" pref="93" max="-2" attributes="0"/>
+                                  <Component id="tfMascota" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
+                                  <Component id="tfPuntos" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="tfColor" min="-2" pref="93" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -155,37 +155,37 @@
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="textFieldNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblProvincia" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="textFieldProvincia" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfProvincia" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblCampParticip" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="textFieldCampParticip" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfCampParticip" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblCampGanados" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="textFieldCampGanados" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfCampGanados" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblMascota" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="textFieldMascota" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfMascota" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblColor" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="textFieldColor" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfColor" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblPuntos" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="textFieldPuntos" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfPuntos" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -211,7 +211,7 @@
                 <Property name="text" type="java.lang.String" value="Nombre"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="textFieldNombre">
+            <Component class="javax.swing.JTextField" name="tfNombre">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -219,7 +219,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="textFieldProvincia">
+            <Component class="javax.swing.JTextField" name="tfProvincia">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -227,7 +227,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldProvinciaActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfProvinciaActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnCancelar">
@@ -353,7 +353,7 @@
                 <Property name="text" type="java.lang.String" value="Color"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="textFieldCampGanados">
+            <Component class="javax.swing.JTextField" name="tfCampGanados">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -361,10 +361,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldCampGanadosActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfCampGanadosActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="textFieldCampParticip">
+            <Component class="javax.swing.JTextField" name="tfCampParticip">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -372,10 +372,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldCampParticipActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfCampParticipActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="textFieldColor">
+            <Component class="javax.swing.JTextField" name="tfColor">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -383,10 +383,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldColorActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfColorActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="textFieldMascota">
+            <Component class="javax.swing.JTextField" name="tfMascota">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -394,10 +394,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldMascotaActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfMascotaActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="textFieldPuntos">
+            <Component class="javax.swing.JTextField" name="tfPuntos">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -405,7 +405,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldPuntosActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfPuntosActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

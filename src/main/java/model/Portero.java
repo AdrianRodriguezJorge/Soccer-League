@@ -16,7 +16,7 @@ public class Portero extends Jugador {
         setGolesEncajados(golesEncajados);
     }
 
-    public Portero (int idEquipo, int numero, String nombre, int añosEnEquipo, int partidosJugados, String tipo,
+    public Portero (int idEquipo, int numero, String nombre, int añosEnEquipo, String tipo, int partidosJugados, 
             int cantidadGoles, int asistencias, double promedioGoles, String pos, int paradas, int golesEncajados) {
         super(idEquipo, numero, nombre, añosEnEquipo, tipo, partidosJugados, cantidadGoles, asistencias,
                 promedioGoles, pos);

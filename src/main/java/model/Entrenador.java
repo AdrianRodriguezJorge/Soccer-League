@@ -12,7 +12,7 @@ public class Entrenador extends Futbolista {
         setAñosExperiencia(añosExperiencia);
     }
 
-    public Entrenador (int idEquipo, int numero, String nombre, int añosEnEquipo, int añosExperiencia, String tipo) {
+    public Entrenador (int idEquipo, int numero, String nombre, int añosEnEquipo, String tipo, int añosExperiencia) {
         super(idEquipo, numero, nombre, añosEnEquipo, tipo);
         setAñosExperiencia(añosExperiencia);
     }

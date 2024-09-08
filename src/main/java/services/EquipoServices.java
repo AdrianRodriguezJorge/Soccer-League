@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import model.Futbolista;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -213,5 +214,17 @@ public class EquipoServices {
 
     public int getIdFromIndex (int index) {
         return obtenerEquipos().get(index).getIdEquipo();
+    }
+
+    public int getIndexFromId(Futbolista f) {
+        int index = -1;
+        ArrayList<Equipo> list = obtenerEquipos();
+
+        for (int i = 0; i < list.size() && index == -1; i++) {
+            if (list.get(i).getIdEquipo() == f.getIdEquipo()) {
+                index = i;
+            }
+        }
+        return index;
     }
 }

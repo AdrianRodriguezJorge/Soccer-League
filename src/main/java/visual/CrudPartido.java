@@ -40,31 +40,27 @@ public class CrudPartido extends javax.swing.JDialog {
         jComboBoxLocal.setVisible(false);
         jComboBoxVisitante.setVisible(false);
         
-        jComboBoxEstadio.setLocation(textFieldEstadio.getLocation());
+        jComboBoxEstadio.setLocation(tfEstadio.getLocation());
 
         list.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
                 int index = list.getSelectedIndex();
                 btnEliminar.setEnabled(index > -1);
-                desactivar_habilitar(index <= -1);
+                editabled(index <= -1);
                 if (index > -1) {
                     Partido p = modelo.getElementAt(index);
-
-                    System.out.println(p.getIdEquipoVisitante());
 
                     String nomEquipoLocal = buscarNombrEquipo(p.getIdEquipoLocal());
                     String nomEquipoVisit = buscarNombrEquipo(p.getIdEquipoVisitante());
 
-                    System.out.println(nomEquipoLocal + " / " + nomEquipoVisit);
-
                     DateChooserFecha.setDate(p.getFecha());
-                    textFieldEstadio.setText(ServicesLocator.getEstadioServices()
+                    tfEstadio.setText(ServicesLocator.getEstadioServices()
                             .getNombreEstadio(p.getIdEstadio()));
-                    textFieldAudiencia.setText(p.getAudiencia() + "");
-                    textFieldLocal.setText(nomEquipoLocal);
-                    textFieldVisit.setText(nomEquipoVisit);
-                    textFieldGolesLocal.setText(p.getGoles_local() + "");
-                    textFieldGolesVisitante.setText(p.getGoles_visitante() + "");
+                    tfAudiencia.setText(p.getAudiencia() + "");
+                    tfLocal.setText(nomEquipoLocal);
+                    tfVisit.setText(nomEquipoVisit);
+                    tfGolesLocal.setText(p.getGoles_local() + "");
+                    tfGolesVisitante.setText(p.getGoles_visitante() + "");
 
                     btnNuevo.setEnabled(true);
                     btnEditar.setEnabled(true);
@@ -98,7 +94,7 @@ public class CrudPartido extends javax.swing.JDialog {
         panel = new javax.swing.JPanel();
         lblFecha = new javax.swing.JLabel();
         lblAudiencia = new javax.swing.JLabel();
-        textFieldAudiencia = new javax.swing.JTextField();
+        tfAudiencia = new javax.swing.JTextField();
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
@@ -107,15 +103,15 @@ public class CrudPartido extends javax.swing.JDialog {
         lblVisitante = new javax.swing.JLabel();
         lblGolesLocal = new javax.swing.JLabel();
         lblGolesVisit = new javax.swing.JLabel();
-        textFieldGolesLocal = new javax.swing.JTextField();
-        textFieldGolesVisitante = new javax.swing.JTextField();
+        tfGolesLocal = new javax.swing.JTextField();
+        tfGolesVisitante = new javax.swing.JTextField();
         DateChooserFecha = new com.toedter.calendar.JDateChooser();
         jComboBoxEstadio = new javax.swing.JComboBox<>();
         jComboBoxLocal = new javax.swing.JComboBox<>();
         jComboBoxVisitante = new javax.swing.JComboBox<>();
-        textFieldEstadio = new javax.swing.JTextField();
-        textFieldVisit = new javax.swing.JTextField();
-        textFieldLocal = new javax.swing.JTextField();
+        tfEstadio = new javax.swing.JTextField();
+        tfVisit = new javax.swing.JTextField();
+        tfLocal = new javax.swing.JTextField();
         scrollPane = new javax.swing.JScrollPane();
         list = new javax.swing.JList<>();
         btnNuevo = new javax.swing.JButton();
@@ -146,14 +142,14 @@ public class CrudPartido extends javax.swing.JDialog {
         lblAudiencia.setText("Audiencia");
         panel.add(lblAudiencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 165, -1));
 
-        textFieldAudiencia.setEditable(false);
-        textFieldAudiencia.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        textFieldAudiencia.addActionListener(new java.awt.event.ActionListener() {
+        tfAudiencia.setEditable(false);
+        tfAudiencia.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        tfAudiencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldAudienciaActionPerformed(evt);
+                tfAudienciaActionPerformed(evt);
             }
         });
-        panel.add(textFieldAudiencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 50, -1));
+        panel.add(tfAudiencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 50, -1));
 
         btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
         btnCancelar.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
@@ -218,24 +214,24 @@ public class CrudPartido extends javax.swing.JDialog {
         lblGolesVisit.setText("Goles del e. visitante");
         panel.add(lblGolesVisit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 225, 165, -1));
 
-        textFieldGolesLocal.setEditable(false);
-        textFieldGolesLocal.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        textFieldGolesLocal.addActionListener(new java.awt.event.ActionListener() {
+        tfGolesLocal.setEditable(false);
+        tfGolesLocal.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        tfGolesLocal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldGolesLocalActionPerformed(evt);
+                tfGolesLocalActionPerformed(evt);
             }
         });
-        panel.add(textFieldGolesLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 50, -1));
+        panel.add(tfGolesLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 50, -1));
 
-        textFieldGolesVisitante.setEditable(false);
-        textFieldGolesVisitante.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        textFieldGolesVisitante.setMinimumSize(new java.awt.Dimension(64, 24));
-        textFieldGolesVisitante.addActionListener(new java.awt.event.ActionListener() {
+        tfGolesVisitante.setEditable(false);
+        tfGolesVisitante.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        tfGolesVisitante.setMinimumSize(new java.awt.Dimension(64, 24));
+        tfGolesVisitante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldGolesVisitanteActionPerformed(evt);
+                tfGolesVisitanteActionPerformed(evt);
             }
         });
-        panel.add(textFieldGolesVisitante, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 225, 50, -1));
+        panel.add(tfGolesVisitante, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 225, 50, -1));
 
         DateChooserFecha.setDateFormatString("yyyy-MM-dd HH:mm");
         DateChooserFecha.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -256,32 +252,32 @@ public class CrudPartido extends javax.swing.JDialog {
         jComboBoxVisitante.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         panel.add(jComboBoxVisitante, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, -1, -1));
 
-        textFieldEstadio.setEditable(false);
-        textFieldEstadio.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        textFieldEstadio.addActionListener(new java.awt.event.ActionListener() {
+        tfEstadio.setEditable(false);
+        tfEstadio.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        tfEstadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldEstadioActionPerformed(evt);
+                tfEstadioActionPerformed(evt);
             }
         });
-        panel.add(textFieldEstadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 176, -1));
+        panel.add(tfEstadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 176, -1));
 
-        textFieldVisit.setEditable(false);
-        textFieldVisit.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        textFieldVisit.addActionListener(new java.awt.event.ActionListener() {
+        tfVisit.setEditable(false);
+        tfVisit.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        tfVisit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldVisitActionPerformed(evt);
+                tfVisitActionPerformed(evt);
             }
         });
-        panel.add(textFieldVisit, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 176, -1));
+        panel.add(tfVisit, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 176, -1));
 
-        textFieldLocal.setEditable(false);
-        textFieldLocal.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        textFieldLocal.addActionListener(new java.awt.event.ActionListener() {
+        tfLocal.setEditable(false);
+        tfLocal.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        tfLocal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldLocalActionPerformed(evt);
+                tfLocalActionPerformed(evt);
             }
         });
-        panel.add(textFieldLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 176, -1));
+        panel.add(tfLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 176, -1));
 
         list.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         list.setForeground(new java.awt.Color(0, 102, 51));
@@ -395,34 +391,34 @@ public class CrudPartido extends javax.swing.JDialog {
         // TODO add your handling code here:
     }// GEN-LAST:event_jComboBoxEstadioActionPerformed
 
-    private void textFieldLocalActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_textFieldLocalActionPerformed
+    private void tfLocalActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_tfLocalActionPerformed
         // TODO add your handling code here:
-    }// GEN-LAST:event_textFieldLocalActionPerformed
+    }// GEN-LAST:event_tfLocalActionPerformed
 
-    private void textFieldVisitActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_textFieldVisitActionPerformed
+    private void tfVisitActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_tfVisitActionPerformed
         // TODO add your handling code here:
-    }// GEN-LAST:event_textFieldVisitActionPerformed
+    }// GEN-LAST:event_tfVisitActionPerformed
 
-    private void textFieldEstadioActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_textFieldEstadioActionPerformed
+    private void tfEstadioActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_tfEstadioActionPerformed
         // TODO add your handling code here:
-    }// GEN-LAST:event_textFieldEstadioActionPerformed
+    }// GEN-LAST:event_tfEstadioActionPerformed
 
-    private void textFieldGolesVisitanteActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_textFieldGolesVisitanteActionPerformed
+    private void tfGolesVisitanteActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_tfGolesVisitanteActionPerformed
         // TODO add your handling code here:
-    }// GEN-LAST:event_textFieldGolesVisitanteActionPerformed
+    }// GEN-LAST:event_tfGolesVisitanteActionPerformed
 
-    private void textFieldGolesLocalActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_textFieldGolesLocalActionPerformed
+    private void tfGolesLocalActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_tfGolesLocalActionPerformed
         // TODO add your handling code here:
-    }// GEN-LAST:event_textFieldGolesLocalActionPerformed
+    }// GEN-LAST:event_tfGolesLocalActionPerformed
 
-    private void textFieldAudienciaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_textFieldAudienciaActionPerformed
+    private void tfAudienciaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_tfAudienciaActionPerformed
         // TODO add your handling code here:
-    }// GEN-LAST:event_textFieldAudienciaActionPerformed
+    }// GEN-LAST:event_tfAudienciaActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnNuevoActionPerformed
         limpiar();
         btnAgregar.setVisible(true);
-        desactivar_habilitar(true);
+        editabled(true);
         list.setEnabled(false);
         DateChooserFecha.requestFocusInWindow();
         btnEliminar.setEnabled(false);
@@ -431,18 +427,18 @@ public class CrudPartido extends javax.swing.JDialog {
         btnGuardar.setVisible(false);
         btnCancelar.setVisible(true);
 
-        textFieldEstadio.setVisible(false);
-        textFieldLocal.setVisible(false);
-        textFieldVisit.setVisible(false);
+        tfEstadio.setVisible(false);
+        tfLocal.setVisible(false);
+        tfVisit.setVisible(false);
         
         jComboBoxEstadio.setVisible(true);
-        jComboBoxEstadio.setLocation(textFieldEstadio.getLocation());
+        jComboBoxEstadio.setLocation(tfEstadio.getLocation());
 
         jComboBoxLocal.setVisible(true);
-        jComboBoxLocal.setLocation(textFieldLocal.getLocation());
+        jComboBoxLocal.setLocation(tfLocal.getLocation());
 
         jComboBoxVisitante.setVisible(true);
-        jComboBoxVisitante.setLocation(textFieldVisit.getLocation());
+        jComboBoxVisitante.setLocation(tfVisit.getLocation());
     }// GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAgregarActionPerformed
@@ -456,17 +452,14 @@ public class CrudPartido extends javax.swing.JDialog {
             p.setFecha(DateChooserFecha.getDate());
             p.setIdEstadio(ServicesLocator.getEstadioServices().obtenerEstadios()
                     .get(jComboBoxEstadio.getSelectedIndex()).getIdEstadio());
-            p.setAudiencia(Integer.parseInt(textFieldAudiencia.getText()));
+            p.setAudiencia(Integer.parseInt(tfAudiencia.getText()));
             p.setIdEquipoLocal((ServicesLocator.getEquipoServices().obtenerEquipos()
                     .get(jComboBoxLocal.getSelectedIndex()).getIdEquipo()));
             p.setIdEquipoVisitante((ServicesLocator.getEquipoServices().obtenerEquipos()
                     .get(jComboBoxVisitante.getSelectedIndex()).getIdEquipo()));
 
-            p.setGoles_local(Integer.parseInt(textFieldGolesLocal.getText()));
-            p.setGoles_visitante((Integer.parseInt(textFieldGolesVisitante.getText())));
-
-            System.out.println(jComboBoxLocal.getSelectedIndex());
-            System.out.println(jComboBoxVisitante.getSelectedIndex());
+            p.setGoles_local(Integer.parseInt(tfGolesLocal.getText()));
+            p.setGoles_visitante((Integer.parseInt(tfGolesVisitante.getText())));
 
             ServicesLocator.getPartidoServices().crearPartido(p);
             modelo.addElement(p);
@@ -475,7 +468,7 @@ public class CrudPartido extends javax.swing.JDialog {
             list.setSelectedIndex(lastIndex);
             list.ensureIndexIsVisible(lastIndex);
 
-            desactivar_habilitar(false);
+            editabled(false);
             list.setEnabled(true);
             btnEliminar.setEnabled(true);
             btnEditar.setEnabled(true);
@@ -491,7 +484,7 @@ public class CrudPartido extends javax.swing.JDialog {
     }// GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnEditarActionPerformed
-        desactivar_habilitar(list.getSelectedIndex() > -1);
+        editabled(list.getSelectedIndex() > -1);
         list.setEnabled(false);
         DateChooserFecha.requestFocusInWindow();
         btnEliminar.setEnabled(false);
@@ -501,18 +494,18 @@ public class CrudPartido extends javax.swing.JDialog {
         btnAgregar.setVisible(false);
         btnCancelar.setVisible(true);
 
-        textFieldEstadio.setVisible(false);
-        textFieldLocal.setVisible(false);
-        textFieldVisit.setVisible(false);
+        tfEstadio.setVisible(false);
+        tfLocal.setVisible(false);
+        tfVisit.setVisible(false);
         
         jComboBoxEstadio.setVisible(true);
-        jComboBoxEstadio.setLocation(textFieldEstadio.getLocation());
+        jComboBoxEstadio.setLocation(tfEstadio.getLocation());
 
         jComboBoxLocal.setVisible(true);
-        jComboBoxLocal.setLocation(textFieldLocal.getLocation());
+        jComboBoxLocal.setLocation(tfLocal.getLocation());
 
         jComboBoxVisitante.setVisible(true);
-        jComboBoxVisitante.setLocation(textFieldVisit.getLocation());
+        jComboBoxVisitante.setLocation(tfVisit.getLocation());
     }// GEN-LAST:event_btnEditarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnGuardarActionPerformed
@@ -525,14 +518,14 @@ public class CrudPartido extends javax.swing.JDialog {
 
             p.setFecha(DateChooserFecha.getDate());
             p.setIdEstadio(ServicesLocator.getEstadioServices().getIdFromIndex(jComboBoxEstadio.getSelectedIndex()));
-            p.setAudiencia(Integer.parseInt(textFieldAudiencia.getText()));
+            p.setAudiencia(Integer.parseInt(tfAudiencia.getText()));
             p.setIdEquipoLocal((ServicesLocator.getEquipoServices().obtenerEquipos()
                     .get(jComboBoxLocal.getSelectedIndex()).getIdEquipo()));
             p.setIdEquipoVisitante((ServicesLocator.getEquipoServices().obtenerEquipos()
                     .get(jComboBoxVisitante.getSelectedIndex()).getIdEquipo()));
 
-            p.setGoles_local(Integer.parseInt(textFieldGolesLocal.getText()));
-            p.setGoles_visitante((Integer.parseInt(textFieldGolesVisitante.getText())));
+            p.setGoles_local(Integer.parseInt(tfGolesLocal.getText()));
+            p.setGoles_visitante((Integer.parseInt(tfGolesVisitante.getText())));
 
             p.setIdPartido(modelo.getElementAt(index).getIdPartido());
 
@@ -540,7 +533,7 @@ public class CrudPartido extends javax.swing.JDialog {
 
             modelo.updateElement(index, p);
 
-            desactivar_habilitar(false);
+            editabled(false);
             list.setEnabled(true);
             btnEliminar.setEnabled(true);
             btnEditar.setEnabled(true);
@@ -559,7 +552,7 @@ public class CrudPartido extends javax.swing.JDialog {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnEliminarActionPerformed
         int index = list.getSelectedIndex();
         if (index != -1) {
-            if (JOptionPane.showConfirmDialog(null, "Está seguro que desea eliminar este estadio?",
+            if (JOptionPane.showConfirmDialog(null, "Está seguro que desea eliminar la información de este estadio?",
                     "Confirmar", 0) == 0) {
                 modelo.removeElement(index);
 
@@ -567,13 +560,13 @@ public class CrudPartido extends javax.swing.JDialog {
                         .getPartidoServices().getIdFromIndex(index));
 
                 limpiar();
-                desactivar_habilitar(false);
+                editabled(false);
             }
         }
     }// GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnCancelarActionPerformed
-        desactivar_habilitar(false);
+        editabled(false);
         list.setEnabled(true);
         btnEliminar.setEnabled(true);
         btnEditar.setEnabled(true);
@@ -594,9 +587,9 @@ public class CrudPartido extends javax.swing.JDialog {
         jComboBoxLocal.setVisible(false);
         jComboBoxVisitante.setVisible(false);
 
-        textFieldEstadio.setVisible(true);
-        textFieldLocal.setVisible(true);
-        textFieldVisit.setVisible(true);
+        tfEstadio.setVisible(true);
+        tfLocal.setVisible(true);
+        tfVisit.setVisible(true);
 
         // lblDatosErroneos.setVisible(false);
     }// GEN-LAST:event_btnCancelarActionPerformed
@@ -629,32 +622,32 @@ public class CrudPartido extends javax.swing.JDialog {
     private javax.swing.JList<Partido> list;
     private javax.swing.JPanel panel;
     private javax.swing.JScrollPane scrollPane;
-    private javax.swing.JTextField textFieldAudiencia;
-    private javax.swing.JTextField textFieldEstadio;
-    private javax.swing.JTextField textFieldGolesLocal;
-    private javax.swing.JTextField textFieldGolesVisitante;
-    private javax.swing.JTextField textFieldLocal;
-    private javax.swing.JTextField textFieldVisit;
+    private javax.swing.JTextField tfAudiencia;
+    private javax.swing.JTextField tfEstadio;
+    private javax.swing.JTextField tfGolesLocal;
+    private javax.swing.JTextField tfGolesVisitante;
+    private javax.swing.JTextField tfLocal;
+    private javax.swing.JTextField tfVisit;
     // End of variables declaration//GEN-END:variables
 
     private void limpiar() {
         DateChooserFecha.setDate(new Date());
-        textFieldEstadio.setText("");
-        textFieldAudiencia.setText("");
-        textFieldLocal.setText("");
-        textFieldVisit.setText("");
-        textFieldGolesLocal.setText("");
-        textFieldGolesVisitante.setText("");
+        tfEstadio.setText("");
+        tfAudiencia.setText("");
+        tfLocal.setText("");
+        tfVisit.setText("");
+        tfGolesLocal.setText("");
+        tfGolesVisitante.setText("");
 
     }
 
-    private void desactivar_habilitar(boolean estado) {
-        textFieldAudiencia.setEditable(estado);
-        textFieldEstadio.setEditable(estado);
-        textFieldGolesLocal.setEditable(estado);
-        textFieldGolesVisitante.setEditable(estado);
-        textFieldLocal.setEditable(estado);
-        textFieldVisit.setEditable(estado);
+    private void editabled(boolean status) {
+        tfAudiencia.setEditable(status);
+        tfEstadio.setEditable(status);
+        tfGolesLocal.setEditable(status);
+        tfGolesVisitante.setEditable(status);
+        tfLocal.setEditable(status);
+        tfVisit.setEditable(status);
     }
 
     private String buscarNombrEquipo(int id) {

@@ -6,10 +6,8 @@ import utils.ConnectionManager;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Date;
-import model.Estadio;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -178,10 +176,6 @@ public class PartidoServices {
     }
 
     public int getIdFromIndex (int index) {
-        for (Partido s : obtenerPartidos()) {
-            System.out.println(s.getFecha());
-        }
-
         return obtenerPartidos().get(index).getIdPartido();
     }
 }
