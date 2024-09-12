@@ -287,9 +287,9 @@ public class CrudEstadio extends javax.swing.JDialog {
         String nombre = tfNombre.getText();
         int capacidad = Integer.parseInt(tfCapacidad.getText().equals("") ? "-1" : tfCapacidad.getText());
 
-        boolean proceder = validarDatos(nombre, capacidad);
+        boolean val = validarDatos(nombre, capacidad);
 
-        if (proceder) {
+        if (val) {
             ServicesLocator.getEstadioServices().agregarEstadio(nombre, capacidad); // guardar en la BD
 
             Estadio x = new Estadio(ServicesLocator.getEstadioServices().obtenerEstadios().getLast().getIdEstadio(),
@@ -316,9 +316,9 @@ public class CrudEstadio extends javax.swing.JDialog {
         String nombre = tfNombre.getText();
         int capacidad = Integer.parseInt(tfCapacidad.getText().equals("") ? "-1" : tfCapacidad.getText());
 
-        boolean proceder = validarDatos(nombre, capacidad);
+        boolean val = validarDatos(nombre, capacidad);
 
-        if (proceder) {
+        if (val) {
             Estadio e = new Estadio(nombre, capacidad);
             e.setIdEstadio(modelo.getElementAt(index).getIdEstadio());
 

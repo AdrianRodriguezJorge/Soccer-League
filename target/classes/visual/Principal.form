@@ -10,6 +10,37 @@
     </Component>
     <Menu class="javax.swing.JMenuBar" name="menuBar">
       <SubComponents>
+        <Menu class="javax.swing.JMenu" name="menuPerfil">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Perfil"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemInicioS">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Iniciar sesi&#xf3;n"/>
+                <Property name="actionCommand" type="java.lang.String" value=""/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemInicioSActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemCerrarS">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cerrar sesi&#xf3;n"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+                <Property name="actionCommand" type="java.lang.String" value=""/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemUsuarios">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Gesti&#xf3;n de usuarios"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemUsuariosActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="menuGestion">
           <Properties>
             <Property name="text" type="java.lang.String" value="Gesti&#xf3;n de la liga"/>
@@ -47,20 +78,20 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemFutbolistasActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="menuItemInicio">
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemIniciar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Comenzar la liga"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemInicioActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemIniciarActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="menuItemInicio1">
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemCulminar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Culminar la liga"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="menuItemInicio2">
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemResultados">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver resultados"/>
               </Properties>

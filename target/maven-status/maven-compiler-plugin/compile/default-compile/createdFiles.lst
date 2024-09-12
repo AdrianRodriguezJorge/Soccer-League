@@ -3,7 +3,6 @@ visual\CrudEquipo$4.class
 services\EquipoServices.class
 visual\DialogDuracionLiga$2.class
 visual\CrudPartido$11.class
-visual\CrudEstadio$10.class
 model\Futbolista.class
 visual\CrudPartido$14.class
 visual\CrudPartido$8.class
@@ -85,6 +84,7 @@ visual\DialogDuracionLiga.class
 visual\CrudEquipo$3.class
 utils\Utils_contenido.class
 model\Partido.class
+visual\CrudPartido$16.class
 visual\CrudFutbolista$4.class
 services\MediocampistaServices.class
 visual\CrudEstadio$4.class

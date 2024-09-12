@@ -17,8 +17,8 @@ public class Defensa extends Jugador {
      }
 
      public Defensa(int idEquipo, int numero, String nombre, int añosEnEquipo, String tipo, int partidosJugados, int cantidadGoles,
-               int asistencias, double promedioGoles, String pos, int entradas, int bloqueos) {
-          super(idEquipo, numero, nombre, añosEnEquipo, tipo, partidosJugados, cantidadGoles, asistencias, promedioGoles, pos);
+               int asistencias, String pos, int entradas, int bloqueos) {
+          super(idEquipo, numero, nombre, añosEnEquipo, tipo, partidosJugados, cantidadGoles, asistencias, pos);
           setEntradas(entradas);
           setBloqueos(bloqueos);
      }
@@ -33,7 +33,10 @@ public class Defensa extends Jugador {
      }
 
      public void setEntradas(int entradas) {
-          this.entradas = entradas;
+          if (entradas >= 0) {
+               this.entradas = entradas;
+           } else
+               throw new IllegalArgumentException();
      }
 
      public int getBloqueos() {
@@ -41,6 +44,9 @@ public class Defensa extends Jugador {
      }
 
      public void setBloqueos(int bloqueos) {
-          this.bloqueos = bloqueos;
+          if (bloqueos >= 0) {
+               this.bloqueos = bloqueos;
+           } else
+               throw new IllegalArgumentException();
      }
 }

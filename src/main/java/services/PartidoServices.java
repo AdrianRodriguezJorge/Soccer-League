@@ -11,7 +11,6 @@ import java.util.Date;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import org.postgresql.util.PSQLException;
 import utils.Report;
 
 /**
@@ -48,14 +47,15 @@ public class PartidoServices {
     public ArrayList<Partido> obtenerPartidos() {
         ArrayList<Partido> partidos = new ArrayList<>();
         String sql = "SELECT * FROM partido";
-        try (Connection conn = ConnectionManager.getConnection(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
+        try (Connection conn = ConnectionManager.getConnection();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
                 Partido partido = new Partido();
                 partido.setIdPartido(rs.getInt("idpartido"));
                 partido.setAudiencia(rs.getInt("audiencia"));
                 partido.setFecha(rs.getTimestamp("fecha"));
-                System.out.println(partido.getFecha());
                 partido.setIdEstadio(rs.getInt("fkestadio"));
                 partido.setIdEquipoLocal(rs.getInt("local"));
                 partido.setIdEquipoVisitante(rs.getInt("visitante"));
@@ -100,7 +100,8 @@ public class PartidoServices {
      */
     public void eliminarPartido(int idPartido) {
         String sql = "DELETE FROM partido WHERE idpartido = ?";
-        try (Connection conn = ConnectionManager.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (Connection conn = ConnectionManager.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setInt(1, idPartido);
             pstmt.executeUpdate();

@@ -26,13 +26,12 @@ public class CrudEquipo extends javax.swing.JDialog {
 
         list.setModel(modelo);
 
+        Principal.soloLetras(tfNombre);
+        Principal.soloLetras(tfProvincia);
         Principal.soloNum(tfCampParticip);
         Principal.soloNum(tfCampGanados);
-        Principal.soloNum(tfPuntos);
-        Principal.soloNum(tfNombre);
-        Principal.soloNum(tfProvincia);
-        Principal.soloNum(tfMascota);
-        Principal.soloNum(tfColor);
+        Principal.soloLetras(tfMascota);
+        Principal.soloLetras(tfColor);
 
         list.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
@@ -484,16 +483,15 @@ public class CrudEquipo extends javax.swing.JDialog {
         int campGanados = Integer.parseInt(tfCampGanados.getText().equals("") ? "-1" : tfCampGanados.getText());
         String mascota = tfMascota.getText();
         String color = tfColor.getText();
-        int puntos = Integer.parseInt(tfPuntos.getText().equals("") ? "-1" : tfPuntos.getText());
+        int puntos = 0;
 
-        boolean proceder = validarDatos(nombre, provincia, campParticip, campGanados, mascota, color);
+        boolean val = validarDatos(nombre, provincia, campParticip, campGanados, mascota, color);
 
-        if (proceder) {
-            ServicesLocator.getEquipoServices()
-                    .crearEquipo(new Equipo(nombre, provincia, campParticip, campGanados, mascota, color, puntos));
+        if (val) {
+            Equipo x = new Equipo(nombre, provincia, campParticip, campGanados, mascota, color);
+            ServicesLocator.getEquipoServices().crearEquipo(x);
 
-            Equipo x = new Equipo(ServicesLocator.getEquipoServices().obtenerEquipos().getLast().getIdEquipo(), nombre,
-                    provincia, campParticip, campGanados, mascota, color, puntos);
+            x.setIdEquipo(ServicesLocator.getEquipoServices().obtenerEquipos().getLast().getIdEquipo());
             modelo.addElement(x);
 
             int lastIndex = list.getModel().getSize() - 1;
@@ -519,13 +517,12 @@ public class CrudEquipo extends javax.swing.JDialog {
         int campGanados = Integer.parseInt(tfCampGanados.getText().equals("") ? "-1" : tfCampGanados.getText());
         String mascota = tfMascota.getText();
         String color = tfColor.getText();
-        int puntos = Integer.parseInt(tfPuntos.getText().equals("") ? "-1" : tfPuntos.getText());
+        int puntos = Integer.parseInt(tfPuntos.getText());
 
-        boolean proceder = validarDatos(nombre, provincia, campParticip, campGanados, mascota, color);
+        boolean val = validarDatos(nombre, provincia, campParticip, campGanados, mascota, color);
 
-        if (proceder) {
-            Equipo x = new Equipo(modelo.getElementAt(index).getIdEquipo(), nombre, provincia, campParticip,
-                    campGanados, mascota, color, puntos);
+        if (val) {
+            Equipo x = new Equipo(modelo.getElementAt(index).getIdEquipo(), nombre, provincia, campParticip, campGanados, mascota, color, puntos);
 
             ServicesLocator.getEquipoServices().actualizarEquipo(x);
 
@@ -622,10 +619,7 @@ public class CrudEquipo extends javax.swing.JDialog {
         tfCampGanados.setText("");
         tfMascota.setText("");
         tfColor.setText("");
-        tfPuntos.setText("");
     }
-
-    
 
     private boolean validarDatos(String nombre, String provincia, int campParticip, int campGanados, String mascota,
             String color) {
@@ -689,7 +683,6 @@ public class CrudEquipo extends javax.swing.JDialog {
         tfCampGanados.setEditable(status);
         tfMascota.setEditable(status);
         tfColor.setEditable(status);
-        tfPuntos.setEditable(status);
 
         btnEliminar.setEnabled(!status);
         btnNuevo.setEnabled(!status);

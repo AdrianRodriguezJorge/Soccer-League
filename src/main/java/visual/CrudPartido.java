@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -40,8 +38,7 @@ public class CrudPartido extends javax.swing.JDialog {
         btnEditar.setEnabled(false);
         btnEliminar.setEnabled(false);
         lblDatosErroneos.setVisible(false);
-
-        list.setModel(modelo);
+        lblFechaIncorrecta.setVisible(false);
 
         Principal.soloNum(tfAudiencia);
         Principal.soloNum(tfGolesLocal);
@@ -86,7 +83,7 @@ public class CrudPartido extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         contentPanel = new javax.swing.JPanel();
@@ -118,6 +115,7 @@ public class CrudPartido extends javax.swing.JDialog {
         btnEditar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
+        lblFechaIncorrecta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gestión de partidos");
@@ -235,6 +233,11 @@ public class CrudPartido extends javax.swing.JDialog {
 
         DateChooserFecha.setDateFormatString("yyyy-MM-dd HH:mm");
         DateChooserFecha.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        DateChooserFecha.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                DateChooserFechaPropertyChange(evt);
+            }
+        });
         panel.add(DateChooserFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 170, 25));
 
         jComboBoxEstadio.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
@@ -282,7 +285,7 @@ public class CrudPartido extends javax.swing.JDialog {
         lblDatosErroneos.setFont(new java.awt.Font("SansSerif", 3, 16)); // NOI18N
         lblDatosErroneos.setForeground(new java.awt.Color(0, 102, 102));
         lblDatosErroneos.setText("Datos erroneos");
-        panel.add(lblDatosErroneos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 320, -1));
+        panel.add(lblDatosErroneos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 330, -1));
 
         list.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         list.setForeground(new java.awt.Color(0, 102, 51));
@@ -331,69 +334,74 @@ public class CrudPartido extends javax.swing.JDialog {
             }
         });
 
+        lblFechaIncorrecta.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
+        lblFechaIncorrecta.setForeground(new java.awt.Color(0, 102, 102));
+        lblFechaIncorrecta.setText("La fecha debe encontrarse dentro del intervalo de duración de la liga");
+
         javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
         contentPanel.setLayout(contentPanelLayout);
         contentPanelLayout.setHorizontalGroup(
-                contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(contentPanelLayout.createSequentialGroup()
-                                .addGroup(contentPanelLayout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 288,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(contentPanelLayout.createSequentialGroup()
-                                                .addGap(7, 7, 7)
-                                                .addComponent(btnNuevo)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btnEliminar)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btnEditar)))
-                                .addGap(18, 18, 18)
-                                .addGroup(contentPanelLayout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 471,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnSalir))
-                                .addContainerGap(12, Short.MAX_VALUE)));
+            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contentPanelLayout.createSequentialGroup()
+                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(btnNuevo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEditar)))
+                .addGap(18, 18, 18)
+                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
+                    .addComponent(btnSalir, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblFechaIncorrecta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
         contentPanelLayout.setVerticalGroup(
-                contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(contentPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(contentPanelLayout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 324,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 361,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30,
-                                        Short.MAX_VALUE)
-                                .addGroup(contentPanelLayout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnEditar)
-                                        .addComponent(btnEliminar)
-                                        .addComponent(btnNuevo)
-                                        .addComponent(btnSalir))
-                                .addContainerGap()));
+            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contentPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblFechaIncorrecta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEditar)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnNuevo)
+                    .addComponent(btnSalir))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap()));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         contentPanel.getAccessibleContext().setAccessibleParent(contentPanel);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void DateChooserFechaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_DateChooserFechaPropertyChange
+        lblDatosErroneos.setText("Datos erroneos");
+        lblDatosErroneos.setVisible(false);
+    }//GEN-LAST:event_DateChooserFechaPropertyChange
 
     private void jComboBoxEstadioActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jComboBoxEstadioActionPerformed
         // TODO add your handling code here:
@@ -432,15 +440,14 @@ public class CrudPartido extends javax.swing.JDialog {
     }// GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAgregarActionPerformed
-        
+        Date fecha = DateChooserFecha.getDate();
         int audiencia = Integer.parseInt(tfAudiencia.getText().equals("") ? "-1" : tfAudiencia.getText());
         int golesLocal = Integer.parseInt(tfGolesLocal.getText().equals("") ? "-1" : tfGolesLocal.getText());
         int golesVisit = Integer.parseInt(tfGolesVisitante.getText().equals("") ? "-1" : tfGolesVisitante.getText());
 
-        boolean proceder = validarDatos(audiencia, golesLocal, golesVisit);
+        boolean val = validarDatos(fecha, audiencia, golesLocal, golesVisit);
 
-        if (proceder) {
-            Date fecha = DateChooserFecha.getDate();
+        if (val) {
             Partido p = new Partido();
 
             p.setFecha(fecha);
@@ -466,7 +473,9 @@ public class CrudPartido extends javax.swing.JDialog {
 
                 changeStatus(false);
             } catch (SQLException e) {
-                lblDatosErroneos.setVisible(true);
+                validarDatos(null, audiencia, golesLocal, golesVisit);
+                lblFechaIncorrecta.setVisible(true);
+                btnGuardar.setVisible(false);
             }
 
         }
@@ -474,6 +483,7 @@ public class CrudPartido extends javax.swing.JDialog {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnEditarActionPerformed
         changeStatus(list.getSelectedIndex() > -1);
+        btnAgregar.setVisible(false);
         DateChooserFecha.requestFocusInWindow();
 
         int index = ServicesLocator.getEquipoServices()
@@ -487,14 +497,14 @@ public class CrudPartido extends javax.swing.JDialog {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnGuardarActionPerformed
         int index = list.getSelectedIndex();
+        Date fecha = DateChooserFecha.getDate();
         int audiencia = Integer.parseInt(tfAudiencia.getText().equals("") ? "-1" : tfAudiencia.getText());
         int golesLocal = Integer.parseInt(tfGolesLocal.getText().equals("") ? "-1" : tfGolesLocal.getText());
         int golesVisit = Integer.parseInt(tfGolesVisitante.getText().equals("") ? "-1" : tfGolesVisitante.getText());
 
-        boolean proceder = validarDatos(audiencia, golesLocal, golesVisit);
+        boolean val = validarDatos(fecha, audiencia, golesLocal, golesVisit);
 
-        if (proceder) {
-            Date fecha = DateChooserFecha.getDate();
+        if (val) {
             Partido p = new Partido();
 
             p.setFecha(fecha);
@@ -508,6 +518,7 @@ public class CrudPartido extends javax.swing.JDialog {
 
             p.setGolesLocal(Integer.parseInt(tfGolesLocal.getText()));
             p.setGolesVisitante((Integer.parseInt(tfGolesVisitante.getText())));
+            p.setIdPartido(modelo.getElementAt(index).getIdPartido());
 
             try {
                 ServicesLocator.getPartidoServices().actualizarPartido(p);
@@ -516,7 +527,9 @@ public class CrudPartido extends javax.swing.JDialog {
 
                 changeStatus(false);
             } catch (SQLException e) {
-                lblDatosErroneos.setVisible(true);
+                validarDatos(null, audiencia, golesLocal, golesVisit);
+                lblFechaIncorrecta.setVisible(true);
+                btnAgregar.setVisible(false);
             }
 
         }
@@ -540,8 +553,9 @@ public class CrudPartido extends javax.swing.JDialog {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnCancelarActionPerformed
         changeStatus(false);
-        list.setSelectedIndex(0);
+        lblDatosErroneos.setText("Datos erroneos");
         lblDatosErroneos.setVisible(false);
+        lblFechaIncorrecta.setVisible(false);
     }// GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnSalirActionPerformed
@@ -566,6 +580,7 @@ public class CrudPartido extends javax.swing.JDialog {
     private javax.swing.JLabel lblDatosErroneos;
     private javax.swing.JLabel lblEstadio;
     private javax.swing.JLabel lblFecha;
+    private javax.swing.JLabel lblFechaIncorrecta;
     private javax.swing.JLabel lblGolesLocal;
     private javax.swing.JLabel lblGolesVisit;
     private javax.swing.JLabel lblLocal;
@@ -604,19 +619,10 @@ public class CrudPartido extends javax.swing.JDialog {
         tfGolesVisitante.setText("");
     }
 
-    private boolean validarDatos(int audiencia, int golesLocal, int golesVisit) {
+    private boolean validarDatos(Date fecha, int audiencia, int golesLocal, int golesVisit) {
         boolean correcto = true;
         Partido temp = new Partido();
-        Date fecha = null;
 
-        try { // fecha
-            fecha = DateChooserFecha.getDate();
-            temp.setFecha(fecha);
-        } catch (Exception e) {
-            correcto = false;
-            lblDatosErroneos.setVisible(true);
-            lblFecha.setForeground(Principal.errorColor);
-        }
         try { // audiencia
             temp.setAudiencia(audiencia);
         } catch (IllegalArgumentException e) {
@@ -638,9 +644,17 @@ public class CrudPartido extends javax.swing.JDialog {
             lblDatosErroneos.setVisible(true);
             lblGolesVisit.setForeground(Principal.errorColor);
         }
+        try { // fecha
+            temp.setFecha(fecha);
+        } catch (Exception e) {
+            correcto = false;
+            lblDatosErroneos.setVisible(true);
+            lblFecha.setForeground(Principal.errorColor);
+        }
 
         if (correcto) {
             lblDatosErroneos.setVisible(false);
+            lblFechaIncorrecta.setVisible(false);
             changeStatus(true);
         }
         return correcto;

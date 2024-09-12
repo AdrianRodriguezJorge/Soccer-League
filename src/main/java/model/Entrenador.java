@@ -27,6 +27,9 @@ public class Entrenador extends Futbolista {
     }
 
     public void setAñosExperiencia(int añosExperiencia) {
-        this.añosExperiencia = añosExperiencia;
+        if (añosExperiencia >= 0) {
+            this.añosExperiencia = añosExperiencia;
+        } else
+            throw new IllegalArgumentException();
     }
 }

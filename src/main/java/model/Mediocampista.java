@@ -17,9 +17,8 @@ public class Mediocampista extends Jugador {
     }
 
     public Mediocampista (int idEquipo, int numero, String nombre, int añosEnEquipo, String tipo,
-            int partidosJugados, int cantidadGoles, int asistencias, double promedioGoles, String pos, int pasesCompletados, int intercepciones) {
-        super(idEquipo, numero, nombre, añosEnEquipo, tipo, partidosJugados, cantidadGoles, asistencias,
-                promedioGoles, pos);
+            int partidosJugados, int cantidadGoles, int asistencias, String pos, int pasesCompletados, int intercepciones) {
+        super(idEquipo, numero, nombre, añosEnEquipo, tipo, partidosJugados, cantidadGoles, asistencias, pos);
         setPasesCompletados(pasesCompletados);
         setIntercepciones(intercepciones);
     }
@@ -34,7 +33,10 @@ public class Mediocampista extends Jugador {
     }
 
     public void setIntercepciones(int intercepciones) {
-        this.intercepciones = intercepciones;
+        if (intercepciones >= 0) {
+            this.intercepciones = intercepciones;
+        } else
+            throw new IllegalArgumentException();
     }
 
     public int getPasesCompletados() {
@@ -42,6 +44,9 @@ public class Mediocampista extends Jugador {
     }
 
     public void setPasesCompletados(int pasesCompletados) {
-        this.pasesCompletados = pasesCompletados;
+        if (pasesCompletados >= 0) {
+            this.pasesCompletados = pasesCompletados;
+        } else
+            throw new IllegalArgumentException();
     }
 }

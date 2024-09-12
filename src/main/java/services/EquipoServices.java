@@ -1,16 +1,12 @@
 package services;
 
 import model.Equipo;
-import model.Estadio;
 import utils.ConnectionManager;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
-import model.Futbolista;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -27,7 +23,7 @@ public class EquipoServices {
      * @param equipo El objeto Equipo a crear.
      */
     public void crearEquipo(Equipo equipo) {
-        String sql = "INSERT INTO equipo (nomequipo, provincia, camparticip, campganados, mascota, color, puntos) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO equipo (nomequipo, provincia, camparticip, campganados, mascota, color) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = ConnectionManager.getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
@@ -37,7 +33,6 @@ public class EquipoServices {
             pstmt.setInt(4, equipo.getCampGanados());
             pstmt.setString(5, equipo.getMascota());
             pstmt.setString(6, equipo.getColor());
-            pstmt.setInt(7, equipo.getPuntos());
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -59,14 +54,14 @@ public class EquipoServices {
 
             while (rs.next()) {
                 Equipo equipo = new Equipo(
-                    rs.getInt("idequipo"),
-                    rs.getString("nomequipo"), 
-                    rs.getString("provincia"),
-                    rs.getInt("camparticip"),
-                    rs.getInt("campganados"),
-                    rs.getString("mascota"),
-                    rs.getString("color"),
-                    rs.getInt("puntos"));
+                        rs.getInt("idequipo"),
+                        rs.getString("nomequipo"),
+                        rs.getString("provincia"),
+                        rs.getInt("camparticip"),
+                        rs.getInt("campganados"),
+                        rs.getString("mascota"),
+                        rs.getString("color"),
+                        rs.getInt("puntos"));
                 equipos.add(equipo);
             }
 
@@ -82,7 +77,7 @@ public class EquipoServices {
      * @param equipo El objeto Equipo a actualizar.
      */
     public void actualizarEquipo(Equipo equipo) {
-        String sql = "UPDATE equipo SET nomequipo = ?, provincia = ?, camparticip = ?, campganados = ?, mascota = ?, color = ?, puntos = ? WHERE idequipo = ?";
+        String sql = "UPDATE equipo SET nomequipo = ?, provincia = ?, camparticip = ?, campganados = ?, mascota = ?, color = ? WHERE idequipo = ?";
         try (Connection conn = ConnectionManager.getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
@@ -92,8 +87,7 @@ public class EquipoServices {
             pstmt.setInt(4, equipo.getCampGanados());
             pstmt.setString(5, equipo.getMascota());
             pstmt.setString(6, equipo.getColor());
-            pstmt.setInt(7, equipo.getPuntos());
-            pstmt.setInt(8, equipo.getIdEquipo());
+            pstmt.setInt(7, equipo.getIdEquipo());
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -212,7 +206,7 @@ public class EquipoServices {
         return nom;
     }
 
-    public int getIdFromIndex (int index) {
+    public int getIdFromIndex(int index) {
         return obtenerEquipos().get(index).getIdEquipo();
     }
 
@@ -221,10 +215,24 @@ public class EquipoServices {
         ArrayList<Equipo> list = obtenerEquipos();
 
         for (int i = 0; i < list.size() && index == -1; i++) {
-            if (list.get(i).getIdEquipo() ==id) {
+            if (list.get(i).getIdEquipo() == id) {
                 index = i;
             }
         }
         return index;
     }
+
+    public String buscarNombrEquipo(int id) {
+        String nom = null;
+        ArrayList<Equipo> equipos = obtenerEquipos();
+
+        for (int i = 0; i < equipos.size() && nom == null; i++) {
+            if (equipos.get(i).getIdEquipo() == id) {
+                nom = equipos.get(i).getNomEquipo();
+            }
+        }
+
+        return nom;
+    }
+
 }

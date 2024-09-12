@@ -1,8 +1,7 @@
 package visual;
 
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Date;
+import java.sql.SQLException;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -11,7 +10,6 @@ import javax.swing.event.ListSelectionListener;
 import model.Defensa;
 import model.Delantero;
 import model.Entrenador;
-import model.Equipo;
 import model.Futbolista;
 import model.Jugador;
 import model.Mediocampista;
@@ -30,7 +28,7 @@ public class CrudFutbolista extends javax.swing.JDialog {
         initComponents();
 
         list.setModel(modelo);
-        
+
         for (String s : ServicesLocator.getEquipoServices().obtenerNombresEquipos()) {
             ComboBoxEquipo.addItem(s);
         }
@@ -41,7 +39,6 @@ public class CrudFutbolista extends javax.swing.JDialog {
         Principal.soloNum(tfExp);
         Principal.soloNum(tfPartJugados);
         Principal.soloNum(tfCantGoles);
-        Principal.soloFloat(tfPromGoles);
         Principal.soloNum(tfAsist);
         Principal.soloNum(tfBloqueos);
         Principal.soloNum(tfEntradas);
@@ -50,12 +47,11 @@ public class CrudFutbolista extends javax.swing.JDialog {
         Principal.soloNum(tfIntercep);
         Principal.soloNum(tfParadas);
         Principal.soloNum(tfGolesE);
-        
-        
 
         changeStatus(false);
         btnEliminar.setEnabled(false);
         btnEditar.setEnabled(false);
+        lblDatosErroneos.setVisible(false);
 
         list.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
@@ -66,7 +62,7 @@ public class CrudFutbolista extends javax.swing.JDialog {
                 if (index > -1) {
                     Futbolista f = modelo.getElementAt(index);
 
-                    String nomEquipo = buscarNombrEquipo(f.getIdEquipo());
+                    String nomEquipo = ServicesLocator.getEquipoServices().buscarNombrEquipo(f.getIdEquipo());
 
                     tfNombre.setText(f.getNombre());
                     tfEquipo.setText(nomEquipo);
@@ -75,11 +71,11 @@ public class CrudFutbolista extends javax.swing.JDialog {
 
                     if (f instanceof Entrenador) {
                         setOneEnabled(-1);
-                        // ComboBoxTipo.setSelectedIndex(1);
+                        ComboBoxTipo.setSelectedIndex(1);
                         tfExp.setText(((Entrenador) f).getAñosExperiencia() + "");
                     } else {
-                        // ComboBoxTipo.setSelectedIndex(0);
                         Jugador j = (Jugador) f;
+                        ComboBoxTipo.setSelectedIndex(0);
                         tfPartJugados.setText(j.getPartidosJugados() + "");
                         tfCantGoles.setText(j.getCantidadGoles() + "");
                         tfAsist.setText(j.getAsistencias() + "");
@@ -123,7 +119,6 @@ public class CrudFutbolista extends javax.swing.JDialog {
         });
 
         modelo.setList(ServicesLocator.getFutbolistaServices().obtenerFutbolistas());
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated
@@ -131,9 +126,12 @@ public class CrudFutbolista extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        tfGolesEnc = new javax.swing.JTextField();
+        lblGolesEnc = new javax.swing.JLabel();
         contentPanel = new javax.swing.JPanel();
         scrollPane = new javax.swing.JScrollPane();
         list = new javax.swing.JList<>();
@@ -156,6 +154,7 @@ public class CrudFutbolista extends javax.swing.JDialog {
         btnAgregar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         ComboBoxTipo = new javax.swing.JComboBox<>();
+        lblDatosErroneos = new javax.swing.JLabel();
         tabbedPaneTipo = new javax.swing.JTabbedPane();
         panelJugador = new javax.swing.JPanel();
         tfPartJugados = new javax.swing.JTextField();
@@ -190,6 +189,14 @@ public class CrudFutbolista extends javax.swing.JDialog {
         lblParadas = new javax.swing.JLabel();
         lblGolesE = new javax.swing.JLabel();
         tfGolesE = new javax.swing.JTextField();
+
+        tfGolesEnc.setEditable(false);
+        tfGolesEnc.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+
+        lblGolesEnc.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        lblGolesEnc.setForeground(new java.awt.Color(0, 0, 0));
+        lblGolesEnc.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblGolesEnc.setText("Goles encajados");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gestión de partidos");
@@ -341,6 +348,11 @@ public class CrudFutbolista extends javax.swing.JDialog {
         });
         panelFutbolista.add(ComboBoxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 130, -1));
 
+        lblDatosErroneos.setFont(new java.awt.Font("SansSerif", 3, 16)); // NOI18N
+        lblDatosErroneos.setForeground(new java.awt.Color(0, 102, 102));
+        lblDatosErroneos.setText("Datos erroneos");
+        panelFutbolista.add(lblDatosErroneos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
+
         panelJugador.setBackground(new java.awt.Color(143, 182, 155));
         panelJugador.setBorder(new javax.swing.border.MatteBorder(null));
         panelJugador.setForeground(new java.awt.Color(0, 0, 0));
@@ -393,7 +405,8 @@ public class CrudFutbolista extends javax.swing.JDialog {
         panelJugador.add(lblPos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 130, -1));
 
         ComboBoxPos.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        ComboBoxPos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Defensa", "Delantero", "Mediocampista", "Portero" }));
+        ComboBoxPos.setModel(new javax.swing.DefaultComboBoxModel<>(
+                new String[] { "Defensa", "Delantero", "Mediocampista", "Portero" }));
         ComboBoxPos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxPosActionPerformed(evt);
@@ -521,65 +534,78 @@ public class CrudFutbolista extends javax.swing.JDialog {
         javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
         contentPanel.setLayout(contentPanelLayout);
         contentPanelLayout.setHorizontalGroup(
-            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contentPanelLayout.createSequentialGroup()
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contentPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnNuevo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEditar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSalir))
-                    .addGroup(contentPanelLayout.createSequentialGroup()
-                        .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(panelFutbolista, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tabbedPaneTipo, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
-                            .addComponent(tabbedPanePos))))
-                .addContainerGap())
-        );
+                contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(contentPanelLayout.createSequentialGroup()
+                                .addGroup(contentPanelLayout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(contentPanelLayout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(btnNuevo)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btnEliminar)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btnEditar)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(btnSalir))
+                                        .addGroup(contentPanelLayout.createSequentialGroup()
+                                                .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 264,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(panelFutbolista, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addGroup(contentPanelLayout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(tabbedPaneTipo,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, 285,
+                                                                Short.MAX_VALUE)
+                                                        .addComponent(tabbedPanePos))))
+                                .addContainerGap()));
         contentPanelLayout.setVerticalGroup(
-            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contentPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contentPanelLayout.createSequentialGroup()
-                        .addComponent(tabbedPaneTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tabbedPanePos, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(panelFutbolista, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
-                        .addComponent(scrollPane, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEditar)
-                    .addComponent(btnEliminar)
-                    .addComponent(btnNuevo)
-                    .addComponent(btnSalir))
-                .addContainerGap())
-        );
+                contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(contentPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(contentPanelLayout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(contentPanelLayout.createSequentialGroup()
+                                                .addComponent(tabbedPaneTipo, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(tabbedPanePos, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(contentPanelLayout
+                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(panelFutbolista,
+                                                        javax.swing.GroupLayout.Alignment.LEADING,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                                                .addComponent(scrollPane, javax.swing.GroupLayout.Alignment.LEADING)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28,
+                                        Short.MAX_VALUE)
+                                .addGroup(contentPanelLayout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnEditar)
+                                        .addComponent(btnEliminar)
+                                        .addComponent(btnNuevo)
+                                        .addComponent(btnSalir))
+                                .addContainerGap()));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap()));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap()));
 
         contentPanel.getAccessibleContext().setAccessibleParent(contentPanel);
 
@@ -619,67 +645,68 @@ public class CrudFutbolista extends javax.swing.JDialog {
         limpiar();
         changeStatus(true);
         btnGuardar.setVisible(false);
-        list.setEnabled(false);
         setOneEnabled(0);
+        ComboBoxTipo.setSelectedIndex(0);
 
         lblTipo.setVisible(true);
         ComboBoxTipo.setVisible(true);
-        
-        btnSalir.setEnabled(false);
     }// GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAgregarActionPerformed
+        Futbolista f = getFutbFromData();
 
-        boolean proceder = true; // validarDatos(id, nombre, capacidad);
+        if (f != null) {
+            try {
+                ServicesLocator.getFutbolistaServices().crearFutbolista(f);
+                modelo.addElement(f);
 
-        if (proceder) {
-            // guardar en la BD
-            Futbolista f = getFutbFromData();
+                int lastIndex = list.getModel().getSize() - 1;
+                list.setSelectedIndex(lastIndex);
+                list.ensureIndexIsVisible(lastIndex);
 
-            ServicesLocator.getFutbolistaServices().crearFutbolista(f);
-            modelo.addElement(f);
+                changeStatus(false);
+            } catch (Exception e) {
+                btnAgregar.setEnabled(false);
+                String nums = ServicesLocator.getFutbolistaServices().getNumsFutbs(f.getIdEquipo());
+                JOptionPane.showMessageDialog(null, nums,
+                        "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                btnAgregar.setEnabled(true);
+            }
 
-            int lastIndex = list.getModel().getSize() - 1;
-            list.setSelectedIndex(lastIndex);
-            list.ensureIndexIsVisible(lastIndex);
-
-            list.setEnabled(true);
-            list.requestFocusInWindow();
-            
-            btnSalir.setEnabled(true);
         }
+
     }// GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnEditarActionPerformed
-        list.setEnabled(false);
         changeStatus(true);
         btnAgregar.setVisible(false);
-        
-        int index = ServicesLocator.getEquipoServices().getIndexFromId(modelo.getElementAt(list.getSelectedIndex()).getIdEquipo());
-        ComboBoxEquipo.setSelectedIndex(index);
-        
-        btnSalir.setEnabled(false);
 
+        int index = ServicesLocator.getEquipoServices()
+                .getIndexFromId(modelo.getElementAt(list.getSelectedIndex()).getIdEquipo());
+        ComboBoxEquipo.setSelectedIndex(index);
     }// GEN-LAST:event_btnEditarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnGuardarActionPerformed
         int index = list.getSelectedIndex();
 
-        boolean proceder = true; // validarDatos(id, nombre, capacidad);
+        Futbolista f = getFutbFromData();
 
-        if (proceder) {
-            Futbolista f = getFutbFromData();
-            f.setIdFutbolista(modelo.getElementAt(index).getIdFutbolista());
+        if (f != null) {
+            try {
+                f.setIdFutbolista(modelo.getElementAt(index).getIdFutbolista());
 
-            ServicesLocator.getFutbolistaServices().actualizarFutbolista(f);
+                ServicesLocator.getFutbolistaServices().actualizarFutbolista(f);
 
-            modelo.updateElement(index, f);
+                modelo.updateElement(index, f);
 
-            changeStatus(false);
-            list.setEnabled(true);
-            list.requestFocusInWindow();
-            
-            btnSalir.setEnabled(true);
+                changeStatus(false);
+            } catch (SQLException e) {
+                btnGuardar.setEnabled(false);
+                String nums = ServicesLocator.getFutbolistaServices().getNumsFutbs(f.getIdEquipo());
+                JOptionPane.showMessageDialog(null, nums,
+                        "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                btnGuardar.setEnabled(true);
+            }
         }
     }// GEN-LAST:event_btnGuardarActionPerformed
 
@@ -689,8 +716,9 @@ public class CrudFutbolista extends javax.swing.JDialog {
             if (JOptionPane.showConfirmDialog(null, "Está seguro que desea eliminar este futbolista?",
                     "Confirmar", 0) == 0) {
 
-                ServicesLocator.getFutbolistaServices().eliminarFutbolista(modelo.getElementAt(index).getIdFutbolista());
-                
+                ServicesLocator.getFutbolistaServices()
+                        .eliminarFutbolista(modelo.getElementAt(index).getIdFutbolista());
+
                 modelo.removeElement(index);
 
                 limpiar();
@@ -701,18 +729,8 @@ public class CrudFutbolista extends javax.swing.JDialog {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnCancelarActionPerformed
         changeStatus(false);
-        list.setEnabled(true);
-        list.requestFocusInWindow();
-        limpiar();
-        
-        lblNum.setForeground(Color.BLACK);
-        lblNombre.setForeground(Color.BLACK);
-        lblEquipo.setForeground(Color.BLACK);
-
-        btnSalir.setEnabled(true);
-
-        list.setSelectedIndex(0);
-        // lblDatosErroneos.setVisible(false);
+        lblDatosErroneos.setVisible(false);
+        list.setSelectedIndex(-1);
     }// GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnSalirActionPerformed
@@ -736,6 +754,7 @@ public class CrudFutbolista extends javax.swing.JDialog {
     private javax.swing.JLabel lblAñosEq;
     private javax.swing.JLabel lblBloqueos;
     private javax.swing.JLabel lblCantGoles;
+    private javax.swing.JLabel lblDatosErroneos;
     private javax.swing.JLabel lblEntradas;
     private javax.swing.JLabel lblEquipo;
     private javax.swing.JLabel lblExp;
@@ -770,6 +789,7 @@ public class CrudFutbolista extends javax.swing.JDialog {
     private javax.swing.JTextField tfEquipo;
     private javax.swing.JTextField tfExp;
     private javax.swing.JTextField tfGolesE;
+    private javax.swing.JTextField tfGolesEnc;
     private javax.swing.JTextField tfIntercep;
     private javax.swing.JTextField tfNombre;
     private javax.swing.JTextField tfNum;
@@ -779,6 +799,122 @@ public class CrudFutbolista extends javax.swing.JDialog {
     private javax.swing.JTextField tfPromGoles;
     private javax.swing.JTextField tfTirosAPuerta;
     // End of variables declaration//GEN-END:variables
+
+    private void setOneEnabled(int index) {
+        tabbedPaneTipo.setSelectedIndex(index == -1 ? 1 : 0);
+        tabbedPaneTipo.setEnabledAt(0, index > -1);
+        tabbedPaneTipo.setEnabledAt(1, index == -1);
+
+        tabbedPanePos.setVisible(index > -1);
+
+        if (index > -1) {
+            tabbedPanePos.setSelectedIndex(index);
+            ComboBoxPos.setSelectedIndex(index);
+
+            for (int i = 0; i < 4; i++) {
+                tabbedPanePos.setEnabledAt(i, i == index);
+            }
+        }
+    }
+
+    public Futbolista getFutbFromData() {
+        Futbolista f = null;
+        String nombre = null;
+        int num = -1;
+        int añosEnE = -1;
+
+        boolean val = validarNombre();
+        val = validarInt(tfNum, lblNum) && val;
+        val = validarInt(tfAñosEnEq, lblAñosEq) && val;
+
+        if (val) {
+            nombre = tfNombre.getText();
+            num = Integer.parseInt(tfNum.getText());
+            añosEnE = Integer.parseInt(tfAñosEnEq.getText());
+        }
+
+        int idEquipo = ServicesLocator.getEquipoServices().getIdFromIndex(ComboBoxEquipo.getSelectedIndex());
+        String tipo = ComboBoxTipo.getSelectedItem().toString();
+
+        if (tipo.equals("Entrenador")) {
+            val = validarInt(tfExp, lblExp) && val;
+
+            if (val) {
+                f = new Entrenador(idEquipo, num, nombre, añosEnE, tipo, Integer.parseInt(tfExp.getText()));
+            }
+        } else {
+            int partJug = -1;
+            int cantGoles = -1;
+            int asist = -1;
+
+            val = validarInt(tfPartJugados, lblPartJug) && val;
+            val = validarInt(tfCantGoles, lblCantGoles) && val;
+            val = validarInt(tfAsist, lblAsistencias) && val;
+
+            if (val) {
+                partJug = Integer.parseInt(tfPartJugados.getText());
+                cantGoles = Integer.parseInt(tfCantGoles.getText());
+                asist = Integer.parseInt(tfAsist.getText());
+            }
+
+            String pos = ComboBoxPos.getSelectedItem().toString();
+
+            if (pos.equals("Defensa")) {
+                int entradas = -1;
+                int bloqueos = -1;
+
+                val = validarInt(tfEntradas, lblEntradas) && val;
+                val = validarInt(tfBloqueos, lblBloqueos) && val;
+
+                if (val) {
+                    entradas = Integer.parseInt(tfEntradas.getText());
+                    bloqueos = Integer.parseInt(tfBloqueos.getText());
+
+                    f = new Defensa(idEquipo, num, nombre, añosEnE, tipo, partJug, cantGoles, asist, pos,
+                            entradas, bloqueos);
+                }
+            } else if (pos.equals("Delantero")) {
+                int tiros = -1;
+
+                val = validarInt(tfTirosAPuerta, lblTirosAPuerta) && val;
+
+                if (val) {
+                    tiros = Integer.parseInt(tfTirosAPuerta.getText());
+                    f = new Delantero(idEquipo, num, nombre, añosEnE, tipo, partJug, cantGoles, asist, pos, tiros);
+                }
+            } else if (pos.equals("Mediocampista")) {
+                int pases = -1;
+                int interc = -1;
+
+                val = validarInt(tfPasesC, lblPasesC) && val;
+                val = validarInt(tfIntercep, lblIntercep) && val;
+
+                if (val) {
+                    pases = Integer.parseInt(tfPasesC.getText());
+                    interc = Integer.parseInt(tfIntercep.getText());
+
+                    f = new Mediocampista(idEquipo, num, nombre, añosEnE, tipo, partJug, cantGoles, asist, pos,
+                            pases, interc);
+                }
+            } else if (pos.equals("Portero")) {
+                int paradas = -1;
+                int golesEnc = -1;
+
+                val = validarInt(tfParadas, lblParadas) && val;
+                val = validarInt(tfGolesE, lblGolesE) && val;
+
+                if (val) {
+                    paradas = Integer.parseInt(tfParadas.getText());
+                    golesEnc = Integer.parseInt(tfGolesE.getText());
+
+                    f = new Portero(idEquipo, num, nombre, añosEnE, tipo, partJug, cantGoles, asist, pos, paradas,
+                            golesEnc);
+                }
+            }
+        }
+
+        return f;
+    }
 
     private void limpiar() {
         tfEquipo.setText("");
@@ -801,6 +937,39 @@ public class CrudFutbolista extends javax.swing.JDialog {
         tfExp.setText("");
     }
 
+    private boolean validarNombre() {
+        boolean correcto = true;
+        Defensa temp = new Defensa();
+
+        try { // nombre
+            lblNombre.setForeground(Color.BLACK);
+            temp.setNombre(tfNombre.getText());
+        } catch (IllegalArgumentException e) {
+            correcto = false;
+            lblDatosErroneos.setVisible(true);
+            lblNombre.setForeground(Principal.errorColor);
+        }
+
+        return correcto;
+    }
+
+    private boolean validarInt(JTextField tf, JLabel lbl) {
+        boolean correcto = true;
+        Defensa temp = new Defensa();
+
+        try { // generic int
+            lbl.setForeground(Color.BLACK);
+            int valorEntero = Integer.parseInt(tf.getText().equals("") ? "-1" : tf.getText());
+            temp.setCantidadGoles(valorEntero);
+        } catch (IllegalArgumentException e) {
+            correcto = false;
+            lblDatosErroneos.setVisible(true);
+            lbl.setForeground(Principal.errorColor);
+        }
+
+        return correcto;
+    }
+
     private void changeStatus(boolean status) {
         tfNombre.setEditable(status);
         tfAñosEnEq.setEditable(status);
@@ -810,7 +979,6 @@ public class CrudFutbolista extends javax.swing.JDialog {
         tfPartJugados.setEditable(status);
         tfCantGoles.setEditable(status);
         tfAsist.setEditable(status);
-        tfPromGoles.setEditable(status);
         tfBloqueos.setEditable(status);
         tfEntradas.setEditable(status);
         tfTirosAPuerta.setEditable(status);
@@ -822,6 +990,7 @@ public class CrudFutbolista extends javax.swing.JDialog {
         btnEliminar.setEnabled(!status);
         btnNuevo.setEnabled(!status);
         btnEditar.setEnabled(!status);
+        btnSalir.setEnabled(!status);
 
         tfEquipo.setVisible(!status);
         ComboBoxEquipo.setVisible(status);
@@ -834,164 +1003,22 @@ public class CrudFutbolista extends javax.swing.JDialog {
         btnGuardar.setVisible(status);
         btnCancelar.setVisible(status);
 
+        lblNombre.setForeground(Color.BLACK);
+        lblNum.setForeground(Color.BLACK);
+        lblAñosEq.setForeground(Color.BLACK);
+        lblExp.setForeground(Color.BLACK);
+        lblPartJug.setForeground(Color.BLACK);
+        lblCantGoles.setForeground(Color.BLACK);
+        lblAsistencias.setForeground(Color.BLACK);
+        lblPromGoles.setForeground(Color.BLACK);
+        lblEntradas.setForeground(Color.BLACK);
+        lblBloqueos.setForeground(Color.BLACK);
+        lblTirosAPuerta.setForeground(Color.BLACK);
+        lblPasesC.setForeground(Color.BLACK);
+        lblIntercep.setForeground(Color.BLACK);
+        lblParadas.setForeground(Color.BLACK);
+        lblGolesE.setForeground(Color.BLACK);
+
+        lblDatosErroneos.setVisible(false);
     }
-
-    private String buscarNombrEquipo(int id) {
-        String nom = null;
-        ArrayList<Equipo> equipos = ServicesLocator.getEquipoServices().obtenerEquipos();
-
-        for (int i = 0; i < equipos.size() && nom == null; i++) {
-            if (equipos.get(i).getIdEquipo() == id) {
-                nom = equipos.get(i).getNomEquipo();
-            }
-        }
-
-        return nom;
-    }
-
-    private void setOneEnabled(int index) {
-        tabbedPaneTipo.setSelectedIndex(index == -1 ? 1 : 0);
-        tabbedPaneTipo.setEnabledAt(0, index > -1);
-        tabbedPaneTipo.setEnabledAt(1, index == -1);
-
-        tabbedPanePos.setVisible(index > -1);
-
-        if (index > -1) {
-            tabbedPanePos.setSelectedIndex(index);
-            ComboBoxPos.setSelectedIndex(index);
-
-            for (int i = 0; i < 4; i++) {
-                if (i != index) {
-                    tabbedPanePos.setEnabledAt(i, false);
-                } else {
-                    tabbedPanePos.setEnabledAt(i, true);
-                }
-            }
-        }
-    }
-
-    public Futbolista getFutbFromData () {
-        Futbolista f = null;
-
-        String nombre = tfNombre.getText();
-        int idEquipo = ServicesLocator.getEquipoServices().getIdFromIndex(ComboBoxEquipo.getSelectedIndex());
-        int num = Integer.parseInt(tfNum.getText());
-        int añosEnE = Integer.parseInt(tfAñosEnEq.getText());
-        String tipo = ComboBoxTipo.getSelectedItem().toString();
-
-        if (tipo.equals("Entrenador")) {
-            f = new Entrenador(idEquipo, num, nombre, añosEnE, tipo, Integer.parseInt(tfExp.getText()));
-        } else {
-            int partJug = Integer.parseInt(tfPartJugados.getText());
-            int cantGoles = Integer.parseInt(tfCantGoles.getText());
-            int asist = Integer.parseInt(tfAsist.getText());
-            double prom = Double.parseDouble(tfPromGoles.getText());
-            String pos = ComboBoxPos.getSelectedItem().toString();
-
-            if (pos.equals("Defensa")) {
-                int entradas = Integer.parseInt(tfEntradas.getText());
-                int bloqueos = Integer.parseInt(tfBloqueos.getText());
-                f = new Defensa(idEquipo, num, nombre, añosEnE, tipo, partJug, cantGoles, asist, prom, pos,
-                        entradas, bloqueos);
-            } else if (pos.equals("Delantero")) {
-                int tiros = Integer.parseInt(tfTirosAPuerta.getText());
-                f = new Delantero(idEquipo, num, nombre, añosEnE, tipo, partJug, cantGoles, asist, prom, pos,
-                        tiros);
-            } else if (pos.equals("Mediocampista")) {
-                int pases = Integer.parseInt(tfPasesC.getText());
-                int interc = Integer.parseInt(tfIntercep.getText());
-                f = new Mediocampista(idEquipo, num, nombre, añosEnE, tipo, partJug, cantGoles, asist, prom, pos,
-                        pases, interc);
-            } else if (pos.equals("Portero")) {
-                int paradas = Integer.parseInt(tfParadas.getText());
-                int golesEnc = Integer.parseInt(tfGolesE.getText());
-                f = new Portero(idEquipo, num, nombre, añosEnE, tipo, partJug, cantGoles, asist, prom, pos, paradas, golesEnc);
-            }
-        }
-        return f;
-    }
-
-    // private void limpiar() {
-    //     DateChooserFecha.setDate(new Date());
-    //     tfEstadio.setText("");
-    //     tfAudiencia.setText("");
-    //     tfLocal.setText("");
-    //     tfVisit.setText("");
-    //     tfGolesLocal.setText("");
-    //     tfGolesVisitante.setText("");
-    // }
-
-    // private boolean validarDatos(int audiencia, int golesLocal, int golesVisit) {
-    //     boolean correcto = true;
-    //     Partido temp = new Partido();
-    //     Date fecha = null;
-
-    //     try { // fecha
-    //         fecha = DateChooserFecha.getDate();
-    //         temp.setFecha(fecha);
-    //     } catch (Exception e) {
-    //         correcto = false;
-    //         lblDatosErroneos.setVisible(true);
-    //         lblFecha.setForeground(Principal.errorColor);
-    //     }
-    //     try { // audiencia
-    //         temp.setAudiencia(audiencia);
-    //     } catch (IllegalArgumentException e) {
-    //         correcto = false;
-    //         lblDatosErroneos.setVisible(true);
-    //         lblAudiencia.setForeground(Principal.errorColor);
-    //     }
-    //     try { // goles local
-    //         temp.setGolesLocal(golesLocal);
-    //     } catch (IllegalArgumentException e) {
-    //         correcto = false;
-    //         lblDatosErroneos.setVisible(true);
-    //         lblGolesLocal.setForeground(Principal.errorColor);
-    //     }
-    //     try { // goles visitante
-    //         temp.setGolesVisitante(golesVisit);
-    //     } catch (IllegalArgumentException e) {
-    //         correcto = false;
-    //         lblDatosErroneos.setVisible(true);
-    //         lblGolesVisit.setForeground(Principal.errorColor);
-    //     }
-
-    //     if (correcto) {
-    //         lblDatosErroneos.setVisible(false);
-    //         changeStatus(true);
-    //     }
-    //     return correcto;
-    // }
-
-    // private void changeStatus(boolean status) {
-    //     tfAudiencia.setEditable(status);
-    //     tfGolesLocal.setEditable(status);
-    //     tfGolesVisitante.setEditable(status);
-
-    //     tfEstadio.setVisible(!status);
-    //     tfLocal.setVisible(!status);
-    //     tfVisit.setVisible(!status);
-
-    //     btnEliminar.setEnabled(!status);
-    //     btnNuevo.setEnabled(!status);
-    //     btnEditar.setEnabled(!status);
-    //     list.setEnabled(!status);
-    //     btnSalir.setEnabled(!status);
-
-    //     btnAgregar.setVisible(status);
-    //     btnGuardar.setVisible(status);
-    //     btnCancelar.setVisible(status);
-
-    //     lblAudiencia.setForeground(Color.BLACK);
-    //     lblEstadio.setForeground(Color.BLACK);
-    //     lblFecha.setForeground(Color.BLACK);
-    //     lblGolesLocal.setForeground(Color.BLACK);
-    //     lblGolesVisit.setForeground(Color.BLACK);
-    //     lblLocal.setForeground(Color.BLACK);
-    //     lblVisitante.setForeground(Color.BLACK);
-
-    //     jComboBoxEstadio.setVisible(status);
-    //     jComboBoxLocal.setVisible(status);
-    //     jComboBoxVisitante.setVisible(status);
-    // }
 }

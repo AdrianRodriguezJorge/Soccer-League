@@ -14,17 +14,19 @@ public class Equipo {
     private int puntos;
 
     // Constructores
-    public Equipo(String nomEquipo, String provincia, int campParticipados, int campGanados, String mascota, String color, int puntos) {
+    public Equipo(String nomEquipo, String provincia, int campParticipados, int campGanados, String mascota,
+            String color) {
         setNomEquipo(nomEquipo);
         setProvincia(provincia);
         setCampParticipados(campParticipados);
         setCampGanados(campGanados);
         setMascota(mascota);
         setColor(color);
-        setPuntos(puntos);
+
     }
 
-    public Equipo(int idEquipo, String nomEquipo, String provincia, int campParticipados, int campGanados, String mascota, String color, int puntos) {
+    public Equipo(int idEquipo, String nomEquipo, String provincia, int campParticipados, int campGanados,
+            String mascota, String color, int puntos) {
         setIdEquipo(idEquipo);
         setNomEquipo(nomEquipo);
         setProvincia(provincia);
@@ -34,11 +36,12 @@ public class Equipo {
         setColor(color);
         setPuntos(puntos);
     }
+
     public Equipo() {
-    
+
     }
 
-// Métodos getter y setter
+    // Métodos getter y setter
     public int getIdEquipo() {
         return idEquipo;
     }
@@ -128,6 +131,5 @@ public class Equipo {
     public String toString() {
         return nomEquipo;
     }
-    
-    
+
 }

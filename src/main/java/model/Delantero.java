@@ -15,8 +15,8 @@ public class Delantero extends Jugador {
     }
 
     public Delantero(int idEquipo, int numero, String nombre, int añosEnEquipo, String tipo, int partidosJugados, int cantidadGoles,
-            int asistencias, double promedioGoles, String pos, int tirosAPuerta) {
-        super(idEquipo, numero, nombre, añosEnEquipo, tipo, partidosJugados, cantidadGoles, asistencias, promedioGoles, pos);
+            int asistencias, String pos, int tirosAPuerta) {
+        super(idEquipo, numero, nombre, añosEnEquipo, tipo, partidosJugados, cantidadGoles, asistencias, pos);
         setTirosAPuerta(tirosAPuerta);
     }
 
@@ -30,6 +30,9 @@ public class Delantero extends Jugador {
     }
 
     public void setTirosAPuerta(int tirosAPuerta) {
-        this.tirosAPuerta = tirosAPuerta;
+        if (tirosAPuerta >= 0) {
+            this.tirosAPuerta = tirosAPuerta;
+        } else
+            throw new IllegalArgumentException();
     }
 }

@@ -17,6 +17,9 @@ public class ServicesLocator {
     private static PartidoServices partidoServices = null;
     private static PorteroServices porteroServices = null;
     private static IntervaloFServices intervaloFServices = null;
+    private static UsuarioServices usuarioServices = null;
+
+
 
     public static Connection getConnection() throws SQLException {
         return ConnectionManager.getConnection();
@@ -97,5 +100,12 @@ public class ServicesLocator {
             intervaloFServices = new IntervaloFServices();
         }
         return intervaloFServices;
+    }
+
+    public static UsuarioServices getUsuarioServices() {
+        if (usuarioServices == null) {
+            usuarioServices = new UsuarioServices();
+        }
+        return usuarioServices;
     }
 }

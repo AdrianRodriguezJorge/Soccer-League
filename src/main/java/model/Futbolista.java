@@ -3,7 +3,7 @@ package model;
 /**
  * Clase base que representa un Futbolista en la Liga Nacional de Fútbol.
  */
-public class Futbolista {
+public abstract class Futbolista {
     protected int idFutbolista;
     protected int idEquipo;
     protected String nombre;
@@ -12,7 +12,7 @@ public class Futbolista {
     protected String tipo;
 
     // Constructores
-    public Futbolista (int idFutbolista, int idEquipo, int numero, String nombre, int añosEnEquipo, String tipo) {
+    public Futbolista(int idFutbolista, int idEquipo, int numero, String nombre, int añosEnEquipo, String tipo) {
         setIdFutbolista(idFutbolista);
         setIdEquipo(idEquipo);
         setNumero(numero);
@@ -21,7 +21,7 @@ public class Futbolista {
         setTipo(tipo);
     }
 
-    public Futbolista (int idEquipo, int numero, String nombre, int añosEnEquipo, String tipo) {
+    public Futbolista(int idEquipo, int numero, String nombre, int añosEnEquipo, String tipo) {
         setIdFutbolista(idFutbolista);
         setIdEquipo(idEquipo);
         setNumero(numero);
@@ -56,7 +56,11 @@ public class Futbolista {
     }
 
     public void setNumero(int numero) {
-        this.numero = numero;
+        if (numero >= 0) {
+            this.numero = numero;
+        } else
+            throw new IllegalArgumentException();
+
     }
 
     public String getNombre() {
@@ -64,7 +68,10 @@ public class Futbolista {
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        if (!nombre.replace(" ", "").equals("")) {
+            this.nombre = nombre;
+        } else
+            throw new IllegalArgumentException();
     }
 
     public int getAñosEnEquipo() {
@@ -72,7 +79,10 @@ public class Futbolista {
     }
 
     public void setAñosEnEquipo(int añosEnEquipo) {
-        this.añosEnEquipo = añosEnEquipo;
+        if (añosEnEquipo >= 0) {
+            this.añosEnEquipo = añosEnEquipo;
+        } else
+            throw new IllegalArgumentException();
     }
 
     public String getTipo() {
@@ -85,6 +95,6 @@ public class Futbolista {
 
     @Override
     public String toString() {
-         return nombre;
+        return nombre;
     }
 }

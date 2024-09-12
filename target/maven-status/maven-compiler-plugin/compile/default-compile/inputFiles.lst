@@ -1,4 +1,5 @@
 C:\Users\HP 11na\Desktop\Liga\src\main\java\model\Partido.java
+C:\Users\HP 11na\Desktop\Liga\src\main\java\model\Rol.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\visual\CrudPartido.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\model\Defensa.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\services\IntervaloFServices.java
@@ -6,9 +7,11 @@ C:\Users\HP 11na\Desktop\Liga\src\main\java\model\Estadio.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\services\FutbolistaServices.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\services\PorteroServices.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\services\EntrenadorServices.java
+C:\Users\HP 11na\Desktop\Liga\src\main\java\services\UsuarioServices.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\model\Mediocampista.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\visual\Principal.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\reports\Reports_contenido.java
+C:\Users\HP 11na\Desktop\Liga\src\main\java\model\Usuario.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\model\Jugador.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\visual\CrudEstadio.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\visual\Visual_contenido.java
@@ -23,6 +26,7 @@ C:\Users\HP 11na\Desktop\Liga\src\main\java\services\MediocampistaServices.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\services\PartidoServices.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\model\Model_contenido.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\visual\REstadoEquipo.java
+C:\Users\HP 11na\Desktop\Liga\src\main\java\visual\CrudUsuario.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\utils\Report.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\visual\RPartidosPorFecha.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\utils\Utils_contenido.java

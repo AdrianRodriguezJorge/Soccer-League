@@ -1,15 +1,12 @@
 package services;
 
-import model.Equipo;
 import model.Estadio;
 import utils.ConnectionManager;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.view.JasperViewer;
 
 import java.util.HashMap;
 import java.util.Map;
