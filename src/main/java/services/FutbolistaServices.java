@@ -187,38 +187,40 @@ public class FutbolistaServices {
      * @param futbolista El objeto Futbolista a actualizar.
      */
     public void actualizarFutbolista(Futbolista futbolista) {
-        String sql = "UPDATE futbolista SET idequipo = ?, nombre = ?, numero = ?, añosenequipo = ?, tipo = ? WHERE idfutbolista = ?";
-        try (Connection conn = ConnectionManager.getConnection();
-                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        eliminarFutbolista(futbolista.getIdFutbolista());
+        crearFutbolista(futbolista);
+        // String sql = "UPDATE futbolista SET idequipo = ?, nombre = ?, numero = ?, añosenequipo = ?, tipo = ? WHERE idfutbolista = ?";
+        // try (Connection conn = ConnectionManager.getConnection();
+        //         PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            pstmt.setInt(1, futbolista.getIdEquipo());
-            pstmt.setString(2, futbolista.getNombre());
-            pstmt.setInt(3, futbolista.getNumero());
-            pstmt.setInt(4, futbolista.getAñosEnEquipo());
+        //     pstmt.setInt(1, futbolista.getIdEquipo());
+        //     pstmt.setString(2, futbolista.getNombre());
+        //     pstmt.setInt(3, futbolista.getNumero());
+        //     pstmt.setInt(4, futbolista.getAñosEnEquipo());
 
-            String tipo = futbolista.getTipo();
-            pstmt.setString(5, tipo);
-            pstmt.setInt(6, futbolista.getIdFutbolista());
-            pstmt.executeUpdate();
+        //     String tipo = futbolista.getTipo();
+        //     pstmt.setString(5, tipo);
+        //     pstmt.setInt(6, futbolista.getIdFutbolista());
+        //     pstmt.executeUpdate();
 
-            if (tipo.equals("Entrenador")) {
-                ServicesLocator.getEntrenadorServices().actualizarEntrenador((Entrenador) futbolista);
-            } else {
-                String pos = ((Jugador) futbolista).getPosicion();
-                if (pos.equals("Defensa")) {
-                    ServicesLocator.getDefensaServices().actualizarDefensa((Defensa) futbolista);
-                } else if (pos.equals("Delantero")) {
-                    ServicesLocator.getDelanteroServices().actualizarDelantero((Delantero) futbolista);
-                } else if (pos.equals("Mediocampista")) {
-                    ServicesLocator.getMediocampistaServices().actualizarMediocampista((Mediocampista) futbolista);
-                } else if (pos.equals("Portero")) {
-                    ServicesLocator.getPorteroServices().actualizarPortero((Portero) futbolista);
-                }
-            }
+        //     if (tipo.equals("Entrenador")) {
+        //         ServicesLocator.getEntrenadorServices().actualizarEntrenador((Entrenador) futbolista);
+        //     } else {
+        //         String pos = ((Jugador) futbolista).getPosicion();
+        //         if (pos.equals("Defensa")) {
+        //             ServicesLocator.getDefensaServices().actualizarDefensa((Defensa) futbolista);
+        //         } else if (pos.equals("Delantero")) {
+        //             ServicesLocator.getDelanteroServices().actualizarDelantero((Delantero) futbolista);
+        //         } else if (pos.equals("Mediocampista")) {
+        //             ServicesLocator.getMediocampistaServices().actualizarMediocampista((Mediocampista) futbolista);
+        //         } else if (pos.equals("Portero")) {
+        //             ServicesLocator.getPorteroServices().actualizarPortero((Portero) futbolista);
+        //         }
+        //     }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        // } catch (SQLException e) {
+        //     e.printStackTrace();
+        // }
     }
 
     /**

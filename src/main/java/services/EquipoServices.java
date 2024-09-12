@@ -216,12 +216,12 @@ public class EquipoServices {
         return obtenerEquipos().get(index).getIdEquipo();
     }
 
-    public int getIndexFromId(Futbolista f) {
+    public int getIndexFromId(int id) {
         int index = -1;
         ArrayList<Equipo> list = obtenerEquipos();
 
         for (int i = 0; i < list.size() && index == -1; i++) {
-            if (list.get(i).getIdEquipo() == f.getIdEquipo()) {
+            if (list.get(i).getIdEquipo() ==id) {
                 index = i;
             }
         }

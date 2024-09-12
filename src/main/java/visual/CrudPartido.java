@@ -1,8 +1,11 @@
 package visual;
 
 import java.awt.Color;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -33,20 +36,22 @@ public class CrudPartido extends javax.swing.JDialog {
             jComboBoxVisitante.addItem(s);
         }
 
-        btnAgregar.setVisible(false);
-        btnGuardar.setVisible(false);
-        btnCancelar.setVisible(false);
-        jComboBoxEstadio.setVisible(false);
-        jComboBoxLocal.setVisible(false);
-        jComboBoxVisitante.setVisible(false);
-        
-        jComboBoxEstadio.setLocation(tfEstadio.getLocation());
+        changeStatus(false);
+        btnEditar.setEnabled(false);
+        btnEliminar.setEnabled(false);
+        lblDatosErroneos.setVisible(false);
+
+        list.setModel(modelo);
+
+        Principal.soloNum(tfAudiencia);
+        Principal.soloNum(tfGolesLocal);
+        Principal.soloNum(tfGolesVisitante);
 
         list.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
                 int index = list.getSelectedIndex();
                 btnEliminar.setEnabled(index > -1);
-                editabled(index <= -1);
+                changeStatus(index <= -1);
                 if (index > -1) {
                     Partido p = modelo.getElementAt(index);
 
@@ -59,8 +64,8 @@ public class CrudPartido extends javax.swing.JDialog {
                     tfAudiencia.setText(p.getAudiencia() + "");
                     tfLocal.setText(nomEquipoLocal);
                     tfVisit.setText(nomEquipoVisit);
-                    tfGolesLocal.setText(p.getGoles_local() + "");
-                    tfGolesVisitante.setText(p.getGoles_visitante() + "");
+                    tfGolesLocal.setText(p.getGolesLocal() + "");
+                    tfGolesVisitante.setText(p.getGolesVisitante() + "");
 
                     btnNuevo.setEnabled(true);
                     btnEditar.setEnabled(true);
@@ -74,20 +79,14 @@ public class CrudPartido extends javax.swing.JDialog {
 
         modelo.setList(ServicesLocator.getPartidoServices().obtenerPartidos());
 
-        // lblDatosErroneos = new JLabel("Datos erroneos");
-        // lblDatosErroneos.setForeground(new Color(0,0,139));
-        // lblDatosErroneos.setFont(new Font("SansSerif", Font.PLAIN, 20));
-        // lblDatosErroneos.setBounds(330, 207, 200, 50);
-        // lblDatosErroneos.setVisible(false);
-        // contentPanel.add(lblDatosErroneos);
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         contentPanel = new javax.swing.JPanel();
@@ -112,6 +111,7 @@ public class CrudPartido extends javax.swing.JDialog {
         tfEstadio = new javax.swing.JTextField();
         tfVisit = new javax.swing.JTextField();
         tfLocal = new javax.swing.JTextField();
+        lblDatosErroneos = new javax.swing.JLabel();
         scrollPane = new javax.swing.JScrollPane();
         list = new javax.swing.JList<>();
         btnNuevo = new javax.swing.JButton();
@@ -259,7 +259,7 @@ public class CrudPartido extends javax.swing.JDialog {
                 tfEstadioActionPerformed(evt);
             }
         });
-        panel.add(tfEstadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 176, -1));
+        panel.add(tfEstadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 260, -1));
 
         tfVisit.setEditable(false);
         tfVisit.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
@@ -278,6 +278,11 @@ public class CrudPartido extends javax.swing.JDialog {
             }
         });
         panel.add(tfLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 176, -1));
+
+        lblDatosErroneos.setFont(new java.awt.Font("SansSerif", 3, 16)); // NOI18N
+        lblDatosErroneos.setForeground(new java.awt.Color(0, 102, 102));
+        lblDatosErroneos.setText("Datos erroneos");
+        panel.add(lblDatosErroneos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 320, -1));
 
         list.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         list.setForeground(new java.awt.Color(0, 102, 51));
@@ -329,58 +334,61 @@ public class CrudPartido extends javax.swing.JDialog {
         javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
         contentPanel.setLayout(contentPanelLayout);
         contentPanelLayout.setHorizontalGroup(
-            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contentPanelLayout.createSequentialGroup()
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(contentPanelLayout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(btnNuevo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEditar)))
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contentPanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(12, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSalir)
-                        .addGap(21, 21, 21))))
-        );
+                contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(contentPanelLayout.createSequentialGroup()
+                                .addGroup(contentPanelLayout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 288,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(contentPanelLayout.createSequentialGroup()
+                                                .addGap(7, 7, 7)
+                                                .addComponent(btnNuevo)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btnEliminar)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btnEditar)))
+                                .addGap(18, 18, 18)
+                                .addGroup(contentPanelLayout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 471,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnSalir))
+                                .addContainerGap(12, Short.MAX_VALUE)));
         contentPanelLayout.setVerticalGroup(
-            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contentPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEditar)
-                    .addComponent(btnEliminar)
-                    .addComponent(btnNuevo)
-                    .addComponent(btnSalir))
-                .addContainerGap())
-        );
+                contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(contentPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(contentPanelLayout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 324,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 361,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30,
+                                        Short.MAX_VALUE)
+                                .addGroup(contentPanelLayout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnEditar)
+                                        .addComponent(btnEliminar)
+                                        .addComponent(btnNuevo)
+                                        .addComponent(btnSalir))
+                                .addContainerGap()));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap()));
 
         contentPanel.getAccessibleContext().setAccessibleParent(contentPanel);
 
@@ -417,181 +425,123 @@ public class CrudPartido extends javax.swing.JDialog {
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnNuevoActionPerformed
         limpiar();
-        btnAgregar.setVisible(true);
-        editabled(true);
-        list.setEnabled(false);
+        changeStatus(true);
         DateChooserFecha.requestFocusInWindow();
-        btnEliminar.setEnabled(false);
-        btnNuevo.setEnabled(false);
-        btnEditar.setEnabled(false);
         btnGuardar.setVisible(false);
-        btnCancelar.setVisible(true);
 
-        tfEstadio.setVisible(false);
-        tfLocal.setVisible(false);
-        tfVisit.setVisible(false);
-        
-        jComboBoxEstadio.setVisible(true);
-        jComboBoxEstadio.setLocation(tfEstadio.getLocation());
-
-        jComboBoxLocal.setVisible(true);
-        jComboBoxLocal.setLocation(tfLocal.getLocation());
-
-        jComboBoxVisitante.setVisible(true);
-        jComboBoxVisitante.setLocation(tfVisit.getLocation());
     }// GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAgregarActionPerformed
+        
+        int audiencia = Integer.parseInt(tfAudiencia.getText().equals("") ? "-1" : tfAudiencia.getText());
+        int golesLocal = Integer.parseInt(tfGolesLocal.getText().equals("") ? "-1" : tfGolesLocal.getText());
+        int golesVisit = Integer.parseInt(tfGolesVisitante.getText().equals("") ? "-1" : tfGolesVisitante.getText());
 
-        boolean proceder = true; // validarDatos(id, nombre, capacidad);
+        boolean proceder = validarDatos(audiencia, golesLocal, golesVisit);
 
         if (proceder) {
-            // guardar en la BD
+            Date fecha = DateChooserFecha.getDate();
             Partido p = new Partido();
 
-            p.setFecha(DateChooserFecha.getDate());
+            p.setFecha(fecha);
             p.setIdEstadio(ServicesLocator.getEstadioServices().obtenerEstadios()
                     .get(jComboBoxEstadio.getSelectedIndex()).getIdEstadio());
-            p.setAudiencia(Integer.parseInt(tfAudiencia.getText()));
+            p.setAudiencia(audiencia);
             p.setIdEquipoLocal((ServicesLocator.getEquipoServices().obtenerEquipos()
                     .get(jComboBoxLocal.getSelectedIndex()).getIdEquipo()));
             p.setIdEquipoVisitante((ServicesLocator.getEquipoServices().obtenerEquipos()
                     .get(jComboBoxVisitante.getSelectedIndex()).getIdEquipo()));
 
-            p.setGoles_local(Integer.parseInt(tfGolesLocal.getText()));
-            p.setGoles_visitante((Integer.parseInt(tfGolesVisitante.getText())));
+            p.setGolesLocal(Integer.parseInt(tfGolesLocal.getText()));
+            p.setGolesVisitante((Integer.parseInt(tfGolesVisitante.getText())));
 
-            ServicesLocator.getPartidoServices().crearPartido(p);
-            modelo.addElement(p);
+            try {
+                ServicesLocator.getPartidoServices().crearPartido(p);
+                p.setIdPartido(ServicesLocator.getPartidoServices().obtenerPartidos().getLast().getIdPartido());
+                modelo.addElement(p);
 
-            int lastIndex = list.getModel().getSize() - 1;
-            list.setSelectedIndex(lastIndex);
-            list.ensureIndexIsVisible(lastIndex);
+                int lastIndex = list.getModel().getSize() - 1;
+                list.setSelectedIndex(lastIndex);
+                list.ensureIndexIsVisible(lastIndex);
 
-            editabled(false);
-            list.setEnabled(true);
-            btnEliminar.setEnabled(true);
-            btnEditar.setEnabled(true);
-            btnNuevo.setEnabled(true);
+                changeStatus(false);
+            } catch (SQLException e) {
+                lblDatosErroneos.setVisible(true);
+            }
 
-            btnAgregar.setVisible(false);
-            btnCancelar.setVisible(false);
-
-            jComboBoxEstadio.setVisible(false);
-            jComboBoxLocal.setVisible(false);
-            jComboBoxVisitante.setVisible(false);
         }
     }// GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnEditarActionPerformed
-        editabled(list.getSelectedIndex() > -1);
-        list.setEnabled(false);
+        changeStatus(list.getSelectedIndex() > -1);
         DateChooserFecha.requestFocusInWindow();
-        btnEliminar.setEnabled(false);
-        btnNuevo.setEnabled(false);
-        btnEditar.setEnabled(false);
-        btnGuardar.setVisible(true);
-        btnAgregar.setVisible(false);
-        btnCancelar.setVisible(true);
 
-        tfEstadio.setVisible(false);
-        tfLocal.setVisible(false);
-        tfVisit.setVisible(false);
-        
-        jComboBoxEstadio.setVisible(true);
-        jComboBoxEstadio.setLocation(tfEstadio.getLocation());
+        int index = ServicesLocator.getEquipoServices()
+                .getIndexFromId(modelo.getElementAt(list.getSelectedIndex()).getIdEquipoLocal());
+        jComboBoxLocal.setSelectedIndex(index);
 
-        jComboBoxLocal.setVisible(true);
-        jComboBoxLocal.setLocation(tfLocal.getLocation());
-
-        jComboBoxVisitante.setVisible(true);
-        jComboBoxVisitante.setLocation(tfVisit.getLocation());
+        index = ServicesLocator.getEquipoServices()
+                .getIndexFromId(modelo.getElementAt(list.getSelectedIndex()).getIdEquipoVisitante());
+        jComboBoxVisitante.setSelectedIndex(index);
     }// GEN-LAST:event_btnEditarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnGuardarActionPerformed
         int index = list.getSelectedIndex();
+        int audiencia = Integer.parseInt(tfAudiencia.getText().equals("") ? "-1" : tfAudiencia.getText());
+        int golesLocal = Integer.parseInt(tfGolesLocal.getText().equals("") ? "-1" : tfGolesLocal.getText());
+        int golesVisit = Integer.parseInt(tfGolesVisitante.getText().equals("") ? "-1" : tfGolesVisitante.getText());
 
-        boolean proceder = true; // validarDatos(id, nombre, capacidad);
+        boolean proceder = validarDatos(audiencia, golesLocal, golesVisit);
 
         if (proceder) {
+            Date fecha = DateChooserFecha.getDate();
             Partido p = new Partido();
 
-            p.setFecha(DateChooserFecha.getDate());
-            p.setIdEstadio(ServicesLocator.getEstadioServices().getIdFromIndex(jComboBoxEstadio.getSelectedIndex()));
-            p.setAudiencia(Integer.parseInt(tfAudiencia.getText()));
+            p.setFecha(fecha);
+            p.setIdEstadio(ServicesLocator.getEstadioServices().obtenerEstadios()
+                    .get(jComboBoxEstadio.getSelectedIndex()).getIdEstadio());
+            p.setAudiencia(audiencia);
             p.setIdEquipoLocal((ServicesLocator.getEquipoServices().obtenerEquipos()
                     .get(jComboBoxLocal.getSelectedIndex()).getIdEquipo()));
             p.setIdEquipoVisitante((ServicesLocator.getEquipoServices().obtenerEquipos()
                     .get(jComboBoxVisitante.getSelectedIndex()).getIdEquipo()));
 
-            p.setGoles_local(Integer.parseInt(tfGolesLocal.getText()));
-            p.setGoles_visitante((Integer.parseInt(tfGolesVisitante.getText())));
+            p.setGolesLocal(Integer.parseInt(tfGolesLocal.getText()));
+            p.setGolesVisitante((Integer.parseInt(tfGolesVisitante.getText())));
 
-            p.setIdPartido(modelo.getElementAt(index).getIdPartido());
+            try {
+                ServicesLocator.getPartidoServices().actualizarPartido(p);
 
-            ServicesLocator.getPartidoServices().actualizarPartido(p);
+                modelo.updateElement(index, p);
 
-            modelo.updateElement(index, p);
+                changeStatus(false);
+            } catch (SQLException e) {
+                lblDatosErroneos.setVisible(true);
+            }
 
-            editabled(false);
-            list.setEnabled(true);
-            btnEliminar.setEnabled(true);
-            btnEditar.setEnabled(true);
-            btnNuevo.setEnabled(true);
-
-            btnGuardar.setVisible(false);
-            btnCancelar.setVisible(false);
-
-            
-            jComboBoxEstadio.setVisible(false);
-            jComboBoxLocal.setVisible(false);
-            jComboBoxVisitante.setVisible(false);
         }
     }// GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnEliminarActionPerformed
         int index = list.getSelectedIndex();
         if (index != -1) {
-            if (JOptionPane.showConfirmDialog(null, "Está seguro que desea eliminar la información de este estadio?",
+            if (JOptionPane.showConfirmDialog(null, "Está seguro que desea eliminar la información de este partido?",
                     "Confirmar", 0) == 0) {
+
+                ServicesLocator.getPartidoServices().eliminarPartido(modelo.getElementAt(index).getIdPartido());
+
                 modelo.removeElement(index);
 
-                ServicesLocator.getPartidoServices().eliminarPartido(ServicesLocator
-                        .getPartidoServices().getIdFromIndex(index));
-
                 limpiar();
-                editabled(false);
+                changeStatus(false);
             }
         }
     }// GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnCancelarActionPerformed
-        editabled(false);
-        list.setEnabled(true);
-        btnEliminar.setEnabled(true);
-        btnEditar.setEnabled(true);
-        btnNuevo.setEnabled(true);
-        btnAgregar.setVisible(false);
-        btnGuardar.setVisible(false);
-        btnCancelar.setVisible(false);
-
-        lblAudiencia.setForeground(Color.BLACK);
-        lblEstadio.setForeground(Color.BLACK);
-        lblFecha.setForeground(Color.BLACK);
-        lblGolesLocal.setForeground(Color.BLACK);
-        lblGolesVisit.setForeground(Color.BLACK);
-        lblLocal.setForeground(Color.BLACK);
-        lblVisitante.setForeground(Color.BLACK);
-
-        jComboBoxEstadio.setVisible(false);
-        jComboBoxLocal.setVisible(false);
-        jComboBoxVisitante.setVisible(false);
-
-        tfEstadio.setVisible(true);
-        tfLocal.setVisible(true);
-        tfVisit.setVisible(true);
-
-        // lblDatosErroneos.setVisible(false);
+        changeStatus(false);
+        list.setSelectedIndex(0);
+        lblDatosErroneos.setVisible(false);
     }// GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnSalirActionPerformed
@@ -613,6 +563,7 @@ public class CrudPartido extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> jComboBoxLocal;
     private javax.swing.JComboBox<String> jComboBoxVisitante;
     private javax.swing.JLabel lblAudiencia;
+    private javax.swing.JLabel lblDatosErroneos;
     private javax.swing.JLabel lblEstadio;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblGolesLocal;
@@ -630,26 +581,6 @@ public class CrudPartido extends javax.swing.JDialog {
     private javax.swing.JTextField tfVisit;
     // End of variables declaration//GEN-END:variables
 
-    private void limpiar() {
-        DateChooserFecha.setDate(new Date());
-        tfEstadio.setText("");
-        tfAudiencia.setText("");
-        tfLocal.setText("");
-        tfVisit.setText("");
-        tfGolesLocal.setText("");
-        tfGolesVisitante.setText("");
-
-    }
-
-    private void editabled(boolean status) {
-        tfAudiencia.setEditable(status);
-        tfEstadio.setEditable(status);
-        tfGolesLocal.setEditable(status);
-        tfGolesVisitante.setEditable(status);
-        tfLocal.setEditable(status);
-        tfVisit.setEditable(status);
-    }
-
     private String buscarNombrEquipo(int id) {
         String nom = null;
         ArrayList<Equipo> equipos = ServicesLocator.getEquipoServices().obtenerEquipos();
@@ -663,41 +594,87 @@ public class CrudPartido extends javax.swing.JDialog {
         return nom;
     }
 
-    // public boolean validarDatos(String n, String nombre, String capacidad) {
-    // boolean correcto = true;
-    // Votante temp = new Votante();
+    private void limpiar() {
+        DateChooserFecha.setDate(new Date());
+        tfEstadio.setText("");
+        tfAudiencia.setText("");
+        tfLocal.setText("");
+        tfVisit.setText("");
+        tfGolesLocal.setText("");
+        tfGolesVisitante.setText("");
+    }
 
-    // try { // nombre
-    // lblD.setForeground(Color.BLACK);
-    // temp.setNombre(n);
-    // } catch (IllegalArgumentException e) {
-    // correcto = false;
-    // lblDatosErroneos.setVisible(true);
-    // lblD.setForeground(new Color(0,0,139));
-    // }
+    private boolean validarDatos(int audiencia, int golesLocal, int golesVisit) {
+        boolean correcto = true;
+        Partido temp = new Partido();
+        Date fecha = null;
 
-    // try { // nombre
-    // lblNombre.setForeground(Color.BLACK);
-    // temp.setCorreo(nombre);
-    // } catch (IllegalArgumentException e) {
-    // correcto = false;
-    // lblDatosErroneos.setVisible(true);
-    // lblNombre.setForeground(new Color(0,0,139));
-    // }
+        try { // fecha
+            fecha = DateChooserFecha.getDate();
+            temp.setFecha(fecha);
+        } catch (Exception e) {
+            correcto = false;
+            lblDatosErroneos.setVisible(true);
+            lblFecha.setForeground(Principal.errorColor);
+        }
+        try { // audiencia
+            temp.setAudiencia(audiencia);
+        } catch (IllegalArgumentException e) {
+            correcto = false;
+            lblDatosErroneos.setVisible(true);
+            lblAudiencia.setForeground(Principal.errorColor);
+        }
+        try { // goles local
+            temp.setGolesLocal(golesLocal);
+        } catch (IllegalArgumentException e) {
+            correcto = false;
+            lblDatosErroneos.setVisible(true);
+            lblGolesLocal.setForeground(Principal.errorColor);
+        }
+        try { // goles visitante
+            temp.setGolesVisitante(golesVisit);
+        } catch (IllegalArgumentException e) {
+            correcto = false;
+            lblDatosErroneos.setVisible(true);
+            lblGolesVisit.setForeground(Principal.errorColor);
+        }
 
-    // try { // contrase�a
-    // lblCapacidad.setForeground(Color.BLACK);
-    // temp.setContrasenna(capacidad);
-    // } catch (IllegalArgumentException e) {
-    // correcto = false;
-    // lblDatosErroneos.setVisible(true);
-    // lblCapacidad.setForeground(new Color(0,0,139));
-    // }
+        if (correcto) {
+            lblDatosErroneos.setVisible(false);
+            changeStatus(true);
+        }
+        return correcto;
+    }
 
-    // if (correcto) {
-    // lblDatosErroneos.setVisible(false);
-    // }
-    // return correcto;
-    // }
+    private void changeStatus(boolean status) {
+        tfAudiencia.setEditable(status);
+        tfGolesLocal.setEditable(status);
+        tfGolesVisitante.setEditable(status);
 
+        tfEstadio.setVisible(!status);
+        tfLocal.setVisible(!status);
+        tfVisit.setVisible(!status);
+
+        btnEliminar.setEnabled(!status);
+        btnNuevo.setEnabled(!status);
+        btnEditar.setEnabled(!status);
+        list.setEnabled(!status);
+        btnSalir.setEnabled(!status);
+
+        btnAgregar.setVisible(status);
+        btnGuardar.setVisible(status);
+        btnCancelar.setVisible(status);
+
+        lblAudiencia.setForeground(Color.BLACK);
+        lblEstadio.setForeground(Color.BLACK);
+        lblFecha.setForeground(Color.BLACK);
+        lblGolesLocal.setForeground(Color.BLACK);
+        lblGolesVisit.setForeground(Color.BLACK);
+        lblLocal.setForeground(Color.BLACK);
+        lblVisitante.setForeground(Color.BLACK);
+
+        jComboBoxEstadio.setVisible(status);
+        jComboBoxLocal.setVisible(status);
+        jComboBoxVisitante.setVisible(status);
+    }
 }

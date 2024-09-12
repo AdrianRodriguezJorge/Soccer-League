@@ -45,6 +45,7 @@ public class MediocampistaServices {
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
                     mediocampista = new Mediocampista();
+                    mediocampista.setIdFutbolista(idfutbolista);
                     mediocampista.setPasesCompletados(rs.getInt("pasescompletados"));
                     mediocampista.setIntercepciones(rs.getInt("intercepciones"));
                 }

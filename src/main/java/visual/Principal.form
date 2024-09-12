@@ -12,7 +12,7 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="menuGestion">
           <Properties>
-            <Property name="text" type="java.lang.String" value="CRUDs"/>
+            <Property name="text" type="java.lang.String" value="Gesti&#xf3;n de la liga"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemEstadios">
@@ -47,9 +47,22 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemFutbolistasActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="menuItemPosJug">
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemInicio">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cambiar Pos. Jugador"/>
+                <Property name="text" type="java.lang.String" value="Comenzar la liga"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemInicioActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemInicio1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Culminar la liga"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemInicio2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ver resultados"/>
               </Properties>
             </MenuItem>
           </SubComponents>

@@ -40,6 +40,7 @@ public class DelanteroServices {
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
                     delantero = new Delantero();
+                    delantero.setIdFutbolista(idfutbolista);
                     delantero.setTirosAPuerta(rs.getInt("tirosapuerta"));
                 }
             }

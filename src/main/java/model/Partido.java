@@ -12,20 +12,20 @@ public class Partido {
     private int idEquipoVisitante;
     private int idEstadio;
     private Date fecha;
-    private int goles_local;
-    private int goles_visitante;
+    private int golesLocal;
+    private int golesVisitante;
     private int audiencia;
 
     public Partido(int idPartido, int audiencia, Date fecha, int idEstadio, int idEquipoLocal, int idEquipoVisitante,
-            int goles_local,
-            int goles_visitante) {
+            int golesLocal,
+            int golesVisitante) {
         setIdPartido(idPartido);
         setIdEquipoLocal(idEquipoLocal);
         setIdEquipoVisitante(idEquipoVisitante);
         setIdEstadio(idEstadio);
         setFecha(fecha);
-        setGoles_local(goles_local);
-        setGoles_visitante(goles_visitante);
+        setGolesLocal(golesLocal);
+        setGolesVisitante(golesVisitante);
         setAudiencia(audiencia);
     }
 
@@ -70,23 +70,33 @@ public class Partido {
     }
 
     public void setFecha(Date fecha) {
-        this.fecha = fecha;
+        if (fecha != null) {
+            this.fecha = fecha;
+        } else
+            throw new IllegalArgumentException();
+
     }
 
-    public int getGoles_local() {
-        return goles_local;
+    public int getGolesLocal() {
+        return golesLocal;
     }
 
-    public void setGoles_local(int goles_local) {
-        this.goles_local = goles_local;
+    public void setGolesLocal(int golesLocal) {
+        if (golesLocal >= 0) {
+            this.golesLocal = golesLocal;
+        } else
+            throw new IllegalArgumentException();
     }
 
-    public int getGoles_visitante() {
-        return goles_visitante;
+    public int getGolesVisitante() {
+        return golesVisitante;
     }
 
-    public void setGoles_visitante(int goles_visitante) {
-        this.goles_visitante = goles_visitante;
+    public void setGolesVisitante(int golesVisitante) {
+        if (golesVisitante >= 0) {
+            this.golesVisitante = golesVisitante;
+        } else
+            throw new IllegalArgumentException();
     }
 
     public int getAudiencia() {
@@ -94,7 +104,10 @@ public class Partido {
     }
 
     public void setAudiencia(int audiencia) {
-        this.audiencia = audiencia;
+        if (audiencia >= 0) {
+            this.audiencia = audiencia;
+        } else
+            throw new IllegalArgumentException();
     }
 
     @Override

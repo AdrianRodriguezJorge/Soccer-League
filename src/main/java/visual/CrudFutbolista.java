@@ -2,6 +2,7 @@ package visual;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -34,7 +35,27 @@ public class CrudFutbolista extends javax.swing.JDialog {
             ComboBoxEquipo.addItem(s);
         }
 
+        Principal.soloLetras(tfNombre);
+        Principal.soloNum(tfNum);
+        Principal.soloNum(tfAñosEnEq);
+        Principal.soloNum(tfExp);
+        Principal.soloNum(tfPartJugados);
+        Principal.soloNum(tfCantGoles);
+        Principal.soloFloat(tfPromGoles);
+        Principal.soloNum(tfAsist);
+        Principal.soloNum(tfBloqueos);
+        Principal.soloNum(tfEntradas);
+        Principal.soloNum(tfTirosAPuerta);
+        Principal.soloNum(tfPasesC);
+        Principal.soloNum(tfIntercep);
+        Principal.soloNum(tfParadas);
+        Principal.soloNum(tfGolesE);
+        
+        
+
         changeStatus(false);
+        btnEliminar.setEnabled(false);
+        btnEditar.setEnabled(false);
 
         list.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
@@ -54,10 +75,10 @@ public class CrudFutbolista extends javax.swing.JDialog {
 
                     if (f instanceof Entrenador) {
                         setOneEnabled(-1);
-                        ComboBoxTipo.setSelectedIndex(1);
+                        // ComboBoxTipo.setSelectedIndex(1);
                         tfExp.setText(((Entrenador) f).getAñosExperiencia() + "");
                     } else {
-                        ComboBoxTipo.setSelectedIndex(0);
+                        // ComboBoxTipo.setSelectedIndex(0);
                         Jugador j = (Jugador) f;
                         tfPartJugados.setText(j.getPartidosJugados() + "");
                         tfCantGoles.setText(j.getCantidadGoles() + "");
@@ -86,12 +107,14 @@ public class CrudFutbolista extends javax.swing.JDialog {
 
                             Portero por = (Portero) j;
                             tfParadas.setText(por.getParadas() + "");
-                            tfIntercep.setText(por.getGolesEncajados() + "");
+                            tfGolesE.setText(por.getGolesEncajados() + "");
                         }
                     }
 
                     btnNuevo.setEnabled(true);
                     btnEditar.setEnabled(true);
+
+                    Principal.contP = 0;
                 } else {
                     btnEditar.setEnabled(false);
                 }
@@ -101,12 +124,6 @@ public class CrudFutbolista extends javax.swing.JDialog {
 
         modelo.setList(ServicesLocator.getFutbolistaServices().obtenerFutbolistas());
 
-        // lblDatosErroneos = new JLabel("Datos erroneos");
-        // lblDatosErroneos.setForeground(new Color(0,0,139));
-        // lblDatosErroneos.setFont(new Font("SansSerif", Font.PLAIN, 20));
-        // lblDatosErroneos.setBounds(330, 207, 200, 50);
-        // lblDatosErroneos.setVisible(false);
-        // contentPanel.add(lblDatosErroneos);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated
@@ -604,6 +621,11 @@ public class CrudFutbolista extends javax.swing.JDialog {
         btnGuardar.setVisible(false);
         list.setEnabled(false);
         setOneEnabled(0);
+
+        lblTipo.setVisible(true);
+        ComboBoxTipo.setVisible(true);
+        
+        btnSalir.setEnabled(false);
     }// GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAgregarActionPerformed
@@ -623,6 +645,8 @@ public class CrudFutbolista extends javax.swing.JDialog {
 
             list.setEnabled(true);
             list.requestFocusInWindow();
+            
+            btnSalir.setEnabled(true);
         }
     }// GEN-LAST:event_btnAgregarActionPerformed
 
@@ -631,9 +655,11 @@ public class CrudFutbolista extends javax.swing.JDialog {
         changeStatus(true);
         btnAgregar.setVisible(false);
         
-        int index = ServicesLocator.getEquipoServices().getIndexFromId(modelo.getElementAt(list.getSelectedIndex()));
+        int index = ServicesLocator.getEquipoServices().getIndexFromId(modelo.getElementAt(list.getSelectedIndex()).getIdEquipo());
         ComboBoxEquipo.setSelectedIndex(index);
         
+        btnSalir.setEnabled(false);
+
     }// GEN-LAST:event_btnEditarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnGuardarActionPerformed
@@ -652,6 +678,8 @@ public class CrudFutbolista extends javax.swing.JDialog {
             changeStatus(false);
             list.setEnabled(true);
             list.requestFocusInWindow();
+            
+            btnSalir.setEnabled(true);
         }
     }// GEN-LAST:event_btnGuardarActionPerformed
 
@@ -681,6 +709,9 @@ public class CrudFutbolista extends javax.swing.JDialog {
         lblNombre.setForeground(Color.BLACK);
         lblEquipo.setForeground(Color.BLACK);
 
+        btnSalir.setEnabled(true);
+
+        list.setSelectedIndex(0);
         // lblDatosErroneos.setVisible(false);
     }// GEN-LAST:event_btnCancelarActionPerformed
 
@@ -794,8 +825,8 @@ public class CrudFutbolista extends javax.swing.JDialog {
 
         tfEquipo.setVisible(!status);
         ComboBoxEquipo.setVisible(status);
-        lblTipo.setVisible(status);
-        ComboBoxTipo.setVisible(status);
+        lblTipo.setVisible(false); // cambiar en caso de ser necesario
+        ComboBoxTipo.setVisible(false);
         lblPos.setVisible(status);
         ComboBoxPos.setVisible(status);
 
@@ -827,6 +858,7 @@ public class CrudFutbolista extends javax.swing.JDialog {
 
         if (index > -1) {
             tabbedPanePos.setSelectedIndex(index);
+            ComboBoxPos.setSelectedIndex(index);
 
             for (int i = 0; i < 4; i++) {
                 if (i != index) {
@@ -879,36 +911,87 @@ public class CrudFutbolista extends javax.swing.JDialog {
         return f;
     }
 
-    // public boolean validarDatos(String n, String nombre, String capacidad) {
-    // boolean correcto = true;
-    // Votante temp = new Votante();
-    // try { // nombre
-    // lblD.setForeground(Color.BLACK);
-    // temp.setNombre(n);
-    // } catch (IllegalArgumentException e) {
-    // correcto = false;
-    // lblDatosErroneos.setVisible(true);
-    // lblD.setForeground(new Color(0,0,139));
+    // private void limpiar() {
+    //     DateChooserFecha.setDate(new Date());
+    //     tfEstadio.setText("");
+    //     tfAudiencia.setText("");
+    //     tfLocal.setText("");
+    //     tfVisit.setText("");
+    //     tfGolesLocal.setText("");
+    //     tfGolesVisitante.setText("");
     // }
-    // try { // nombre
-    // lblNombre.setForeground(Color.BLACK);
-    // temp.setCorreo(nombre);
-    // } catch (IllegalArgumentException e) {
-    // correcto = false;
-    // lblDatosErroneos.setVisible(true);
-    // lblNombre.setForeground(new Color(0,0,139));
+
+    // private boolean validarDatos(int audiencia, int golesLocal, int golesVisit) {
+    //     boolean correcto = true;
+    //     Partido temp = new Partido();
+    //     Date fecha = null;
+
+    //     try { // fecha
+    //         fecha = DateChooserFecha.getDate();
+    //         temp.setFecha(fecha);
+    //     } catch (Exception e) {
+    //         correcto = false;
+    //         lblDatosErroneos.setVisible(true);
+    //         lblFecha.setForeground(Principal.errorColor);
+    //     }
+    //     try { // audiencia
+    //         temp.setAudiencia(audiencia);
+    //     } catch (IllegalArgumentException e) {
+    //         correcto = false;
+    //         lblDatosErroneos.setVisible(true);
+    //         lblAudiencia.setForeground(Principal.errorColor);
+    //     }
+    //     try { // goles local
+    //         temp.setGolesLocal(golesLocal);
+    //     } catch (IllegalArgumentException e) {
+    //         correcto = false;
+    //         lblDatosErroneos.setVisible(true);
+    //         lblGolesLocal.setForeground(Principal.errorColor);
+    //     }
+    //     try { // goles visitante
+    //         temp.setGolesVisitante(golesVisit);
+    //     } catch (IllegalArgumentException e) {
+    //         correcto = false;
+    //         lblDatosErroneos.setVisible(true);
+    //         lblGolesVisit.setForeground(Principal.errorColor);
+    //     }
+
+    //     if (correcto) {
+    //         lblDatosErroneos.setVisible(false);
+    //         changeStatus(true);
+    //     }
+    //     return correcto;
     // }
-    // try { // contrase�a
-    // lblCapacidad.setForeground(Color.BLACK);
-    // temp.setContrasenna(capacidad);
-    // } catch (IllegalArgumentException e) {
-    // correcto = false;
-    // lblDatosErroneos.setVisible(true);
-    // lblCapacidad.setForeground(new Color(0,0,139));
-    // }
-    // if (correcto) {
-    // lblDatosErroneos.setVisible(false);
-    // }
-    // return correcto;
+
+    // private void changeStatus(boolean status) {
+    //     tfAudiencia.setEditable(status);
+    //     tfGolesLocal.setEditable(status);
+    //     tfGolesVisitante.setEditable(status);
+
+    //     tfEstadio.setVisible(!status);
+    //     tfLocal.setVisible(!status);
+    //     tfVisit.setVisible(!status);
+
+    //     btnEliminar.setEnabled(!status);
+    //     btnNuevo.setEnabled(!status);
+    //     btnEditar.setEnabled(!status);
+    //     list.setEnabled(!status);
+    //     btnSalir.setEnabled(!status);
+
+    //     btnAgregar.setVisible(status);
+    //     btnGuardar.setVisible(status);
+    //     btnCancelar.setVisible(status);
+
+    //     lblAudiencia.setForeground(Color.BLACK);
+    //     lblEstadio.setForeground(Color.BLACK);
+    //     lblFecha.setForeground(Color.BLACK);
+    //     lblGolesLocal.setForeground(Color.BLACK);
+    //     lblGolesVisit.setForeground(Color.BLACK);
+    //     lblLocal.setForeground(Color.BLACK);
+    //     lblVisitante.setForeground(Color.BLACK);
+
+    //     jComboBoxEstadio.setVisible(status);
+    //     jComboBoxLocal.setVisible(status);
+    //     jComboBoxVisitante.setVisible(status);
     // }
 }

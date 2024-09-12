@@ -67,7 +67,7 @@ public class EstadioServices {
             while (rs.next()) {
                 Estadio estadio = new Estadio(
                         rs.getString("nomestadio"),
-                        rs.getInt("idestadio")
+                        rs.getInt("capacidad")
                 );
                 estadio.setIdEstadio(rs.getInt("idestadio"));
                 list.add(estadio);

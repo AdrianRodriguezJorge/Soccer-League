@@ -4,37 +4,30 @@
  */
 package visual;
 
-import com.toedter.calendar.JDateChooser;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
-import model.Estadio;
-import model.Partido;
+import javax.swing.JOptionPane;
 
-import services.EquipoServices;
-import services.EstadioServices;
-import services.PartidoServices;
 import services.ServicesLocator;
 
 /**
  *
  * @author HP 11na
  */
-public class RPartidosPorFecha extends javax.swing.JDialog {
+public class DialogDuracionLiga extends javax.swing.JDialog {
 
-    public RPartidosPorFecha(java.awt.Frame parent, boolean modal) {
+    public DialogDuracionLiga(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
+        lblError.setVisible(false);
+        lblErrorIni.setVisible(false);
+
         ArrayList<String> list = ServicesLocator.getEstadioServices().obtenerNombresEstadios();
-        
-        ComboBoxEstadio.addItem("Todos");
-        
+
+        // ComboBoxEstadio.addItem("Todos");
         for (String s : list) {
-            ComboBoxEstadio.addItem(s);
+            // ComboBoxEstadio.addItem(s);
         }
     }
 
@@ -47,97 +40,153 @@ public class RPartidosPorFecha extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelFecha = new javax.swing.JLabel();
-        ComboBoxEstadio = new javax.swing.JComboBox<>();
-        jLabelEstadio = new javax.swing.JLabel();
-        jButtonGeneraR = new javax.swing.JButton();
+        jLabelFechaInicio = new javax.swing.JLabel();
+        jButtonIniciar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        DateChooserFecha = new com.toedter.calendar.JDateChooser();
+        DateChooserFechaInicio = new com.toedter.calendar.JDateChooser();
+        DateChooserFechaFinal = new com.toedter.calendar.JDateChooser();
+        jLabelFechaFinal = new javax.swing.JLabel();
+        lblError = new javax.swing.JLabel();
+        lblErrorIni = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(700, 250, 231, 231));
+        setMinimumSize(new java.awt.Dimension(588, 231));
+        setResizable(false);
+        setSize(new java.awt.Dimension(588, 231));
 
-        jLabelFecha.setText("Fecha del partido");
+        jLabelFechaInicio.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabelFechaInicio.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelFechaInicio.setText("Fecha de inicio");
 
-        ComboBoxEstadio.addActionListener(new java.awt.event.ActionListener() {
+        jButtonIniciar.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonIniciar.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jButtonIniciar.setForeground(new java.awt.Color(0, 0, 0));
+        jButtonIniciar.setText("Comenzar liga");
+        jButtonIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBoxEstadioActionPerformed(evt);
+                jButtonIniciarActionPerformed(evt);
             }
         });
 
-        jLabelEstadio.setText("Estadio");
+        jLabel1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel1.setText("Establezca el rango de fechas para la temporada de la Liga:");
 
-        jButtonGeneraR.setText("Generar Reporte");
-        jButtonGeneraR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonGeneraRActionPerformed(evt);
+        DateChooserFechaInicio.setDate(new Date());
+        DateChooserFechaInicio.setDateFormatString("yyyy-MM-dd");
+        DateChooserFechaInicio.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                DateChooserFechaInicioPropertyChange(evt);
             }
         });
 
-        jLabel1.setText("Seleccione una fecha y estadio y se mostraran los partidos correspondientes");
+        DateChooserFechaFinal.setDateFormatString("yyyy-MM-dd");
+        DateChooserFechaFinal.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                DateChooserFechaFinalPropertyChange(evt);
+            }
+        });
 
-        DateChooserFecha.setDateFormatString("yyyy-MM-dd");
+        jLabelFechaFinal.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabelFechaFinal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelFechaFinal.setText("Fecha de culminación");
+
+        lblError.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        lblError.setForeground(new java.awt.Color(204, 0, 51));
+        lblError.setText("Ha ingresado incorrectamente una de las fechas o ha dejado un campo vacío");
+
+        lblErrorIni.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        lblErrorIni.setForeground(new java.awt.Color(204, 0, 51));
+        lblErrorIni.setText("La fecha de inicio debe ser antes que la de culminación");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButtonIniciar)
+                .addGap(32, 32, 32))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabelEstadio)
-                        .addGap(490, 490, 490))
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelFecha)
-                                .addGap(27, 27, 27)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(DateChooserFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ComboBoxEstadio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 161, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonGeneraR, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabelFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(DateChooserFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabelFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(DateChooserFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblErrorIni, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabelFecha)
-                    .addComponent(DateChooserFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ComboBoxEstadio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelEstadio))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonGeneraR, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabelFechaInicio))
+                    .addComponent(DateChooserFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2)
+                .addComponent(jButtonIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabelFechaFinal))
+                    .addComponent(DateChooserFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(lblError)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblErrorIni)
+                .addGap(46, 46, 46))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonGeneraRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGeneraRActionPerformed
-        
-        Date fecha = DateChooserFecha.getDate();
+    private void jButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarActionPerformed
+        try {
+            Date inicio = DateChooserFechaInicio.getDate();
+            Date fin = DateChooserFechaFinal.getDate();
 
-        int index = ComboBoxEstadio.getSelectedIndex();
-        
-        ServicesLocator.getPartidoServices().reportePartidosPorFecha(fecha, index);
-        
-        dispose();
-    }//GEN-LAST:event_jButtonGeneraRActionPerformed
+            if (fin.compareTo(inicio) > 0) {
+                ServicesLocator.getIntervaloFServices().establecerIntervalo(inicio, fin);
 
-    private void ComboBoxEstadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxEstadioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ComboBoxEstadioActionPerformed
+                JOptionPane.showMessageDialog(null, "La Liga Nacional de Fútbol ha comenzado", "Atención", 1);
+
+                dispose();
+            } else {
+                lblErrorIni.setVisible(true);
+            }
+        } catch (Exception e) {
+            lblError.setVisible(true);
+        }
+    }//GEN-LAST:event_jButtonIniciarActionPerformed
+
+    private void DateChooserFechaInicioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_DateChooserFechaInicioPropertyChange
+        lblError.setVisible(false);
+        lblErrorIni.setVisible(false);
+    }//GEN-LAST:event_DateChooserFechaInicioPropertyChange
+
+    private void DateChooserFechaFinalPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_DateChooserFechaFinalPropertyChange
+        lblError.setVisible(false);
+        lblErrorIni.setVisible(false);
+    }//GEN-LAST:event_DateChooserFechaFinalPropertyChange
 
     /**
      * @param args the command line arguments
@@ -160,7 +209,6 @@ public class RPartidosPorFecha extends javax.swing.JDialog {
     //         java.util.logging.Logger.getLogger(RPartidosEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     //     }
     //     //</editor-fold>
-
     //     /* Create and display the dialog */
     //     java.awt.EventQueue.invokeLater(new Runnable() {
     //         public void run() {
@@ -177,11 +225,13 @@ public class RPartidosPorFecha extends javax.swing.JDialog {
     // }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> ComboBoxEstadio;
-    private com.toedter.calendar.JDateChooser DateChooserFecha;
-    private javax.swing.JButton jButtonGeneraR;
+    private com.toedter.calendar.JDateChooser DateChooserFechaFinal;
+    private com.toedter.calendar.JDateChooser DateChooserFechaInicio;
+    private javax.swing.JButton jButtonIniciar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabelEstadio;
-    private javax.swing.JLabel jLabelFecha;
+    private javax.swing.JLabel jLabelFechaFinal;
+    private javax.swing.JLabel jLabelFechaInicio;
+    private javax.swing.JLabel lblError;
+    private javax.swing.JLabel lblErrorIni;
     // End of variables declaration//GEN-END:variables
 }

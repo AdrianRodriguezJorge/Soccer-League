@@ -1,6 +1,7 @@
 C:\Users\HP 11na\Desktop\Liga\src\main\java\model\Partido.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\visual\CrudPartido.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\model\Defensa.java
+C:\Users\HP 11na\Desktop\Liga\src\main\java\services\IntervaloFServices.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\model\Estadio.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\services\FutbolistaServices.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\services\PorteroServices.java
@@ -39,3 +40,4 @@ C:\Users\HP 11na\Desktop\Liga\src\main\java\visual\Login.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\visual\CrudEquipo.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\model\Tipo.java
 C:\Users\HP 11na\Desktop\Liga\src\main\java\services\ServicesLocator.java
+C:\Users\HP 11na\Desktop\Liga\src\main\java\visual\DialogDuracionLiga.java

@@ -44,9 +44,9 @@ public class DefensaServices {
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
                     defensa = new Defensa();
+                    defensa.setIdFutbolista(idfutbolista);
                     defensa.setEntradas(rs.getInt("entradas"));
                     defensa.setBloqueos(rs.getInt("bloqueos"));
-                    defensa.setIdFutbolista(idfutbolista);
                 }
             }
 

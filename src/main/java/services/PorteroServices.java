@@ -41,6 +41,7 @@ public class PorteroServices {
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
                     portero = new Portero();
+                    portero.setIdFutbolista(idfutbolista);
                     portero.setParadas(rs.getInt("paradas"));
                     portero.setGolesEncajados(rs.getInt("golesencajados"));
                 }
