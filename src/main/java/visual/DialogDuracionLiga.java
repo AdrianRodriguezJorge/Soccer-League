@@ -95,6 +95,7 @@ public class DialogDuracionLiga extends javax.swing.JDialog {
         lblErrorIni.setForeground(new java.awt.Color(204, 0, 51));
         lblErrorIni.setText("La fecha de inicio debe ser antes que la de culminación");
 
+<<<<<<< HEAD
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -151,6 +152,11 @@ public class DialogDuracionLiga extends javax.swing.JDialog {
                 .addComponent(lblErrorIni)
                 .addGap(46, 46, 46))
         );
+=======
+        jLabel2.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\4 (1).png")); // NOI18N
+        jLabel2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 270));
+>>>>>>> 33abc59 (direccion_images)
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

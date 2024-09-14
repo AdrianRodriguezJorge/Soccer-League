@@ -96,10 +96,38 @@ public class Login extends javax.swing.JDialog {
         lblErrorCont.setText("Contraseña incorrecta");
         jPanel1.add(lblErrorCont, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
+<<<<<<< HEAD
         lblTit.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         lblTit.setForeground(new java.awt.Color(0, 0, 0));
         lblTit.setText("Ingrese sus datos:");
         jPanel1.add(lblTit, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
+=======
+        lblTit.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        lblTit.setText("INICIAR SESIÓN");
+        jPanel1.add(lblTit, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, -1));
+        lblTit.getAccessibleContext().setAccessibleName("Ingrese sus datos");
+
+        btnIniciar1.setBackground(new java.awt.Color(225, 57, 57));
+        btnIniciar1.setFont(new java.awt.Font("Roboto Black", 0, 15)); // NOI18N
+        btnIniciar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnIniciar1.setText("Cancelar");
+        btnIniciar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnIniciar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnIniciar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, -1, -1));
+
+        jSeparator1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 190, -1));
+
+        jSeparator2.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 190, 10));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\8.png")); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 300));
+>>>>>>> 33abc59 (direccion_images)
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
