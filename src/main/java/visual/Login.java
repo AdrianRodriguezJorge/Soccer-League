@@ -127,7 +127,7 @@ public class Login extends javax.swing.JDialog {
         jSeparator2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 190, 10));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\ALMACEN\\Proyectos Java\\Proyecto BD\\Liga\\src\\main\\java\\visual\\images\\8.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\8.png")); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 300));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
