@@ -30,6 +30,9 @@
                 <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="actionCommand" type="java.lang.String" value=""/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemCerrarSActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemUsuarios">
               <Properties>
@@ -90,6 +93,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Culminar la liga"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemCulminarActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemResultados">
               <Properties>

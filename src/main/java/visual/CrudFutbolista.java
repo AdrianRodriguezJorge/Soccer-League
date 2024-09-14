@@ -730,7 +730,7 @@ public class CrudFutbolista extends javax.swing.JDialog {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnCancelarActionPerformed
         changeStatus(false);
         lblDatosErroneos.setVisible(false);
-        list.setSelectedIndex(-1);
+        list.setSelectedIndex(0);
     }// GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnSalirActionPerformed
