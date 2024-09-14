@@ -32,6 +32,8 @@ public class RPartidosPorEquipos extends javax.swing.JDialog {
             ComboBoxEquipo1.addItem(s);
             ComboBoxEquipo2.addItem(s);
         }
+
+        ComboBoxEquipo2.setSelectedIndex(1);
     }
 
     /**
@@ -141,7 +143,7 @@ public class RPartidosPorEquipos extends javax.swing.JDialog {
             dispose();
         } else
             JOptionPane.showMessageDialog(null, "Debe seleccionar 2 equipos diferentes.",
-                    "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                    "Aviso", JOptionPane.ERROR_MESSAGE);
 
     }// GEN-LAST:event_jButtonGeneraRActionPerformed
 

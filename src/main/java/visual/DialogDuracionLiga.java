@@ -25,10 +25,6 @@ public class DialogDuracionLiga extends javax.swing.JDialog {
 
         ArrayList<String> list = ServicesLocator.getEstadioServices().obtenerNombresEstadios();
 
-        // ComboBoxEstadio.addItem("Todos");
-        for (String s : list) {
-            // ComboBoxEstadio.addItem(s);
-        }
     }
 
     /**
@@ -168,6 +164,8 @@ public class DialogDuracionLiga extends javax.swing.JDialog {
                 ServicesLocator.getIntervaloFServices().establecerIntervalo(inicio, fin);
 
                 JOptionPane.showMessageDialog(null, "La Liga Nacional de Fútbol ha comenzado", "Atención", 1);
+
+                // // ServicesLocator.getPartidoServices().limpiarPartidos(); // elimina todos los partidos anteriores registrados
 
                 dispose();
             } else {

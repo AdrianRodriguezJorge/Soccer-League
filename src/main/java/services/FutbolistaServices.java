@@ -188,6 +188,7 @@ public class FutbolistaServices {
     public void actualizarFutbolista(Futbolista futbolista) throws SQLException {
         eliminarFutbolista(futbolista.getIdFutbolista());
         crearFutbolista(futbolista);
+        
         // String sql = "UPDATE futbolista SET idequipo = ?, nombre = ?, numero = ?,
         // añosenequipo = ?, tipo = ? WHERE idfutbolista = ?";
         // try (Connection conn = ConnectionManager.getConnection();

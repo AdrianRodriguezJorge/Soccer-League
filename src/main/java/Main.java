@@ -6,6 +6,7 @@ import model.Delantero;
 import model.Entrenador;
 import model.Mediocampista;
 import model.Portero;
+import model.Rol;
 import services.ServicesLocator;
 import utils.ConnectionManager;
 import visual.CrudEquipo;
@@ -23,8 +24,10 @@ public class Main {
             public void run() {
                 try {
                     Principal frame = new Principal();
+                    // CrudFutbolista frame = new CrudFutbolista(null, true);
                     frame.setLocationRelativeTo(null);
                     frame.setVisible(true);
+                    
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

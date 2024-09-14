@@ -50,7 +50,7 @@ public class Estadio {
     }
 
     public void setCapacidad(int capacidad) {
-        if (capacidad > 0) {
+        if (capacidad >= 0) {
             this.capacidad = capacidad;
         } else
             throw new IllegalArgumentException();

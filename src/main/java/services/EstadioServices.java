@@ -10,6 +10,9 @@ import net.sf.jasperreports.engine.*;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.swing.JOptionPane;
+
 import utils.Report;
 
 /**
@@ -30,7 +33,7 @@ public class EstadioServices {
     /**
      * Crea un nuevo equipo en la base de datos.
      *
-     * @param nombre del estadio a crear
+     * @param nombre    del estadio a crear
      * @param capacidad del estadio a crear
      * @return Verdadero si el equipo se creó correctamente.
      */
@@ -64,8 +67,7 @@ public class EstadioServices {
             while (rs.next()) {
                 Estadio estadio = new Estadio(
                         rs.getString("nomestadio"),
-                        rs.getInt("capacidad")
-                );
+                        rs.getInt("capacidad"));
                 estadio.setIdEstadio(rs.getInt("idestadio"));
                 list.add(estadio);
             }
@@ -88,7 +90,8 @@ public class EstadioServices {
             if (afected == 0) {
                 throw new SQLException();
             } else {
-                System.out.println("Estadio modificado correctamente"); // cambiar por un label que avise que se actualizó corectamente o un aviso emergente
+                System.out.println("Estadio modificado correctamente"); // cambiar por un label que avise que se
+                                                                        // actualizó corectamente o un aviso emergente
             }
 
         } catch (SQLException e) {
@@ -184,5 +187,26 @@ public class EstadioServices {
 
     public int getIdFromIndex(int index) {
         return obtenerEstadios().get(index).getIdEstadio();
+    }
+
+    public boolean validarAudiencia(int idEquipo, int audiencia) {
+        ArrayList<Estadio> estadios = obtenerEstadios();
+        boolean val = true;
+        boolean found = false;
+        Estadio e = null;
+
+        for (int i = 0; i < estadios.size() && !found; i++) {
+            e = estadios.get(i);
+            if (e.getIdEstadio() == idEquipo) {
+                found = true;
+                val = audiencia <= e.getCapacidad();
+            }
+        }
+
+        if (!val) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una audiencia menor a " + e.getCapacidad() + ", que es la capacidad del estadio " + e.getNombreEstadio() + ".",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return val;
     }
 }

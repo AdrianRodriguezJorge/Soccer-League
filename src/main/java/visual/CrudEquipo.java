@@ -619,6 +619,7 @@ public class CrudEquipo extends javax.swing.JDialog {
         tfCampGanados.setText("");
         tfMascota.setText("");
         tfColor.setText("");
+        tfPuntos.setText("");
     }
 
     private boolean validarDatos(String nombre, String provincia, int campParticip, int campGanados, String mascota,

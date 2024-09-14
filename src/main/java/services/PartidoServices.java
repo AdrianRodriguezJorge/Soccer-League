@@ -175,4 +175,13 @@ public class PartidoServices {
         return obtenerPartidos().get(index).getIdPartido();
     }
 
+    public void limpiarPartidos() throws SQLException {
+        String sql = "DELETE FROM partido";
+        Connection conn = ConnectionManager.getConnection();
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+
+        pstmt.executeUpdate();
+
+    }
+
 }

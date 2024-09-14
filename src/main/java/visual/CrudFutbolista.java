@@ -62,7 +62,11 @@ public class CrudFutbolista extends javax.swing.JDialog {
                 if (index > -1) {
                     Futbolista f = modelo.getElementAt(index);
 
-                    String nomEquipo = ServicesLocator.getEquipoServices().buscarNombrEquipo(f.getIdEquipo());
+                    int pos = ServicesLocator.getEquipoServices()
+                            .getIndexFromId(modelo.getElementAt(list.getSelectedIndex()).getIdEquipo());
+                    ComboBoxEquipo.setSelectedIndex(pos);
+
+                    String nomEquipo = ComboBoxEquipo.getSelectedItem().toString();
 
                     tfNombre.setText(f.getNombre());
                     tfEquipo.setText(nomEquipo);
@@ -680,10 +684,6 @@ public class CrudFutbolista extends javax.swing.JDialog {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnEditarActionPerformed
         changeStatus(true);
         btnAgregar.setVisible(false);
-
-        int index = ServicesLocator.getEquipoServices()
-                .getIndexFromId(modelo.getElementAt(list.getSelectedIndex()).getIdEquipo());
-        ComboBoxEquipo.setSelectedIndex(index);
     }// GEN-LAST:event_btnEditarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnGuardarActionPerformed
@@ -698,6 +698,9 @@ public class CrudFutbolista extends javax.swing.JDialog {
                 ServicesLocator.getFutbolistaServices().actualizarFutbolista(f);
 
                 modelo.updateElement(index, f);
+                if (f instanceof Jugador) {
+                    tfPromGoles.setText(((Jugador) f).getPromedioGoles() + "");
+                }
 
                 changeStatus(false);
             } catch (SQLException e) {
