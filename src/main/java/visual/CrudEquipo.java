@@ -6,7 +6,6 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import model.Equipo;
-import model.Estadio;
 import services.ServicesLocator;
 import utils.ConnectionManager;
 import utils.Generic_Model;
