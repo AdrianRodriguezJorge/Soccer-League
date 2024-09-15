@@ -83,6 +83,10 @@ public class CrudUsuario extends javax.swing.JDialog {
         lblContraseña = new javax.swing.JLabel();
         tfRol = new javax.swing.JTextField();
         comboBoxRol = new javax.swing.JComboBox<>();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        lblNombre1 = new javax.swing.JLabel();
         scrollPane = new javax.swing.JScrollPane();
         list = new javax.swing.JList<>();
         btnNuevo = new javax.swing.JButton();
@@ -93,60 +97,65 @@ public class CrudUsuario extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gestión de estadios");
 
-        panel.setBackground(new java.awt.Color(143, 182, 155));
-        panel.setBorder(new javax.swing.border.MatteBorder(null));
-        panel.setForeground(new java.awt.Color(0, 0, 0));
+        contentPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panel.setBackground(new java.awt.Color(255, 255, 255));
+        panel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(59, 122, 26)));
         panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblNombre.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblNombre.setForeground(new java.awt.Color(0, 0, 0));
+        lblNombre.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblNombre.setText("Nombre");
-        panel.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 50, 87, -1));
+        lblNombre.setText("Datos de Usuario");
+        panel.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 150, -1));
 
-        lblRol.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblRol.setForeground(new java.awt.Color(0, 0, 0));
+        lblRol.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblRol.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblRol.setText("Rol");
-        panel.add(lblRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 80, 87, -1));
+        panel.add(lblRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 87, -1));
 
         tfNombre.setEditable(false);
+        tfNombre.setBackground(new java.awt.Color(255, 255, 255));
         tfNombre.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        panel.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 50, 209, -1));
+        tfNombre.setBorder(null);
+        panel.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 209, -1));
 
         tfContraseña.setEditable(false);
+        tfContraseña.setBackground(new java.awt.Color(255, 255, 255));
         tfContraseña.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        panel.add(tfContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 112, 140, -1));
+        tfContraseña.setBorder(null);
+        panel.add(tfContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 210, -1));
 
-        btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
-        btnCancelar.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
+        btnCancelar.setBackground(new java.awt.Color(255, 51, 51));
+        btnCancelar.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setText("Cancelar");
         btnCancelar.setAlignmentY(1.0F);
+        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancelar.setMargin(new java.awt.Insets(2, 14, 4, 14));
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
             }
         });
-        panel.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, -1, -1));
+        panel.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, -1, -1));
 
-        btnGuardar.setBackground(new java.awt.Color(255, 255, 255));
-        btnGuardar.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        btnGuardar.setForeground(new java.awt.Color(0, 0, 0));
+        btnGuardar.setBackground(new java.awt.Color(59, 122, 26));
+        btnGuardar.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("Guardar");
         btnGuardar.setAlignmentY(1.0F);
+        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGuardar.setMargin(new java.awt.Insets(2, 14, 4, 14));
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
             }
         });
-        panel.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
+        panel.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, -1, -1));
 
-        btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
-        btnAgregar.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        btnAgregar.setForeground(new java.awt.Color(0, 0, 0));
+        btnAgregar.setBackground(new java.awt.Color(59, 122, 26));
+        btnAgregar.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setText("Agregar");
         btnAgregar.setAlignmentY(1.0F);
         btnAgregar.setMargin(new java.awt.Insets(2, 14, 4, 14));
@@ -155,37 +164,58 @@ public class CrudUsuario extends javax.swing.JDialog {
                 btnAgregarActionPerformed(evt);
             }
         });
-        panel.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
+        panel.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, -1, -1));
 
         lblDatosErroneos.setFont(new java.awt.Font("SansSerif", 3, 16)); // NOI18N
-        lblDatosErroneos.setForeground(new java.awt.Color(0, 102, 102));
+        lblDatosErroneos.setForeground(new java.awt.Color(255, 51, 51));
         lblDatosErroneos.setText("Datos erroneos");
-        panel.add(lblDatosErroneos, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 195, 198, -1));
+        panel.add(lblDatosErroneos, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 130, -1));
 
-        lblContraseña.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblContraseña.setForeground(new java.awt.Color(0, 0, 0));
+        lblContraseña.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblContraseña.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblContraseña.setText("Contraseña");
-        panel.add(lblContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 112, 87, -1));
+        panel.add(lblContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 87, -1));
 
         tfRol.setEditable(false);
+        tfRol.setBackground(new java.awt.Color(255, 255, 255));
         tfRol.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        panel.add(tfRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 80, 140, -1));
+        tfRol.setBorder(null);
+        panel.add(tfRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 210, 20));
 
         comboBoxRol.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         comboBoxRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gestor de liga", "Gestor de usuarios" }));
-        panel.add(comboBoxRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 80, 160, -1));
+        comboBoxRol.setBorder(null);
+        panel.add(comboBoxRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 230, -1));
 
-        list.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        list.setForeground(new java.awt.Color(18, 110, 0));
+        jSeparator1.setBackground(new java.awt.Color(51, 51, 51));
+        panel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 210, -1));
+
+        jSeparator2.setBackground(new java.awt.Color(51, 51, 51));
+        panel.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 210, -1));
+
+        jSeparator3.setBackground(new java.awt.Color(51, 51, 51));
+        panel.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 123, 210, 10));
+
+        lblNombre1.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        lblNombre1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblNombre1.setText("Nombre");
+        panel.add(lblNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 87, -1));
+
+        contentPanel.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 380, 290));
+
+        list.setBackground(new java.awt.Color(59, 122, 26));
+        list.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        list.setForeground(new java.awt.Color(255, 255, 255));
         list.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scrollPane.setViewportView(list);
 
-        btnNuevo.setBackground(new java.awt.Color(255, 255, 255));
-        btnNuevo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        btnNuevo.setForeground(new java.awt.Color(0, 0, 0));
+        contentPanel.add(scrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 340, 285));
+
+        btnNuevo.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        btnNuevo.setForeground(new java.awt.Color(59, 122, 26));
         btnNuevo.setText("Nuevo");
         btnNuevo.setAlignmentY(1.0F);
+        btnNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNuevo.setDefaultCapable(false);
         btnNuevo.setMargin(new java.awt.Insets(2, 14, 4, 14));
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -193,12 +223,13 @@ public class CrudUsuario extends javax.swing.JDialog {
                 btnNuevoActionPerformed(evt);
             }
         });
+        contentPanel.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
 
-        btnEditar.setBackground(new java.awt.Color(255, 255, 255));
-        btnEditar.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        btnEditar.setForeground(new java.awt.Color(0, 0, 0));
+        btnEditar.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        btnEditar.setForeground(new java.awt.Color(59, 122, 26));
         btnEditar.setText("Editar");
         btnEditar.setAlignmentY(1.0F);
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEditar.setDefaultCapable(false);
         btnEditar.setEnabled(false);
         btnEditar.setMargin(new java.awt.Insets(2, 14, 4, 14));
@@ -207,12 +238,13 @@ public class CrudUsuario extends javax.swing.JDialog {
                 btnEditarActionPerformed(evt);
             }
         });
+        contentPanel.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, -1, -1));
 
-        btnEliminar.setBackground(new java.awt.Color(255, 255, 255));
-        btnEliminar.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        btnEliminar.setForeground(new java.awt.Color(0, 0, 0));
+        btnEliminar.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(59, 122, 26));
         btnEliminar.setText("Eliminar");
         btnEliminar.setAlignmentY(1.0F);
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminar.setDefaultCapable(false);
         btnEliminar.setEnabled(false);
         btnEliminar.setMargin(new java.awt.Insets(2, 14, 4, 14));
@@ -221,12 +253,13 @@ public class CrudUsuario extends javax.swing.JDialog {
                 btnEliminarActionPerformed(evt);
             }
         });
+        contentPanel.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, -1, -1));
 
-        btnSalir.setBackground(new java.awt.Color(255, 255, 255));
-        btnSalir.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        btnSalir.setForeground(new java.awt.Color(0, 0, 0));
+        btnSalir.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(255, 51, 51));
         btnSalir.setText("Salir");
         btnSalir.setAlignmentY(1.0F);
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalir.setDefaultCapable(false);
         btnSalir.setMargin(new java.awt.Insets(2, 14, 4, 14));
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -234,45 +267,7 @@ public class CrudUsuario extends javax.swing.JDialog {
                 btnSalirActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
-        contentPanel.setLayout(contentPanelLayout);
-        contentPanelLayout.setHorizontalGroup(
-            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contentPanelLayout.createSequentialGroup()
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(contentPanelLayout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(btnNuevo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEditar)))
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contentPanelLayout.createSequentialGroup()
-                        .addGap(18, 282, Short.MAX_VALUE)
-                        .addComponent(btnSalir)
-                        .addContainerGap())
-                    .addGroup(contentPanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        contentPanelLayout.setVerticalGroup(
-            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contentPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
-                    .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalir)
-                    .addComponent(btnEditar)
-                    .addComponent(btnEliminar)
-                    .addComponent(btnNuevo))
-                .addContainerGap())
-        );
+        contentPanel.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 370, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -287,7 +282,7 @@ public class CrudUsuario extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -399,9 +394,13 @@ public class CrudUsuario extends javax.swing.JDialog {
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> comboBoxRol;
     private javax.swing.JPanel contentPanel;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel lblContraseña;
     private javax.swing.JLabel lblDatosErroneos;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblNombre1;
     private javax.swing.JLabel lblRol;
     private javax.swing.JList<Estadio> list;
     private javax.swing.JPanel panel;

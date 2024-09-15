@@ -20,6 +20,7 @@ visual\CrudFutbolista$8.class
 visual\CrudFutbolista$5.class
 visual\CrudFutbolista$10.class
 visual\CrudEstadio$7.class
+visual\Principal$21.class
 visual\CrudEquipo$12.class
 visual\Principal.class
 visual\CrudFutbolista$2.class
@@ -34,11 +35,13 @@ visual\CrudPartido$3.class
 visual\CrudEquipo$10.class
 Main.class
 visual\CrudPartido$13.class
+visual\Login$3.class
 model\Jugador.class
 visual\CrudEquipo$2.class
 model\Defensa.class
 visual\CrudFutbolista$1.class
 visual\DialogDuracionLiga$3.class
+visual\Principal$20.class
 visual\RPartidosPorEquipos$1.class
 visual\CrudEstadio$1.class
 visual\CrudPartido$2.class
@@ -51,7 +54,6 @@ visual\CrudEquipo$11.class
 visual\REstadoEquipo.class
 visual\CrudEstadio$2.class
 visual\CrudEstadio$8.class
-visual\CrudFutbolista$7.class
 services\DelanteroServices.class
 visual\CrudPartido$9.class
 visual\CrudEquipo$8.class
@@ -62,13 +64,12 @@ visual\CrudPartido$1.class
 model\Posicion.class
 services\EntrenadorServices.class
 visual\CrudEstadio$6.class
-visual\CrudFutbolista$9.class
+visual\Salida.class
 visual\RPartidosPorFecha$1.class
 visual\CrudPartido.class
 visual\Principal$5.class
 services\JugadorServices.class
 visual\RPartidosPorFecha.class
-visual\CrudFutbolista$6.class
 visual\Principal$12.class
 visual\Principal$2.class
 visual\CrudEstadio$9.class
@@ -77,6 +78,7 @@ utils\Generic_Model.class
 visual\DialogDuracionLiga$1.class
 visual\CrudPartido$7.class
 model\Tipo.class
+visual\Login$2.class
 visual\CrudEstadio$3.class
 visual\CrudPartido$10.class
 visual\CrudPartido$4.class

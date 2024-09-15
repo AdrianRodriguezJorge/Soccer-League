@@ -6,7 +6,6 @@ import model.Delantero;
 import model.Entrenador;
 import model.Mediocampista;
 import model.Portero;
-import model.Rol;
 import services.ServicesLocator;
 import utils.ConnectionManager;
 import visual.CrudEquipo;
@@ -20,18 +19,17 @@ public class Main {
 
     public static void main(String[] args) {
 
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    Principal frame = new Principal();
-                    // CrudFutbolista frame = new CrudFutbolista(null, true);
-                    frame.setLocationRelativeTo(null);
-                    frame.setVisible(true);
-                    
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+    EventQueue.invokeLater(new Runnable() {
+        public void run() {
+            try {
+                new Principal().setVisible(true);
+                
+//                Login frame = new Login();
+//                frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        });
+        }
+    });
     }
 }

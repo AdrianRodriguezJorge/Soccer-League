@@ -32,15 +32,13 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         setSize(800, 600);
         setLocationRelativeTo(null);
-        
-        setForeground(Color.WHITE);
 
         UIManager.put("OptionPane.messageFont", new Font("SansSerif", Font.PLAIN, 14));
         UIManager.put("OptionPane.buttonFont", new Font("SansSerif", Font.PLAIN, 14));
-        UIManager.put("MenuItem.selectionBackground", Principal.errorColor);
-        UIManager.put("Menu.selectionBackground", Principal.errorColor);
+        UIManager.put("MenuItem.selectionBackground", new Color(217, 242, 220));
+        UIManager.put("Menu.selectionBackground", new Color(217, 242, 220));
 
-        // menuGestion.setVisible(false);
+        menuGestion.setVisible(false);
         menuItemUsuarios.setVisible(false);
         menuItemCerrarS.setEnabled(false);
 
@@ -57,11 +55,11 @@ public class Principal extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
+        jLabel1 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         menuPerfil = new javax.swing.JMenu();
         menuItemInicioS = new javax.swing.JMenuItem();
@@ -93,18 +91,21 @@ public class Principal extends javax.swing.JFrame {
         setBounds(new java.awt.Rectangle(0, 0, 800, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        menuBar.setBackground(new java.awt.Color(60, 63, 64));
-        menuBar.setForeground(new java.awt.Color(255, 255, 255));
-        menuBar.setToolTipText("");
+        jLabel1.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\1 (9).png")); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -20, 860, 590));
 
-        menuPerfil.setBackground(new java.awt.Color(60, 63, 64));
-        menuPerfil.setForeground(new java.awt.Color(255, 255, 255));
         menuPerfil.setText("Perfil");
+        menuPerfil.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
 
-        menuItemInicioS.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemInicioS.setForeground(new java.awt.Color(255, 255, 255));
+        menuItemInicioS.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        menuItemInicioS.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\User (1).png")); // NOI18N
         menuItemInicioS.setText("Iniciar sesión");
         menuItemInicioS.setActionCommand("");
+        menuItemInicioS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                menuItemInicioSMousePressed(evt);
+            }
+        });
         menuItemInicioS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemInicioSActionPerformed(evt);
@@ -112,11 +113,16 @@ public class Principal extends javax.swing.JFrame {
         });
         menuPerfil.add(menuItemInicioS);
 
-        menuItemCerrarS.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemCerrarS.setForeground(new java.awt.Color(255, 255, 255));
+        menuItemCerrarS.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        menuItemCerrarS.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\No user (1).png")); // NOI18N
         menuItemCerrarS.setText("Cerrar sesión");
         menuItemCerrarS.setToolTipText("");
         menuItemCerrarS.setActionCommand("");
+        menuItemCerrarS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                menuItemCerrarSMousePressed(evt);
+            }
+        });
         menuItemCerrarS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemCerrarSActionPerformed(evt);
@@ -124,8 +130,8 @@ public class Principal extends javax.swing.JFrame {
         });
         menuPerfil.add(menuItemCerrarS);
 
-        menuItemUsuarios.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        menuItemUsuarios.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        menuItemUsuarios.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Gestión usuarios.png")); // NOI18N
         menuItemUsuarios.setText("Gestión de usuarios");
         menuItemUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,12 +142,11 @@ public class Principal extends javax.swing.JFrame {
 
         menuBar.add(menuPerfil);
 
-        menuGestion.setBackground(new java.awt.Color(60, 63, 64));
-        menuGestion.setForeground(new java.awt.Color(255, 255, 255));
         menuGestion.setText("Gestión de la liga");
+        menuGestion.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
 
-        menuItemEstadios.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemEstadios.setForeground(new java.awt.Color(255, 255, 255));
+        menuItemEstadios.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        menuItemEstadios.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\balon (1).png")); // NOI18N
         menuItemEstadios.setLabel("Estadios");
         menuItemEstadios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,8 +155,8 @@ public class Principal extends javax.swing.JFrame {
         });
         menuGestion.add(menuItemEstadios);
 
-        menuItemEquipos.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemEquipos.setForeground(new java.awt.Color(255, 255, 255));
+        menuItemEquipos.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        menuItemEquipos.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\balon (1).png")); // NOI18N
         menuItemEquipos.setLabel("Equipos");
         menuItemEquipos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,8 +165,8 @@ public class Principal extends javax.swing.JFrame {
         });
         menuGestion.add(menuItemEquipos);
 
-        menuItemPartidos.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemPartidos.setForeground(new java.awt.Color(255, 255, 255));
+        menuItemPartidos.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        menuItemPartidos.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\balon (1).png")); // NOI18N
         menuItemPartidos.setLabel("Partidos");
         menuItemPartidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,8 +175,8 @@ public class Principal extends javax.swing.JFrame {
         });
         menuGestion.add(menuItemPartidos);
 
-        menuItemFutbolistas.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemFutbolistas.setForeground(new java.awt.Color(255, 255, 255));
+        menuItemFutbolistas.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        menuItemFutbolistas.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\balon (1).png")); // NOI18N
         menuItemFutbolistas.setLabel("Futbolistas");
         menuItemFutbolistas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,8 +185,8 @@ public class Principal extends javax.swing.JFrame {
         });
         menuGestion.add(menuItemFutbolistas);
 
-        menuItemIniciar.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemIniciar.setForeground(new java.awt.Color(255, 255, 255));
+        menuItemIniciar.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        menuItemIniciar.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Abrir (1).png")); // NOI18N
         menuItemIniciar.setText("Comenzar la liga");
         menuItemIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,8 +195,8 @@ public class Principal extends javax.swing.JFrame {
         });
         menuGestion.add(menuItemIniciar);
 
-        menuItemCulminar.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemCulminar.setForeground(new java.awt.Color(255, 255, 255));
+        menuItemCulminar.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        menuItemCulminar.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Cerrar (1).png")); // NOI18N
         menuItemCulminar.setText("Culminar la liga");
         menuItemCulminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,19 +205,18 @@ public class Principal extends javax.swing.JFrame {
         });
         menuGestion.add(menuItemCulminar);
 
-        menuItemResultados.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemResultados.setForeground(new java.awt.Color(255, 255, 255));
+        menuItemResultados.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        menuItemResultados.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\report (1).png")); // NOI18N
         menuItemResultados.setText("Ver resultados");
         menuGestion.add(menuItemResultados);
 
         menuBar.add(menuGestion);
 
-        menuReportes.setBackground(new java.awt.Color(60, 63, 64));
-        menuReportes.setForeground(new java.awt.Color(255, 255, 255));
+        menuReportes.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
         menuReportes.setLabel("Reportes");
 
-        menuItemRTablaPosiciones.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemRTablaPosiciones.setForeground(new java.awt.Color(255, 255, 255));
+        menuItemRTablaPosiciones.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        menuItemRTablaPosiciones.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Posiciones (1).png")); // NOI18N
         menuItemRTablaPosiciones.setText("Tabla de posiciones de la liga");
         menuItemRTablaPosiciones.setActionCommand("Reportes");
         menuItemRTablaPosiciones.addActionListener(new java.awt.event.ActionListener() {
@@ -222,8 +226,8 @@ public class Principal extends javax.swing.JFrame {
         });
         menuReportes.add(menuItemRTablaPosiciones);
 
-        menuItemRPartidosEquipos.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemRPartidosEquipos.setForeground(new java.awt.Color(255, 255, 255));
+        menuItemRPartidosEquipos.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        menuItemRPartidosEquipos.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Partido (1).png")); // NOI18N
         menuItemRPartidosEquipos.setText("Partidos por equipos");
         menuItemRPartidosEquipos.setActionCommand("Reportes");
         menuItemRPartidosEquipos.addActionListener(new java.awt.event.ActionListener() {
@@ -233,8 +237,8 @@ public class Principal extends javax.swing.JFrame {
         });
         menuReportes.add(menuItemRPartidosEquipos);
 
-        menuItemRPartidosPorFecha.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemRPartidosPorFecha.setForeground(new java.awt.Color(255, 255, 255));
+        menuItemRPartidosPorFecha.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        menuItemRPartidosPorFecha.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Partido (1).png")); // NOI18N
         menuItemRPartidosPorFecha.setText("Partidos jugados por fecha");
         menuItemRPartidosPorFecha.setActionCommand("Reportes");
         menuItemRPartidosPorFecha.addActionListener(new java.awt.event.ActionListener() {
@@ -244,8 +248,8 @@ public class Principal extends javax.swing.JFrame {
         });
         menuReportes.add(menuItemRPartidosPorFecha);
 
-        menuItemREntrenadoresExperiencia.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemREntrenadoresExperiencia.setForeground(new java.awt.Color(255, 255, 255));
+        menuItemREntrenadoresExperiencia.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        menuItemREntrenadoresExperiencia.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Entrenador (1).png")); // NOI18N
         menuItemREntrenadoresExperiencia.setText("Entrenadores con más experiencia");
         menuItemREntrenadoresExperiencia.setActionCommand("Reportes");
         menuItemREntrenadoresExperiencia.addActionListener(new java.awt.event.ActionListener() {
@@ -255,8 +259,8 @@ public class Principal extends javax.swing.JFrame {
         });
         menuReportes.add(menuItemREntrenadoresExperiencia);
 
-        menuItemREstadiosMayorAudiencia.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemREstadiosMayorAudiencia.setForeground(new java.awt.Color(255, 255, 255));
+        menuItemREstadiosMayorAudiencia.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        menuItemREstadiosMayorAudiencia.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\report (1).png")); // NOI18N
         menuItemREstadiosMayorAudiencia.setText("Estadios con mayor audiencia");
         menuItemREstadiosMayorAudiencia.setActionCommand("Reportes");
         menuItemREstadiosMayorAudiencia.addActionListener(new java.awt.event.ActionListener() {
@@ -266,8 +270,8 @@ public class Principal extends javax.swing.JFrame {
         });
         menuReportes.add(menuItemREstadiosMayorAudiencia);
 
-        menuItemREstadoEquipo.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemREstadoEquipo.setForeground(new java.awt.Color(255, 255, 255));
+        menuItemREstadoEquipo.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        menuItemREstadoEquipo.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\balon (1).png")); // NOI18N
         menuItemREstadoEquipo.setText("Estado de un equipo");
         menuItemREstadoEquipo.setActionCommand("Reportes");
         menuItemREstadoEquipo.addActionListener(new java.awt.event.ActionListener() {
@@ -277,8 +281,8 @@ public class Principal extends javax.swing.JFrame {
         });
         menuReportes.add(menuItemREstadoEquipo);
 
-        menuItemREquipoEstrella.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemREquipoEstrella.setForeground(new java.awt.Color(255, 255, 255));
+        menuItemREquipoEstrella.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        menuItemREquipoEstrella.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Mejor (1).png")); // NOI18N
         menuItemREquipoEstrella.setText("Equipo todas estrellas");
         menuItemREquipoEstrella.setActionCommand("Reportes");
         menuItemREquipoEstrella.addActionListener(new java.awt.event.ActionListener() {
@@ -295,36 +299,42 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuItemCulminarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuItemCulminarActionPerformed
+    private void menuItemCulminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCulminarActionPerformed
         menuItemIniciar.setEnabled(true);
         menuItemCulminar.setEnabled(false);
         ServicesLocator.getEquipoServices().reporteTablaPosiciones();
-    }// GEN-LAST:event_menuItemCulminarActionPerformed
+    }//GEN-LAST:event_menuItemCulminarActionPerformed
 
-    private void menuItemCerrarSActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuItemCerrarSActionPerformed
+    private void menuItemCerrarSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCerrarSActionPerformed
         menuItemCerrarS.setEnabled(false);
         menuItemInicioS.setEnabled(true);
-        menuGestion.setVisible(false);
-        menuItemUsuarios.setVisible(false);
-    }// GEN-LAST:event_menuItemCerrarSActionPerformed
+        menuGestion.setEnabled(false);
+        menuItemUsuarios.setEnabled(false);
+    }//GEN-LAST:event_menuItemCerrarSActionPerformed
+
+    private void menuItemInicioSMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuItemInicioSMousePressed
+        menuItemInicioS.setBackground(Color.GREEN);
+
+    }//GEN-LAST:event_menuItemInicioSMousePressed
+
+    private void menuItemCerrarSMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuItemCerrarSMousePressed
+        menuItemInicioS.setBackground(Color.white);
+    }//GEN-LAST:event_menuItemCerrarSMousePressed
 
     private void menuItemInicioSActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuItemInicioSActionPerformed
-        rol = null;
         Login dialog = new Login(new javax.swing.JFrame(), true);
         dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
-        if (rol != null) {
-            if (rol == Rol.gestor_liga) {
-                menuGestion.setVisible(true);
-                menuItemUsuarios.setVisible(false);
-                menuGestion.setVisible(true);
-            } else {
-                menuGestion.setVisible(false);
-                menuItemUsuarios.setVisible(true);
-            }
-            menuItemInicioS.setEnabled(false);
-            menuItemCerrarS.setEnabled(true);
+        if (rol == Rol.gestor_liga) {
+            menuGestion.setVisible(true);
+            menuItemUsuarios.setVisible(false);
+            menuGestion.setEnabled(true);
+        } else {
+            menuGestion.setVisible(false);
+            menuItemUsuarios.setVisible(true);
         }
+        menuItemInicioS.setEnabled(false);
+        menuItemCerrarS.setEnabled(true);
     }// GEN-LAST:event_menuItemInicioSActionPerformed
 
     private void menuItemUsuariosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuItemUsuariosActionPerformed
@@ -400,6 +410,7 @@ public class Principal extends javax.swing.JFrame {
     }// GEN-LAST:event_menuItemInicioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuGestion;

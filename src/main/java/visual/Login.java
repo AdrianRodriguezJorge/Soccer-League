@@ -48,72 +48,111 @@ public class Login extends javax.swing.JDialog {
         btnIniciar = new javax.swing.JButton();
         lblErrorCont = new javax.swing.JLabel();
         lblTit = new javax.swing.JLabel();
+        btnIniciar1 = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Inicio de sesión");
         setBackground(new java.awt.Color(0, 0, 0));
 
-        jPanel1.setBackground(new java.awt.Color(143, 182, 155));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblUsuario.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblUsuario.setForeground(new java.awt.Color(0, 0, 0));
+        lblUsuario.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblUsuario.setText("Usuario");
-        jPanel1.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, -1, -1));
+        jPanel1.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
 
-        tfUsuario.setBackground(new java.awt.Color(255, 255, 255));
         tfUsuario.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jPanel1.add(tfUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 150, -1));
+        tfUsuario.setBorder(null);
+        tfUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfUsuarioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(tfUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 190, -1));
 
-        passwordField.setBackground(new java.awt.Color(255, 255, 255));
         passwordField.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jPanel1.add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 150, -1));
+        passwordField.setBorder(null);
+        jPanel1.add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 190, -1));
 
-        lblCont.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblCont.setForeground(new java.awt.Color(0, 0, 0));
+        lblCont.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblCont.setText("Contraseña");
-        jPanel1.add(lblCont, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
+        jPanel1.add(lblCont, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
         lblErrorUs.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblErrorUs.setForeground(new java.awt.Color(0, 102, 102));
+        lblErrorUs.setForeground(new java.awt.Color(255, 51, 51));
         lblErrorUs.setText("Usuario incorrecto");
         lblErrorUs.setToolTipText("");
-        jPanel1.add(lblErrorUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
+        jPanel1.add(lblErrorUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, -1, -1));
 
-        btnIniciar.setBackground(new java.awt.Color(255, 255, 255));
-        btnIniciar.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        btnIniciar.setForeground(new java.awt.Color(0, 0, 0));
+        btnIniciar.setBackground(new java.awt.Color(59, 122, 26));
+        btnIniciar.setFont(new java.awt.Font("Roboto Black", 0, 15)); // NOI18N
+        btnIniciar.setForeground(new java.awt.Color(255, 255, 255));
         btnIniciar.setText("Iniciar");
+        btnIniciar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIniciarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, -1, -1));
+        jPanel1.add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, -1, -1));
 
         lblErrorCont.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblErrorCont.setForeground(new java.awt.Color(0, 102, 102));
+        lblErrorCont.setForeground(new java.awt.Color(255, 51, 51));
         lblErrorCont.setText("Contraseña incorrecta");
-        jPanel1.add(lblErrorCont, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
+        jPanel1.add(lblErrorCont, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, -1, -1));
 
-        lblTit.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblTit.setForeground(new java.awt.Color(0, 0, 0));
-        lblTit.setText("Ingrese sus datos:");
-        jPanel1.add(lblTit, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
+        lblTit.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        lblTit.setText("INICIAR SESIÓN");
+        jPanel1.add(lblTit, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, -1));
+        lblTit.getAccessibleContext().setAccessibleName("Ingrese sus datos");
+
+        btnIniciar1.setBackground(new java.awt.Color(225, 57, 57));
+        btnIniciar1.setFont(new java.awt.Font("Roboto Black", 0, 15)); // NOI18N
+        btnIniciar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnIniciar1.setText("Cancelar");
+        btnIniciar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnIniciar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnIniciar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, -1, -1));
+
+        jSeparator1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 190, -1));
+
+        jSeparator2.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 190, 10));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\8.png")); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 300));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnIniciar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIniciar1ActionPerformed
+
+    private void tfUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfUsuarioActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnIniciarActionPerformed
         try {
@@ -143,7 +182,11 @@ public class Login extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciar;
+    private javax.swing.JButton btnIniciar1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblCont;
     private javax.swing.JLabel lblErrorCont;
     private javax.swing.JLabel lblErrorUs;
