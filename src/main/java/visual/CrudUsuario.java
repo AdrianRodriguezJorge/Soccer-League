@@ -2,6 +2,7 @@ package visual;
 
 import java.awt.Color;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -59,7 +60,7 @@ public class CrudUsuario extends javax.swing.JDialog {
         try {
             modelo.setList(ServicesLocator.getUsuarioServices().getAllUsuarios());
         } catch (SQLException e1) {
-            System.out.println(e1.getMessage());
+            JOptionPane.showMessageDialog(null, "Algo salió mal al cargar la información de los usuarios.", "Aviso", 2);
         }
 
     }
@@ -67,7 +68,8 @@ public class CrudUsuario extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         contentPanel = new javax.swing.JPanel();
@@ -183,7 +185,8 @@ public class CrudUsuario extends javax.swing.JDialog {
         panel.add(tfRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 210, 20));
 
         comboBoxRol.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        comboBoxRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gestor de liga", "Gestor de usuarios" }));
+        comboBoxRol.setModel(
+                new javax.swing.DefaultComboBoxModel<>(new String[] { "Gestor de liga", "Gestor de usuarios" }));
         comboBoxRol.setBorder(null);
         panel.add(comboBoxRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 230, -1));
 
@@ -272,19 +275,18 @@ public class CrudUsuario extends javax.swing.JDialog {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap()));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
+                                .addContainerGap()));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -319,7 +321,8 @@ public class CrudUsuario extends javax.swing.JDialog {
 
                 changeStatus(false);
             } catch (SQLException e) {
-                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Este nombre de usuario ya existe.","Aviso", JOptionPane.ERROR_MESSAGE);
+                validarDatos("", pass);
             }
         }
     }// GEN-LAST:event_btnAgregarActionPerformed
@@ -348,7 +351,8 @@ public class CrudUsuario extends javax.swing.JDialog {
                 modelo.updateElement(index, u);
                 changeStatus(false);
             } catch (SQLException e1) {
-                e1.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Este nombre de usuario ya existe.","Aviso", JOptionPane.ERROR_MESSAGE);
+                validarDatos("", pass);
             }
         }
     }// GEN-LAST:event_btnGuardarActionPerformed
@@ -356,17 +360,25 @@ public class CrudUsuario extends javax.swing.JDialog {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnEliminarActionPerformed
         int index = list.getSelectedIndex();
         if (index != -1) {
-            if (JOptionPane.showConfirmDialog(null, "Está seguro que desea eliminar este usuario?",
-                    "Confirmar", 0) == 0) {
-                try {
-                    ServicesLocator.getUsuarioServices().eliminarUsuario(modelo.getElementAt(index).getId());
+            Usuario u = modelo.getElementAt(index);
+            if (u.getNombreUsuario().equals(Principal.usuarioActual)) {
+                JOptionPane.showMessageDialog(null, "No puede eliminarse a usted mismo.", "Aviso",
+                        2);
+            } else {
+                if (JOptionPane.showConfirmDialog(null, "Está seguro que desea eliminar este usuario?",
+                        "Confirmar", 0) == 0) {
+                    try {
+                        ServicesLocator.getUsuarioServices().eliminarUsuario(u.getId());
 
-                    modelo.removeElement(index);
+                        modelo.removeElement(index);
 
-                    limpiar();
-                    changeStatus(false);
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null, "Tiene que existir al menos un Gestor de Usuarios.", "Aviso", 2);
+                        limpiar();
+                        changeStatus(false);
+                    } catch (SQLException e) {
+                        JOptionPane.showMessageDialog(null, "Debe existir al menos un Gestor de liga.",
+                                "Aviso",
+                                2);
+                    }
                 }
             }
         }

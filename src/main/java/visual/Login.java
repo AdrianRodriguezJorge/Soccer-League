@@ -167,7 +167,7 @@ public class Login extends javax.swing.JDialog {
                     } else {
                         Principal.rol = Rol.gestor_usuario;
                     }
-
+                    Principal.usuarioActual = us.getNombreUsuario(); 
                     dispose();
                 } else {
                     lblErrorCont.setVisible(true);
