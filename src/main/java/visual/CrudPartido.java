@@ -55,9 +55,10 @@ public class CrudPartido extends javax.swing.JDialog {
                     String nomEquipoLocal = buscarNombrEquipo(p.getIdEquipoLocal());
                     String nomEquipoVisit = buscarNombrEquipo(p.getIdEquipoVisitante());
 
+                    jComboBoxEstadio.setSelectedIndex(ServicesLocator.getEstadioServices().getIndexFromId(p.getIdEstadio()));
+
                     DateChooserFecha.setDate(p.getFecha());
-                    tfEstadio.setText(ServicesLocator.getEstadioServices()
-                            .getNombreEstadio(p.getIdEstadio()));
+                    tfEstadio.setText(jComboBoxEstadio.getSelectedItem().toString());
                     tfAudiencia.setText(p.getAudiencia() + "");
                     tfLocal.setText(nomEquipoLocal);
                     tfVisit.setText(nomEquipoVisit);
@@ -445,6 +446,7 @@ public class CrudPartido extends javax.swing.JDialog {
         changeStatus(true);
         DateChooserFecha.requestFocusInWindow();
         btnGuardar.setVisible(false);
+        jComboBoxVisitante.setSelectedIndex(1);
 
     }// GEN-LAST:event_btnNuevoActionPerformed
 
@@ -453,11 +455,14 @@ public class CrudPartido extends javax.swing.JDialog {
         int audiencia = Integer.parseInt(tfAudiencia.getText().equals("") ? "-1" : tfAudiencia.getText());
         int golesLocal = Integer.parseInt(tfGolesLocal.getText().equals("") ? "-1" : tfGolesLocal.getText());
         int golesVisit = Integer.parseInt(tfGolesVisitante.getText().equals("") ? "-1" : tfGolesVisitante.getText());
+        int idEquipo = ServicesLocator.getEstadioServices().obtenerEstadios().get(jComboBoxEstadio.getSelectedIndex())
+                .getIdEstadio();
         int idLocal = (ServicesLocator.getEquipoServices().obtenerEquipos().get(jComboBoxLocal.getSelectedIndex())
                 .getIdEquipo());
         int idVisit = ServicesLocator.getEquipoServices().obtenerEquipos().get(jComboBoxVisitante.getSelectedIndex())
                 .getIdEquipo();
                 
+                audiencia = ServicesLocator.getEstadioServices().validarAudiencia(idEquipo, audiencia) ? audiencia : -1;
         boolean val = validarDatos(fecha, audiencia, idLocal, idVisit, golesLocal, golesVisit);
 
         if (val) {
@@ -576,6 +581,7 @@ public class CrudPartido extends javax.swing.JDialog {
         lblDatosErroneos.setText("Datos erroneos");
         lblDatosErroneos.setVisible(false);
         lblFechaIncorrecta.setVisible(false);
+        list.setSelectedIndex(0);
     }// GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnSalirActionPerformed

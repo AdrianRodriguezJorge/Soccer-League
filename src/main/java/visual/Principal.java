@@ -38,7 +38,7 @@ public class Principal extends javax.swing.JFrame {
         UIManager.put("MenuItem.selectionBackground", new Color(217, 242, 220));
         UIManager.put("Menu.selectionBackground", new Color(217, 242, 220));
 
-        menuGestion.setVisible(false);
+        // menuGestion.setVisible(false);
         menuItemUsuarios.setVisible(false);
         menuItemCerrarS.setEnabled(false);
 
@@ -55,7 +55,8 @@ public class Principal extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
@@ -216,7 +217,8 @@ public class Principal extends javax.swing.JFrame {
         menuReportes.setLabel("Reportes");
 
         menuItemRTablaPosiciones.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        menuItemRTablaPosiciones.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Posiciones (1).png")); // NOI18N
+        menuItemRTablaPosiciones
+                .setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Posiciones (1).png")); // NOI18N
         menuItemRTablaPosiciones.setText("Tabla de posiciones de la liga");
         menuItemRTablaPosiciones.setActionCommand("Reportes");
         menuItemRTablaPosiciones.addActionListener(new java.awt.event.ActionListener() {
@@ -238,7 +240,8 @@ public class Principal extends javax.swing.JFrame {
         menuReportes.add(menuItemRPartidosEquipos);
 
         menuItemRPartidosPorFecha.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        menuItemRPartidosPorFecha.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Partido (1).png")); // NOI18N
+        menuItemRPartidosPorFecha
+                .setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Partido (1).png")); // NOI18N
         menuItemRPartidosPorFecha.setText("Partidos jugados por fecha");
         menuItemRPartidosPorFecha.setActionCommand("Reportes");
         menuItemRPartidosPorFecha.addActionListener(new java.awt.event.ActionListener() {
@@ -249,7 +252,8 @@ public class Principal extends javax.swing.JFrame {
         menuReportes.add(menuItemRPartidosPorFecha);
 
         menuItemREntrenadoresExperiencia.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        menuItemREntrenadoresExperiencia.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Entrenador (1).png")); // NOI18N
+        menuItemREntrenadoresExperiencia
+                .setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Entrenador (1).png")); // NOI18N
         menuItemREntrenadoresExperiencia.setText("Entrenadores con más experiencia");
         menuItemREntrenadoresExperiencia.setActionCommand("Reportes");
         menuItemREntrenadoresExperiencia.addActionListener(new java.awt.event.ActionListener() {
@@ -260,7 +264,8 @@ public class Principal extends javax.swing.JFrame {
         menuReportes.add(menuItemREntrenadoresExperiencia);
 
         menuItemREstadiosMayorAudiencia.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        menuItemREstadiosMayorAudiencia.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\report (1).png")); // NOI18N
+        menuItemREstadiosMayorAudiencia
+                .setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\report (1).png")); // NOI18N
         menuItemREstadiosMayorAudiencia.setText("Estadios con mayor audiencia");
         menuItemREstadiosMayorAudiencia.setActionCommand("Reportes");
         menuItemREstadiosMayorAudiencia.addActionListener(new java.awt.event.ActionListener() {
@@ -299,42 +304,45 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuItemCulminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCulminarActionPerformed
+    private void menuItemCulminarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuItemCulminarActionPerformed
         menuItemIniciar.setEnabled(true);
         menuItemCulminar.setEnabled(false);
         ServicesLocator.getEquipoServices().reporteTablaPosiciones();
-    }//GEN-LAST:event_menuItemCulminarActionPerformed
+    }// GEN-LAST:event_menuItemCulminarActionPerformed
 
-    private void menuItemCerrarSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCerrarSActionPerformed
+    private void menuItemCerrarSActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuItemCerrarSActionPerformed
         menuItemCerrarS.setEnabled(false);
         menuItemInicioS.setEnabled(true);
         menuGestion.setEnabled(false);
         menuItemUsuarios.setEnabled(false);
-    }//GEN-LAST:event_menuItemCerrarSActionPerformed
+    }// GEN-LAST:event_menuItemCerrarSActionPerformed
 
-    private void menuItemInicioSMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuItemInicioSMousePressed
+    private void menuItemInicioSMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_menuItemInicioSMousePressed
         menuItemInicioS.setBackground(Color.GREEN);
 
-    }//GEN-LAST:event_menuItemInicioSMousePressed
+    }// GEN-LAST:event_menuItemInicioSMousePressed
 
-    private void menuItemCerrarSMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuItemCerrarSMousePressed
+    private void menuItemCerrarSMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_menuItemCerrarSMousePressed
         menuItemInicioS.setBackground(Color.white);
-    }//GEN-LAST:event_menuItemCerrarSMousePressed
+    }// GEN-LAST:event_menuItemCerrarSMousePressed
 
     private void menuItemInicioSActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuItemInicioSActionPerformed
+        rol = null;
         Login dialog = new Login(new javax.swing.JFrame(), true);
         dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
-        if (rol == Rol.gestor_liga) {
-            menuGestion.setVisible(true);
-            menuItemUsuarios.setVisible(false);
-            menuGestion.setEnabled(true);
-        } else {
-            menuGestion.setVisible(false);
-            menuItemUsuarios.setVisible(true);
+        if (rol != null) {
+            if (rol == Rol.gestor_liga) {
+                menuGestion.setVisible(true);
+                menuItemUsuarios.setVisible(false);
+                menuGestion.setEnabled(true);
+            } else {
+                menuGestion.setVisible(false);
+                menuItemUsuarios.setVisible(true);
+            }
+            menuItemInicioS.setEnabled(false);
+            menuItemCerrarS.setEnabled(true);
         }
-        menuItemInicioS.setEnabled(false);
-        menuItemCerrarS.setEnabled(true);
     }// GEN-LAST:event_menuItemInicioSActionPerformed
 
     private void menuItemUsuariosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuItemUsuariosActionPerformed
