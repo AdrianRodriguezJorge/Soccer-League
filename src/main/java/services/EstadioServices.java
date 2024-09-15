@@ -1,5 +1,6 @@
 package services;
 
+import model.Equipo;
 import model.Estadio;
 import utils.ConnectionManager;
 
@@ -208,5 +209,17 @@ public class EstadioServices {
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
         return val;
+    }
+
+    public int getIndexFromId(int id) {
+        int index = -1;
+        ArrayList<Estadio> list = obtenerEstadios();
+
+        for (int i = 0; i < list.size() && index == -1; i++) {
+            if (list.get(i).getIdEstadio() == id) {
+                index = i;
+            }
+        }
+        return index;
     }
 }
