@@ -43,6 +43,7 @@
             <artifactId>jasperreports-fonts</artifactId>
             <version>6.20.3</version>
         </dependency>
+        
         <dependency>
             <groupId>unknown.binary</groupId>
             <artifactId>jcalendar-1.4</artifactId>

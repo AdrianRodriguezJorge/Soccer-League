@@ -1,115 +1,72 @@
 package visual;
 
 import java.awt.Color;
-import java.awt.Font;
-import java.sql.SQLException;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import model.Estadio;
-import services.EstadioServices;
 import services.ServicesLocator;
 import utils.ConnectionManager;
 import utils.Generic_Model;
 
 public class CrudEstadio extends javax.swing.JDialog {
 
-    private Generic_Model <Estadio> modelo = new Generic_Model<Estadio>();
+    private Generic_Model<Estadio> modelo = new Generic_Model<>();
 
     public CrudEstadio(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
-        try {
-            ConnectionManager.getConnection();
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        EstadioServices es = new EstadioServices();
-
-        list = new JList<Estadio>();
-
-        scrollPane.setViewportView(list);
-        list.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        changeStatus(false);
+        btnEditar.setEnabled(false);
+        btnEliminar.setEnabled(false);
+        lblDatosErroneos.setVisible(false);
 
         list.setModel(modelo);
 
+        Principal.soloNum(tfCapacidad);
+
         list.addListSelectionListener(new ListSelectionListener() {
-                public void valueChanged(ListSelectionEvent e) {
-                        int indice = list.getSelectedIndex();
-                        btnEliminar.setEnabled(indice > -1);
-				        desactivar_habilitar(indice <= -1);
-                        if (indice > -1) {
-                                Estadio c = modelo.getElementAt(indice);
+            public void valueChanged(ListSelectionEvent e) {
+                int index = list.getSelectedIndex();
+                btnEliminar.setEnabled(index > -1);
+                changeStatus(index <= -1);
+                if (index > -1) {
+                    Estadio c = modelo.getElementAt(index);
 
-                                textFieldID.setText(c.getIdEstadio()+"");
-                                textFieldNombre.setText(c.getNombreEstadio());
-                                textFieldCapacidad.setText(c.getCapacidad()+"");
+                    tfNombre.setText(c.getNombreEstadio());
+                    tfCapacidad.setText(c.getCapacidad() + "");
 
-                                btnNuevo.setEnabled(true);
-                                btnEditar.setEnabled(true);
+                    btnNuevo.setEnabled(true);
+                    btnEditar.setEnabled(true);
 
-                        } else {
-                                btnEditar.setEnabled(false);
-                        }
+                } else {
+                    btnEditar.setEnabled(false);
                 }
+            }
         });
         modelo.setList(ServicesLocator.getEstadioServices().obtenerEstadios());
 
-        btnNuevo.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        btnEditar.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        btnEliminar.setFont(new Font("SansSerif", Font.PLAIN, 18));
-
-        lblD.setHorizontalAlignment(SwingConstants.RIGHT);
-        lblD.setFont(new Font("SansSerif", Font.PLAIN, 18));
-
-        lblNombre.setHorizontalAlignment(SwingConstants.RIGHT);
-        lblNombre.setFont(new Font("SansSerif", Font.PLAIN, 18));
-
-        lblCapacidad.setHorizontalAlignment(SwingConstants.RIGHT);
-        lblCapacidad.setFont(new Font("SansSerif", Font.PLAIN, 18));
-
-        textFieldID.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        textFieldNombre.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        textFieldCapacidad.setFont(new Font("SansSerif", Font.PLAIN, 18));
-
-        btnGuardar.setFont(new Font("SansSerif", Font.PLAIN, 17));
-        btnGuardar.setVisible(false);
-        
-        btnAgregar.setFont(new Font("SansSerif", Font.PLAIN, 17));
-        btnAgregar.setVisible(false);
-
-        btnCancelar.setVisible(false);
-        btnCancelar.setFont(new Font("SansSerif", Font.PLAIN, 17));
-
-        btnSalir.setFont(new Font("SansSerif", Font.PLAIN, 18));
-
-//		lblDatosErroneos = new JLabel("Datos erroneos");
-//		lblDatosErroneos.setForeground(new Color(0,0,139));
-//		lblDatosErroneos.setFont(new Font("SansSerif", Font.PLAIN, 20));
-//		lblDatosErroneos.setBounds(330, 207, 200, 50);
-//		lblDatosErroneos.setVisible(false);
-//		contentPanel.add(lblDatosErroneos);
-
     }
 
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         contentPanel = new javax.swing.JPanel();
         panel = new javax.swing.JPanel();
-        lblD = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
         lblCapacidad = new javax.swing.JLabel();
-        textFieldID = new javax.swing.JTextField();
-        textFieldNombre = new javax.swing.JTextField();
-        textFieldCapacidad = new javax.swing.JTextField();
+        tfNombre = new javax.swing.JTextField();
+        tfCapacidad = new javax.swing.JTextField();
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
+        lblDatosErroneos = new javax.swing.JLabel();
         scrollPane = new javax.swing.JScrollPane();
         list = new javax.swing.JList<>();
         btnNuevo = new javax.swing.JButton();
@@ -118,119 +75,94 @@ public class CrudEstadio extends javax.swing.JDialog {
         btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Gestión de estadios");
 
-        panel.setBackground(new java.awt.Color(101, 161, 101));
+        panel.setBackground(new java.awt.Color(143, 182, 155));
         panel.setBorder(new javax.swing.border.MatteBorder(null));
         panel.setForeground(new java.awt.Color(0, 0, 0));
+        panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblD.setForeground(new java.awt.Color(0, 0, 0));
-        lblD.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblD.setText("ID");
-
+        lblNombre.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(0, 0, 0));
         lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNombre.setText("Nombre");
+        panel.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 52, 79, -1));
 
+        lblCapacidad.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         lblCapacidad.setForeground(new java.awt.Color(0, 0, 0));
         lblCapacidad.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblCapacidad.setText("Capacidad");
+        panel.add(lblCapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 83, 87, -1));
 
-        textFieldID.setEditable(false);
-        textFieldID.setFocusable(false);
+        tfNombre.setEditable(false);
+        tfNombre.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        panel.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 49, 209, -1));
 
-        textFieldNombre.setEditable(false);
-
-        textFieldCapacidad.setEditable(false);
-        textFieldCapacidad.addActionListener(new java.awt.event.ActionListener() {
+        tfCapacidad.setEditable(false);
+        tfCapacidad.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        tfCapacidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldCapacidadActionPerformed(evt);
+                tfCapacidadActionPerformed(evt);
             }
         });
+        panel.add(tfCapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 80, 75, -1));
 
         btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelar.setText("Cancelar");
+        btnCancelar.setAlignmentY(1.0F);
+        btnCancelar.setMargin(new java.awt.Insets(2, 14, 4, 14));
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
             }
         });
+        panel.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, -1, -1));
 
         btnGuardar.setBackground(new java.awt.Color(255, 255, 255));
+        btnGuardar.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(0, 0, 0));
         btnGuardar.setText("Guardar");
+        btnGuardar.setAlignmentY(1.0F);
+        btnGuardar.setMargin(new java.awt.Insets(2, 14, 4, 14));
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
             }
         });
+        panel.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
 
         btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnAgregar.setForeground(new java.awt.Color(0, 0, 0));
         btnAgregar.setText("Agregar");
+        btnAgregar.setAlignmentY(1.0F);
+        btnAgregar.setMargin(new java.awt.Insets(2, 14, 4, 14));
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
             }
         });
+        panel.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
 
-        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
-        panel.setLayout(panelLayout);
-        panelLayout.setHorizontalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addComponent(lblCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
-                        .addComponent(textFieldCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblD, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(24, 24, 24)
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addComponent(btnGuardar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAgregar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCancelar)))
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
-        panelLayout.setVerticalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblD)
-                    .addComponent(textFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNombre)
-                    .addComponent(textFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCapacidad)
-                    .addComponent(textFieldCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnAgregar)
-                    .addComponent(btnGuardar))
-                .addContainerGap())
-        );
+        lblDatosErroneos.setFont(new java.awt.Font("SansSerif", 3, 16)); // NOI18N
+        lblDatosErroneos.setForeground(new java.awt.Color(0, 102, 102));
+        lblDatosErroneos.setText("Datos erroneos");
+        panel.add(lblDatosErroneos, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 195, 198, -1));
 
-        list.setForeground(new java.awt.Color(0, 153, 153));
+        list.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        list.setForeground(new java.awt.Color(18, 110, 0));
+        list.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scrollPane.setViewportView(list);
 
         btnNuevo.setBackground(new java.awt.Color(255, 255, 255));
+        btnNuevo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnNuevo.setForeground(new java.awt.Color(0, 0, 0));
         btnNuevo.setText("Nuevo");
+        btnNuevo.setAlignmentY(1.0F);
+        btnNuevo.setDefaultCapable(false);
+        btnNuevo.setMargin(new java.awt.Insets(2, 14, 4, 14));
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoActionPerformed(evt);
@@ -238,9 +170,13 @@ public class CrudEstadio extends javax.swing.JDialog {
         });
 
         btnEditar.setBackground(new java.awt.Color(255, 255, 255));
+        btnEditar.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(0, 0, 0));
         btnEditar.setText("Editar");
+        btnEditar.setAlignmentY(1.0F);
+        btnEditar.setDefaultCapable(false);
         btnEditar.setEnabled(false);
+        btnEditar.setMargin(new java.awt.Insets(2, 14, 4, 14));
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
@@ -248,9 +184,13 @@ public class CrudEstadio extends javax.swing.JDialog {
         });
 
         btnEliminar.setBackground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(0, 0, 0));
         btnEliminar.setText("Eliminar");
+        btnEliminar.setAlignmentY(1.0F);
+        btnEliminar.setDefaultCapable(false);
         btnEliminar.setEnabled(false);
+        btnEliminar.setMargin(new java.awt.Insets(2, 14, 4, 14));
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -258,8 +198,12 @@ public class CrudEstadio extends javax.swing.JDialog {
         });
 
         btnSalir.setBackground(new java.awt.Color(255, 255, 255));
+        btnSalir.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(0, 0, 0));
         btnSalir.setText("Salir");
+        btnSalir.setAlignmentY(1.0F);
+        btnSalir.setDefaultCapable(false);
+        btnSalir.setMargin(new java.awt.Insets(2, 14, 4, 14));
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
@@ -269,178 +213,152 @@ public class CrudEstadio extends javax.swing.JDialog {
         javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
         contentPanel.setLayout(contentPanelLayout);
         contentPanelLayout.setHorizontalGroup(
-            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contentPanelLayout.createSequentialGroup()
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(contentPanelLayout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(btnNuevo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEditar)))
-                .addGap(18, 18, 18)
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contentPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnSalir))
-                    .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+                contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(contentPanelLayout.createSequentialGroup()
+                                .addGroup(contentPanelLayout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 288,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(contentPanelLayout.createSequentialGroup()
+                                                .addGap(7, 7, 7)
+                                                .addComponent(btnNuevo)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btnEliminar)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btnEditar)))
+                                .addGroup(contentPanelLayout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(contentPanelLayout.createSequentialGroup()
+                                                .addGap(18, 282, Short.MAX_VALUE)
+                                                .addComponent(btnSalir)
+                                                .addContainerGap())
+                                        .addGroup(contentPanelLayout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))));
         contentPanelLayout.setVerticalGroup(
-            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contentPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalir)
-                    .addComponent(btnEditar)
-                    .addComponent(btnEliminar)
-                    .addComponent(btnNuevo))
-                .addContainerGap())
-        );
+                contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(contentPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(contentPanelLayout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 324,
+                                                Short.MAX_VALUE)
+                                        .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39,
+                                        Short.MAX_VALUE)
+                                .addGroup(contentPanelLayout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnSalir)
+                                        .addComponent(btnEditar)
+                                        .addComponent(btnEliminar)
+                                        .addComponent(btnNuevo))
+                                .addContainerGap()));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap()));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap()));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnNuevoActionPerformed
         limpiar();
-        btnAgregar.setVisible(true);
-        desactivar_habilitar(true);
-        list.setEnabled(false);
-        textFieldNombre.requestFocusInWindow();
-        btnEliminar.setEnabled(false);
-        btnNuevo.setEnabled(false);
-        btnEditar.setEnabled(false);
+        changeStatus(true);
         btnGuardar.setVisible(false);
-        btnCancelar.setVisible(true);
-    }//GEN-LAST:event_btnNuevoActionPerformed
+        tfNombre.requestFocusInWindow();
+    }// GEN-LAST:event_btnNuevoActionPerformed
 
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        String nombre = textFieldNombre.getText();
-        int capacidad = Integer.parseInt(textFieldCapacidad.getText());
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAgregarActionPerformed
+        String nombre = tfNombre.getText();
+        int capacidad = Integer.parseInt(tfCapacidad.getText().equals("") ? "-1" : tfCapacidad.getText());
 
-        boolean proceder = true; // validarDatos(id, nombre, capacidad);
+        boolean val = validarDatos(nombre, capacidad);
 
-        if (proceder) {
+        if (val) {
             ServicesLocator.getEstadioServices().agregarEstadio(nombre, capacidad); // guardar en la BD
 
-            Estadio x = new Estadio(ServicesLocator.getEstadioServices().obtenerEstadios().getLast().getIdEstadio(), nombre, capacidad);
+            Estadio x = new Estadio(ServicesLocator.getEstadioServices().obtenerEstadios().getLast().getIdEstadio(),
+                    nombre, capacidad);
             modelo.addElement(x);
 
             int lastIndex = list.getModel().getSize() - 1;
             list.setSelectedIndex(lastIndex);
             list.ensureIndexIsVisible(lastIndex);
 
-            desactivar_habilitar(false);
-            list.setEnabled(true);
-            btnEliminar.setEnabled(true);
-            btnEditar.setEnabled(true);
-            btnNuevo.setEnabled(true);
-
-            btnAgregar.setVisible(false);
-            btnCancelar.setVisible(false);
+            changeStatus(false);
         }
-    }//GEN-LAST:event_btnAgregarActionPerformed
+    }// GEN-LAST:event_btnAgregarActionPerformed
 
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        desactivar_habilitar(list.getSelectedIndex() > -1);
-        list.setEnabled(false);
-        textFieldNombre.requestFocusInWindow();
-        btnEliminar.setEnabled(false);
-        btnNuevo.setEnabled(false);
-        btnEditar.setEnabled(false);
-        btnGuardar.setVisible(true);
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnEditarActionPerformed
+        changeStatus(list.getSelectedIndex() > -1);
+        tfNombre.requestFocusInWindow();
         btnAgregar.setVisible(false);
-        btnCancelar.setVisible(true);
-    }//GEN-LAST:event_btnEditarActionPerformed
+    }// GEN-LAST:event_btnEditarActionPerformed
 
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        int indice = list.getSelectedIndex();
-        Estadio x;
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnGuardarActionPerformed
+        int index = list.getSelectedIndex();
 
-        int id = Integer.parseInt(textFieldID.getText());
-        String nombre = textFieldNombre.getText();
-        int capacidad = Integer.parseInt(textFieldCapacidad.getText());
+        String nombre = tfNombre.getText();
+        int capacidad = Integer.parseInt(tfCapacidad.getText().equals("") ? "-1" : tfCapacidad.getText());
 
-        boolean proceder = true; // validarDatos(id, nombre, capacidad);
+        boolean val = validarDatos(nombre, capacidad);
 
-        if (proceder) {
-            x = new Estadio (id, nombre, capacidad);
+        if (val) {
+            Estadio e = new Estadio(nombre, capacidad);
+            e.setIdEstadio(modelo.getElementAt(index).getIdEstadio());
 
-            ServicesLocator.getEstadioServices().actualizarEstadio(Integer.parseInt(textFieldID.getText()), textFieldNombre.getText(), Integer.parseInt(textFieldCapacidad.getText())); // nuevo
+            ServicesLocator.getEstadioServices().actualizarEstadio(e);
 
-            modelo.updateElement(indice, x);
-            desactivar_habilitar(false);
-            list.setEnabled(true);
-            btnEliminar.setEnabled(true);
-            btnEditar.setEnabled(true);
-            btnNuevo.setEnabled(true);
-
-            btnGuardar.setVisible(false);
-            btnCancelar.setVisible(false);
+            modelo.updateElement(index, e);
+            changeStatus(false);
         }
-    }//GEN-LAST:event_btnGuardarActionPerformed
+    }// GEN-LAST:event_btnGuardarActionPerformed
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        int indice = list.getSelectedIndex();
-        if (indice != -1) {
-                if (JOptionPane.showConfirmDialog(null, "Está seguro que desea eliminar este estadio?",
-                                "Confirmar", 0) == 0) {
-                        modelo.removeElement(list.getSelectedIndex());
-                        
-                        ServicesLocator.getEstadioServices().eliminarEstadio(Integer.parseInt(textFieldID.getText()));
-                        
-                        limpiar();
-                        desactivar_habilitar(false);
-                }
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnEliminarActionPerformed
+        int index = list.getSelectedIndex();
+        if (index != -1) {
+            if (JOptionPane.showConfirmDialog(null, "Está seguro que desea eliminar este estadio?",
+                    "Confirmar", 0) == 0) {
+
+                ServicesLocator.getEstadioServices().eliminarEstadio(modelo.getElementAt(index).getIdEstadio());
+
+                modelo.removeElement(index);
+
+                limpiar();
+                changeStatus(false);
+            }
         }
-    }//GEN-LAST:event_btnEliminarActionPerformed
+    }// GEN-LAST:event_btnEliminarActionPerformed
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        desactivar_habilitar(false);
-        list.setEnabled(true);
-        btnEliminar.setEnabled(true);
-        btnEditar.setEnabled(true);
-        btnNuevo.setEnabled(true);
-        btnAgregar.setVisible(false);
-        btnGuardar.setVisible(false);
-        btnCancelar.setVisible(false);
-        lblD.setForeground(Color.BLACK);
-        lblNombre.setForeground(Color.BLACK);
-        lblCapacidad.setForeground(Color.BLACK);
-//				lblDatosErroneos.setVisible(false);
-    }//GEN-LAST:event_btnCancelarActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnCancelarActionPerformed
+        changeStatus(false);
+        lblDatosErroneos.setVisible(false);
+        list.setSelectedIndex(0);
+    }// GEN-LAST:event_btnCancelarActionPerformed
 
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnSalirActionPerformed
         ConnectionManager.closeConnection();
         dispose();
-        System.exit(0);
-    }//GEN-LAST:event_btnSalirActionPerformed
+    }// GEN-LAST:event_btnSalirActionPerformed
 
-    private void textFieldCapacidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCapacidadActionPerformed
+    private void tfCapacidadActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_tfCapacidadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldCapacidadActionPerformed
+    }// GEN-LAST:event_tfCapacidadActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
@@ -452,63 +370,63 @@ public class CrudEstadio extends javax.swing.JDialog {
     private javax.swing.JButton btnSalir;
     private javax.swing.JPanel contentPanel;
     private javax.swing.JLabel lblCapacidad;
-    private javax.swing.JLabel lblD;
+    private javax.swing.JLabel lblDatosErroneos;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JList<Estadio> list;
     private javax.swing.JPanel panel;
     private javax.swing.JScrollPane scrollPane;
-    private javax.swing.JTextField textFieldCapacidad;
-    private javax.swing.JTextField textFieldID;
-    private javax.swing.JTextField textFieldNombre;
+    private javax.swing.JTextField tfCapacidad;
+    private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
-    
+
     private void limpiar() {
-		textFieldID.setText("");
-		textFieldNombre.setText("");
-		textFieldCapacidad.setText("");
-	}
+        tfNombre.setText("");
+        tfCapacidad.setText("");
+    }
 
-    private void desactivar_habilitar(boolean estado) {
-		textFieldNombre.setEditable(estado);
-		textFieldCapacidad.setEditable(estado);
-	}
+    public boolean validarDatos(String nombre, int capacidad) {
+        boolean correcto = true;
+        Estadio temp = new Estadio();
 
-	// public boolean validarDatos(String n, String nombre, String capacidad) {
-	// 	boolean correcto = true;
-	// 	Votante temp = new Votante();
+        try { // nombre
+            temp.setNombreEstadio(nombre);
+        } catch (IllegalArgumentException e) {
+            correcto = false;
+            lblDatosErroneos.setVisible(true);
+            lblNombre.setForeground(Principal.errorColor);
+        }
 
-	// 	try { // nombre
-	// 		lblD.setForeground(Color.BLACK);
-	// 		temp.setNombre(n);
-	// 	} catch (IllegalArgumentException e) {
-	// 		correcto = false;
-	// 		lblDatosErroneos.setVisible(true);
-	// 		lblD.setForeground(new Color(0,0,139));
-	// 	}
+        try { // capacidad
+            temp.setCapacidad(capacidad);
+        } catch (IllegalArgumentException e) {
+            correcto = false;
+            lblDatosErroneos.setVisible(true);
+            lblCapacidad.setForeground(Principal.errorColor);
+        }
 
-	// 	try { // nombre
-	// 		lblNombre.setForeground(Color.BLACK);
-	// 		temp.setCorreo(nombre);
-	// 	} catch (IllegalArgumentException e) {
-	// 		correcto = false;
-	// 		lblDatosErroneos.setVisible(true);
-	// 		lblNombre.setForeground(new Color(0,0,139));
-	// 	}
+        if (correcto) {
+            lblDatosErroneos.setVisible(false);
+            changeStatus(true);
+        }
+        return correcto;
+    }
 
-	// 	try { // contrase�a
-	// 		lblCapacidad.setForeground(Color.BLACK);
-	// 		temp.setContrasenna(capacidad);
-	// 	} catch (IllegalArgumentException e) {
-	// 		correcto = false;
-	// 		lblDatosErroneos.setVisible(true);
-	// 		lblCapacidad.setForeground(new Color(0,0,139));
-	// 	}
+    private void changeStatus(boolean status) {
+        tfNombre.setEditable(status);
+        tfCapacidad.setEditable(status);
 
-	// 	if (correcto) {
-	// 		lblDatosErroneos.setVisible(false);
-	// 	}
-	// 	return correcto;
-	// }
+        btnEliminar.setEnabled(!status);
+        btnNuevo.setEnabled(!status);
+        btnEditar.setEnabled(!status);
+        list.setEnabled(!status);
+        btnSalir.setEnabled(!status);
 
+        btnAgregar.setVisible(status);
+        btnGuardar.setVisible(status);
+        btnCancelar.setVisible(status);
 
+        lblNombre.setForeground(Color.black);
+        lblCapacidad.setForeground(Color.black);
+
+    }
 }

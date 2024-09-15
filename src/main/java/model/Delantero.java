@@ -6,14 +6,22 @@ package model;
 public class Delantero extends Jugador {
     private int tirosAPuerta;
 
-    // Constructor
-    public Delantero(int idFutbolista, int idEquipo, int numero, String nombre, int añosEnEquipo, int partidosJugados, int cantidadGoles, int asistencias, double promedioGoles, int tirosAPuerta) {
-        super(idFutbolista, idEquipo, numero, nombre, añosEnEquipo, partidosJugados, cantidadGoles, asistencias, promedioGoles);
+    // Constructores
+    public Delantero(int idFutbolista, int idEquipo, int numero, String nombre, int añosEnEquipo, String tipo, int partidosJugados,
+            int cantidadGoles, int asistencias, double promedioGoles,  String pos, int tirosAPuerta) {
+        super(idFutbolista, idEquipo, numero, nombre, añosEnEquipo, tipo, partidosJugados, cantidadGoles, asistencias,
+                promedioGoles, pos);
+        setTirosAPuerta(tirosAPuerta);
+    }
+
+    public Delantero(int idEquipo, int numero, String nombre, int añosEnEquipo, String tipo, int partidosJugados, int cantidadGoles,
+            int asistencias, String pos, int tirosAPuerta) {
+        super(idEquipo, numero, nombre, añosEnEquipo, tipo, partidosJugados, cantidadGoles, asistencias, pos);
         setTirosAPuerta(tirosAPuerta);
     }
 
     public Delantero() {
-        //TODO Auto-generated constructor stub
+        // TODO Auto-generated constructor stub
     }
 
     // Métodos getter y setter
@@ -22,6 +30,9 @@ public class Delantero extends Jugador {
     }
 
     public void setTirosAPuerta(int tirosAPuerta) {
-        this.tirosAPuerta = tirosAPuerta;
+        if (tirosAPuerta >= 0) {
+            this.tirosAPuerta = tirosAPuerta;
+        } else
+            throw new IllegalArgumentException();
     }
 }

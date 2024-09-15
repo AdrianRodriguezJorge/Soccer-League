@@ -1,15 +1,12 @@
 package services;
 
-import model.Equipo;
 import model.Estadio;
 import utils.ConnectionManager;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.view.JasperViewer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,7 +30,8 @@ public class EstadioServices {
     /**
      * Crea un nuevo equipo en la base de datos.
      *
-     * @param estadio El equipo a crear.
+     * @param nombre del estadio a crear
+     * @param capacidad del estadio a crear
      * @return Verdadero si el equipo se creó correctamente.
      */
     public boolean agregarEstadio(String nombre, int capacidad) {
@@ -46,9 +44,10 @@ public class EstadioServices {
             return true;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            // de esta forma se tratarían las excepciones provenientes de la base de datos
             return false;
         }
-    }
+    } // de esta forma se tratarían las excepciones provenientes de la base de datos
 
     /**
      * Obtiene todos los equipos de la base de datos.
@@ -59,14 +58,15 @@ public class EstadioServices {
         ArrayList<Estadio> list = new ArrayList<>();
         String sql = "SELECT * FROM estadio";
         try {
-            PreparedStatement stmn = connection.prepareStatement("SELECT * FROM estadio");
-            ResultSet rs = stmn.executeQuery();
+            connection = ConnectionManager.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM estadio ORDER BY idestadio");
+            ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 Estadio estadio = new Estadio(
-                        rs.getInt("idestadio"),
                         rs.getString("nomestadio"),
                         rs.getInt("capacidad")
                 );
+                estadio.setIdEstadio(rs.getInt("idestadio"));
                 list.add(estadio);
             }
         } catch (SQLException e) {
@@ -75,15 +75,15 @@ public class EstadioServices {
         return list;
     }
 
-    public void actualizarEstadio(int objetive, String nom, int cap) {
+    public void actualizarEstadio(Estadio estadio) {
         try {
             String sql = "UPDATE estadio SET nomestadio = ?, capacidad = ? WHERE idestadio = ?";
-            PreparedStatement stmn = connection.prepareStatement(sql);
-            stmn.setString(1, nom);
-            stmn.setInt(2, cap);
-            stmn.setInt(3, objetive);
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            pstmt.setString(1, estadio.getNombreEstadio());
+            pstmt.setInt(2, estadio.getCapacidad());
+            pstmt.setInt(3, estadio.getIdEstadio());
 
-            int afected = stmn.executeUpdate();
+            int afected = pstmt.executeUpdate();
 
             if (afected == 0) {
                 throw new SQLException();
@@ -99,10 +99,10 @@ public class EstadioServices {
     public void eliminarEstadio(int objetive) {
         try {
             String sql = "DELETE FROM estadio WHERE idestadio = ?";
-            PreparedStatement stmn = connection.prepareStatement(sql);
-            stmn.setInt(1, objetive);
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            pstmt.setInt(1, objetive);
 
-            int afected = stmn.executeUpdate();
+            int afected = pstmt.executeUpdate();
 
             if (afected == 0) {
                 System.out.println("Id no encontrado");
@@ -139,7 +139,7 @@ public class EstadioServices {
     }
 
     public ArrayList<String> obtenerNombresEstadios() {
-        ArrayList <String> list = new ArrayList<>();
+        ArrayList<String> list = new ArrayList<>();
 
         for (Estadio e : obtenerEstadios()) {
             list.add(e.getNombreEstadio());
@@ -148,7 +148,7 @@ public class EstadioServices {
         return list;
     }
 
-    public void reportePorcentajeAudiencia () {
+    public void reportePorcentajeAudiencia() {
         try {
             // Ruta del archivo .jasper
             String reportPath = "src/main/java/reports/Estadios_porcentaje_audiencia.jasper";
@@ -168,5 +168,21 @@ public class EstadioServices {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public String getNombreEstadio(int id) {
+        String nom = null;
+        ArrayList<Estadio> list = obtenerEstadios();
+
+        for (int i = 0; i < list.size() && nom == null; i++) {
+            if (list.get(i).getIdEstadio() == id) {
+                nom = list.get(i).getNombreEstadio();
+            }
+        }
+        return nom;
+    }
+
+    public int getIdFromIndex(int index) {
+        return obtenerEstadios().get(index).getIdEstadio();
     }
 }

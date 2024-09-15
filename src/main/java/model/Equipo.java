@@ -13,8 +13,20 @@ public class Equipo {
     private String color;
     private int puntos;
 
-    // Constructor
-    public Equipo(int idEquipo, String nomEquipo, String provincia, int campParticipados, int campGanados, String mascota, String color, int puntos) {
+    // Constructores
+    public Equipo(String nomEquipo, String provincia, int campParticipados, int campGanados, String mascota,
+            String color) {
+        setNomEquipo(nomEquipo);
+        setProvincia(provincia);
+        setCampParticipados(campParticipados);
+        setCampGanados(campGanados);
+        setMascota(mascota);
+        setColor(color);
+
+    }
+
+    public Equipo(int idEquipo, String nomEquipo, String provincia, int campParticipados, int campGanados,
+            String mascota, String color, int puntos) {
         setIdEquipo(idEquipo);
         setNomEquipo(nomEquipo);
         setProvincia(provincia);
@@ -26,10 +38,10 @@ public class Equipo {
     }
 
     public Equipo() {
-    
+
     }
 
-// Métodos getter y setter
+    // Métodos getter y setter
     public int getIdEquipo() {
         return idEquipo;
     }
@@ -43,7 +55,10 @@ public class Equipo {
     }
 
     public void setNomEquipo(String nomEquipo) {
-        this.nomEquipo = nomEquipo;
+        if (!nomEquipo.replace(" ", "").equals("")) {
+            this.nomEquipo = nomEquipo;
+        } else
+            throw new IllegalArgumentException();
     }
 
     public String getProvincia() {
@@ -51,7 +66,10 @@ public class Equipo {
     }
 
     public void setProvincia(String provincia) {
-        this.provincia = provincia;
+        if (!provincia.replace(" ", "").equals("")) {
+            this.provincia = provincia;
+        } else
+            throw new IllegalArgumentException();
     }
 
     public int getCampParticipados() {
@@ -59,7 +77,10 @@ public class Equipo {
     }
 
     public void setCampParticipados(int campParticipados) {
-        this.campParticipados = campParticipados;
+        if (campParticipados >= 0) {
+            this.campParticipados = campParticipados;
+        } else
+            throw new IllegalArgumentException();
     }
 
     public int getCampGanados() {
@@ -67,7 +88,10 @@ public class Equipo {
     }
 
     public void setCampGanados(int campGanados) {
-        this.campGanados = campGanados;
+        if (campGanados >= 0) {
+            this.campGanados = campGanados;
+        } else
+            throw new IllegalArgumentException();
     }
 
     public String getMascota() {
@@ -75,7 +99,10 @@ public class Equipo {
     }
 
     public void setMascota(String mascota) {
-        this.mascota = mascota;
+        if (!mascota.replace(" ", "").equals("")) {
+            this.mascota = mascota;
+        } else
+            throw new IllegalArgumentException();
     }
 
     public String getColor() {
@@ -83,7 +110,10 @@ public class Equipo {
     }
 
     public void setColor(String color) {
-        this.color = color;
+        if (!color.replace(" ", "").equals("")) {
+            this.color = color;
+        } else
+            throw new IllegalArgumentException();
     }
 
     public int getPuntos() {
@@ -91,6 +121,15 @@ public class Equipo {
     }
 
     public void setPuntos(int puntos) {
-        this.puntos = puntos;
+        if (puntos >= 0) {
+            this.puntos = puntos;
+        } else
+            throw new IllegalArgumentException();
     }
+
+    @Override
+    public String toString() {
+        return nomEquipo;
+    }
+
 }

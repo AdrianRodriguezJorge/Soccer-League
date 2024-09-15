@@ -12,44 +12,39 @@ public class DelanteroServices {
 
     /**
      * Método para crear un nuevo delantero en la base de datos.
+     * 
      * @param delantero El objeto Delantero a crear.
      */
     public void crearDelantero(Delantero delantero) {
-        String sql = "INSERT INTO delantero (nombre_equipo, numero, tiros_a_puerta) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO delantero (idfutbolista, tirosapuerta) VALUES (?, ?)";
         try (Connection conn = ConnectionManager.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-             
-            pstmt.setInt(2, delantero.getNumero());
-            pstmt.setInt(3, delantero.getTirosAPuerta());
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, delantero.getIdFutbolista());
+            pstmt.setInt(2, delantero.getTirosAPuerta());
             pstmt.executeUpdate();
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    /**
-     * Método para obtener un delantero específico.
-     * @param nomEquipo El nombre del equipo del delantero.
-     * @param numero El número del delantero.
-     * @return El objeto Delantero.
-     */
-    public Delantero obtenerDelantero(String nomEquipo, int numero) {
+    public Delantero obtenerDelantero(int idfutbolista) {
         Delantero delantero = null;
-        String sql = "SELECT * FROM delantero WHERE nombre_equipo = ? AND numero = ?";
+        String sql = "SELECT * FROM delantero WHERE idfutbolista = ?";
         try (Connection conn = ConnectionManager.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-             
-            pstmt.setString(1, nomEquipo);
-            pstmt.setInt(2, numero);
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, idfutbolista);
+
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
                     delantero = new Delantero();
-                    delantero.setNumero(rs.getInt("numero"));
-                    delantero.setTirosAPuerta(rs.getInt("tiros_a_puerta"));
+                    delantero.setIdFutbolista(idfutbolista);
+                    delantero.setTirosAPuerta(rs.getInt("tirosapuerta"));
                 }
             }
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -58,45 +53,21 @@ public class DelanteroServices {
 
     /**
      * Método para actualizar un delantero en la base de datos.
+     * 
      * @param delantero El objeto Delantero a actualizar.
      */
     public void actualizarDelantero(Delantero delantero) {
-        String sql = "UPDATE delantero SET tiros_a_puerta = ? WHERE nombre_equipo = ? AND numero = ?";
+        String sql = "UPDATE delantero SET tirosapuerta = ? WHERE idfutbolista = ?";
         try (Connection conn = ConnectionManager.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-             
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
             pstmt.setInt(1, delantero.getTirosAPuerta());
-            pstmt.setInt(3, delantero.getNumero());
+            pstmt.setInt(2, delantero.getIdFutbolista());
             pstmt.executeUpdate();
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    /**
-     * Método para eliminar un delantero de la base de datos.
-     * @param nomEquipo El nombre del equipo del delantero.
-     * @param numero El número del delantero.
-     */
-    public void eliminarDelantero(String nomEquipo, int numero) {
-        eliminarPosicionJugador(nomEquipo, numero); // Elimina la posición del jugador.
-        String sql = "DELETE FROM delantero WHERE nombre_equipo = ? AND numero = ?";
-        try (Connection conn = ConnectionManager.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-             
-            pstmt.setString(1, nomEquipo);
-            pstmt.setInt(2, numero);
-            pstmt.executeUpdate();
-            
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    
-    // Método para eliminar la posición del jugador
-    private void eliminarPosicionJugador(String nomEquipo, int numero) {
-        JugadorServices jugadorServices = new JugadorServices();
-        jugadorServices.eliminarPosicionJugador(nomEquipo, numero);
-    }
 }

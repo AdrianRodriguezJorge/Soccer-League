@@ -6,9 +6,14 @@ package model;
 public class Entrenador extends Futbolista {
     private int añosExperiencia;
 
-    // Constructor
-    public Entrenador(int idFutbolista, int idEquipo, int numero, String nombre, int añosEnEquipo, int añosExperiencia) {
-        super(idFutbolista, idEquipo, numero, nombre, añosEnEquipo);
+    // Constructores
+    public Entrenador (int idFutbolista, int idEquipo, int numero, String nombre, int añosEnEquipo, String tipo, int añosExperiencia) {
+        super(idFutbolista, idEquipo, numero, nombre, añosEnEquipo, tipo);
+        setAñosExperiencia(añosExperiencia);
+    }
+
+    public Entrenador (int idEquipo, int numero, String nombre, int añosEnEquipo, String tipo, int añosExperiencia) {
+        super(idEquipo, numero, nombre, añosEnEquipo, tipo);
         setAñosExperiencia(añosExperiencia);
     }
 
@@ -22,6 +27,9 @@ public class Entrenador extends Futbolista {
     }
 
     public void setAñosExperiencia(int añosExperiencia) {
-        this.añosExperiencia = añosExperiencia;
+        if (añosExperiencia >= 0) {
+            this.añosExperiencia = añosExperiencia;
+        } else
+            throw new IllegalArgumentException();
     }
 }

@@ -9,18 +9,29 @@ public abstract class Futbolista {
     protected String nombre;
     protected int numero;
     protected int añosEnEquipo;
+    protected String tipo;
 
-    // Constructor
-    public Futbolista(int idFutbolista, int idEquipo, int numero, String nombre, int añosEnEquipo) {
+    // Constructores
+    public Futbolista(int idFutbolista, int idEquipo, int numero, String nombre, int añosEnEquipo, String tipo) {
         setIdFutbolista(idFutbolista);
         setIdEquipo(idEquipo);
-        setNombre(nombre);
         setNumero(numero);
+        setNombre(nombre);
         setAñosEnEquipo(añosEnEquipo);
+        setTipo(tipo);
     }
 
-    public Futbolista () {
-        
+    public Futbolista(int idEquipo, int numero, String nombre, int añosEnEquipo, String tipo) {
+        setIdFutbolista(idFutbolista);
+        setIdEquipo(idEquipo);
+        setNumero(numero);
+        setNombre(nombre);
+        setAñosEnEquipo(añosEnEquipo);
+        setTipo(tipo);
+    }
+
+    public Futbolista() {
+
     }
 
     // Métodos getter y setter
@@ -45,7 +56,11 @@ public abstract class Futbolista {
     }
 
     public void setNumero(int numero) {
-        this.numero = numero;
+        if (numero >= 0) {
+            this.numero = numero;
+        } else
+            throw new IllegalArgumentException();
+
     }
 
     public String getNombre() {
@@ -53,7 +68,10 @@ public abstract class Futbolista {
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        if (!nombre.replace(" ", "").equals("")) {
+            this.nombre = nombre;
+        } else
+            throw new IllegalArgumentException();
     }
 
     public int getAñosEnEquipo() {
@@ -61,6 +79,22 @@ public abstract class Futbolista {
     }
 
     public void setAñosEnEquipo(int añosEnEquipo) {
-        this.añosEnEquipo = añosEnEquipo;
+        if (añosEnEquipo >= 0) {
+            this.añosEnEquipo = añosEnEquipo;
+        } else
+            throw new IllegalArgumentException();
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    @Override
+    public String toString() {
+        return nombre;
     }
 }

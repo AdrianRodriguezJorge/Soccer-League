@@ -7,11 +7,19 @@ public class Portero extends Jugador {
     private int paradas;
     private int golesEncajados;
 
-    // Constructor
-    public Portero(int idFutbolista, int idEquipo, int numero, String nombre, int añosEnEquipo, int partidosJugados,
-            int cantidadGoles, int asistencias, double promedioGoles, int paradas, int golesEncajados) {
-        super(idFutbolista, idEquipo, numero, nombre, añosEnEquipo, partidosJugados, cantidadGoles, asistencias,
-                promedioGoles);
+    // Constructores
+    public Portero(int idFutbolista, int idEquipo, int numero, String nombre, int añosEnEquipo, String tipo,
+            int partidosJugados,
+            int cantidadGoles, int asistencias, double promedioGoles, String pos, int paradas, int golesEncajados) {
+        super(idFutbolista, idEquipo, numero, nombre, añosEnEquipo, tipo, partidosJugados, cantidadGoles, asistencias,
+                promedioGoles, pos);
+        setParadas(paradas);
+        setGolesEncajados(golesEncajados);
+    }
+
+    public Portero(int idEquipo, int numero, String nombre, int añosEnEquipo, String tipo, int partidosJugados,
+            int cantidadGoles, int asistencias, String pos, int paradas, int golesEncajados) {
+        super(idEquipo, numero, nombre, añosEnEquipo, tipo, partidosJugados, cantidadGoles, asistencias, pos);
         setParadas(paradas);
         setGolesEncajados(golesEncajados);
     }
@@ -26,7 +34,10 @@ public class Portero extends Jugador {
     }
 
     public void setParadas(int paradas) {
-        this.paradas = paradas;
+        if (paradas >= 0) {
+            this.paradas = paradas;
+        } else
+            throw new IllegalArgumentException();
     }
 
     public int getGolesEncajados() {
@@ -34,6 +45,9 @@ public class Portero extends Jugador {
     }
 
     public void setGolesEncajados(int golesEncajados) {
-        this.golesEncajados = golesEncajados;
+        if (golesEncajados >= 0) {
+            this.golesEncajados = golesEncajados;
+        } else
+            throw new IllegalArgumentException();
     }
 }
