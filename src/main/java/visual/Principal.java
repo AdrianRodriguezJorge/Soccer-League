@@ -24,6 +24,7 @@ public class Principal extends javax.swing.JFrame {
     public static Color errorColor = new Color(0, 102, 102);
     public static int contP;
     public static Rol rol;
+    public static String usuarioActual;
 
     /**
      * Creates new form Principal
