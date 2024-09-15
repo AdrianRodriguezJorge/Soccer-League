@@ -9,7 +9,7 @@ public class ConnectionManager {
     private static Connection connection;
     private static String user = "postgres";
     private static String pass = "MELANITA";
-    private static String url = "jdbc:postgresql://localhost:5432/liga";
+    private static String url = "jdbc:postgresql://localhost:5432/Liga";
 
     private static void initConnectionManager() {
         try {

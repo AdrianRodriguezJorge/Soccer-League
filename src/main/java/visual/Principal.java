@@ -62,6 +62,7 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
+        jLabel1 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         menuPerfil = new javax.swing.JMenu();
         menuItemInicioS = new javax.swing.JMenuItem();
@@ -400,6 +401,7 @@ public class Principal extends javax.swing.JFrame {
     }// GEN-LAST:event_menuItemInicioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuGestion;

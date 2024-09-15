@@ -444,9 +444,10 @@ public class CrudEquipos extends javax.swing.JDialog {
         boolean proceder = true; 
 
         if (proceder){ 
-           ServicesLocator.getEquipoServices().crearEquipo(nombre, provincia, campParticip, campGanados, mascota, color, puntos);
-
            Equipo x = new Equipo(ServicesLocator.getEquipoServices().obtenerEquipos().getLast().getIdEquipo(), nombre, provincia, campParticip, campGanados, mascota, color, puntos); 
+            
+           ServicesLocator.getEquipoServices().crearEquipo(x);
+
            modelo.addElement(x); 
 
            int lastIndex = list.getModel().getSize() - 1;
@@ -491,9 +492,10 @@ public class CrudEquipos extends javax.swing.JDialog {
         boolean proceder = true; // validarDatos(id, nombre, capacidad);
 
         if (proceder) {
-           ServicesLocator.getEquipoServices().crearEquipo(nombre, provincia, campParticip, campGanados, mascota, color, puntos);
+            x = new Equipo(ServicesLocator.getEquipoServices().obtenerEquipos().getLast().getIdEquipo(), nombre, provincia, campParticip, campGanados, mascota, color, puntos); 
+           
+           ServicesLocator.getEquipoServices().crearEquipo(x);
 
-           x = new Equipo(ServicesLocator.getEquipoServices().obtenerEquipos().getLast().getIdEquipo(), nombre, provincia, campParticip, campGanados, mascota, color, puntos); 
            
             modelo.updateElement(indice, x);
             desactivar_habilitar(false);
