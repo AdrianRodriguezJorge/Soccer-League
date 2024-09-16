@@ -1,6 +1,8 @@
 package visual;
 
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
@@ -29,7 +31,7 @@ public class CrudEstadio extends javax.swing.JDialog {
         list.setModel(modelo);
 
         Principal.soloNum(tfCapacidad);
-
+        
         list.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
                 int index = list.getSelectedIndex();
@@ -56,7 +58,7 @@ public class CrudEstadio extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         contentPanel = new javax.swing.JPanel();
@@ -116,7 +118,7 @@ public class CrudEstadio extends javax.swing.JDialog {
         btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setText("Cancelar");
         btnCancelar.setAlignmentY(1.0F);
-        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCancelar.setMargin(new java.awt.Insets(2, 14, 4, 14));
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,7 +132,7 @@ public class CrudEstadio extends javax.swing.JDialog {
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("Guardar");
         btnGuardar.setAlignmentY(1.0F);
-        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnGuardar.setMargin(new java.awt.Insets(2, 14, 4, 14));
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,7 +146,7 @@ public class CrudEstadio extends javax.swing.JDialog {
         btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setText("Agregar");
         btnAgregar.setAlignmentY(1.0F);
-        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAgregar.setMargin(new java.awt.Insets(2, 14, 4, 14));
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,7 +175,7 @@ public class CrudEstadio extends javax.swing.JDialog {
         btnNuevo.setText("Nuevo");
         btnNuevo.setAlignmentY(1.0F);
         btnNuevo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 122, 26)));
-        btnNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnNuevo.setDefaultCapable(false);
         btnNuevo.setMargin(new java.awt.Insets(2, 14, 4, 14));
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -187,7 +189,7 @@ public class CrudEstadio extends javax.swing.JDialog {
         btnEditar.setText("Editar");
         btnEditar.setAlignmentY(1.0F);
         btnEditar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 122, 26)));
-        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnEditar.setDefaultCapable(false);
         btnEditar.setEnabled(false);
         btnEditar.setMargin(new java.awt.Insets(2, 14, 4, 14));
@@ -202,7 +204,7 @@ public class CrudEstadio extends javax.swing.JDialog {
         btnEliminar.setText("Eliminar");
         btnEliminar.setAlignmentY(1.0F);
         btnEliminar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 122, 26)));
-        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnEliminar.setDefaultCapable(false);
         btnEliminar.setEnabled(false);
         btnEliminar.setMargin(new java.awt.Insets(2, 14, 4, 14));
@@ -217,7 +219,7 @@ public class CrudEstadio extends javax.swing.JDialog {
         btnSalir.setText("Salir");
         btnSalir.setAlignmentY(1.0F);
         btnSalir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 51, 51)));
-        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSalir.setDefaultCapable(false);
         btnSalir.setMargin(new java.awt.Insets(2, 14, 4, 14));
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -257,11 +259,12 @@ public class CrudEstadio extends javax.swing.JDialog {
                     .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
                     .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(39, 39, 39)
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 

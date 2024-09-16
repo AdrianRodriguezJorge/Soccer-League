@@ -115,28 +115,6 @@ public class EstadioServices {
         }
     }
 
-    public void generarReporteEstadio() {
-        try {
-            // Ruta del archivo .jasper
-            String reportPath = "src/main/java/reports/EstadioR.jasper";
-
-            // Parámetros para pasar al reporte (si se necesitan)
-            Map<String, Object> parametros = new HashMap<>();
-
-            // Obtener la conexión a la base de datos
-            Connection conn = ConnectionManager.getConnection();
-
-            // Cargar el reporte
-            JasperPrint jasperPrint = JasperFillManager.fillReport(reportPath, parametros, conn);
-
-            // Generar y mostrar el reporte usando la clase de utilidades Reports
-            Report.mostrarReporte(reportPath, parametros, conn);
-
-        } catch (JRException | SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     public ArrayList<String> obtenerNombresEstadios() {
         ArrayList<String> list = new ArrayList<>();
 
