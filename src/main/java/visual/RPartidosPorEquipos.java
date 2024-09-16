@@ -90,10 +90,10 @@ public class RPartidosPorEquipos extends javax.swing.JDialog {
         });
         getContentPane().add(jButtonGeneraR, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 141, 35));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\ALMACEN\\Proyectos Java\\New folder\\Liga\\src\\main\\java\\visual\\images\\VerPartidos.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\VerPartidos.png")); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\ALMACEN\\Proyectos Java\\New folder\\Liga\\src\\main\\java\\visual\\images\\5 (4).png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\5 (4).png")); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, -1));
 
         pack();

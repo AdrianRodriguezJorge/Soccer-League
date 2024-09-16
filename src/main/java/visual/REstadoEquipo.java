@@ -76,10 +76,10 @@ public class REstadoEquipo extends javax.swing.JDialog {
         });
         getContentPane().add(jButtonGeneraR, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 141, 35));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\ALMACEN\\Proyectos Java\\New folder\\Liga\\src\\main\\java\\visual\\images\\Diseño sin título (3) (2).png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Diseño sin título (3) (2).png")); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\ALMACEN\\Proyectos Java\\New folder\\Liga\\src\\main\\java\\visual\\images\\5 (3).png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\5 (3).png")); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();

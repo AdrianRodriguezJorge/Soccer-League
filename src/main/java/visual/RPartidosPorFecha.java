@@ -92,10 +92,10 @@ public class RPartidosPorFecha extends javax.swing.JDialog {
         DateChooserFecha.setDateFormatString("yyyy-MM-dd");
         getContentPane().add(DateChooserFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 62, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\ALMACEN\\Proyectos Java\\New folder\\Liga\\src\\main\\java\\visual\\images\\Portería.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Portería.png")); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, -1, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\ALMACEN\\Proyectos Java\\New folder\\Liga\\src\\main\\java\\visual\\images\\5 (4).png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\5 (4).png")); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -100, 560, 320));
 
         pack();

@@ -92,7 +92,7 @@ public class Login extends javax.swing.JDialog {
         btnIniciar.setFont(new java.awt.Font("Roboto Black", 0, 15)); // NOI18N
         btnIniciar.setForeground(new java.awt.Color(255, 255, 255));
         btnIniciar.setText("Iniciar");
-        btnIniciar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnIniciar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIniciarActionPerformed(evt);
@@ -114,7 +114,7 @@ public class Login extends javax.swing.JDialog {
         btnIniciar1.setFont(new java.awt.Font("Roboto Black", 0, 15)); // NOI18N
         btnIniciar1.setForeground(new java.awt.Color(255, 255, 255));
         btnIniciar1.setText("Cancelar");
-        btnIniciar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnIniciar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnIniciar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIniciar1ActionPerformed(evt);
@@ -127,8 +127,6 @@ public class Login extends javax.swing.JDialog {
 
         jSeparator2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 190, 10));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\8.png")); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 300));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -148,7 +146,7 @@ public class Login extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciar1ActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnIniciar1ActionPerformed
 
     private void tfUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUsuarioActionPerformed
