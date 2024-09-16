@@ -85,7 +85,6 @@ services\JugadorServices.class
 visual\RPartidosPorFecha.class
 visual\CrudFutbolista$6.class
 visual\Principal$12.class
-visual\Principal$22.class
 visual\CrudUsuario$2.class
 visual\Principal$2.class
 visual\CrudEstadio$9.class
