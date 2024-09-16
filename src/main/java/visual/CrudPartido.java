@@ -85,7 +85,7 @@ public class CrudPartido extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         contentPanel = new javax.swing.JPanel();
@@ -125,19 +125,17 @@ public class CrudPartido extends javax.swing.JDialog {
         contentPanel.setForeground(new java.awt.Color(143, 182, 155));
         contentPanel.setToolTipText("");
 
-        panel.setBackground(new java.awt.Color(143, 182, 155));
+        panel.setBackground(new java.awt.Color(255, 255, 255));
         panel.setBorder(new javax.swing.border.MatteBorder(null));
-        panel.setForeground(new java.awt.Color(0, 0, 0));
+        panel.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblFecha.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        lblFecha.setForeground(new java.awt.Color(0, 0, 0));
+        lblFecha.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
         lblFecha.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblFecha.setText("Fecha");
         panel.add(lblFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 12, 165, -1));
 
-        lblAudiencia.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        lblAudiencia.setForeground(new java.awt.Color(0, 0, 0));
+        lblAudiencia.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
         lblAudiencia.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblAudiencia.setText("Audiencia");
         panel.add(lblAudiencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 165, -1));
@@ -151,9 +149,9 @@ public class CrudPartido extends javax.swing.JDialog {
         });
         panel.add(tfAudiencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 50, -1));
 
-        btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
-        btnCancelar.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
+        btnCancelar.setBackground(new java.awt.Color(255, 102, 102));
+        btnCancelar.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,9 +160,9 @@ public class CrudPartido extends javax.swing.JDialog {
         });
         panel.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, -1, -1));
 
-        btnGuardar.setBackground(new java.awt.Color(255, 255, 255));
-        btnGuardar.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        btnGuardar.setForeground(new java.awt.Color(0, 0, 0));
+        btnGuardar.setBackground(new java.awt.Color(59, 122, 26));
+        btnGuardar.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,9 +171,9 @@ public class CrudPartido extends javax.swing.JDialog {
         });
         panel.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, -1, -1));
 
-        btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
-        btnAgregar.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        btnAgregar.setForeground(new java.awt.Color(0, 0, 0));
+        btnAgregar.setBackground(new java.awt.Color(59, 122, 26));
+        btnAgregar.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,32 +182,27 @@ public class CrudPartido extends javax.swing.JDialog {
         });
         panel.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, -1, -1));
 
-        lblEstadio.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        lblEstadio.setForeground(new java.awt.Color(0, 0, 0));
+        lblEstadio.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
         lblEstadio.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblEstadio.setText("Estadio");
         panel.add(lblEstadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 165, -1));
 
-        lblLocal.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        lblLocal.setForeground(new java.awt.Color(0, 0, 0));
+        lblLocal.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
         lblLocal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblLocal.setText("Equipo local");
         panel.add(lblLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 165, -1));
 
-        lblVisitante.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        lblVisitante.setForeground(new java.awt.Color(0, 0, 0));
+        lblVisitante.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
         lblVisitante.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblVisitante.setText("Equipo visitante");
         panel.add(lblVisitante, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 165, -1));
 
-        lblGolesLocal.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        lblGolesLocal.setForeground(new java.awt.Color(0, 0, 0));
+        lblGolesLocal.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
         lblGolesLocal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblGolesLocal.setText("Goles del e. local");
         panel.add(lblGolesLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 165, -1));
 
-        lblGolesVisit.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        lblGolesVisit.setForeground(new java.awt.Color(0, 0, 0));
+        lblGolesVisit.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
         lblGolesVisit.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblGolesVisit.setText("Goles del e. visitante");
         panel.add(lblGolesVisit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 225, 165, -1));
@@ -285,18 +278,18 @@ public class CrudPartido extends javax.swing.JDialog {
         panel.add(tfLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 176, -1));
 
         lblDatosErroneos.setFont(new java.awt.Font("SansSerif", 3, 16)); // NOI18N
-        lblDatosErroneos.setForeground(new java.awt.Color(0, 102, 102));
+        lblDatosErroneos.setForeground(new java.awt.Color(255, 51, 51));
         lblDatosErroneos.setText("Datos erroneos");
         panel.add(lblDatosErroneos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 330, -1));
 
-        list.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        list.setForeground(new java.awt.Color(0, 102, 51));
+        list.setBackground(new java.awt.Color(59, 122, 26));
+        list.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
+        list.setForeground(new java.awt.Color(255, 255, 255));
         list.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scrollPane.setViewportView(list);
 
-        btnNuevo.setBackground(new java.awt.Color(255, 255, 255));
-        btnNuevo.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        btnNuevo.setForeground(new java.awt.Color(0, 0, 0));
+        btnNuevo.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        btnNuevo.setForeground(new java.awt.Color(59, 122, 26));
         btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -304,9 +297,8 @@ public class CrudPartido extends javax.swing.JDialog {
             }
         });
 
-        btnEditar.setBackground(new java.awt.Color(255, 255, 255));
-        btnEditar.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        btnEditar.setForeground(new java.awt.Color(0, 0, 0));
+        btnEditar.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        btnEditar.setForeground(new java.awt.Color(59, 122, 26));
         btnEditar.setText("Editar");
         btnEditar.setEnabled(false);
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -315,9 +307,8 @@ public class CrudPartido extends javax.swing.JDialog {
             }
         });
 
-        btnEliminar.setBackground(new java.awt.Color(255, 255, 255));
-        btnEliminar.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        btnEliminar.setForeground(new java.awt.Color(0, 0, 0));
+        btnEliminar.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(59, 122, 26));
         btnEliminar.setText("Eliminar");
         btnEliminar.setEnabled(false);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -326,9 +317,8 @@ public class CrudPartido extends javax.swing.JDialog {
             }
         });
 
-        btnSalir.setBackground(new java.awt.Color(255, 255, 255));
-        btnSalir.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        btnSalir.setForeground(new java.awt.Color(0, 0, 0));
+        btnSalir.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(255, 51, 51));
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -337,71 +327,63 @@ public class CrudPartido extends javax.swing.JDialog {
         });
 
         lblFechaIncorrecta.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
-        lblFechaIncorrecta.setForeground(new java.awt.Color(0, 102, 102));
+        lblFechaIncorrecta.setForeground(new java.awt.Color(255, 51, 51));
         lblFechaIncorrecta.setText("La fecha debe encontrarse dentro del intervalo de duración de la liga");
 
         javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
         contentPanel.setLayout(contentPanelLayout);
         contentPanelLayout.setHorizontalGroup(
-                contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(contentPanelLayout.createSequentialGroup()
-                                .addGroup(contentPanelLayout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 288,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(contentPanelLayout.createSequentialGroup()
-                                                .addGap(7, 7, 7)
-                                                .addComponent(btnNuevo)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btnEliminar)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btnEditar)))
-                                .addGap(18, 18, 18)
-                                .addGroup(contentPanelLayout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(panel, javax.swing.GroupLayout.Alignment.TRAILING,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
-                                        .addComponent(btnSalir, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblFechaIncorrecta, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addContainerGap(12, Short.MAX_VALUE)));
+            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contentPanelLayout.createSequentialGroup()
+                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(btnNuevo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEditar)))
+                .addGap(18, 18, 18)
+                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
+                    .addComponent(btnSalir, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblFechaIncorrecta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
         contentPanelLayout.setVerticalGroup(
-                contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(contentPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(contentPanelLayout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 324,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 361,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblFechaIncorrecta)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(contentPanelLayout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnEditar)
-                                        .addComponent(btnEliminar)
-                                        .addComponent(btnNuevo)
-                                        .addComponent(btnSalir))
-                                .addContainerGap()));
+            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contentPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblFechaIncorrecta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEditar)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnNuevo)
+                    .addComponent(btnSalir))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap()));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         contentPanel.getAccessibleContext().setAccessibleParent(contentPanel);
 

@@ -43,7 +43,7 @@ public class RPartidosPorEquipos extends javax.swing.JDialog {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jLabelTit = new javax.swing.JLabel();
@@ -52,81 +52,49 @@ public class RPartidosPorEquipos extends javax.swing.JDialog {
         ComboBoxEquipo2 = new javax.swing.JComboBox<>();
         jLabelEquipo2 = new javax.swing.JLabel();
         jButtonGeneraR = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabelTit.setText("Seleccione los equipos de los que desea ver los partidos jugados entre ellos:");
+        jLabelTit.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabelTit.setText("Seleccione dos Equipos");
+        getContentPane().add(jLabelTit, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 270, 37));
 
         ComboBoxEquipo1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxEquipo1ActionPerformed(evt);
             }
         });
+        getContentPane().add(ComboBoxEquipo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 87, -1, -1));
 
+        jLabelEquipo1.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         jLabelEquipo1.setText("Equipo # 1");
+        getContentPane().add(jLabelEquipo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 90, -1, -1));
 
+        getContentPane().add(ComboBoxEquipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 164, -1, -1));
+
+        jLabelEquipo2.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         jLabelEquipo2.setText("Equipo # 2");
+        getContentPane().add(jLabelEquipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 167, -1, -1));
 
-        jButtonGeneraR.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButtonGeneraR.setBackground(new java.awt.Color(59, 122, 26));
+        jButtonGeneraR.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        jButtonGeneraR.setForeground(new java.awt.Color(255, 255, 255));
         jButtonGeneraR.setText("Generar Reporte");
         jButtonGeneraR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonGeneraRActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonGeneraR, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 141, 35));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabelTit, javax.swing.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE)
-                                .addContainerGap())
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabelEquipo2)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(ComboBoxEquipo2, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabelEquipo1)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(ComboBoxEquipo1, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonGeneraR, javax.swing.GroupLayout.PREFERRED_SIZE, 141,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(58, 58, 58)));
-        layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabelTit, javax.swing.GroupLayout.PREFERRED_SIZE, 37,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(44, 44, 44)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabelEquipo1)
-                                        .addComponent(ComboBoxEquipo1, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(55, 55, 55)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(ComboBoxEquipo2, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabelEquipo2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52,
-                                        Short.MAX_VALUE)
-                                .addComponent(jButtonGeneraR, javax.swing.GroupLayout.PREFERRED_SIZE, 35,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)));
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\ALMACEN\\Proyectos Java\\New folder\\Liga\\src\\main\\java\\visual\\images\\VerPartidos.png")); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\ALMACEN\\Proyectos Java\\New folder\\Liga\\src\\main\\java\\visual\\images\\5 (4).png")); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -194,6 +162,8 @@ public class RPartidosPorEquipos extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> ComboBoxEquipo1;
     private javax.swing.JComboBox<String> ComboBoxEquipo2;
     private javax.swing.JButton jButtonGeneraR;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelEquipo1;
     private javax.swing.JLabel jLabelEquipo2;
     private javax.swing.JLabel jLabelTit;

@@ -53,73 +53,50 @@ public class RPartidosPorFecha extends javax.swing.JDialog {
         jButtonGeneraR = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         DateChooserFecha = new com.toedter.calendar.JDateChooser();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabelFecha.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabelFecha.setText("Fecha del partido");
+        getContentPane().add(jLabelFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 68, -1, -1));
 
         ComboBoxEstadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxEstadioActionPerformed(evt);
             }
         });
+        getContentPane().add(ComboBoxEstadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 131, -1, -1));
 
+        jLabelEstadio.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabelEstadio.setText("Estadio");
+        getContentPane().add(jLabelEstadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 134, -1, -1));
 
+        jButtonGeneraR.setBackground(new java.awt.Color(59, 122, 26));
+        jButtonGeneraR.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        jButtonGeneraR.setForeground(new java.awt.Color(255, 255, 255));
         jButtonGeneraR.setText("Generar Reporte");
         jButtonGeneraR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonGeneraRActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonGeneraR, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 149, 33));
 
+        jLabel1.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
         jLabel1.setText("Seleccione una fecha y estadio y se mostraran los partidos correspondientes");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 420, -1));
 
         DateChooserFecha.setDateFormatString("yyyy-MM-dd");
+        getContentPane().add(DateChooserFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 62, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabelEstadio)
-                        .addGap(490, 490, 490))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelFecha)
-                                .addGap(27, 27, 27)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(DateChooserFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ComboBoxEstadio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 161, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonGeneraR, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabelFecha)
-                    .addComponent(DateChooserFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ComboBoxEstadio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelEstadio))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonGeneraR, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\ALMACEN\\Proyectos Java\\New folder\\Liga\\src\\main\\java\\visual\\images\\Portería.png")); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\ALMACEN\\Proyectos Java\\New folder\\Liga\\src\\main\\java\\visual\\images\\5 (4).png")); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -100, 560, 320));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -181,6 +158,8 @@ public class RPartidosPorFecha extends javax.swing.JDialog {
     private com.toedter.calendar.JDateChooser DateChooserFecha;
     private javax.swing.JButton jButtonGeneraR;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelEstadio;
     private javax.swing.JLabel jLabelFecha;
     // End of variables declaration//GEN-END:variables
