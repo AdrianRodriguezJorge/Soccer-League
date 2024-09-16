@@ -4,6 +4,7 @@ services\EquipoServices.class
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 visual\CrudEquipos$7.class
 >>>>>>> 143acf3 (aaaaaaaaaaaaaaaaaaaaaaaaaa)
@@ -14,7 +15,12 @@ visual\CrudPartido$11.class
 =======
 >>>>>>> 65e720a (Crear CRUD Equipo)
 =======
+=======
+visual\CrudEquipos$7.class
+>>>>>>> nueva
 visual\DialogDuracionLiga$2.class
+visual\Principal$16.class
+model\Rol.class
 visual\CrudPartido$11.class
 >>>>>>> b49dcca (Poner las interfaces bonitas)
 model\Futbolista.class
@@ -54,26 +60,42 @@ visual\REstadoEquipo$1.class
 visual\Principal$6.class
 >>>>>>> 65e720a (Crear CRUD Equipo)
 visual\CrudEstadio$7.class
+services\UsuarioServices.class
+visual\Principal$21.class
 visual\CrudEquipo$12.class
 visual\Principal.class
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+visual\CrudEquipos$4.class
+visual\CrudEquipos$14.class
+>>>>>>> nueva
 visual\CrudFutbolista$2.class
+visual\CrudEquipos$11.class
+visual\CrudUsuario$1.class
 model\Delantero.class
 visual\Principal$3.class
 visual\Principal$19.class
+visual\CrudEquipos$1.class
 visual\Principal$7.class
 services\PartidoServices.class
+visual\Principal$14.class
+visual\CrudEquipos$2.class
+visual\CrudEquipos.class
 visual\CrudEquipo$9.class
 visual\CrudEquipo.class
 visual\CrudPartido$3.class
+model\Usuario.class
 visual\CrudEquipo$10.class
 Main.class
 visual\CrudPartido$13.class
+visual\Login$3.class
 model\Jugador.class
 visual\CrudEquipo$2.class
 model\Defensa.class
 visual\CrudFutbolista$1.class
 visual\DialogDuracionLiga$3.class
+<<<<<<< HEAD
 =======
 =======
 visual\CrudEstadio$7.class
@@ -117,6 +139,9 @@ visual\CrudFutbolista$1.class
 visual\DialogDuracionLiga$3.class
 visual\Principal$20.class
 >>>>>>> b49dcca (Poner las interfaces bonitas)
+=======
+visual\Principal$20.class
+>>>>>>> nueva
 visual\RPartidosPorEquipos$1.class
 visual\CrudEstadio$1.class
 visual\CrudPartido$2.class
@@ -132,9 +157,13 @@ visual\CrudEstadio$2.class
 visual\CrudEstadio$8.class
 visual\CrudFutbolista$7.class
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 visual\CrudUsuario$3.class
 >>>>>>> 143acf3 (aaaaaaaaaaaaaaaaaaaaaaaaaa)
+=======
+visual\CrudUsuario$3.class
+>>>>>>> nueva
 services\DelanteroServices.class
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -149,8 +178,10 @@ services\IntervaloFServices.class
 visual\RPartidosPorEquipos$2.class
 visual\CrudPartido$1.class
 model\Posicion.class
+visual\CrudUsuario$5.class
 services\EntrenadorServices.class
 visual\CrudEstadio$6.class
+visual\Salida.class
 visual\CrudFutbolista$9.class
 visual\RPartidosPorFecha$1.class
 visual\CrudPartido.class
@@ -159,13 +190,19 @@ services\JugadorServices.class
 visual\RPartidosPorFecha.class
 visual\CrudFutbolista$6.class
 visual\Principal$12.class
+visual\CrudEquipos$10.class
+visual\CrudUsuario$2.class
 visual\Principal$2.class
 visual\CrudEstadio$9.class
 services\EstadioServices.class
 utils\Generic_Model.class
+visual\Principal$15.class
+visual\CrudEquipos$8.class
 visual\DialogDuracionLiga$1.class
 visual\CrudPartido$7.class
 model\Tipo.class
+visual\Login$2.class
+visual\CrudUsuario$8.class
 visual\CrudEstadio$3.class
 visual\CrudPartido$10.class
 visual\CrudPartido$4.class
@@ -177,8 +214,10 @@ model\Partido.class
 visual\CrudPartido$16.class
 visual\CrudFutbolista$4.class
 services\MediocampistaServices.class
+visual\CrudEquipos$12.class
 visual\CrudEstadio$4.class
 utils\Report.class
+visual\CrudUsuario$7.class
 visual\CrudEquipo$6.class
 =======
 =======
