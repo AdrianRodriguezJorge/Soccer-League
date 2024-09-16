@@ -282,12 +282,13 @@ public class CrudPartido extends javax.swing.JDialog {
         lblDatosErroneos.setText("Datos erroneos");
         panel.add(lblDatosErroneos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 330, -1));
 
-        list.setBackground(new java.awt.Color(59, 122, 26));
+        list.setBackground(new java.awt.Color(204, 204, 204));
         list.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
         list.setForeground(new java.awt.Color(255, 255, 255));
         list.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scrollPane.setViewportView(list);
 
+        btnNuevo.setBackground(new java.awt.Color(242, 242, 242));
         btnNuevo.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         btnNuevo.setForeground(new java.awt.Color(59, 122, 26));
         btnNuevo.setText("Nuevo");
@@ -297,6 +298,7 @@ public class CrudPartido extends javax.swing.JDialog {
             }
         });
 
+        btnEditar.setBackground(new java.awt.Color(242, 242, 242));
         btnEditar.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(59, 122, 26));
         btnEditar.setText("Editar");
@@ -307,6 +309,7 @@ public class CrudPartido extends javax.swing.JDialog {
             }
         });
 
+        btnEliminar.setBackground(new java.awt.Color(242, 242, 242));
         btnEliminar.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(59, 122, 26));
         btnEliminar.setText("Eliminar");
@@ -317,6 +320,7 @@ public class CrudPartido extends javax.swing.JDialog {
             }
         });
 
+        btnSalir.setBackground(new java.awt.Color(242, 242, 242));
         btnSalir.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(255, 51, 51));
         btnSalir.setText("Salir");
