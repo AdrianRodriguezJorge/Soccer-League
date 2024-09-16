@@ -69,7 +69,7 @@ public class CrudUsuario extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         contentPanel = new javax.swing.JPanel();
@@ -99,8 +99,6 @@ public class CrudUsuario extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gestión de estadios");
 
-        contentPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         panel.setBackground(new java.awt.Color(255, 255, 255));
         panel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(59, 122, 26)));
         panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -108,7 +106,7 @@ public class CrudUsuario extends javax.swing.JDialog {
         lblNombre.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNombre.setText("Datos de Usuario");
-        panel.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 150, -1));
+        panel.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 150, -1));
 
         lblRol.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblRol.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -127,7 +125,7 @@ public class CrudUsuario extends javax.swing.JDialog {
         tfContraseña.setBorder(null);
         panel.add(tfContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 210, -1));
 
-        btnCancelar.setBackground(new java.awt.Color(255, 51, 51));
+        btnCancelar.setBackground(new java.awt.Color(255, 102, 102));
         btnCancelar.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setText("Cancelar");
@@ -185,8 +183,7 @@ public class CrudUsuario extends javax.swing.JDialog {
         panel.add(tfRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 210, 20));
 
         comboBoxRol.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        comboBoxRol.setModel(
-                new javax.swing.DefaultComboBoxModel<>(new String[] { "Gestor de liga", "Gestor de usuarios" }));
+        comboBoxRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gestor de liga", "Gestor de usuarios" }));
         comboBoxRol.setBorder(null);
         panel.add(comboBoxRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 230, -1));
 
@@ -204,15 +201,11 @@ public class CrudUsuario extends javax.swing.JDialog {
         lblNombre1.setText("Nombre");
         panel.add(lblNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 87, -1));
 
-        contentPanel.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 380, 290));
-
         list.setBackground(new java.awt.Color(59, 122, 26));
         list.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         list.setForeground(new java.awt.Color(255, 255, 255));
         list.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scrollPane.setViewportView(list);
-
-        contentPanel.add(scrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 340, 285));
 
         btnNuevo.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         btnNuevo.setForeground(new java.awt.Color(59, 122, 26));
@@ -226,7 +219,6 @@ public class CrudUsuario extends javax.swing.JDialog {
                 btnNuevoActionPerformed(evt);
             }
         });
-        contentPanel.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
 
         btnEditar.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(59, 122, 26));
@@ -241,7 +233,6 @@ public class CrudUsuario extends javax.swing.JDialog {
                 btnEditarActionPerformed(evt);
             }
         });
-        contentPanel.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, -1, -1));
 
         btnEliminar.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(59, 122, 26));
@@ -256,7 +247,6 @@ public class CrudUsuario extends javax.swing.JDialog {
                 btnEliminarActionPerformed(evt);
             }
         });
-        contentPanel.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, -1, -1));
 
         btnSalir.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(255, 51, 51));
@@ -270,23 +260,62 @@ public class CrudUsuario extends javax.swing.JDialog {
                 btnSalirActionPerformed(evt);
             }
         });
-        contentPanel.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 370, -1, -1));
+
+        javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
+        contentPanel.setLayout(contentPanelLayout);
+        contentPanelLayout.setHorizontalGroup(
+            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contentPanelLayout.createSequentialGroup()
+                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(btnNuevo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEditar)))
+                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(btnSalir)
+                        .addContainerGap())
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        contentPanelLayout.setVerticalGroup(
+            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contentPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                    .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalir)
+                    .addComponent(btnEditar)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnNuevo))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap()));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
-                                .addContainerGap()));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

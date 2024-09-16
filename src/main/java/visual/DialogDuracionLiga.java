@@ -44,29 +44,35 @@ public class DialogDuracionLiga extends javax.swing.JDialog {
         jLabelFechaFinal = new javax.swing.JLabel();
         lblError = new javax.swing.JLabel();
         lblErrorIni = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBounds(new java.awt.Rectangle(700, 250, 231, 231));
         setMinimumSize(new java.awt.Dimension(588, 231));
         setResizable(false);
         setSize(new java.awt.Dimension(588, 231));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabelFechaInicio.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabelFechaInicio.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabelFechaInicio.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelFechaInicio.setText("Fecha de inicio");
+        getContentPane().add(jLabelFechaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 134, -1));
 
-        jButtonIniciar.setBackground(new java.awt.Color(255, 255, 255));
-        jButtonIniciar.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        jButtonIniciar.setForeground(new java.awt.Color(0, 0, 0));
+        jButtonIniciar.setBackground(new java.awt.Color(59, 122, 26));
+        jButtonIniciar.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        jButtonIniciar.setForeground(new java.awt.Color(255, 255, 255));
         jButtonIniciar.setText("Comenzar liga");
+        jButtonIniciar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonIniciarActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, -1, 35));
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel1.setText("Establezca el rango de fechas para la temporada de la Liga:");
+        jLabel1.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabel1.setText("Fecha de la Temporada");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 220, -1));
 
         DateChooserFechaInicio.setDate(new Date());
         DateChooserFechaInicio.setDateFormatString("yyyy-MM-dd");
@@ -75,6 +81,7 @@ public class DialogDuracionLiga extends javax.swing.JDialog {
                 DateChooserFechaInicioPropertyChange(evt);
             }
         });
+        getContentPane().add(DateChooserFechaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 160, -1));
 
         DateChooserFechaFinal.setDateFormatString("yyyy-MM-dd");
         DateChooserFechaFinal.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -82,75 +89,26 @@ public class DialogDuracionLiga extends javax.swing.JDialog {
                 DateChooserFechaFinalPropertyChange(evt);
             }
         });
+        getContentPane().add(DateChooserFechaFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 160, -1));
 
-        jLabelFechaFinal.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabelFechaFinal.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabelFechaFinal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelFechaFinal.setText("Fecha de culminación");
+        getContentPane().add(jLabelFechaFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 133, 150, -1));
 
-        lblError.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        lblError.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
         lblError.setForeground(new java.awt.Color(204, 0, 51));
         lblError.setText("Ha ingresado incorrectamente una de las fechas o ha dejado un campo vacío");
+        getContentPane().add(lblError, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 167, 416, -1));
 
-        lblErrorIni.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        lblErrorIni.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
         lblErrorIni.setForeground(new java.awt.Color(204, 0, 51));
         lblErrorIni.setText("La fecha de inicio debe ser antes que la de culminación");
+        getContentPane().add(lblErrorIni, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 189, 355, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButtonIniciar)
-                .addGap(32, 32, 32))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabelFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(DateChooserFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabelFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(DateChooserFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblErrorIni, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(69, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabelFechaInicio))
-                    .addComponent(DateChooserFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2)
-                .addComponent(jButtonIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabelFechaFinal))
-                    .addComponent(DateChooserFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(lblError)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblErrorIni)
-                .addGap(46, 46, 46))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\ALMACEN\\Proyectos Java\\New folder\\Liga\\src\\main\\java\\visual\\images\\5 (2).png")); // NOI18N
+        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 230));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -227,6 +185,7 @@ public class DialogDuracionLiga extends javax.swing.JDialog {
     private com.toedter.calendar.JDateChooser DateChooserFechaInicio;
     private javax.swing.JButton jButtonIniciar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelFechaFinal;
     private javax.swing.JLabel jLabelFechaInicio;
     private javax.swing.JLabel lblError;

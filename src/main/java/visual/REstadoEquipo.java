@@ -44,59 +44,43 @@ public class REstadoEquipo extends javax.swing.JDialog {
         ComboBoxEquipo = new javax.swing.JComboBox<>();
         jLabelEquipo = new javax.swing.JLabel();
         jButtonGeneraR = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabelTit.setText("Seleccione el equipo del que desea ver su estado:");
+        jLabelTit.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabelTit.setText("Seleccione el equipo para ver su estado:");
+        getContentPane().add(jLabelTit, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 396, 37));
 
         ComboBoxEquipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxEquipoActionPerformed(evt);
             }
         });
+        getContentPane().add(ComboBoxEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, -1, -1));
 
+        jLabelEquipo.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabelEquipo.setText("Equipo");
+        getContentPane().add(jLabelEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
 
-        jButtonGeneraR.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButtonGeneraR.setBackground(new java.awt.Color(59, 122, 26));
+        jButtonGeneraR.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        jButtonGeneraR.setForeground(new java.awt.Color(255, 255, 255));
         jButtonGeneraR.setText("Generar Reporte");
         jButtonGeneraR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonGeneraRActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonGeneraR, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 141, 35));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(jLabelEquipo)
-                .addGap(18, 18, 18)
-                .addComponent(ComboBoxEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelTit, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonGeneraR, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelTit, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelEquipo)
-                    .addComponent(ComboBoxEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
-                .addComponent(jButtonGeneraR, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\ALMACEN\\Proyectos Java\\New folder\\Liga\\src\\main\\java\\visual\\images\\Diseño sin título (3) (2).png")); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\ALMACEN\\Proyectos Java\\New folder\\Liga\\src\\main\\java\\visual\\images\\5 (3).png")); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -152,6 +136,8 @@ public class REstadoEquipo extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBoxEquipo;
     private javax.swing.JButton jButtonGeneraR;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelEquipo;
     private javax.swing.JLabel jLabelTit;
     // End of variables declaration//GEN-END:variables

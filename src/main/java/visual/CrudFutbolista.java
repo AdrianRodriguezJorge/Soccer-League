@@ -131,7 +131,7 @@ public class CrudFutbolista extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         tfGolesEnc = new javax.swing.JTextField();
@@ -198,7 +198,6 @@ public class CrudFutbolista extends javax.swing.JDialog {
         tfGolesEnc.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
         lblGolesEnc.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblGolesEnc.setForeground(new java.awt.Color(0, 0, 0));
         lblGolesEnc.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblGolesEnc.setText("Goles encajados");
 
@@ -209,25 +208,26 @@ public class CrudFutbolista extends javax.swing.JDialog {
         contentPanel.setForeground(new java.awt.Color(143, 182, 155));
         contentPanel.setToolTipText("");
 
-        list.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        list.setForeground(new java.awt.Color(0, 102, 51));
+        list.setBackground(new java.awt.Color(59, 122, 26));
+        list.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        list.setForeground(new java.awt.Color(255, 255, 255));
         list.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scrollPane.setViewportView(list);
 
-        btnNuevo.setBackground(new java.awt.Color(255, 255, 255));
-        btnNuevo.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        btnNuevo.setForeground(new java.awt.Color(0, 0, 0));
+        btnNuevo.setFont(new java.awt.Font("Roboto Black", 0, 15)); // NOI18N
+        btnNuevo.setForeground(new java.awt.Color(59, 122, 26));
         btnNuevo.setText("Nuevo");
+        btnNuevo.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(59, 122, 26)));
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoActionPerformed(evt);
             }
         });
 
-        btnEditar.setBackground(new java.awt.Color(255, 255, 255));
-        btnEditar.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        btnEditar.setForeground(new java.awt.Color(0, 0, 0));
+        btnEditar.setFont(new java.awt.Font("Roboto Black", 0, 15)); // NOI18N
+        btnEditar.setForeground(new java.awt.Color(59, 122, 26));
         btnEditar.setText("Editar");
+        btnEditar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(59, 122, 26)));
         btnEditar.setEnabled(false);
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -235,10 +235,10 @@ public class CrudFutbolista extends javax.swing.JDialog {
             }
         });
 
-        btnEliminar.setBackground(new java.awt.Color(255, 255, 255));
-        btnEliminar.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        btnEliminar.setForeground(new java.awt.Color(0, 0, 0));
+        btnEliminar.setFont(new java.awt.Font("Roboto Black", 0, 15)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(59, 122, 26));
         btnEliminar.setText("Eliminar");
+        btnEliminar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(59, 122, 26)));
         btnEliminar.setEnabled(false);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,73 +246,73 @@ public class CrudFutbolista extends javax.swing.JDialog {
             }
         });
 
-        btnSalir.setBackground(new java.awt.Color(255, 255, 255));
-        btnSalir.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        btnSalir.setForeground(new java.awt.Color(0, 0, 0));
+        btnSalir.setFont(new java.awt.Font("Roboto Black", 0, 15)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(255, 51, 51));
         btnSalir.setText("Salir");
+        btnSalir.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 51, 51)));
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
             }
         });
 
-        panelFutbolista.setBackground(new java.awt.Color(143, 182, 155));
+        panelFutbolista.setBackground(new java.awt.Color(255, 255, 255));
         panelFutbolista.setBorder(new javax.swing.border.MatteBorder(null));
-        panelFutbolista.setForeground(new java.awt.Color(0, 0, 0));
         panelFutbolista.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblNum.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblNum.setForeground(new java.awt.Color(0, 0, 0));
+        lblNum.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblNum.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNum.setText("Número");
         panelFutbolista.add(lblNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 85, 130, -1));
 
-        lblNombre.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblNombre.setForeground(new java.awt.Color(0, 0, 0));
+        lblNombre.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNombre.setText("Nombre");
         panelFutbolista.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 19, 130, -1));
 
-        lblEquipo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblEquipo.setForeground(new java.awt.Color(0, 0, 0));
+        lblEquipo.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblEquipo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblEquipo.setText("Equipo");
         panelFutbolista.add(lblEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 51, 130, -1));
 
-        lblTipo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblTipo.setForeground(new java.awt.Color(0, 0, 0));
+        lblTipo.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblTipo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTipo.setText("Tipo");
         panelFutbolista.add(lblTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 130, -1));
 
         tfAñosEnEq.setEditable(false);
+        tfAñosEnEq.setBackground(new java.awt.Color(255, 255, 255));
         tfAñosEnEq.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         panelFutbolista.add(tfAñosEnEq, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 50, -1));
 
         ComboBoxEquipo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        ComboBoxEquipo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         panelFutbolista.add(ComboBoxEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 160, -1));
 
         tfNombre.setEditable(false);
+        tfNombre.setBackground(new java.awt.Color(255, 255, 255));
         tfNombre.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        tfNombre.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         panelFutbolista.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 16, 176, -1));
 
         tfEquipo.setEditable(false);
+        tfEquipo.setBackground(new java.awt.Color(255, 255, 255));
         tfEquipo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         panelFutbolista.add(tfEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 176, -1));
 
-        lblAñosEq.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblAñosEq.setForeground(new java.awt.Color(0, 0, 0));
+        lblAñosEq.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblAñosEq.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblAñosEq.setText("Años en el equipo");
         panelFutbolista.add(lblAñosEq, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 130, -1));
 
         tfNum.setEditable(false);
+        tfNum.setBackground(new java.awt.Color(255, 255, 255));
         tfNum.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         panelFutbolista.add(tfNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 85, 50, -1));
 
-        btnGuardar.setBackground(new java.awt.Color(255, 255, 255));
-        btnGuardar.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        btnGuardar.setForeground(new java.awt.Color(0, 0, 0));
+        btnGuardar.setBackground(new java.awt.Color(59, 122, 26));
+        btnGuardar.setFont(new java.awt.Font("Roboto Black", 0, 15)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -321,9 +321,9 @@ public class CrudFutbolista extends javax.swing.JDialog {
         });
         panelFutbolista.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
 
-        btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
-        btnAgregar.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        btnAgregar.setForeground(new java.awt.Color(0, 0, 0));
+        btnAgregar.setBackground(new java.awt.Color(59, 122, 26));
+        btnAgregar.setFont(new java.awt.Font("Roboto Black", 0, 15)); // NOI18N
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -332,9 +332,9 @@ public class CrudFutbolista extends javax.swing.JDialog {
         });
         panelFutbolista.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, -1, -1));
 
-        btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
-        btnCancelar.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
+        btnCancelar.setBackground(new java.awt.Color(255, 102, 102));
+        btnCancelar.setFont(new java.awt.Font("Roboto Black", 0, 15)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -353,27 +353,28 @@ public class CrudFutbolista extends javax.swing.JDialog {
         panelFutbolista.add(ComboBoxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 130, -1));
 
         lblDatosErroneos.setFont(new java.awt.Font("SansSerif", 3, 16)); // NOI18N
-        lblDatosErroneos.setForeground(new java.awt.Color(0, 102, 102));
+        lblDatosErroneos.setForeground(new java.awt.Color(255, 51, 51));
         lblDatosErroneos.setText("Datos erroneos");
         panelFutbolista.add(lblDatosErroneos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
-        panelJugador.setBackground(new java.awt.Color(143, 182, 155));
+        tabbedPaneTipo.setBackground(new java.awt.Color(255, 255, 255));
+        tabbedPaneTipo.setForeground(new java.awt.Color(59, 122, 26));
+        tabbedPaneTipo.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+
+        panelJugador.setBackground(new java.awt.Color(228, 228, 228));
         panelJugador.setBorder(new javax.swing.border.MatteBorder(null));
-        panelJugador.setForeground(new java.awt.Color(0, 0, 0));
         panelJugador.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfPartJugados.setEditable(false);
         tfPartJugados.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         panelJugador.add(tfPartJugados, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 60, -1));
 
-        lblPartJug.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblPartJug.setForeground(new java.awt.Color(0, 0, 0));
+        lblPartJug.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblPartJug.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPartJug.setText("Partidos jugados");
         panelJugador.add(lblPartJug, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, -1));
 
-        lblCantGoles.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblCantGoles.setForeground(new java.awt.Color(0, 0, 0));
+        lblCantGoles.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblCantGoles.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblCantGoles.setText("Cantidad de goles");
         panelJugador.add(lblCantGoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 130, -1));
@@ -382,8 +383,7 @@ public class CrudFutbolista extends javax.swing.JDialog {
         tfCantGoles.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         panelJugador.add(tfCantGoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 60, -1));
 
-        lblAsistencias.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblAsistencias.setForeground(new java.awt.Color(0, 0, 0));
+        lblAsistencias.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblAsistencias.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblAsistencias.setText("Asistencias");
         panelJugador.add(lblAsistencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 130, -1));
@@ -392,8 +392,7 @@ public class CrudFutbolista extends javax.swing.JDialog {
         tfAsist.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         panelJugador.add(tfAsist, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 60, -1));
 
-        lblPromGoles.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblPromGoles.setForeground(new java.awt.Color(0, 0, 0));
+        lblPromGoles.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblPromGoles.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPromGoles.setText("Promedio de goles");
         panelJugador.add(lblPromGoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 130, -1));
@@ -402,15 +401,13 @@ public class CrudFutbolista extends javax.swing.JDialog {
         tfPromGoles.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         panelJugador.add(tfPromGoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 60, -1));
 
-        lblPos.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblPos.setForeground(new java.awt.Color(0, 0, 0));
+        lblPos.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblPos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPos.setText("Posición");
         panelJugador.add(lblPos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 130, -1));
 
         ComboBoxPos.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        ComboBoxPos.setModel(new javax.swing.DefaultComboBoxModel<>(
-                new String[] { "Defensa", "Delantero", "Mediocampista", "Portero" }));
+        ComboBoxPos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Defensa", "Delantero", "Mediocampista", "Portero" }));
         ComboBoxPos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxPosActionPerformed(evt);
@@ -420,40 +417,39 @@ public class CrudFutbolista extends javax.swing.JDialog {
 
         tabbedPaneTipo.addTab("Jugador", panelJugador);
 
-        panelEntrenador.setBackground(new java.awt.Color(143, 182, 155));
+        panelEntrenador.setBackground(new java.awt.Color(228, 228, 228));
         panelEntrenador.setBorder(new javax.swing.border.MatteBorder(null));
-        panelEntrenador.setForeground(new java.awt.Color(0, 0, 0));
         panelEntrenador.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfExp.setEditable(false);
         tfExp.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         panelEntrenador.add(tfExp, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 16, 60, -1));
 
-        lblExp.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblExp.setForeground(new java.awt.Color(0, 0, 0));
+        lblExp.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblExp.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblExp.setText("Años de experiencia");
         panelEntrenador.add(lblExp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 130, -1));
 
         tabbedPaneTipo.addTab("Entrenador", panelEntrenador);
 
-        panelDefensa.setBackground(new java.awt.Color(143, 182, 155));
+        tabbedPanePos.setBackground(new java.awt.Color(255, 255, 255));
+        tabbedPanePos.setForeground(new java.awt.Color(59, 122, 26));
+        tabbedPanePos.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+
+        panelDefensa.setBackground(new java.awt.Color(228, 228, 228));
         panelDefensa.setBorder(new javax.swing.border.MatteBorder(null));
-        panelDefensa.setForeground(new java.awt.Color(0, 0, 0));
         panelDefensa.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfEntradas.setEditable(false);
         tfEntradas.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         panelDefensa.add(tfEntradas, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 60, -1));
 
-        lblEntradas.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblEntradas.setForeground(new java.awt.Color(0, 0, 0));
+        lblEntradas.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblEntradas.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblEntradas.setText("Entradas");
         panelDefensa.add(lblEntradas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, -1));
 
-        lblBloqueos.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblBloqueos.setForeground(new java.awt.Color(0, 0, 0));
+        lblBloqueos.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblBloqueos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblBloqueos.setText("Bloqueos");
         panelDefensa.add(lblBloqueos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 130, -1));
@@ -464,40 +460,35 @@ public class CrudFutbolista extends javax.swing.JDialog {
 
         tabbedPanePos.addTab("Defensa", panelDefensa);
 
-        panelDefensa1.setBackground(new java.awt.Color(143, 182, 155));
+        panelDefensa1.setBackground(new java.awt.Color(228, 228, 228));
         panelDefensa1.setBorder(new javax.swing.border.MatteBorder(null));
-        panelDefensa1.setForeground(new java.awt.Color(0, 0, 0));
         panelDefensa1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfTirosAPuerta.setEditable(false);
         tfTirosAPuerta.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         panelDefensa1.add(tfTirosAPuerta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 60, -1));
 
-        lblTirosAPuerta.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblTirosAPuerta.setForeground(new java.awt.Color(0, 0, 0));
+        lblTirosAPuerta.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblTirosAPuerta.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTirosAPuerta.setText("Tiros a puerta");
         panelDefensa1.add(lblTirosAPuerta, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, -1));
 
         tabbedPanePos.addTab("Delantero", panelDefensa1);
 
-        panelDefensa2.setBackground(new java.awt.Color(143, 182, 155));
+        panelDefensa2.setBackground(new java.awt.Color(228, 228, 228));
         panelDefensa2.setBorder(new javax.swing.border.MatteBorder(null));
-        panelDefensa2.setForeground(new java.awt.Color(0, 0, 0));
         panelDefensa2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfPasesC.setEditable(false);
         tfPasesC.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         panelDefensa2.add(tfPasesC, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 60, -1));
 
-        lblPasesC.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblPasesC.setForeground(new java.awt.Color(0, 0, 0));
+        lblPasesC.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblPasesC.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPasesC.setText("Pases completados");
         panelDefensa2.add(lblPasesC, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, -1));
 
-        lblIntercep.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblIntercep.setForeground(new java.awt.Color(0, 0, 0));
+        lblIntercep.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblIntercep.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblIntercep.setText("Intercepciones");
         panelDefensa2.add(lblIntercep, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 130, -1));
@@ -508,23 +499,20 @@ public class CrudFutbolista extends javax.swing.JDialog {
 
         tabbedPanePos.addTab("Mediocampista", panelDefensa2);
 
-        panelDefensa3.setBackground(new java.awt.Color(143, 182, 155));
+        panelDefensa3.setBackground(new java.awt.Color(228, 228, 228));
         panelDefensa3.setBorder(new javax.swing.border.MatteBorder(null));
-        panelDefensa3.setForeground(new java.awt.Color(0, 0, 0));
         panelDefensa3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfParadas.setEditable(false);
         tfParadas.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         panelDefensa3.add(tfParadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 60, -1));
 
-        lblParadas.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblParadas.setForeground(new java.awt.Color(0, 0, 0));
+        lblParadas.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblParadas.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblParadas.setText("Paradas");
         panelDefensa3.add(lblParadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, -1));
 
-        lblGolesE.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblGolesE.setForeground(new java.awt.Color(0, 0, 0));
+        lblGolesE.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblGolesE.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblGolesE.setText("Goles Encajados");
         panelDefensa3.add(lblGolesE, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 130, -1));
@@ -538,78 +526,65 @@ public class CrudFutbolista extends javax.swing.JDialog {
         javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
         contentPanel.setLayout(contentPanelLayout);
         contentPanelLayout.setHorizontalGroup(
-                contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(contentPanelLayout.createSequentialGroup()
-                                .addGroup(contentPanelLayout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(contentPanelLayout.createSequentialGroup()
-                                                .addContainerGap()
-                                                .addComponent(btnNuevo)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btnEliminar)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btnEditar)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(btnSalir))
-                                        .addGroup(contentPanelLayout.createSequentialGroup()
-                                                .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 264,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(panelFutbolista, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                        350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addGroup(contentPanelLayout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(tabbedPaneTipo,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE, 285,
-                                                                Short.MAX_VALUE)
-                                                        .addComponent(tabbedPanePos))))
-                                .addContainerGap()));
+            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contentPanelLayout.createSequentialGroup()
+                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(panelFutbolista, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tabbedPaneTipo, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+                            .addComponent(tabbedPanePos))))
+                .addContainerGap())
+        );
         contentPanelLayout.setVerticalGroup(
-                contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(contentPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(contentPanelLayout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(contentPanelLayout.createSequentialGroup()
-                                                .addComponent(tabbedPaneTipo, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                        200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(tabbedPanePos, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                        140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(contentPanelLayout
-                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(panelFutbolista,
-                                                        javax.swing.GroupLayout.Alignment.LEADING,
-                                                        javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
-                                                .addComponent(scrollPane, javax.swing.GroupLayout.Alignment.LEADING)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28,
-                                        Short.MAX_VALUE)
-                                .addGroup(contentPanelLayout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnEditar)
-                                        .addComponent(btnEliminar)
-                                        .addComponent(btnNuevo)
-                                        .addComponent(btnSalir))
-                                .addContainerGap()));
+            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contentPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contentPanelLayout.createSequentialGroup()
+                        .addComponent(tabbedPaneTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tabbedPanePos, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(panelFutbolista, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                        .addComponent(scrollPane, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addGap(18, 27, Short.MAX_VALUE)
+                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap()));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap()));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         contentPanel.getAccessibleContext().setAccessibleParent(contentPanel);
 
