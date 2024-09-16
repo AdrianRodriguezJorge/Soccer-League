@@ -322,7 +322,7 @@ public class CrudEquipo extends javax.swing.JDialog {
 
         contentPanel.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, -1, 310));
 
-        list.setBackground(new java.awt.Color(59, 122, 26));
+        list.setBackground(new java.awt.Color(143, 182, 155));
         list.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         list.setForeground(new java.awt.Color(255, 255, 255));
         list.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
