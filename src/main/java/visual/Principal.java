@@ -345,8 +345,6 @@ public class Principal extends javax.swing.JFrame {
             menuItemInicioS.setEnabled(false);
             menuItemCerrarS.setEnabled(true);
         }
-        menuItemInicioS.setEnabled(false);
-        menuItemCerrarS.setEnabled(true);
     }// GEN-LAST:event_menuItemInicioSActionPerformed
 
     private void menuItemUsuariosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuItemUsuariosActionPerformed
