@@ -23,7 +23,7 @@ public class EquipoServices {
      * @param equipo El objeto Equipo a crear.
      */
     public void crearEquipo(Equipo equipo) {
-        String sql = "INSERT INTO equipo (nomequipo, provincia, camparticip, campganados, mascota, color) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO equipo (nomequipo, provincia, camparticip, campganados, mascota, color) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = ConnectionManager.getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
@@ -99,18 +99,15 @@ public class EquipoServices {
      * Método para eliminar un equipo de la base de datos.
      * 
      * @param idEquipo El ID del equipo a eliminar.
+     * @throws SQLException 
      */
-    public void eliminarEquipo(int idEquipo) {
+    public void eliminarEquipo(int idEquipo) throws SQLException {
         String sql = "DELETE FROM equipo WHERE idequipo = ?";
-        try (Connection conn = ConnectionManager.getConnection();
-                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        Connection conn = ConnectionManager.getConnection();
+        PreparedStatement pstmt = conn.prepareStatement(sql);
 
-            pstmt.setInt(1, idEquipo);
-            pstmt.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        pstmt.setInt(1, idEquipo);
+        pstmt.executeUpdate();
     }
 
     public void reporteTablaPosiciones() {

@@ -1,6 +1,7 @@
 package visual;
 
 import java.awt.Color;
+import java.sql.SQLException;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -521,7 +522,8 @@ public class CrudEquipo extends javax.swing.JDialog {
         boolean val = validarDatos(nombre, provincia, campParticip, campGanados, mascota, color);
 
         if (val) {
-            Equipo x = new Equipo(modelo.getElementAt(index).getIdEquipo(), nombre, provincia, campParticip, campGanados, mascota, color, puntos);
+            Equipo x = new Equipo(modelo.getElementAt(index).getIdEquipo(), nombre, provincia, campParticip,
+                    campGanados, mascota, color, puntos);
 
             ServicesLocator.getEquipoServices().actualizarEquipo(x);
 
@@ -534,15 +536,21 @@ public class CrudEquipo extends javax.swing.JDialog {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnEliminarActionPerformed
         int index = list.getSelectedIndex();
         if (index != -1) {
-            if (JOptionPane.showConfirmDialog(null, "Está seguro que desea eliminar este equipo?",
+            if (JOptionPane.showConfirmDialog(null,
+                    "Está seguro que desea eliminar este equipo y los futbolistas que contiene?",
                     "Confirmar", 0) == 0) {
 
-                ServicesLocator.getEquipoServices().eliminarEquipo(modelo.getElementAt(index).getIdEquipo());
+                try {
+                    ServicesLocator.getEquipoServices().eliminarEquipo(modelo.getElementAt(index).getIdEquipo());
 
-                modelo.removeElement(list.getSelectedIndex());
+                    modelo.removeElement(list.getSelectedIndex());
 
-                limpiar();
-                changeStatus(false);
+                    limpiar();
+                    changeStatus(false);
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "No puede eliminar este equipo mientras existan partidos registrados con su participación.", "Aviso",
+                            JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
     }// GEN-LAST:event_btnEliminarActionPerformed

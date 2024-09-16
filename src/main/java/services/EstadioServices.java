@@ -100,23 +100,18 @@ public class EstadioServices {
         }
     }
 
-    public void eliminarEstadio(int objetive) {
-        try {
-            String sql = "DELETE FROM estadio WHERE idestadio = ?";
-            PreparedStatement pstmt = connection.prepareStatement(sql);
-            pstmt.setInt(1, objetive);
+    public void eliminarEstadio(int objetive) throws SQLException {
+        String sql = "DELETE FROM estadio WHERE idestadio = ?";
+        PreparedStatement pstmt = connection.prepareStatement(sql);
+        pstmt.setInt(1, objetive);
 
-            int afected = pstmt.executeUpdate();
+        int afected = pstmt.executeUpdate();
 
-            if (afected == 0) {
-                System.out.println("Id no encontrado");
-                throw new SQLException();
-            } else {
-                System.out.println("Estadio eliminado correctamente");
-            }
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+        if (afected == 0) {
+            System.out.println("Id no encontrado");
+            throw new SQLException();
+        } else {
+            System.out.println("Estadio eliminado correctamente");
         }
     }
 
@@ -205,7 +200,9 @@ public class EstadioServices {
         }
 
         if (!val) {
-            JOptionPane.showMessageDialog(null, "Debe seleccionar una audiencia menor a " + e.getCapacidad() + ", que es la capacidad del estadio " + e.getNombreEstadio() + ".",
+            JOptionPane.showMessageDialog(null,
+                    "Debe seleccionar una audiencia menor a " + e.getCapacidad() + ", que es la capacidad del estadio "
+                            + e.getNombreEstadio() + ".",
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
         return val;
