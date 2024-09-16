@@ -96,26 +96,15 @@ public class Principal extends javax.swing.JFrame {
         setBounds(new java.awt.Rectangle(0, 0, 800, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-<<<<<<< HEAD
-        menuBar.setBackground(new java.awt.Color(60, 63, 64));
-        menuBar.setForeground(new java.awt.Color(255, 255, 255));
-        menuBar.setToolTipText("");
-=======
         jLabel1.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\1 (9).png")); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -20, 860, 590));
->>>>>>> 33abc59 (direccion_images)
 
         menuPerfil.setBackground(new java.awt.Color(60, 63, 64));
         menuPerfil.setForeground(new java.awt.Color(255, 255, 255));
         menuPerfil.setText("Perfil");
 
-<<<<<<< HEAD
-        menuItemInicioS.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemInicioS.setForeground(new java.awt.Color(255, 255, 255));
-=======
         menuItemInicioS.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         menuItemInicioS.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\User (1).png")); // NOI18N
->>>>>>> 33abc59 (direccion_images)
         menuItemInicioS.setText("Iniciar sesión");
         menuItemInicioS.setActionCommand("");
         menuItemInicioS.addActionListener(new java.awt.event.ActionListener() {
@@ -125,13 +114,8 @@ public class Principal extends javax.swing.JFrame {
         });
         menuPerfil.add(menuItemInicioS);
 
-<<<<<<< HEAD
-        menuItemCerrarS.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemCerrarS.setForeground(new java.awt.Color(255, 255, 255));
-=======
         menuItemCerrarS.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         menuItemCerrarS.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\No user (1).png")); // NOI18N
->>>>>>> 33abc59 (direccion_images)
         menuItemCerrarS.setText("Cerrar sesión");
         menuItemCerrarS.setToolTipText("");
         menuItemCerrarS.setActionCommand("");
@@ -142,13 +126,8 @@ public class Principal extends javax.swing.JFrame {
         });
         menuPerfil.add(menuItemCerrarS);
 
-<<<<<<< HEAD
-        menuItemUsuarios.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemUsuarios.setForeground(new java.awt.Color(255, 255, 255));
-=======
         menuItemUsuarios.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         menuItemUsuarios.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Gestión usuarios.png")); // NOI18N
->>>>>>> 33abc59 (direccion_images)
         menuItemUsuarios.setText("Gestión de usuarios");
         menuItemUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,13 +142,8 @@ public class Principal extends javax.swing.JFrame {
         menuGestion.setForeground(new java.awt.Color(255, 255, 255));
         menuGestion.setText("Gestión de la liga");
 
-<<<<<<< HEAD
-        menuItemEstadios.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemEstadios.setForeground(new java.awt.Color(255, 255, 255));
-=======
         menuItemEstadios.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         menuItemEstadios.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\balon (1).png")); // NOI18N
->>>>>>> 33abc59 (direccion_images)
         menuItemEstadios.setLabel("Estadios");
         menuItemEstadios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,13 +152,8 @@ public class Principal extends javax.swing.JFrame {
         });
         menuGestion.add(menuItemEstadios);
 
-<<<<<<< HEAD
-        menuItemEquipos.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemEquipos.setForeground(new java.awt.Color(255, 255, 255));
-=======
         menuItemEquipos.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         menuItemEquipos.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\balon (1).png")); // NOI18N
->>>>>>> 33abc59 (direccion_images)
         menuItemEquipos.setLabel("Equipos");
         menuItemEquipos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,13 +162,8 @@ public class Principal extends javax.swing.JFrame {
         });
         menuGestion.add(menuItemEquipos);
 
-<<<<<<< HEAD
-        menuItemPartidos.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemPartidos.setForeground(new java.awt.Color(255, 255, 255));
-=======
         menuItemPartidos.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         menuItemPartidos.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\balon (1).png")); // NOI18N
->>>>>>> 33abc59 (direccion_images)
         menuItemPartidos.setLabel("Partidos");
         menuItemPartidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -208,13 +172,8 @@ public class Principal extends javax.swing.JFrame {
         });
         menuGestion.add(menuItemPartidos);
 
-<<<<<<< HEAD
-        menuItemFutbolistas.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemFutbolistas.setForeground(new java.awt.Color(255, 255, 255));
-=======
         menuItemFutbolistas.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         menuItemFutbolistas.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\balon (1).png")); // NOI18N
->>>>>>> 33abc59 (direccion_images)
         menuItemFutbolistas.setLabel("Futbolistas");
         menuItemFutbolistas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,13 +182,8 @@ public class Principal extends javax.swing.JFrame {
         });
         menuGestion.add(menuItemFutbolistas);
 
-<<<<<<< HEAD
-        menuItemIniciar.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemIniciar.setForeground(new java.awt.Color(255, 255, 255));
-=======
         menuItemIniciar.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         menuItemIniciar.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Abrir (1).png")); // NOI18N
->>>>>>> 33abc59 (direccion_images)
         menuItemIniciar.setText("Comenzar la liga");
         menuItemIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,13 +192,8 @@ public class Principal extends javax.swing.JFrame {
         });
         menuGestion.add(menuItemIniciar);
 
-<<<<<<< HEAD
-        menuItemCulminar.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemCulminar.setForeground(new java.awt.Color(255, 255, 255));
-=======
         menuItemCulminar.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         menuItemCulminar.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Cerrar (1).png")); // NOI18N
->>>>>>> 33abc59 (direccion_images)
         menuItemCulminar.setText("Culminar la liga");
         menuItemCulminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -253,13 +202,8 @@ public class Principal extends javax.swing.JFrame {
         });
         menuGestion.add(menuItemCulminar);
 
-<<<<<<< HEAD
-        menuItemResultados.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemResultados.setForeground(new java.awt.Color(255, 255, 255));
-=======
         menuItemResultados.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         menuItemResultados.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\report (1).png")); // NOI18N
->>>>>>> 33abc59 (direccion_images)
         menuItemResultados.setText("Ver resultados");
         menuGestion.add(menuItemResultados);
 
@@ -269,10 +213,6 @@ public class Principal extends javax.swing.JFrame {
         menuReportes.setForeground(new java.awt.Color(255, 255, 255));
         menuReportes.setLabel("Reportes");
 
-<<<<<<< HEAD
-        menuItemRTablaPosiciones.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemRTablaPosiciones.setForeground(new java.awt.Color(255, 255, 255));
-=======
         menuItemRTablaPosiciones.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         menuItemRTablaPosiciones.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Posiciones (1).png")); // NOI18N
         menuItemRTablaPosiciones.setText("Tabla de posiciones de la liga");
@@ -284,13 +224,10 @@ public class Principal extends javax.swing.JFrame {
         });
         menuReportes.add(menuItemRTablaPosiciones);
 
-<<<<<<< HEAD
         menuItemRPartidosEquipos.setBackground(new java.awt.Color(60, 63, 64));
         menuItemRPartidosEquipos.setForeground(new java.awt.Color(255, 255, 255));
-=======
         menuItemRPartidosEquipos.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         menuItemRPartidosEquipos.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Partido (1).png")); // NOI18N
->>>>>>> 33abc59 (direccion_images)
         menuItemRPartidosEquipos.setText("Partidos por equipos");
         menuItemRPartidosEquipos.setActionCommand("Reportes");
         menuItemRPartidosEquipos.addActionListener(new java.awt.event.ActionListener() {
@@ -300,10 +237,8 @@ public class Principal extends javax.swing.JFrame {
         });
         menuReportes.add(menuItemRPartidosEquipos);
 
-<<<<<<< HEAD
         menuItemRPartidosPorFecha.setBackground(new java.awt.Color(60, 63, 64));
         menuItemRPartidosPorFecha.setForeground(new java.awt.Color(255, 255, 255));
-=======
         menuItemRPartidosPorFecha.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         menuItemRPartidosPorFecha.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Partido (1).png")); // NOI18N
         menuItemRPartidosPorFecha.setText("Partidos jugados por fecha");
@@ -315,10 +250,8 @@ public class Principal extends javax.swing.JFrame {
         });
         menuReportes.add(menuItemRPartidosPorFecha);
 
-<<<<<<< HEAD
         menuItemREntrenadoresExperiencia.setBackground(new java.awt.Color(60, 63, 64));
         menuItemREntrenadoresExperiencia.setForeground(new java.awt.Color(255, 255, 255));
-=======
         menuItemREntrenadoresExperiencia.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         menuItemREntrenadoresExperiencia.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Entrenador (1).png")); // NOI18N
         menuItemREntrenadoresExperiencia.setText("Entrenadores con más experiencia");
@@ -330,10 +263,8 @@ public class Principal extends javax.swing.JFrame {
         });
         menuReportes.add(menuItemREntrenadoresExperiencia);
 
-<<<<<<< HEAD
         menuItemREstadiosMayorAudiencia.setBackground(new java.awt.Color(60, 63, 64));
         menuItemREstadiosMayorAudiencia.setForeground(new java.awt.Color(255, 255, 255));
-=======
         menuItemREstadiosMayorAudiencia.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         menuItemREstadiosMayorAudiencia.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\report (1).png")); // NOI18N
         menuItemREstadiosMayorAudiencia.setText("Estadios con mayor audiencia");
@@ -345,13 +276,8 @@ public class Principal extends javax.swing.JFrame {
         });
         menuReportes.add(menuItemREstadiosMayorAudiencia);
 
-<<<<<<< HEAD
-        menuItemREstadoEquipo.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemREstadoEquipo.setForeground(new java.awt.Color(255, 255, 255));
-=======
         menuItemREstadoEquipo.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         menuItemREstadoEquipo.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\balon (1).png")); // NOI18N
->>>>>>> 33abc59 (direccion_images)
         menuItemREstadoEquipo.setText("Estado de un equipo");
         menuItemREstadoEquipo.setActionCommand("Reportes");
         menuItemREstadoEquipo.addActionListener(new java.awt.event.ActionListener() {
@@ -361,13 +287,8 @@ public class Principal extends javax.swing.JFrame {
         });
         menuReportes.add(menuItemREstadoEquipo);
 
-<<<<<<< HEAD
-        menuItemREquipoEstrella.setBackground(new java.awt.Color(60, 63, 64));
-        menuItemREquipoEstrella.setForeground(new java.awt.Color(255, 255, 255));
-=======
         menuItemREquipoEstrella.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         menuItemREquipoEstrella.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Mejor (1).png")); // NOI18N
->>>>>>> 33abc59 (direccion_images)
         menuItemREquipoEstrella.setText("Equipo todas estrellas");
         menuItemREquipoEstrella.setActionCommand("Reportes");
         menuItemREquipoEstrella.addActionListener(new java.awt.event.ActionListener() {
