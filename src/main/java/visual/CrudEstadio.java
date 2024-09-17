@@ -56,7 +56,7 @@ public class CrudEstadio extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         contentPanel = new javax.swing.JPanel();
@@ -162,12 +162,12 @@ public class CrudEstadio extends javax.swing.JDialog {
         jLabel1.setText("Datos del Estadio");
         panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 170, 30));
 
-        list.setBackground(new java.awt.Color(59, 122, 26));
+        list.setBackground(new java.awt.Color(204, 204, 204));
         list.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        list.setForeground(new java.awt.Color(255, 255, 255));
         list.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scrollPane.setViewportView(list);
 
+        btnNuevo.setBackground(new java.awt.Color(242, 242, 242));
         btnNuevo.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         btnNuevo.setForeground(new java.awt.Color(59, 122, 26));
         btnNuevo.setText("Nuevo");
@@ -182,6 +182,7 @@ public class CrudEstadio extends javax.swing.JDialog {
             }
         });
 
+        btnEditar.setBackground(new java.awt.Color(242, 242, 242));
         btnEditar.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(59, 122, 26));
         btnEditar.setText("Editar");
@@ -197,6 +198,7 @@ public class CrudEstadio extends javax.swing.JDialog {
             }
         });
 
+        btnEliminar.setBackground(new java.awt.Color(242, 242, 242));
         btnEliminar.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(59, 122, 26));
         btnEliminar.setText("Eliminar");
@@ -212,6 +214,7 @@ public class CrudEstadio extends javax.swing.JDialog {
             }
         });
 
+        btnSalir.setBackground(new java.awt.Color(242, 242, 242));
         btnSalir.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(255, 51, 51));
         btnSalir.setText("Salir");
@@ -257,11 +260,12 @@ public class CrudEstadio extends javax.swing.JDialog {
                     .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
                     .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(39, 39, 39)
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 

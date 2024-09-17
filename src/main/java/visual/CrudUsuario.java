@@ -201,17 +201,17 @@ public class CrudUsuario extends javax.swing.JDialog {
         lblNombre1.setText("Nombre");
         panel.add(lblNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 87, -1));
 
-        list.setBackground(new java.awt.Color(59, 122, 26));
+        list.setBackground(new java.awt.Color(204, 204, 204));
         list.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
-        list.setForeground(new java.awt.Color(255, 255, 255));
         list.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scrollPane.setViewportView(list);
 
+        btnNuevo.setBackground(new java.awt.Color(242, 242, 242));
         btnNuevo.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         btnNuevo.setForeground(new java.awt.Color(59, 122, 26));
         btnNuevo.setText("Nuevo");
         btnNuevo.setAlignmentY(1.0F);
-        btnNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnNuevo.setDefaultCapable(false);
         btnNuevo.setMargin(new java.awt.Insets(2, 14, 4, 14));
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -220,6 +220,7 @@ public class CrudUsuario extends javax.swing.JDialog {
             }
         });
 
+        btnEditar.setBackground(new java.awt.Color(242, 242, 242));
         btnEditar.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(59, 122, 26));
         btnEditar.setText("Editar");
@@ -234,6 +235,7 @@ public class CrudUsuario extends javax.swing.JDialog {
             }
         });
 
+        btnEliminar.setBackground(new java.awt.Color(242, 242, 242));
         btnEliminar.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(59, 122, 26));
         btnEliminar.setText("Eliminar");
@@ -248,6 +250,7 @@ public class CrudUsuario extends javax.swing.JDialog {
             }
         });
 
+        btnSalir.setBackground(new java.awt.Color(242, 242, 242));
         btnSalir.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(255, 51, 51));
         btnSalir.setText("Salir");

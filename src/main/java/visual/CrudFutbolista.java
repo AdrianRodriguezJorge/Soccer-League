@@ -208,12 +208,13 @@ public class CrudFutbolista extends javax.swing.JDialog {
         contentPanel.setForeground(new java.awt.Color(143, 182, 155));
         contentPanel.setToolTipText("");
 
-        list.setBackground(new java.awt.Color(59, 122, 26));
+        list.setBackground(new java.awt.Color(204, 204, 204));
+        list.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         list.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
-        list.setForeground(new java.awt.Color(255, 255, 255));
         list.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scrollPane.setViewportView(list);
 
+        btnNuevo.setBackground(new java.awt.Color(242, 242, 242));
         btnNuevo.setFont(new java.awt.Font("Roboto Black", 0, 15)); // NOI18N
         btnNuevo.setForeground(new java.awt.Color(59, 122, 26));
         btnNuevo.setText("Nuevo");
@@ -224,6 +225,7 @@ public class CrudFutbolista extends javax.swing.JDialog {
             }
         });
 
+        btnEditar.setBackground(new java.awt.Color(242, 242, 242));
         btnEditar.setFont(new java.awt.Font("Roboto Black", 0, 15)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(59, 122, 26));
         btnEditar.setText("Editar");
@@ -235,6 +237,7 @@ public class CrudFutbolista extends javax.swing.JDialog {
             }
         });
 
+        btnEliminar.setBackground(new java.awt.Color(242, 242, 242));
         btnEliminar.setFont(new java.awt.Font("Roboto Black", 0, 15)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(59, 122, 26));
         btnEliminar.setText("Eliminar");
@@ -246,6 +249,7 @@ public class CrudFutbolista extends javax.swing.JDialog {
             }
         });
 
+        btnSalir.setBackground(new java.awt.Color(242, 242, 242));
         btnSalir.setFont(new java.awt.Font("Roboto Black", 0, 15)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(255, 51, 51));
         btnSalir.setText("Salir");
@@ -552,20 +556,20 @@ public class CrudFutbolista extends javax.swing.JDialog {
             contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contentPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(contentPanelLayout.createSequentialGroup()
                         .addComponent(tabbedPaneTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tabbedPanePos, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(panelFutbolista, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
-                        .addComponent(scrollPane, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addComponent(panelFutbolista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(scrollPane))
                 .addGap(18, 27, Short.MAX_VALUE)
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
