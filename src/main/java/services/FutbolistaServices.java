@@ -79,7 +79,7 @@ public class FutbolistaServices {
     public ArrayList<Futbolista> obtenerFutbolistas() {
         ArrayList<Futbolista> futbolistas = new ArrayList<>();
         Futbolista futbolista = null;
-        String sql = "SELECT * FROM futbolista";
+        String sql = "SELECT * FROM futbolista ORDER BY idequipo, numero";
         try (Connection conn = ConnectionManager.getConnection();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {

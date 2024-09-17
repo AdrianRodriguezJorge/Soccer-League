@@ -46,7 +46,7 @@ public class PartidoServices {
      */
     public ArrayList<Partido> obtenerPartidos() {
         ArrayList<Partido> partidos = new ArrayList<>();
-        String sql = "SELECT * FROM partido";
+        String sql = "SELECT * FROM partido ORDER BY fecha";
         try (Connection conn = ConnectionManager.getConnection();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {

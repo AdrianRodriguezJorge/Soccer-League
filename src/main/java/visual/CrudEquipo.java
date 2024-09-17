@@ -424,11 +424,8 @@ public class CrudEquipo extends javax.swing.JDialog {
             ServicesLocator.getEquipoServices().crearEquipo(x);
 
             x.setIdEquipo(ServicesLocator.getEquipoServices().obtenerEquipos().getLast().getIdEquipo());
-            modelo.addElement(x);
-
-            int lastIndex = list.getModel().getSize() - 1;
-            list.setSelectedIndex(lastIndex);
-            list.ensureIndexIsVisible(lastIndex);
+            
+            modelo.setList(ServicesLocator.getEquipoServices().obtenerEquipos());
 
             changeStatus(false);
         }

@@ -309,11 +309,7 @@ public class CrudEstadio extends javax.swing.JDialog {
 
             Estadio x = new Estadio(ServicesLocator.getEstadioServices().obtenerEstadios().getLast().getIdEstadio(),
                     nombre, capacidad);
-            modelo.addElement(x);
-
-            int lastIndex = list.getModel().getSize() - 1;
-            list.setSelectedIndex(lastIndex);
-            list.ensureIndexIsVisible(lastIndex);
+            modelo.setList(ServicesLocator.getEstadioServices().obtenerEstadios());
 
             changeStatus(false);
         }

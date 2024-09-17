@@ -60,10 +60,10 @@ public class EstadioServices {
      */
     public ArrayList<Estadio> obtenerEstadios() {
         ArrayList<Estadio> list = new ArrayList<>();
-        String sql = "SELECT * FROM estadio";
+        String sql = "SELECT * FROM estadio ORDER BY nomestadio";
         try {
             connection = ConnectionManager.getConnection();
-            PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM estadio ORDER BY idestadio");
+            PreparedStatement pstmt = connection.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 Estadio estadio = new Estadio(

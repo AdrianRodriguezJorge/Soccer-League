@@ -284,7 +284,7 @@ public class CrudPartido extends javax.swing.JDialog {
 
         list.setBackground(new java.awt.Color(204, 204, 204));
         list.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
-        list.setForeground(new java.awt.Color(255, 255, 255));
+        list.setForeground(Color.BLACK);
         list.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scrollPane.setViewportView(list);
 

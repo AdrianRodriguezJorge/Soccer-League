@@ -47,7 +47,7 @@ public class EquipoServices {
      */
     public ArrayList<Equipo> obtenerEquipos() {
         ArrayList<Equipo> equipos = new ArrayList<>();
-        String sql = "SELECT * FROM equipo ORDER BY idequipo";
+        String sql = "SELECT * FROM equipo ORDER BY provincia";
         try (Connection conn = ConnectionManager.getConnection();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {

@@ -11,7 +11,7 @@ public class UsuarioServices {
      // Método para obtener todos los usuarios
      public ArrayList <Usuario> getAllUsuarios() throws SQLException {
           ArrayList <Usuario> usuarios = new ArrayList<>();
-          String query = "SELECT id, nombre_usuario, contraseña, rol FROM usuario";
+          String query = "SELECT id, nombre_usuario, contraseña, rol FROM usuario ORDER BY rol";
 
           try (Statement stmt = ConnectionManager.getConnection().createStatement();
                     ResultSet rs = stmt.executeQuery(query)) {

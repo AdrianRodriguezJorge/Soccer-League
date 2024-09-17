@@ -1,4 +1,3 @@
-services\Services_contenido.class
 visual\CrudEquipo$4.class
 services\EquipoServices.class
 visual\DialogDuracionLiga$2.class
@@ -102,7 +101,6 @@ visual\CrudPartido$4.class
 model\Portero.class
 visual\DialogDuracionLiga.class
 visual\CrudEquipo$3.class
-utils\Utils_contenido.class
 model\Partido.class
 visual\CrudPartido$16.class
 visual\CrudFutbolista$4.class
@@ -128,13 +126,10 @@ visual\CrudUsuario$6.class
 services\ServicesLocator.class
 visual\CrudFutbolista$3.class
 visual\CrudEquipo$14.class
-visual\Principal$23.class
 visual\CrudEquipo$5.class
 visual\CrudPartido$15.class
 visual\Principal$17.class
 visual\Principal$11.class
 reports\Reports_contenido.class
 visual\REstadoEquipo$2.class
-visual\Visual_contenido.class
-model\Model_contenido.class
 visual\CrudPartido$6.class
