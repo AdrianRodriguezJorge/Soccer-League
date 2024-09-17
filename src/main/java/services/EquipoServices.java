@@ -232,4 +232,16 @@ public class EquipoServices {
         return nom;
     }
 
+    public void limpiarPuntos () {
+        String sql = "UPDATE equipo SET puntos = 0";
+        try (Connection conn = ConnectionManager.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

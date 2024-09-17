@@ -128,7 +128,7 @@ public class DialogDuracionLiga extends javax.swing.JDialog {
 
                     // // ServicesLocator.getPartidoServices().limpiarPartidos(); // elimina todos
                     // los partidos anteriores registrados
-
+                    // ServicesLocator.getEquipoServices().limpiarPuntos();
                     dispose();
                 } else {
                     lblErrorIni.setVisible(true);

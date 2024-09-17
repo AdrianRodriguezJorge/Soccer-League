@@ -97,7 +97,7 @@ public class CrudUsuario extends javax.swing.JDialog {
         btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Gestión de estadios");
+        setTitle("Gestión de usuarios");
 
         panel.setBackground(new java.awt.Color(255, 255, 255));
         panel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(59, 122, 26)));
@@ -330,6 +330,7 @@ public class CrudUsuario extends javax.swing.JDialog {
         tfNombre.requestFocusInWindow();
         lblContraseña.setVisible(true);
         tfContraseña.setVisible(true);
+        jSeparator1.setVisible(true);
     }// GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAgregarActionPerformed
@@ -508,5 +509,7 @@ public class CrudUsuario extends javax.swing.JDialog {
 
         tfRol.setVisible(!status);
         comboBoxRol.setVisible(status);
+
+        jSeparator1.setVisible(false);
     }
 }

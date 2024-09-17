@@ -12,10 +12,15 @@ public class Generic_Model<E> extends AbstractListModel {
 		this.fireIntervalAdded(this, 0, getSize());
 	}
 
+	// obtiene la lista de elementos en el modelo
+	public ArrayList<E> getList () {
+		return list;
+	}
+
 	// establece la lista de elementos en el modelo
 	public void setList(ArrayList<E> list) {
 		this.list = list;
-		this.fireIntervalAdded(this, 0, getSize());
+		// this.fireIntervalAdded(this, 0, getSize());
 	}
 
 	// devuelve el tamaño de la lista del modelo

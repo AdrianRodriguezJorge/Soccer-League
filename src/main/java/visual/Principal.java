@@ -46,6 +46,7 @@ public class Principal extends javax.swing.JFrame {
         boolean activa = ServicesLocator.getIntervaloFServices().ligaActiva();
         menuItemIniciar.setEnabled(!activa);
         menuItemCulminar.setEnabled(activa);
+        menuItemPartidos.setEnabled(activa);
     }
 
     /**
@@ -74,7 +75,6 @@ public class Principal extends javax.swing.JFrame {
         menuItemFutbolistas = new javax.swing.JMenuItem();
         menuItemIniciar = new javax.swing.JMenuItem();
         menuItemCulminar = new javax.swing.JMenuItem();
-        menuItemResultados = new javax.swing.JMenuItem();
         menuReportes = new javax.swing.JMenu();
         menuItemRTablaPosiciones = new javax.swing.JMenuItem();
         menuItemRPartidosEquipos = new javax.swing.JMenuItem();
@@ -211,11 +211,6 @@ public class Principal extends javax.swing.JFrame {
         });
         menuGestion.add(menuItemCulminar);
 
-        menuItemResultados.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        menuItemResultados.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\report (1).png")); // NOI18N
-        menuItemResultados.setText("Ver resultados");
-        menuGestion.add(menuItemResultados);
-
         menuBar.add(menuGestion);
 
         menuReportes.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Reportes (1).png")); // NOI18N
@@ -315,8 +310,8 @@ public class Principal extends javax.swing.JFrame {
     private void menuItemCerrarSActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuItemCerrarSActionPerformed
         menuItemCerrarS.setEnabled(false);
         menuItemInicioS.setEnabled(true);
-        menuGestion.setEnabled(false);
-        menuItemUsuarios.setEnabled(false);
+        menuGestion.setVisible(false);
+        menuItemUsuarios.setVisible(false);
     }// GEN-LAST:event_menuItemCerrarSActionPerformed
 
     private void menuItemInicioSMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_menuItemInicioSMousePressed
@@ -415,8 +410,12 @@ public class Principal extends javax.swing.JFrame {
         DialogDuracionLiga dialog = new DialogDuracionLiga(new javax.swing.JFrame(), true);
         dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
-        menuItemIniciar.setEnabled(false);
-        menuItemCulminar.setEnabled(true);
+
+        boolean activa = ServicesLocator.getIntervaloFServices().ligaActiva();
+        menuItemIniciar.setEnabled(!activa);
+        menuItemCulminar.setEnabled(activa);
+        menuItemPartidos.setEnabled(activa);
+
     }// GEN-LAST:event_menuItemInicioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -439,7 +438,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemRPartidosEquipos;
     private javax.swing.JMenuItem menuItemRPartidosPorFecha;
     private javax.swing.JMenuItem menuItemRTablaPosiciones;
-    private javax.swing.JMenuItem menuItemResultados;
     private javax.swing.JMenuItem menuItemUsuarios;
     private javax.swing.JMenu menuPerfil;
     private javax.swing.JMenu menuReportes;

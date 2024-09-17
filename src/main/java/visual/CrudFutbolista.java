@@ -2,6 +2,7 @@ package visual;
 
 import java.awt.Color;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -22,6 +23,7 @@ import utils.Generic_Model;
 public class CrudFutbolista extends javax.swing.JDialog {
 
     private Generic_Model<Futbolista> modelo = new Generic_Model<>();
+    private ArrayList<Futbolista> saveList = null;
 
     public CrudFutbolista(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -55,68 +57,73 @@ public class CrudFutbolista extends javax.swing.JDialog {
 
         list.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
-                int index = list.getSelectedIndex();
-                btnEliminar.setEnabled(index > -1);
+                try {
 
-                changeStatus(index <= -1);
-                if (index > -1) {
-                    Futbolista f = modelo.getElementAt(index);
+                    int index = list.getSelectedIndex();
+                    btnEliminar.setEnabled(index > -1);
 
-                    int pos = ServicesLocator.getEquipoServices()
-                            .getIndexFromId(modelo.getElementAt(list.getSelectedIndex()).getIdEquipo());
-                    ComboBoxEquipo.setSelectedIndex(pos);
+                    changeStatus(index <= -1);
+                    if (index > -1) {
+                        Futbolista f = modelo.getElementAt(index);
 
-                    String nomEquipo = ComboBoxEquipo.getSelectedItem().toString();
+                        int pos = ServicesLocator.getEquipoServices()
+                                .getIndexFromId(f.getIdEquipo());
+                        ComboBoxEquipo.setSelectedIndex(pos);
 
-                    tfNombre.setText(f.getNombre());
-                    tfEquipo.setText(nomEquipo);
-                    tfNum.setText(f.getNumero() + "");
-                    tfAñosEnEq.setText(f.getAñosEnEquipo() + "");
+                        String nomEquipo = ComboBoxEquipo.getSelectedItem().toString();
 
-                    if (f instanceof Entrenador) {
-                        setOneEnabled(-1);
-                        ComboBoxTipo.setSelectedIndex(1);
-                        tfExp.setText(((Entrenador) f).getAñosExperiencia() + "");
-                    } else {
-                        Jugador j = (Jugador) f;
-                        ComboBoxTipo.setSelectedIndex(0);
-                        tfPartJugados.setText(j.getPartidosJugados() + "");
-                        tfCantGoles.setText(j.getCantidadGoles() + "");
-                        tfAsist.setText(j.getAsistencias() + "");
-                        tfPromGoles.setText(j.getPromedioGoles() + "");
+                        tfNombre.setText(f.getNombre());
+                        tfEquipo.setText(nomEquipo);
+                        tfNum.setText(f.getNumero() + "");
+                        tfAñosEnEq.setText(f.getAñosEnEquipo() + "");
 
-                        if (j instanceof Defensa) {
-                            setOneEnabled(0);
+                        if (f instanceof Entrenador) {
+                            setOneEnabled(-1);
+                            ComboBoxTipo.setSelectedIndex(1);
+                            tfExp.setText(((Entrenador) f).getAñosExperiencia() + "");
+                        } else {
+                            Jugador j = (Jugador) f;
+                            ComboBoxTipo.setSelectedIndex(0);
+                            tfPartJugados.setText(j.getPartidosJugados() + "");
+                            tfCantGoles.setText(j.getCantidadGoles() + "");
+                            tfAsist.setText(j.getAsistencias() + "");
+                            tfPromGoles.setText(j.getPromedioGoles() + "");
 
-                            Defensa def = (Defensa) j;
-                            tfEntradas.setText(def.getEntradas() + "");
-                            tfBloqueos.setText(def.getBloqueos() + "");
+                            if (j instanceof Defensa) {
+                                setOneEnabled(0);
 
-                        } else if (j instanceof Delantero) {
-                            setOneEnabled(1);
+                                Defensa def = (Defensa) j;
+                                tfEntradas.setText(def.getEntradas() + "");
+                                tfBloqueos.setText(def.getBloqueos() + "");
 
-                            tfTirosAPuerta.setText(((Delantero) j).getTirosAPuerta() + "");
-                        } else if (j instanceof Mediocampista) {
-                            setOneEnabled(2);
+                            } else if (j instanceof Delantero) {
+                                setOneEnabled(1);
 
-                            Mediocampista med = (Mediocampista) j;
-                            tfPasesC.setText(med.getPasesCompletados() + "");
-                            tfIntercep.setText(med.getIntercepciones() + "");
-                        } else if (j instanceof Portero) {
-                            setOneEnabled(3);
+                                tfTirosAPuerta.setText(((Delantero) j).getTirosAPuerta() + "");
+                            } else if (j instanceof Mediocampista) {
+                                setOneEnabled(2);
 
-                            Portero por = (Portero) j;
-                            tfParadas.setText(por.getParadas() + "");
-                            tfGolesE.setText(por.getGolesEncajados() + "");
+                                Mediocampista med = (Mediocampista) j;
+                                tfPasesC.setText(med.getPasesCompletados() + "");
+                                tfIntercep.setText(med.getIntercepciones() + "");
+                            } else if (j instanceof Portero) {
+                                setOneEnabled(3);
+
+                                Portero por = (Portero) j;
+                                tfParadas.setText(por.getParadas() + "");
+                                tfGolesE.setText(por.getGolesEncajados() + "");
+                            }
                         }
+
+                        btnNuevo.setEnabled(true);
+                        btnEditar.setEnabled(true);
+
+                        Principal.contP = 0;
+                    } else {
+                        btnEditar.setEnabled(false);
                     }
-
-                    btnNuevo.setEnabled(true);
-                    btnEditar.setEnabled(true);
-
-                    Principal.contP = 0;
-                } else {
-                    btnEditar.setEnabled(false);
+                } catch (Exception e1) {
+                    // System.out.println(e1.getMessage());
                 }
             }
 
@@ -131,7 +138,10 @@ public class CrudFutbolista extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         tfGolesEnc = new javax.swing.JTextField();
@@ -193,6 +203,8 @@ public class CrudFutbolista extends javax.swing.JDialog {
         lblParadas = new javax.swing.JLabel();
         lblGolesE = new javax.swing.JLabel();
         tfGolesE = new javax.swing.JTextField();
+        tfBusqueda = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
 
         tfGolesEnc.setEditable(false);
         tfGolesEnc.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -202,7 +214,7 @@ public class CrudFutbolista extends javax.swing.JDialog {
         lblGolesEnc.setText("Goles encajados");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Gestión de partidos");
+        setTitle("Gestión de futbolistas");
         setResizable(false);
 
         contentPanel.setForeground(new java.awt.Color(143, 182, 155));
@@ -411,7 +423,8 @@ public class CrudFutbolista extends javax.swing.JDialog {
         panelJugador.add(lblPos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 130, -1));
 
         ComboBoxPos.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        ComboBoxPos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Defensa", "Delantero", "Mediocampista", "Portero" }));
+        ComboBoxPos.setModel(new javax.swing.DefaultComboBoxModel<>(
+                new String[] { "Defensa", "Delantero", "Mediocampista", "Portero" }));
         ComboBoxPos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxPosActionPerformed(evt);
@@ -527,73 +540,156 @@ public class CrudFutbolista extends javax.swing.JDialog {
 
         tabbedPanePos.addTab("Portero", panelDefensa3);
 
+        tfBusqueda.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tfBusquedaPropertyChange(evt);
+            }
+        });
+        tfBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tfBusquedaKeyPressed(evt);
+            }
+
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfBusquedaKeyReleased(evt);
+            }
+
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfBusquedaKeyTyped(evt);
+            }
+        });
+
+        btnBuscar.setBackground(new java.awt.Color(242, 242, 242));
+        btnBuscar.setFont(new java.awt.Font("Roboto Black", 0, 15)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(59, 122, 26));
+        btnBuscar.setText("Buscar");
+        btnBuscar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(59, 122, 26)));
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
         contentPanel.setLayout(contentPanelLayout);
         contentPanelLayout.setHorizontalGroup(
-            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contentPanelLayout.createSequentialGroup()
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contentPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(contentPanelLayout.createSequentialGroup()
-                        .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(panelFutbolista, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tabbedPaneTipo, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
-                            .addComponent(tabbedPanePos))))
-                .addContainerGap())
-        );
+                contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(contentPanelLayout.createSequentialGroup()
+                                .addGroup(contentPanelLayout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 264,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(contentPanelLayout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 72,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 65,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 70,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(contentPanelLayout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(contentPanelLayout.createSequentialGroup()
+                                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 74,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(tfBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 242,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 74,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(contentPanelLayout.createSequentialGroup()
+                                                .addComponent(panelFutbolista, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addGroup(contentPanelLayout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(tabbedPaneTipo,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, 285,
+                                                                Short.MAX_VALUE)
+                                                        .addComponent(tabbedPanePos))))
+                                .addContainerGap()));
         contentPanelLayout.setVerticalGroup(
-            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contentPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(contentPanelLayout.createSequentialGroup()
-                        .addComponent(tabbedPaneTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tabbedPanePos, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(panelFutbolista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(scrollPane))
-                .addGap(18, 27, Short.MAX_VALUE)
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
+                contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(contentPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(contentPanelLayout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(contentPanelLayout.createSequentialGroup()
+                                                .addComponent(tabbedPaneTipo, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(tabbedPanePos, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(panelFutbolista, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(scrollPane))
+                                .addGap(18, 27, Short.MAX_VALUE)
+                                .addGroup(contentPanelLayout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(btnSalir, javax.swing.GroupLayout.Alignment.TRAILING,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE, 28,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(contentPanelLayout
+                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 28,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 27,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 27,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(tfBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 28,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap()));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap()));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap()));
 
         contentPanel.getAccessibleContext().setAccessibleParent(contentPanel);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnBuscarActionPerformed
+        buscar();
+    }// GEN-LAST:event_btnBuscarActionPerformed
+
+    private void tfBusquedaPropertyChange(java.beans.PropertyChangeEvent evt) {// GEN-FIRST:event_tfBusquedaPropertyChange
+        // buscar();
+    }// GEN-LAST:event_tfBusquedaPropertyChange
+
+    private void tfBusquedaKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_tfBusquedaKeyPressed
+        // buscar();
+    }// GEN-LAST:event_tfBusquedaKeyPressed
+
+    private void tfBusquedaKeyTyped(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_tfBusquedaKeyTyped
+        // buscar();
+    }// GEN-LAST:event_tfBusquedaKeyTyped
+
+    private void tfBusquedaKeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_tfBusquedaKeyReleased
+        // buscar();
+    }// GEN-LAST:event_tfBusquedaKeyReleased
 
     private void ComboBoxTipoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ComboBoxTipoActionPerformed
         int index = ComboBoxTipo.getSelectedIndex();
@@ -725,6 +821,7 @@ public class CrudFutbolista extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> ComboBoxPos;
     private javax.swing.JComboBox<String> ComboBoxTipo;
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
@@ -766,6 +863,7 @@ public class CrudFutbolista extends javax.swing.JDialog {
     private javax.swing.JTextField tfAsist;
     private javax.swing.JTextField tfAñosEnEq;
     private javax.swing.JTextField tfBloqueos;
+    private javax.swing.JTextField tfBusqueda;
     private javax.swing.JTextField tfCantGoles;
     private javax.swing.JTextField tfEntradas;
     private javax.swing.JTextField tfEquipo;
@@ -1002,5 +1100,36 @@ public class CrudFutbolista extends javax.swing.JDialog {
         lblGolesE.setForeground(Color.BLACK);
 
         lblDatosErroneos.setVisible(false);
+    }
+
+    public void buscar() {
+
+        btnBuscar.setEnabled(false);
+        String query = tfBusqueda.getText();
+        modelo.setList(ServicesLocator.getFutbolistaServices().obtenerFutbolistas());
+        if (query.length() > 0) {
+            ArrayList<Futbolista> actualList = modelo.getList();
+            ArrayList<Futbolista> nextList = new ArrayList<>();
+            String nomEquipo = null;
+            for (Futbolista f : actualList) {
+                nomEquipo = ServicesLocator.getEquipoServices().getNombreEquipo(f.getIdEquipo());
+                if (f.getNombre().contains(query) || f.getTipo().contains(query) || (f.getNumero() + "").contains(query)
+                        || nomEquipo.contains(query)) {
+                    nextList.add(f);
+
+                } else if (f instanceof Jugador) { // por la pos
+                    if (((Jugador) f).getPosicion().contains(query)) {
+                        nextList.add(f);
+                    }
+
+                    // list.setSelectedIndex(0);
+                }
+
+            }
+            modelo.setList(nextList);
+            list.setSelectedIndex(-1);
+            modelo.refresh();
+        }
+        btnBuscar.setEnabled(true);
     }
 }
