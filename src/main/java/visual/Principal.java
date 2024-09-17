@@ -6,8 +6,10 @@ package visual;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -62,6 +64,7 @@ public class Principal extends javax.swing.JFrame {
 
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         menuPerfil = new javax.swing.JMenu();
         menuItemInicioS = new javax.swing.JMenuItem();
@@ -92,18 +95,30 @@ public class Principal extends javax.swing.JFrame {
         setBackground(new java.awt.Color(60, 63, 64));
         setBounds(new java.awt.Rectangle(0, 0, 800, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -40, 860, 590));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\1 (9).png")); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -20, 860, 590));
+        jButton1.setBackground(new java.awt.Color(255, 51, 51));
+        jButton1.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("SALIR");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 500, -1, -1));
 
         menuBar.setToolTipText("");
 
-        menuPerfil.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Perfil (1).png")); // NOI18N
         menuPerfil.setText("Perfil");
         menuPerfil.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
 
         menuItemInicioS.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        menuItemInicioS.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\User (1).png")); // NOI18N
         menuItemInicioS.setText("Iniciar sesión");
         menuItemInicioS.setActionCommand("");
         menuItemInicioS.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -119,7 +134,6 @@ public class Principal extends javax.swing.JFrame {
         menuPerfil.add(menuItemInicioS);
 
         menuItemCerrarS.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        menuItemCerrarS.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\No user (1).png")); // NOI18N
         menuItemCerrarS.setText("Cerrar sesión");
         menuItemCerrarS.setToolTipText("");
         menuItemCerrarS.setActionCommand("");
@@ -136,7 +150,6 @@ public class Principal extends javax.swing.JFrame {
         menuPerfil.add(menuItemCerrarS);
 
         menuItemUsuarios.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        menuItemUsuarios.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Gestión usuarios.png")); // NOI18N
         menuItemUsuarios.setText("Gestión de usuarios");
         menuItemUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,12 +160,10 @@ public class Principal extends javax.swing.JFrame {
 
         menuBar.add(menuPerfil);
 
-        menuGestion.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\gestionLiga (1).png")); // NOI18N
         menuGestion.setText("Gestión de la liga");
         menuGestion.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
 
         menuItemEstadios.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        menuItemEstadios.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\balon (1).png")); // NOI18N
         menuItemEstadios.setLabel("Estadios");
         menuItemEstadios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,7 +173,6 @@ public class Principal extends javax.swing.JFrame {
         menuGestion.add(menuItemEstadios);
 
         menuItemEquipos.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        menuItemEquipos.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\balon (1).png")); // NOI18N
         menuItemEquipos.setLabel("Equipos");
         menuItemEquipos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,7 +182,6 @@ public class Principal extends javax.swing.JFrame {
         menuGestion.add(menuItemEquipos);
 
         menuItemPartidos.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        menuItemPartidos.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\balon (1).png")); // NOI18N
         menuItemPartidos.setLabel("Partidos");
         menuItemPartidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,7 +191,6 @@ public class Principal extends javax.swing.JFrame {
         menuGestion.add(menuItemPartidos);
 
         menuItemFutbolistas.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        menuItemFutbolistas.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\balon (1).png")); // NOI18N
         menuItemFutbolistas.setLabel("Futbolistas");
         menuItemFutbolistas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,7 +200,6 @@ public class Principal extends javax.swing.JFrame {
         menuGestion.add(menuItemFutbolistas);
 
         menuItemIniciar.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        menuItemIniciar.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Abrir (1).png")); // NOI18N
         menuItemIniciar.setText("Comenzar la liga");
         menuItemIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,7 +209,6 @@ public class Principal extends javax.swing.JFrame {
         menuGestion.add(menuItemIniciar);
 
         menuItemCulminar.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        menuItemCulminar.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Cerrar (1).png")); // NOI18N
         menuItemCulminar.setText("Culminar la liga");
         menuItemCulminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,18 +218,15 @@ public class Principal extends javax.swing.JFrame {
         menuGestion.add(menuItemCulminar);
 
         menuItemResultados.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        menuItemResultados.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\report (1).png")); // NOI18N
         menuItemResultados.setText("Ver resultados");
         menuGestion.add(menuItemResultados);
 
         menuBar.add(menuGestion);
 
-        menuReportes.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Reportes (1).png")); // NOI18N
         menuReportes.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
         menuReportes.setLabel("Reportes");
 
         menuItemRTablaPosiciones.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        menuItemRTablaPosiciones.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Posiciones (1).png")); // NOI18N
         menuItemRTablaPosiciones.setText("Tabla de posiciones de la liga");
         menuItemRTablaPosiciones.setActionCommand("Reportes");
         menuItemRTablaPosiciones.addActionListener(new java.awt.event.ActionListener() {
@@ -234,7 +237,6 @@ public class Principal extends javax.swing.JFrame {
         menuReportes.add(menuItemRTablaPosiciones);
 
         menuItemRPartidosEquipos.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        menuItemRPartidosEquipos.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Partido (1).png")); // NOI18N
         menuItemRPartidosEquipos.setText("Partidos por equipos");
         menuItemRPartidosEquipos.setActionCommand("Reportes");
         menuItemRPartidosEquipos.addActionListener(new java.awt.event.ActionListener() {
@@ -245,7 +247,6 @@ public class Principal extends javax.swing.JFrame {
         menuReportes.add(menuItemRPartidosEquipos);
 
         menuItemRPartidosPorFecha.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        menuItemRPartidosPorFecha.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Partido (1).png")); // NOI18N
         menuItemRPartidosPorFecha.setText("Partidos jugados por fecha");
         menuItemRPartidosPorFecha.setActionCommand("Reportes");
         menuItemRPartidosPorFecha.addActionListener(new java.awt.event.ActionListener() {
@@ -256,7 +257,6 @@ public class Principal extends javax.swing.JFrame {
         menuReportes.add(menuItemRPartidosPorFecha);
 
         menuItemREntrenadoresExperiencia.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        menuItemREntrenadoresExperiencia.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Entrenador (1).png")); // NOI18N
         menuItemREntrenadoresExperiencia.setText("Entrenadores con más experiencia");
         menuItemREntrenadoresExperiencia.setActionCommand("Reportes");
         menuItemREntrenadoresExperiencia.addActionListener(new java.awt.event.ActionListener() {
@@ -267,7 +267,6 @@ public class Principal extends javax.swing.JFrame {
         menuReportes.add(menuItemREntrenadoresExperiencia);
 
         menuItemREstadiosMayorAudiencia.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        menuItemREstadiosMayorAudiencia.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\report (1).png")); // NOI18N
         menuItemREstadiosMayorAudiencia.setText("Estadios con mayor audiencia");
         menuItemREstadiosMayorAudiencia.setActionCommand("Reportes");
         menuItemREstadiosMayorAudiencia.addActionListener(new java.awt.event.ActionListener() {
@@ -278,7 +277,6 @@ public class Principal extends javax.swing.JFrame {
         menuReportes.add(menuItemREstadiosMayorAudiencia);
 
         menuItemREstadoEquipo.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        menuItemREstadoEquipo.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\balon (1).png")); // NOI18N
         menuItemREstadoEquipo.setText("Estado de un equipo");
         menuItemREstadoEquipo.setActionCommand("Reportes");
         menuItemREstadoEquipo.addActionListener(new java.awt.event.ActionListener() {
@@ -289,7 +287,6 @@ public class Principal extends javax.swing.JFrame {
         menuReportes.add(menuItemREstadoEquipo);
 
         menuItemREquipoEstrella.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        menuItemREquipoEstrella.setIcon(new javax.swing.ImageIcon("src\\main\\java\\visual\\images\\Mejor (1).png")); // NOI18N
         menuItemREquipoEstrella.setText("Equipo todas estrellas");
         menuItemREquipoEstrella.setActionCommand("Reportes");
         menuItemREquipoEstrella.addActionListener(new java.awt.event.ActionListener() {
@@ -305,6 +302,15 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    protected void jButton1MouseClicked(MouseEvent evt) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'jButton1MouseClicked'");
+    }
+
+    protected void jButton1ActionPerformed(ActionEvent evt) {
+        System.exit(0);
+    }
 
     private void menuItemCulminarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuItemCulminarActionPerformed
         menuItemIniciar.setEnabled(true);
@@ -420,6 +426,7 @@ public class Principal extends javax.swing.JFrame {
     }// GEN-LAST:event_menuItemInicioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JMenuBar menuBar;
